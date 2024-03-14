@@ -9,36 +9,36 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $vid='';
-    public $vdate='';
-    public $in_time='';
-    public $out_time='';
-    public $user_name='';
+    public $vid = '';
+    public $vdate = '';
+    public $in_time = '';
+    public $out_time = '';
+    public $user_name = '';
+    public $user_id = '';
 
     public function save()
     {
 
-            if ($this->vid == "") {
-                Attendance::create([
-                    'user_id' => Auth::id(),
-                    'vdate' => $this->vdate,
-                    'in_time' => $this->in_time,
-                    'out_time' => $this->out_time,
-                ]);
-            } else {
-                $obj = Attendance::find($this->vid);
-                $obj->user_id = Auth::id();
-                $obj->vdate = $this->vdate;
-                $obj->in_time = $this->in_time;
-                $obj->out_time = Carbon::now()->format('g:i:s');
-                $obj->save();
-            }
-
+        if ($this->vid == "") {
+            Attendance::create([
+                'user_id' => Auth::id(),
+                'vdate' => $this->vdate,
+                'in_time' => $this->in_time,
+                'out_time' => $this->out_time,
+            ]);
+        } else {
+            $obj = Attendance::find($this->vid);
+            $obj->user_id = Auth::id();
+            $obj->vdate = $this->vdate;
+            $obj->in_time = $this->in_time;
+            $obj->out_time = Carbon::now()->format('g:i:s');
+            $obj->save();
+        }
     }
 
     public function getlist()
     {
-       return Attendance::all();
+        return Attendance::all();
     }
 
     public function getObj($id)
@@ -56,21 +56,19 @@ class Index extends Component
         return null;
     }
 
-
     public function mark_in()
     {
-        $this->vdate = Carbon::parse(Carbon::now())->format('Y-m-d');
-        $this->in_time=Carbon::now()->format('g:i:s');
+        $this->vdate = Carbon::parse(Carbon::now());
+        $this->in_time = Carbon::now()->format('g:i:s');
+        $this->out_time = '';
         $this->save();
     }
+
     public function mark_out($id)
     {
         $this->getObj($id);
         $this->save();
-
     }
-
-
 
     public function render()
     {

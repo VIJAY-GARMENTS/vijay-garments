@@ -114,8 +114,8 @@
                             <a href="{{route('companies.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-left">
 
-                                <div class="flex-shrink-0 h-10 w-10 mr-4">
-                                    <img src="{{ asset ('storage/'.$row->logo)}}"/>
+                                <div class="flex-shrink-0 h-10 w-10 mr-4" >
+                                    <img src="{{asset ('aaran-soft/storage/app/'.$row->logo)}}"/>
                                 </div>
 
                             </a>

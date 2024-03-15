@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->date('vdate');
+            $table->date('vdate')->unique();
             $table->string('in_time')->nullable();
             $table->string('out_time')->nullable();
             $table->foreignId('user_id')->references('id')->on('users');

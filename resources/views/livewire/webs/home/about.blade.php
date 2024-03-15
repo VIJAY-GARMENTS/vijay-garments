@@ -5,11 +5,11 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
-        <div class="team py-32 mx-auto bg-gradient-to-r from-cyan-100 to-purple-200">
+        <div class="team py-32 mx-auto bg-gray-100">
             <div class="container px-4 mx-auto justify-items-center sm:px-8">
                 <h2 class="mb-12 text-center font-bold lg:max-w-xl lg:mx-auto">OUR TEAM MEMBERS</h2>
                 {{--<---team member--->--}}
-                <div id="progress" class=" slide-from-left  container bg-gradient-to-r from-cyan-100 to-purple-200  grid md:grid-cols-3 mx-auto justify-items-center">
+                <div id="progress" class=" slide-from-left container bg-gray-100 grid md:grid-cols-3 mx-auto justify-items-center">
 
                     <div class="md:grid-cols-1 p-7 gap-4">
                         <div class="entry-thumb portfolio-thumb ">
@@ -55,7 +55,7 @@
                         <div class="entry-thumb portfolio-thumb">
                             <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">
                                 <a href="../../../../images/adam.jpg" >
-                                    <img w-80 src="../../../../images/adam.jpg"  alt="image">
+                                    <img class="w-80" src="../../../../images/adam.jpg"  alt="image">
                                     <div class="overlay"><span class="overlaycolor"></span><div class="overlayinfo" style="margin-top: -11px;"><h6>adam wathan</h6></div></div>
                                 </a>
                             </div>
@@ -75,7 +75,7 @@
             </div>
         </div>
         {{--<---counter--->--}}
-        <div class="counter w-full xl:flex sm:flex bg-gray-100">
+        <div class="counter w-full xl:flex sm:flex bg-white">
             <div class="container flex mx-auto mt-8 py-4 px-4 sm:px-8 ">
 
                 <div class="grid md:grid-cols-5  mx-auto items-center gap-10 text-center animate__animated wow animate__zoomInDown">

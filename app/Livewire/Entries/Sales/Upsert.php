@@ -53,8 +53,8 @@ class Upsert extends Component
     public string $colour;
     public string $size;
 
-    #[Rule('required')]
     public $contact_id = '';
+    #[Rule('required')]
     public $contact_name = '';
     public Collection $contactCollection;
     public $highlightContact = 0;

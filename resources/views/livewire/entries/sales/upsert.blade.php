@@ -1,11 +1,12 @@
-<div >
+<div>
     <x-slot name="header">Sales Entry</x-slot>
     <x-forms.m-panel>
-        <section class="grid grid-cols-2 gap-2 ">
-            <div class="w-1/2 mt-3">
+        <section class="grid grid-cols-2">
+
+            <div class="mt-3">
 
                 <div class="xl:flex w-full gap-2">
-                    <label for="size_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Party Name</label>
+                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Party Name</label>
                     <div x-data="{isTyped: @entangle('contactTyped')}" @click.away="isTyped = false" class="w-full">
                         <div class="relative ">
                             <input
@@ -116,24 +117,24 @@
                 </div>
             </div>
 
-            <div class="w-full">
-                <div class=" w-1/2 mr-4 ml-auto">
+            <div class=" w-1/2 ml-auto">
+
                 <x-input.model-text wire:model="invoice_no" :label="'Invoice No'"/>
-                <div class="xl:flex flex-row gap-3 py-3">
-                    <label class="w-[10rem] text-zinc-500 tracking-wide py-2">Invoice Date</label>
-                    <input type="date" wire:model="invoice_date" class="w-full purple-textbox"/>
-                </div>
-                    <x-input.model-select wire:model="sales_type" :label="'Sales Type'">
-                        <option class="text-gray-400"> choose ..</option>
-                        @foreach(\App\Enums\GST::cases() as $sales_type)
-                            <option value="{{$sales_type->value}}">{{$sales_type->getName()}}</option>
-                        @endforeach
-                    </x-input.model-select>
-                </div>
+                <x-input.model-text wire:model="invoice_date" :label="'Invoice Date'" type="date"/>
+
+                <x-input.model-select wire:model="sales_type" :label="'Sales Type'">
+                    <option class="text-gray-400"> choose ..</option>
+                    @foreach(\App\Enums\GST::cases() as $sales_type)
+                        <option value="{{$sales_type->value}}">{{$sales_type->getName()}}</option>
+                    @endforeach
+                </x-input.model-select>
             </div>
 
         </section>
-        <section class="text-2xl font-bold">
+
+        <x-forms.section-border/>
+
+        <section class="text-xl font-bold text-orange-400">
             Sales Item
         </section>
         <section class="flex flex-row w-full gap-0.5">
@@ -295,15 +296,18 @@
             </div>
             <div class="w-full">
                 <label for="qty"></label>
-                <input id="qty" wire:model="qty" class="block w-full purple-textbox-no-rounded" autocomplete="false" placeholder="Qty">
+                <input id="qty" wire:model="qty" class="block w-full purple-textbox-no-rounded" autocomplete="false"
+                       placeholder="Qty">
             </div>
             <div class="w-full">
                 <label for="price"></label>
-                <input id="price" wire:model="price" class="block w-full purple-textbox-no-rounded" autocomplete="false" placeholder="price">
+                <input id="price" wire:model="price" class="block w-full purple-textbox-no-rounded" autocomplete="false"
+                       placeholder="price">
             </div>
             <div class="w-full">
                 <label for="price"></label>
-                <select id="price" wire:model="gst_percent" class="block w-full purple-textbox-no-rounded" autocomplete="false" placeholder="price">
+                <select id="price" wire:model="gst_percent" class="block w-full purple-textbox-no-rounded"
+                        autocomplete="false" placeholder="price">
                     <option class="text-gray-400"> choose ..</option>
                     @foreach(\App\Enums\GstPercent::cases() as $gst_percent)
                         <option value="{{$gst_percent->value}}">{{$gst_percent->getName()}}</option>
@@ -342,19 +346,29 @@
 
                             <tr class="border border-gray-400 hover:bg-amber-50">
                                 <td class="text-center border border-gray-300 bg-gray-100">
-                                    <button class="w-full h-full cursor-pointer" wire:click.prevent="changeItems({{$index}})">
+                                    <button class="w-full h-full cursor-pointer"
+                                            wire:click.prevent="changeItems({{$index}})">
                                         {{$index+1}}
                                     </button>
                                 </td>
-                                <td class="px-2 text-left border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['product_name']}}</td>
-                                <td class="px-2 text-left border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['colour_name']}}</td>
-                                <td class="px-2 text-left border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['size_name']}}</td>
-                                <td class="px-2 text-center border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['qty']}}</td>
-                                <td class="px-2 text-right border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['price']}}</td>
-                                <td class="px-2 text-right border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['taxable']}}</td>
-                                <td class="px-2 text-center border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['gst_percent']}}</td>
-                                <td class="px-2 text-right border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['gst_amount']}}</td>
-                                <td class="px-2 text-right border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['subtotal']}}</td>
+                                <td class="px-2 text-left border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['product_name']}}</td>
+                                <td class="px-2 text-left border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['colour_name']}}</td>
+                                <td class="px-2 text-left border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['size_name']}}</td>
+                                <td class="px-2 text-center border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['qty']}}</td>
+                                <td class="px-2 text-right border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['price']}}</td>
+                                <td class="px-2 text-right border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['taxable']}}</td>
+                                <td class="px-2 text-center border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['gst_percent']}}</td>
+                                <td class="px-2 text-right border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['gst_amount']}}</td>
+                                <td class="px-2 text-right border border-gray-300 cursor-pointer"
+                                    wire:click.prevent="changeItems({{$index}})">{{$row['subtotal']}}</td>
                                 <td class="text-center border border-gray-300">
                                     <button wire:click.prevent="removeItems({{$index}})"
                                             class="py-1.5 w-full text-red-500 items-center ">
@@ -382,13 +396,16 @@
             </div>
 
         </section>
+        <x-forms.section-border/>
         <section class="grid grid-cols-2 gap-2 ">
             <section class="w-full">
                 <div class="w-3/4">
+
                     <div class="flex flex-col gap-2 pt-5">
                         <div class="xl:flex w-full gap-2">
-                            <label for="pincode_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Ledger</label>
-                            <div x-data="{isTyped: @entangle('ledgerTyped')}" @click.away="isTyped = false" class='w-full' >
+                            <label for="ledger_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Ledger</label>
+                            <div x-data="{isTyped: @entangle('ledgerTyped')}" @click.away="isTyped = false"
+                                 class='w-full'>
                                 <div class="relative">
                                     <input
                                         id="ledger_name"
@@ -440,10 +457,13 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="flex flex-col gap-2 pt-5">
                         <div class="xl:flex w-full gap-2">
-                            <label for="pincode_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Transport</label>
-                            <div x-data="{isTyped: @entangle('transportTyped')}" @click.away="isTyped = false" class="w-full">
+                            <label for="transport_name"
+                                   class="w-[10rem] text-zinc-500 tracking-wide py-2">Transport</label>
+                            <div x-data="{isTyped: @entangle('transportTyped')}" @click.away="isTyped = false"
+                                 class="w-full">
                                 <div class="relative">
                                     <input
                                         id="transport_name"
@@ -497,30 +517,40 @@
                     </div>
 
                     <x-input.model-text wire:model="destination" :label="'Destination'"/>
+
                     <x-input.model-text wire:model="bundle" :label="'Bundle'"/>
+
                 </div>
             </section>
 
             <section class="w-full">
                 <div class="w-3/4 mr-3 ml-auto ">
 
+                    <x-input.model-text wire:model="additional" wire:change.debounce="calculateTotal"
+                             class="text-right purple-textbox w-full ml-20" :label="'Additional'"/>
 
-                    <x-input.model-text wire:model="additional"  wire:change.debounce="calculateTotal" :label="'Additional'"/>
+
+                    <div class="grid w-full grid-cols-2 pt-6">
+                        <label
+                            class="px-3 pb-2 text-left text-gray-600 text-md">Taxable&nbsp;Amount&nbsp;:&nbsp;&nbsp;</label>
+                        <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_taxable }}</label>
+                    </div>
+
+
+                    <div class="grid w-full grid-cols-2 pt-6">
+                        <label
+                            class="px-3 pb-2 text-left text-gray-600 text-md">Gst&nbsp;:&nbsp;&nbsp;</label>
+                        <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_gst }}</label>
+                    </div>
+
+
                     <div class="grid w-full grid-cols-2 pt-6">
                         <label
                             class="px-3 pb-2 text-left text-gray-600 text-md">Round off&nbsp;:&nbsp;&nbsp;</label>
                         <label class="px-3 pb-2 text-right text-gray-800 text-md">{{$round_off}}</label>
                     </div>
-                    <div class="grid w-full grid-cols-2 pt-6">
-                        <label
-                            class="px-3 pb-2 text-left text-gray-600 text-md">Total Gst&nbsp;:&nbsp;&nbsp;</label>
-                        <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_gst }}</label>
-                    </div>
-                    <div class="grid w-full grid-cols-2 pt-6">
-                        <label
-                            class="px-3 pb-2 text-left text-gray-600 text-md">Total Taxablet&nbsp;:&nbsp;&nbsp;</label>
-                        <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_taxable }}</label>
-                    </div>
+
+
                     <div class="grid w-full grid-cols-2 pt-6">
                         <label
                             class="px-3 pb-2 text-xl text-left text-gray-600">Grand&nbsp;Total&nbsp;:&nbsp;&nbsp;</label>
@@ -535,27 +565,27 @@
     <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md shadow-lg w-full ">
 
         <div class="flex flex-col md:flex-row justify-between gap-3 mt-5 mb-0">
+
             <div class="flex gap-3">
                 <x-button.save/>
                 <x-button.back/>
-                <div class="my-2">
-                    <label for="active_id" class="inline-flex relative items-center cursor-pointer">
-                        <input type="checkbox" id="active_id" class="sr-only peer"
-                               wire:model="active_id">
-                        <div
-                            class="w-10 h-5 bg-gray-200 rounded-full peer peer-focus:ring-2
+            </div>
+
+            <div class="my-2">
+                <label for="active_id" class="inline-flex relative items-center cursor-pointer">
+                    <input type="checkbox" id="active_id" class="sr-only peer"
+                           wire:model="active_id">
+                    <div
+                        class="w-10 h-5 bg-gray-200 rounded-full peer peer-focus:ring-2
                                         peer-focus:ring-blue-300
                                          peer-checked:after:translate-x-full peer-checked:after:border-white
                                          after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300
                                          after:border after:rounded-full after:h-4 after:w-4 after:transition-all
                                          peer-checked:bg-blue-600"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900">Active</span>
-                    </label>
-                </div>
+                    <span class="ml-3 text-sm font-medium text-gray-900">Active</span>
+                </label>
             </div>
         </div>
     </div>
-
-
 </div>
 

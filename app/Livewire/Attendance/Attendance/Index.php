@@ -5,10 +5,14 @@ namespace App\Livewire\Attendance\Attendance;
 use Aaran\Attendance\Models\Attendance;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+    public Attendance $attendance;
     public $vid = '';
     public $vdate = '';
     public $in_time = '';
@@ -16,8 +20,11 @@ class Index extends Component
     public $user_name = '';
     public $user_id = '';
 
+
+
     public function save()
     {
+        $this->validate(['vdate'=>'required|unique:attendances,vdate']);
 
         if ($this->vid == "") {
             Attendance::create([
@@ -38,7 +45,10 @@ class Index extends Component
 
     public function getlist()
     {
-        return Attendance::all();
+        return Attendance::all()->whereBetween('vdate',  [
+            Carbon::now()->startOfMonth()->format('Y-m-d'),
+            Carbon::now()->endOfMonth()->format('Y-m-d')
+        ]) ->where('user_id', Auth::id());
     }
 
     public function getObj($id)

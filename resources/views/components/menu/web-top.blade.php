@@ -22,6 +22,9 @@
                 <li>
                     <a class="nav-link hover:underline page-scroll text-2xl font-serif p-3" href="{{route('contact')}}">Contact</a>
                 </li>
+                <li>
+                    <a class="nav-link hover:underline page-scroll text-2xl font-serif p-3" href="{{route('blogpost')}}">Blog</a>
+                </li>
             </ul>
         </div>
 
@@ -60,6 +63,7 @@
                 @endif
             </div>
         </div>
+
     </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 {{--    <script>--}}

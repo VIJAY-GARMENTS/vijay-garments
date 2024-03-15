@@ -24,8 +24,6 @@ class Index extends Component
 
     public function save()
     {
-        $this->validate(['vdate'=>'required|unique:attendances,vdate']);
-
         if ($this->vid == "") {
             Attendance::create([
                 'user_id' => Auth::id(),

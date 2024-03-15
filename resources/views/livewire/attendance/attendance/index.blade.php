@@ -10,9 +10,6 @@
                         class="flex px-2 py-2 text-white text-xl bg-lime-500 rounded-lg" >
                   Mark In
                 </button>
-                @error('vdate')
-                    <span class="text-red-500">{{  'The Party Name is Required.' }}</span>
-                @enderror
                 </div>
             </x-table.cell>
         </table>

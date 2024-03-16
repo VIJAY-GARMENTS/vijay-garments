@@ -34,6 +34,7 @@
             <x-menu.sub.order/>
             <x-menu.sub.entries/>
             <x-menu.sub.common/>
+            <x-menu.sub.utilities/>
             <x-menu.sub.logout/>
 
         </ul>

@@ -2,25 +2,24 @@
     <x-slot name="header">Attendance View</x-slot>
     <x-forms.m-panel>
     <div class="-mt-4">
-        Today
         <table class="w-full">
 
-            <x-table.cell>
+            <td>
                 <div class="flex gap-3 text-right w-full justify-end">
-                <button wire:click="mark_in"
+                <button wire:click.prevent="mark_in"
                         class="flex px-2 py-2 text-white font-bold tracking-wider text-sm bg-lime-500 rounded-lg" >
                   I am In
                 </button>
                 </div>
-            </x-table.cell>
+            </td>
         </table>
         <x-forms.table :list="$list">
             <x-slot name="table_body">
             @forelse ($list as $index =>  $row)
-               <x-table.row>
+             <tr class = 'bg-white border border-gray-900 hover:bg-yellow-50 cursor-pointer'>
                    <x-table.cell>
                        <a href="{{ route('attendances') }}">
-                           {{$row->user->name}}</a>
+                           {{$index+1}}</a>
                    </x-table.cell>
                 <x-table.cell>
                     {{$row->vdate}}
@@ -32,16 +31,27 @@
                     {{$row->out_time}}
                 </x-table.cell>
                    <x-table.cell>
+                       <span>₹</span>{{$row->amount}}
+                   </x-table.cell>
+                   <x-table.cell>
                        <div class="flex gap-3 text-right w-full justify-end">
-                       <button wire:model="out_time" wire:click="mark_out({{ $row->id }})"
+                       <button  wire:click.prevent="mark_out({{ $row->id }})"
                                class="flex px-2 py-2 text-white text-sm bg-red-500 rounded-lg">
                            I am Out
                        </button></div></x-table.cell>
-               </x-table.row>
+             </tr>
 
-            @empty
+                @empty
 
-            @endforelse
+                @endforelse
+                <tfoot class="mt-2">
+                <td>
+        <div class="grid w-full grid-cols-2 pt-6">
+            <label
+                class="px-3 pb-2 text-left text-gray-600 text-md">Total Earned:&nbsp;&nbsp;₹</label>
+            <label class=" pb-2 text-left text-gray-800 text-md">{{ $total_amount }}</label>
+        </div></td></tfoot>
+
             </x-slot>
         </x-forms.table>
 

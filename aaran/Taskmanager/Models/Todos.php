@@ -20,6 +20,11 @@ class Todos extends Model
             : static::where('vname', 'like', '%' . $searches . '%');
     }
 
+    public static function nextNo()
+    {
+        return static::max('slno') + 1;
+    }
+
     protected static function newFactory(): TodosFactory
     {
         return new TodosFactory();

@@ -17,6 +17,8 @@ class Index extends Component
     public $vdate = '';
     public $in_time = '';
     public $out_time = '';
+    public mixed $amount= '';
+    public mixed $total_amount= 0;
     public $user_name = '';
     public $user_id = '';
 
@@ -30,6 +32,7 @@ class Index extends Component
                 'vdate' => $this->vdate,
                 'in_time' => $this->in_time,
                 'out_time' => $this->out_time,
+                'amount' => $this->amount,
             ]);
         } else {
             $obj = Attendance::find($this->vid);
@@ -37,6 +40,7 @@ class Index extends Component
             $obj->vdate = $this->vdate;
             $obj->in_time = $this->in_time;
             $obj->out_time = Carbon::now()->format('g:i:s');
+            $obj->amount = 307.69;
             $obj->save();
         }
     }
@@ -66,18 +70,21 @@ class Index extends Component
 
     public function mark_in()
     {
-        $this->vdate = Carbon::parse(Carbon::now());
+        if ($this->vid== "") {
         $this->in_time = Carbon::now()->format('g:i:s');
+        $this->vdate = Carbon::parse(Carbon::now());
         $this->out_time = '';
         $this->save();
+        }
     }
 
     public function mark_out($id)
     {
         $this->getObj($id);
+        if ($this->out_time==""){
         $this->save();
+        }
     }
-
     public function render()
     {
         return view('livewire.attendance.attendance.index')->with([

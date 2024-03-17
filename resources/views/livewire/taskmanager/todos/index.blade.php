@@ -4,7 +4,7 @@
     <div class="border border-gray-300 w-full">
 
         <label class="">
-            <input type="text" wire:model="vname" wire:change="saveTodo" placeholder="My new todo..."
+            <input type="text" wire:model="vname" wire:change="saveTodo" placeholder="Ink your ideas..."
                    class="purple-textbox-no-rounded  w-full">
         </label>
 
@@ -62,5 +62,4 @@
             @endforeach
         </div>
     </div>
-</div>
 </div>

@@ -10,17 +10,25 @@ class SizeSeeder extends Seeder
     {
 
         Size::create([
+            'vname' => '-',
+            'active_id' => '1'
+        ]);
+
+        Size::create([
             'vname' => 's',
             'active_id' => '1'
         ]);
+
         Size::create([
             'vname' => 'm',
             'active_id' => '1'
         ]);
+
         Size::create([
             'vname' => 'l',
             'active_id' => '1'
         ]);
+
         Size::create([
             'vname' => 'xl',
             'active_id' => '1'

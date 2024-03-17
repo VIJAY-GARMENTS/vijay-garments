@@ -10,15 +10,37 @@ class PincodeSeeder extends Seeder
     public static function run(): void
     {
         Pincode::create([
-            'vname' => '654654',
+            'vname' => '-',
             'active_id' => '1'
         ]);
+
         Pincode::create([
-            'vname' => '650021',
+            'vname' => '641601',
             'active_id' => '1'
         ]);
+
         Pincode::create([
-            'vname' => '600012',
+            'vname' => '641602',
+            'active_id' => '1'
+        ]);
+
+        Pincode::create([
+            'vname' => '641603',
+            'active_id' => '1'
+        ]);
+
+        Pincode::create([
+            'vname' => '641604',
+            'active_id' => '1'
+        ]);
+
+        Pincode::create([
+            'vname' => '641605',
+            'active_id' => '1'
+        ]);
+
+        Pincode::create([
+            'vname' => '641606',
             'active_id' => '1'
         ]);
     }

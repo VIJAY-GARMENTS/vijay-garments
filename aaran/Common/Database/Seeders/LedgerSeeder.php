@@ -10,7 +10,12 @@ class LedgerSeeder extends Seeder
     public static function run(): void
     {
         Ledger::create([
-            'vname' => 'Tiruppur',
+            'vname' => '-',
+            'active_id' => '1'
+        ]);
+
+        Ledger::create([
+            'vname' => 'Auto Charges',
             'active_id' => '1'
         ]);
     }

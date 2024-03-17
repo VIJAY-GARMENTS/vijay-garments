@@ -10,6 +10,11 @@ class HsncodeSeeder extends Seeder
     public static function run(): void
     {
         Hsncode::create([
+            'vname' => '-',
+            'active_id' => '1'
+        ]);
+
+        Hsncode::create([
             'vname' => '6100',
             'active_id' => '1'
         ]);

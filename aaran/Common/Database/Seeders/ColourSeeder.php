@@ -10,6 +10,11 @@ class ColourSeeder extends Seeder
     public static function run(): void
     {
         Colour::create([
+            'vname' => '-',
+            'active_id' => '1'
+        ]);
+
+        Colour::create([
             'vname' => 'Blue',
             'active_id' => '1'
         ]);

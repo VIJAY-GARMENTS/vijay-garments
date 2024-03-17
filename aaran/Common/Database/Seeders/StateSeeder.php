@@ -11,8 +11,14 @@ class StateSeeder extends Seeder
     {
 
         State::create([
+            'vname' => '-',
+            'state_code' => '-',
+            'active_id' => '1'
+        ]);
+
+        State::create([
             'vname' => 'Tamilnadu',
-            'state_code' => '39',
+            'state_code' => '33',
             'active_id' => '1'
         ]);
 

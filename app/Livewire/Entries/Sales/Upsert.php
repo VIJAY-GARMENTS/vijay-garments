@@ -54,7 +54,7 @@ class Upsert extends Component
     public string $size;
 
     public $contact_id = '';
-    #[Rule('required')]
+
     public $contact_name = '';
     public Collection $contactCollection;
     public $highlightContact = 0;
@@ -468,9 +468,10 @@ class Upsert extends Component
 
     public function save(): string
     {
-        $this->validate();
+//        $this->validate();
         if ($this->uniqueno != '') {
             if ($this->vid == "") {
+
                 $obj = Sale::create([
                     'uniqueno' => "{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}",
                     'acyear' => '1',
@@ -481,7 +482,7 @@ class Upsert extends Component
                     'order_id' => $this->order_id,
                     'sales_type' => $this->sales_type,
                     'transport_id' => $this->transport_id ?: 1,
-                    'destination' => $this->destination ?: 1,
+                    'destination' => $this->destination,
                     'bundle' => $this->bundle,
                     'total_qty' => $this->total_qty,
                     'total_taxable' => $this->total_taxable,
@@ -550,8 +551,6 @@ class Upsert extends Component
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
-            $this->company_id = $obj->company_id;
-            $this->company_name = $obj->company->vname;
             $this->contact_id = $obj->contact_id;
             $this->contact_name = $obj->contact->vname;
             $this->invoice_no = $obj->invoice_no;
@@ -607,6 +606,8 @@ class Upsert extends Component
             $this->total_gst = 0;
             $this->invoice_date = Carbon::now()->format('Y-m-d');
         }
+
+        $this->calculateTotal();
     }
 
     public function addItems(): void
@@ -730,8 +731,6 @@ class Upsert extends Component
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
-            $this->company_id = $obj->company_id;
-            $this->company_name = $obj->company->vname;
             $this->contact_id = $obj->contact_id;
             $this->contact_name = $obj->contact->vname;
             $this->invoice_no = $obj->invoice_no;

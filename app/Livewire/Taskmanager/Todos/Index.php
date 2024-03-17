@@ -16,7 +16,9 @@ class Index extends Component
     public string $slno = '1';
     public mixed $vdate = '';
     public string $vname = '';
+    public string $ename = '';
     public bool $completed = false;
+    public bool $editmode = false;
     public mixed $active_id = '1';
 
 
@@ -54,9 +56,35 @@ class Index extends Component
         $this->slno = '1';
         $this->vdate = Carbon::parse(Carbon::now());
         $this->vname = '';
+        $this->ename = '';
         $this->completed = false;
         $this->active_id = '1';
 
+    }
+
+    public function edit($v)
+    {
+        $this->ename = $v;
+    }
+
+    public function updateTodo($id)
+    {
+        $todo = Todos::find($id);
+        $todo->slno = $this->slno;
+        $todo->vname = $this->ename;
+        $todo->save();
+        $this->clearFields();
+        $this->refreshComponent();
+
+        $this->ename = '';
+    }
+
+    public function getDelete($id)
+    {
+        $todo = Todos::find($id);
+        $todo->delete();
+        $this->clearFields();
+        $this->refreshComponent();
     }
 
     public function getList()

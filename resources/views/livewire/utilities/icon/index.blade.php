@@ -566,7 +566,7 @@
                 <div>
                     <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('document-text')">
                         <x-icons.icons :icons="'document-text'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
-                        <h5 class="mt-5">document-text</h5>
+                        <h5 class="mt-5">document-Text</h5>
                     </button>
                 </div>
                 <div>
@@ -578,7 +578,7 @@
                 <div>
                     <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 "    onclick="copyToClipboard('document-report')">
                         <x-icons.icons :icons="'document-report'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
-                        <h5 class="mt-5">document-report</h5>
+                        <h5 class="mt-5">document-Report</h5>
                     </button>
                 </div>
                 <div>
@@ -591,6 +591,7 @@
 
 
         </div>
+
 
 
     </x-forms.m-panel>

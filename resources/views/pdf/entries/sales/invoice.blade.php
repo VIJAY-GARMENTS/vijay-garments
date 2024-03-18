@@ -12,6 +12,10 @@
             font-family: Verdana, Arial, sans-serif;
         }
 
+        .inr-sign::before{
+            content:"\20B9";
+        }
+
         table {
             font-size: x-small;
             border-collapse: collapse;
@@ -249,7 +253,7 @@
         <td colspan="4" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td align="right">{{$obj->total_qty}}</td>
         <td align="right"></td>
-        <td align="right">&nbsp;{{$obj->grand_total}}</td>
+        <td align="right"><span class="inr-sign"/>{{$obj->grand_total}}</td>
     </tr>
 
     <tr>

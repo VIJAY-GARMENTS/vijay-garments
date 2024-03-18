@@ -11,6 +11,6 @@ return [
     Aaran\Orders\Providers\OrderServiceProvider::class,
     Aaran\Attendance\Providers\AttendanceServiceProvider::class,
     Aaran\Taskmanager\Providers\TaskmanagerServiceProvider::class,
-    Blog\Blogpost\Providers\BlogpostServiceProvider::class,
+
 
 ];

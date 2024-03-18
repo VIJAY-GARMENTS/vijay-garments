@@ -23,7 +23,7 @@
                     <a class="nav-link hover:underline page-scroll text-2xl font-serif p-3" href="{{route('contact')}}">Contact</a>
                 </li>
                 <li>
-                    <a class="nav-link hover:underline page-scroll text-2xl font-serif p-3" href="{{route('blogpost')}}">Blog</a>
+                    <a class="nav-link hover:underline page-scroll text-2xl font-serif p-3" href="{{route('posts')}}">Blog</a>
                 </li>
             </ul>
         </div>

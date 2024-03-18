@@ -39,7 +39,7 @@
             @break
 
 
-        @case('paperplane')
+        @case('paper-plane')
             <path fill="currentColor" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
             @break
 
@@ -55,7 +55,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
             @break
 
-        @case('arrowcircleright')
+        @case('arrow-circle-right')
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
             @break
@@ -95,6 +95,13 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z" />
             @break
 
+        @case('arrow-down-on-square-stack')
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m-6 3.75 3 3m0 0 3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
+            @break
+
+
+
+
         @default
             Default case...
     @endswitch
@@ -102,5 +109,4 @@
 </svg>
 </span>
 <!-------  end line -------------->
-
 

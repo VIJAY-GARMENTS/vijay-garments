@@ -13,7 +13,8 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ContactModel extends Component
-{ public bool $showModel = false;
+{
+    public bool $showModel = false;
 
     public $vname = "";
     public string $mobile = '';
@@ -50,6 +51,7 @@ class ContactModel extends Component
         }
         $this->highlightCity++;
     }
+
     public function setCity($name, $id): void
     {
         $this->city_name = $name;
@@ -80,7 +82,7 @@ class ContactModel extends Component
 
     public function getCityList(): void
     {
-        $this->cityCollection = $this->city_name ? City::search(trim($this->city_name ))->get():City::all();
+        $this->cityCollection = $this->city_name ? City::search(trim($this->city_name))->get() : City::all();
     }
 
     public $state_id = '';
@@ -106,6 +108,7 @@ class ContactModel extends Component
         }
         $this->highlightState++;
     }
+
     public function setState($name, $id): void
     {
         $this->state_name = $name;
@@ -136,10 +139,9 @@ class ContactModel extends Component
 
     public function getStateList(): void
     {
-        $this->stateCollection = $this->state_name ? State::search(trim($this->state_name ))
-            ->get():State::all();
+        $this->stateCollection = $this->state_name ? State::search(trim($this->state_name))
+            ->get() : State::all();
     }
-
 
 
     public $pincode_id = '';
@@ -156,6 +158,7 @@ class ContactModel extends Component
         }
         $this->highlightPincode--;
     }
+
     public function incrementPincode(): void
     {
         if ($this->highlightPincode === count($this->pincodeCollection) - 1) {
@@ -183,6 +186,7 @@ class ContactModel extends Component
         $this->pincode_id = $id;
         $this->getPincodeList();
     }
+
     #[On('refresh-pincode')]
     public function refreshPincode($v): void
     {
@@ -190,6 +194,7 @@ class ContactModel extends Component
         $this->pincode_name = $v['name'];
         $this->pincodeTyped = false;
     }
+
     public function getPincodeList(): void
     {
         $this->pincodeCollection = $this->pincode_name ? Pincode::search(trim($this->pincode_name))
@@ -212,9 +217,9 @@ class ContactModel extends Component
                 'gstin' => $this->gstin,
                 'address_1' => $this->address_1,
                 'address_2' => $this->address_2,
-                'city_id' => $this->city_id,
-                'state_id' => $this->state_id,
-                'pincode_id' => $this->pincode_id,
+                'city_id' => $this->city_id ?: 1,
+                'state_id' => $this->state_id ?: 1,
+                'pincode_id' => $this->pincode_id ?: 1,
                 'user_id' => Auth::id(),
                 'active_id' => '1'
             ]);
@@ -226,17 +231,18 @@ class ContactModel extends Component
     public function clearAll(): void
     {
         $this->vname = "";
-        $this->mobile='';
-        $this->whatsapp='';
-        $this->email='';
-        $this->gstin='';
-        $this->address_1='';
-        $this->address_2='';
-        $this->city_id='';
-        $this->state_id='';
-        $this->pincode_id='';
+        $this->mobile = '';
+        $this->whatsapp = '';
+        $this->email = '';
+        $this->gstin = '';
+        $this->address_1 = '';
+        $this->address_2 = '';
+        $this->city_id = '';
+        $this->state_id = '';
+        $this->pincode_id = '';
         $this->showModel = false;
     }
+
     public function render()
     {
         $this->getCityList();

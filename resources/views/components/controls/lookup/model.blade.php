@@ -1,6 +1,7 @@
 @props([
     'showModel' =>false,
-    'width' => 'w-1/3'
+    'width' => 'w-1/3',
+    'height'=> 'h-80'
 ])
 <div>
     <button wire:click="$set('showModel',true); "
@@ -15,14 +16,12 @@
                  class="fixed inset-0 bg-gray-900 bg-opacity-90 cursor-pointer"></div>
 
             <div
-                class="bg-white shadow-md m-auto rounded-md fixed inset-0 inline-block h-80 overflow-y-auto {{$width}}">
+                    class="bg-white shadow-md m-auto rounded-md fixed inset-0 inline-block overflow-y-auto {{$width}} {{$height}}">
 
                 <div class="flex flex-col h-full justify-between">
 
                     <header class="p-2">
-                        <h3 class="font-bold text-lg border-b border-gray-400 text-gray-500">
-                            Create new
-                        </h3>
+                        <h3 class="font-bold text-lg border-b border-gray-400 text-gray-500 py-2">&nbsp;&nbsp;&nbsp;&nbsp;Create&nbsp;new</h3>
                     </header>
 
                     <main class="px-5 mb-2">
@@ -32,8 +31,8 @@
                     <footer class="flex justify-end px-2 py-4 mt-3 bg-gray-200 rounded-b-md gap-3">
 
                         <button
-                            wire:click.prevent="clearAll"
-                            class='w-36 bg-blue-600 hover:bg-blue-500  border-b-4 border-blue-700 hover:border-blue-700
+                                wire:click.prevent="clearAll"
+                                class='w-36 bg-blue-600 hover:bg-blue-500  border-b-4 border-blue-700 hover:border-blue-700
                                    focus:outline-none text-white  uppercase font-bold shadow-md rounded-lg p-1'>
                             <div class="flex gap-3 justify-center">
                                 <x-icons.icon icon="chevrons-left" class="h-4 w-auto block"/>

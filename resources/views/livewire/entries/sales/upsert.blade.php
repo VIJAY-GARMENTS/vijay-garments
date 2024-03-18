@@ -527,7 +527,7 @@
                 <div class="w-3/4 mr-3 ml-auto ">
 
                     <x-input.model-text wire:model="additional" wire:change.debounce="calculateTotal"
-                             class="text-right purple-textbox w-full ml-20" :label="'Additional'"/>
+                                        class="text-right purple-textbox w-full ml-20" :label="'Additional'"/>
 
 
                     <div class="grid w-full grid-cols-2 pt-6">
@@ -571,6 +571,9 @@
                 <x-button.back/>
             </div>
 
+            <div>
+                <x-button.print/>
+            </div>
             <div class="my-2">
                 <label for="active_id" class="inline-flex relative items-center cursor-pointer">
                     <input type="checkbox" id="active_id" class="sr-only peer"

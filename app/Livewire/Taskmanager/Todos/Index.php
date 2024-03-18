@@ -12,119 +12,91 @@ use Livewire\Attributes\Computed;
 #[Title('My Todo List')]
 class Index extends Component
 {
-    public $todos;
 
-    #[Rule('required')]
-    public $todo;
+    public string $slno = '1';
+    public mixed $vdate = '';
+    public string $vname = '';
+    public string $ename = '';
+    public bool $completed = false;
+    public bool $editmode = false;
+    public mixed $active_id = '1';
+
 
     public function mount()
     {
-        $this->slno = Todos::nextNo();
-        $this->active_id=true;
-        $this->vdate=Carbon::parse(Carbon::now());
-//        $this->todos = [
-//            ['todo' => 'Start your first Wirebox', 'completed' => true,],
-//            ['todo' => 'Sign up for an account', 'completed' => false,],
-//            ['todo' => 'Use ⌘K/CTRL+K to create a new Livewire component', 'completed' => false,],
-//            ['todo' => 'Modify your component and use CTRL+S to save changes', 'completed' => false,],
-//            ['todo' => 'Use ⌘K/CTRL+K to enable hot reloading', 'completed' => false,],
-//            ['todo' => 'Use ⌘E/CTRL+E to switch between files', 'completed' => false,],
-//        ];
+        $this->vdate = Carbon::parse(Carbon::now());
+
     }
 
-    public function add()
+    public function isChecked($id): void
     {
-        $this->validate();
-
-        $this->todos[] = [
-            'todo' => $this->todo,
-            'completed' => false,
-        ];
-
-        $this->reset('todo');
+        $todo = Todos::find($id);
+        $todo->completed = !$todo->completed;
+        $todo->save();
+        $this->clearFields();
+        $this->refreshComponent();
     }
 
-    #[Computed]
-    public function remaining()
+    public function saveTodo(): void
     {
-        return collect($this->todos)->where('completed', false)->count();
-    }
-
-    public $slno='';
-    public $vdate='';
-    public $vname='';
-    public bool $completed=false;
-    public $active_id;
-    public string $activeRecord = "1";
-    public $vid = '';
-
-    public function save()
-    { if ($this->vid == "")
-      {
-
         Todos::create([
-            'slno'=>$this->slno,
-            'vdate'=>Carbon::parse(Carbon::now()),
-            'vname'=>$this->vname,
-            'completed'=>$this->completed,
-            'active_id'=>1,
+            'slno' => $this->slno,
+            'vdate' => $this->vdate,
+            'vname' => $this->vname,
+            'completed' => $this->completed,
+            'active_id' => '1'
         ]);
-        $this->clear();
-      }
-       else
-      {
-        $obj=Todos::find($this->vid);
-        $obj->vdate=$this->vdate;
-        $obj->vname=$this->vname;
-        $obj->completed=$this->completed;
-        $obj->active_id=$this->active_id;
-        $obj->save();
-      }
+
+        $this->clearFields();
+        $this->refreshComponent();
     }
 
-    public function clear()
+    public function clearFields(): void
     {
-        $this->vname='';
+        $this->slno = '1';
+        $this->vdate = Carbon::parse(Carbon::now());
+        $this->vname = '';
+        $this->ename = '';
+        $this->completed = false;
+        $this->active_id = '1';
+
     }
 
-    public function todo_list()
+    public function edit($v)
     {
-     $this->save();
+        $this->ename = $v;
     }
 
-    public function done($id)
+    public function updateTodo($id)
     {
-      if ($id!=''){
-          $obj=Todos::find($id);
-          $obj->vdate=$this->vdate;
-          $obj->vname=$this->vname;
-          $obj->completed=true;
-          $obj->active_id=$this->active_id;
-//          $this->save();
-      }
+        $todo = Todos::find($id);
+        $todo->slno = $this->slno;
+        $todo->vname = $this->ename;
+        $todo->save();
+        $this->clearFields();
+        $this->refreshComponent();
 
+        $this->ename = '';
     }
 
-    public function getObj($id)
+    public function getDelete($id)
     {
-        if ($id) {
-            $obj=Todos::find($id);
-            $this->vid=$obj->id;
-            $this->slno = $obj->slno;
-            $this->vdate = $obj->vdate;
-            $this->vname = $obj->vname;
-            $this->completed = $obj->completed;
-        }
+        $todo = Todos::find($id);
+        $todo->delete();
+        $this->clearFields();
+        $this->refreshComponent();
     }
 
-
-    public function getlist()
+    public function getList()
     {
-        return Todos::all() ;
+        return Todos::all();
 
     }
 
-
+    protected function refreshComponent(): void
+    {
+        $this->dispatch('$refresh');
+    }
 
     public function render()
     {

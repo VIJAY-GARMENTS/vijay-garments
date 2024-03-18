@@ -11,23 +11,12 @@ class CountrySeeder extends Seeder
     public static function run(): void
     {
         Country::create([
+            'vname' => '-',
+            'active_id' => '1'
+        ]);
+
+        Country::create([
             'vname' => 'India',
-            'active_id' => '1'
-        ]);
-        Country::create([
-            'vname' => 'Malaysia',
-            'active_id' => '1'
-        ]);
-        Country::create([
-            'vname' => 'Iceland',
-            'active_id' => '1'
-        ]);
-        Country::create([
-            'vname' => 'Japan',
-            'active_id' => '1'
-        ]);
-        Country::create([
-            'vname' => 'Korea',
             'active_id' => '1'
         ]);
     }

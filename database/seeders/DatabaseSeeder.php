@@ -19,22 +19,19 @@ use Aaran\Erp\Database\Seeders\CuttingSeeder;
 use Aaran\Erp\Database\Seeders\FabricLotSeeder;
 use Aaran\Erp\Database\Seeders\IroningItemSeeder;
 use Aaran\Erp\Database\Seeders\IroningSeeder;
-use Aaran\Erp\Database\Seeders\JobcardItemSeeder;
 use Aaran\Erp\Database\Seeders\JobcardSeeder;
-use Aaran\Erp\Database\Seeders\PeInwardItemSeeder;
 use Aaran\Erp\Database\Seeders\PeInwardSeeder;
-use Aaran\Erp\Database\Seeders\PeOutwardItemSeeder;
 use Aaran\Erp\Database\Seeders\PeOutwardSeeder;
-use Aaran\Erp\Database\Seeders\SectionInwardItemSeeder;
 use Aaran\Erp\Database\Seeders\SectionInwardSeeder;
-use Aaran\Erp\Database\Seeders\SectionOutwardItemSeeder;
 use Aaran\Erp\Database\Seeders\SectionOutwardSeeder;
 use Aaran\Master\Database\Seeders\CompanySeeder;
 use Aaran\Master\Database\Seeders\ContactSeeder;
 use Aaran\Master\Database\Seeders\ProductSeeder;
 use Aaran\Orders\Database\Seeders\OrderSeeder;
 use Aaran\Orders\Database\Seeders\StyleSeeder;
+use App\Models\Blog\Post;
 use App\Models\User;
+use Database\Factories\Blog\PostFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -46,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'sundar',
             'email' => 'sundar@sundar.com',
             'password' => bcrypt('kalarani'),
-            'email_verified_at'=> now(),
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
 
@@ -54,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'divya',
             'email' => 'divya@aaran.org',
             'password' => bcrypt('123456789'),
-            'email_verified_at'=> now(),
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
 
@@ -62,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Jagadeesh',
             'email' => 'jagadeesh@aaran.org',
             'password' => bcrypt('123456789'),
-            'email_verified_at'=> now(),
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
 
@@ -70,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'kalaiarasan',
             'email' => 'kalai@aaran.org',
             'password' => bcrypt('123456789'),
-            'email_verified_at'=> now(),
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
 
@@ -109,7 +106,7 @@ class DatabaseSeeder extends Seeder
         SaleSeeder::run();
 
 
-
+        Post::factory(10)->create();
 
     }
 }

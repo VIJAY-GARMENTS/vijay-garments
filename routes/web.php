@@ -15,3 +15,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
 });
 
+
+//utility
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+
+    Route::get('/icons', App\Livewire\Utilities\Icon\Index::class)->name('icons');
+
+});

@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Taskmanager\Todos;
 
+use Aaran\Taskmanager\Models\Todos;
+use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
@@ -10,43 +12,98 @@ use Livewire\Attributes\Computed;
 #[Title('My Todo List')]
 class Index extends Component
 {
-    public $todos;
 
-    #[Rule('required')]
-    public $todo;
+    public string $slno = '1';
+    public mixed $vdate = '';
+    public string $vname = '';
+    public string $ename = '';
+    public bool $completed = false;
+    public bool $editmode = false;
+    public mixed $active_id = '1';
+
 
     public function mount()
     {
-        $this->todos = [
-            ['todo' => 'Start your first Wirebox', 'completed' => true,],
-            ['todo' => 'Sign up for an account', 'completed' => false,],
-            ['todo' => 'Use ⌘K/CTRL+K to create a new Livewire component', 'completed' => false,],
-            ['todo' => 'Modify your component and use CTRL+S to save changes', 'completed' => false,],
-            ['todo' => 'Use ⌘K/CTRL+K to enable hot reloading', 'completed' => false,],
-            ['todo' => 'Use ⌘E/CTRL+E to switch between files', 'completed' => false,],
-        ];
+        $this->vdate = Carbon::parse(Carbon::now());
+
     }
 
-    public function add()
+    public function isChecked($id): void
     {
-        $this->validate();
-
-        $this->todos[] = [
-            'todo' => $this->todo,
-            'completed' => false,
-        ];
-
-        $this->reset('todo');
+        $todo = Todos::find($id);
+        $todo->completed = !$todo->completed;
+        $todo->save();
+        $this->clearFields();
+        $this->refreshComponent();
     }
 
-    #[Computed]
-    public function remaining()
+    public function saveTodo(): void
     {
-        return collect($this->todos)->where('completed', false)->count();
+        Todos::create([
+            'slno' => $this->slno,
+            'vdate' => $this->vdate,
+            'vname' => $this->vname,
+            'completed' => $this->completed,
+            'active_id' => '1'
+        ]);
+
+        $this->clearFields();
+        $this->refreshComponent();
+    }
+
+    public function clearFields(): void
+    {
+        $this->slno = '1';
+        $this->vdate = Carbon::parse(Carbon::now());
+        $this->vname = '';
+        $this->ename = '';
+        $this->completed = false;
+        $this->active_id = '1';
+
+    }
+
+    public function edit($v)
+    {
+        $this->ename = $v;
+    }
+
+    public function updateTodo($id)
+    {
+        $todo = Todos::find($id);
+        $todo->slno = $this->slno;
+        $todo->vname = $this->ename;
+        $todo->save();
+        $this->clearFields();
+        $this->refreshComponent();
+
+        $this->ename = '';
+    }
+
+    public function getDelete($id)
+    {
+        $todo = Todos::find($id);
+        $todo->delete();
+        $this->clearFields();
+        $this->refreshComponent();
+    }
+
+    public function getList()
+    {
+        return Todos::all();
+
+    }
+
+    protected function refreshComponent(): void
+    {
+        $this->dispatch('$refresh');
     }
 
     public function render()
     {
-        return view('livewire.taskmanager.todos.index');
+        return view('livewire.taskmanager.todos.index')->with([
+            'list' => $this->getList()
+        ]);
     }
+
+
 }

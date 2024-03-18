@@ -1,6 +1,6 @@
 <div>
-    <x-controls.lookup.model :show-model="$showModel" >
-        <x-input.model-text wire:model="vname" :label="'Name'"/>
+    <x-controls.lookup.model :show-model="$showModel" :height="'h-[40rem]'" :width="'w-4/5'" >
+        <x-input.model-text wire:model="vname" :label="'name'"/>
         <x-input.model-text wire:model="mobile" :label="'Mobile'"/>
         <x-input.model-text wire:model="whatsapp" :label="'Whatsapp'"/>
         <x-input.model-text wire:model="email" :label="'Email'"/>
@@ -11,7 +11,7 @@
 
         <div class="flex flex-row py-3 gap-3">
             <div class="xl:flex w-full gap-2">
-                <label for="city_name" class="w-[10rem] text-zinc-500 tracking-wide py-2 ">City</label>
+                <label for="city_name" class="w-[10rem] text-zinc-500 tracking-wide h- py-2">City</label>
                 <div x-data="{isTyped: @entangle('cityTyped')}" @click.away="isTyped = false" class="w-full">
                     <div class="relative">
                         <input
@@ -80,9 +80,9 @@
                             @keydown.escape.window="isTyped = false"
                             @keydown.tab.window="isTyped = false"
                             @keydown.enter.prevent="isTyped = false"
-                            wire:keydown.arrow-up="decrementstate"
-                            wire:keydown.arrow-down="incrementstate"
-                            wire:keydown.enter="enterstate"
+                            wire:keydown.arrow-up="decrementState"
+                            wire:keydown.arrow-down="incrementState"
+                            wire:keydown.enter="enterState"
                             class="block w-full purple-textbox"
                         />
 

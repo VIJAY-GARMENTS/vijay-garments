@@ -10,6 +10,11 @@ class CitySeeder extends Seeder
     public static function run(): void
     {
         City::create([
+            'vname' => '-',
+            'active_id' => '1'
+        ]);
+
+        City::create([
             'vname' => 'Tiruppur',
             'active_id' => '1'
         ]);

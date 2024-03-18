@@ -61,7 +61,7 @@ class PeOutwardPrintController extends Controller
             Pdf::setOption(['dpi' => 150, 'defaultPaperSize'=>'a5', 'defaultFont' => 'sans-serif']);
             $customPaper = array(0,0,419.58,595.35);
 
-            $pdf = PDF::loadView('pdf.pe-dc',[
+            $pdf = PDF::loadView('pdf.erp.production.pe-dc',[
                 'obj' => $peout,
                 'list' => $peoutItem,
                 'cmp' => $tenant,

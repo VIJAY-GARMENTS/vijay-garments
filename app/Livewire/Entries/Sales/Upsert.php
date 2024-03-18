@@ -54,12 +54,12 @@ class Upsert extends Component
     public string $size;
 
     public $contact_id = '';
-    #[Rule('required')]
+
     public $contact_name = '';
     public Collection $contactCollection;
     public $highlightContact = 0;
     public $contactTyped = false;
-    public  $grandtotalBeforeRound;
+    public $grandtotalBeforeRound;
 
     public function decrementContact(): void
     {
@@ -174,7 +174,7 @@ class Upsert extends Component
             ->get() : Order::all();
     }
 
-    #[Rule('required')]
+
     public $transport_id = '';
     public $transport_name = '';
     public Collection $transportCollection;
@@ -233,7 +233,6 @@ class Upsert extends Component
             ->get() : Transport::all();
     }
 
-    #[Rule('required')]
     public $ledger_id = '';
     public $ledger_name = '';
     public Collection $ledgerCollection;
@@ -469,11 +468,12 @@ class Upsert extends Component
 
     public function save(): string
     {
-        $this->validate();
+//        $this->validate();
         if ($this->uniqueno != '') {
             if ($this->vid == "") {
+
                 $obj = Sale::create([
-                    'uniqueno' =>"{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}" ,
+                    'uniqueno' => "{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}",
                     'acyear' => '1',
                     'company_id' => session()->get('company_id'),
                     'contact_id' => $this->contact_id,
@@ -481,13 +481,13 @@ class Upsert extends Component
                     'invoice_date' => $this->invoice_date,
                     'order_id' => $this->order_id,
                     'sales_type' => $this->sales_type,
-                    'transport_id' => $this->transport_id,
+                    'transport_id' => $this->transport_id ?: 1,
                     'destination' => $this->destination,
                     'bundle' => $this->bundle,
                     'total_qty' => $this->total_qty,
                     'total_taxable' => $this->total_taxable,
                     'total_gst' => $this->total_gst,
-                    'ledger_id' => $this->ledger_id,
+                    'ledger_id' => $this->ledger_id ?: 1,
                     'additional' => $this->additional,
                     'round_off' => $this->round_off,
                     'grand_total' => $this->grand_total,
@@ -551,8 +551,6 @@ class Upsert extends Component
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
-            $this->company_id = $obj->company_id;
-            $this->company_name = $obj->company->vname;
             $this->contact_id = $obj->contact_id;
             $this->contact_name = $obj->contact->vname;
             $this->invoice_no = $obj->invoice_no;
@@ -591,16 +589,16 @@ class Upsert extends Component
                         'price' => $data->price,
                         'gst_percent' => $data->gst_percent,
                         'taxable' => $data->qty * $data->price,
-                        'gst_amount' => ($data->qty * $data->price) * ($data->gst_percent)/ 100,
+                        'gst_amount' => ($data->qty * $data->price) * ($data->gst_percent) / 100,
                         'subtotal' => $data->qty * $data->price + (($data->qty * $data->price) * $data->gst_percent / 100),
                     ];
                 });
             $this->itemList = $data;
         } else {
-            $this->uniqueno="{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}";
+            $this->uniqueno = "{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}";
             $this->active_id = true;
-            $this->sales_type=0;
-            $this->gst_percent=18;
+            $this->sales_type = 0;
+            $this->gst_percent = 5;
             $this->additional = 0;
             $this->grand_total = 0;
             $this->total_taxable = 0;
@@ -608,6 +606,8 @@ class Upsert extends Component
             $this->total_gst = 0;
             $this->invoice_date = Carbon::now()->format('Y-m-d');
         }
+
+        $this->calculateTotal();
     }
 
     public function addItems(): void
@@ -731,8 +731,6 @@ class Upsert extends Component
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
-            $this->company_id = $obj->company_id;
-            $this->company_name = $obj->company->vname;
             $this->contact_id = $obj->contact_id;
             $this->contact_name = $obj->contact->vname;
             $this->invoice_no = $obj->invoice_no;
@@ -763,6 +761,12 @@ class Upsert extends Component
     {
 
         $this->redirect(route('sales'));
+    }
+
+    public function print(): void
+    {
+
+        $this->redirect(route('sales.print', [$this->vid]));
     }
 
     public function render()

@@ -1,29 +1,65 @@
 <div>
     <x-slot name="header">Order</x-slot>
 
+    <div class="border border-gray-300 w-full">
 
-    <div class="flex w-full border border-gray-400 h-full items-center justify-center text-gray-300 px-16">
-        <div class="bg-white rounded p-10">
-            <h2 class="text-base font-semibold leading-7 text-gray-900">My Todo</h2>
-            <p class="mt-1 text-sm leading-6 text-gray-500">You have {{ $this->remaining }} things on your todo list.</p>
+        <label class="">
+            <input type="text" wire:model="vname" wire:change="saveTodo" placeholder="Ink your ideas..."
+                   class="purple-textbox-no-rounded  w-full">
+        </label>
 
-            <div class="space-y-3 mt-4">
-                @foreach($todos as $todo)
-                    <div class="relative flex items-start">
-                        <div class="flex h-6 items-center">
-                            <input id="todo-{{ $loop->index }}" wire:model.live="todos.{{ $loop->index }}.completed" type="checkbox" value="1" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
-                        </div>
-                        <div class="ml-3 text-sm leading-6">
-                            <label for="todo-{{ $loop->index }}" class="font-medium text-gray-900">{{ $todo['todo'] }}</label>
+        <div class="mt-4 pl-5">
+
+            @foreach($list as $index =>$row)
+
+                <div wire:key="{{$row->id}}" class="flex flex-row justify-between gap-5 py-1">
+
+                    <div class="flex gap-3 w-full">
+                        <label>
+                            <input wire:click="isChecked({{$row->id}})" type="checkbox"
+                                   @if($row->completed) checked @endif
+                                   class="h-4 w-4 bg-gray-100 border-gray-300 rounded focus:ring-2 transition duration-300 ease-in-out
+                               {{ $row->completed ? 'text-green-400 focus:ring-green-500': 'focus:ring-gray-500 text-gray-700'}}">
+                        </label>
+
+
+                        @if($row->vname === $ename)
+                            <label class="flex flex-row w-full">
+                                <input class="w-10 purple-textbox" wire:change.prevent="updateTodo({{$row->id}})" wire:model="slno">
+                                <input class="purple-textbox w-full" wire:change.prevent="updateTodo({{$row->id}})" wire:model="ename">
+                            </label>
+                        @else
+                            <label
+                                class="font-medium {{ $row->completed ? 'line-through text-green-500': 'text-gray-700'}}">
+                                {{ $row->slno }}&nbsp;.&nbsp;&nbsp;&nbsp;{{ $row->vname }}
+                            </label>
+                        @endif
+
+                        @if($editmode)
+                            <label>
+                                <input wire:model="vname">
+                            </label>
+                        @endif
+                    </div>
+
+                    <div class="w-16">
+                        <div class="w-full flex justify-center">
+                            <x-button.link wire:click.prevent="edit('{{$row->vname}}')">&nbsp;
+
+                                <x-icons.icon :icon="'pencil'"
+                                              class="text-gray-300 hover:text-blue-500 h-4 w-auto block"/>
+                            </x-button.link>
+
+                            <x-button.link wire:click="getDelete({{ $row->id }})">&nbsp;
+                                <x-icons.icon :icon="'trash'"
+                                              class="text-gray-300 hover:text-red-600 h-5 w-auto block"/>
+                            </x-button.link>
                         </div>
                     </div>
-                @endforeach
-            </div>
 
-            <form wire:submit="add" class="mt-6">
-                <input type="text" wire:model="todo" placeholder="My new todo..." class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            </form>
+                </div>
+                <x-forms.section-border/>
+            @endforeach
         </div>
     </div>
-
 </div>

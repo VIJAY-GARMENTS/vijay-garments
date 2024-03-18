@@ -763,6 +763,12 @@ class Upsert extends Component
         $this->redirect(route('sales'));
     }
 
+    public function print(): void
+    {
+
+        $this->redirect(route('sales.print', [$this->vid]));
+    }
+
     public function render()
     {
         $this->getContactList();

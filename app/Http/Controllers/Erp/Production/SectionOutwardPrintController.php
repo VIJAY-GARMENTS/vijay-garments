@@ -56,7 +56,7 @@ class SectionOutwardPrintController extends Controller
             Pdf::setOption(['dpi' => 150, 'defaultPaperSize'=>'a5', 'defaultFont' => 'sans-serif']);
             $customPaper = array(0,0,419.58,595.35);
 
-            $pdf = PDF::loadView('pdf.section-dc',[
+            $pdf = PDF::loadView('pdf.erp.production.section-dc',[
                 'obj' => $peout,
                 'list' => $peoutItem,
                 'cmp' => $tenant,

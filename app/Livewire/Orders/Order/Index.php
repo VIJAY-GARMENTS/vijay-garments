@@ -22,6 +22,7 @@ class Index extends Component
                 Order::create([
                     'vname' =>($this->vname),
                     'order_name' => Str::ucfirst($this->order_name),
+                    'company_id' => session()->get('company_id'),
                     'active_id' => $this->active_id,
                 ]);
                 $message = "Saved";
@@ -30,6 +31,7 @@ class Index extends Component
                 $obj = Order::find($this->vid);
                 $obj->vname = ($this->vname);
                 $obj->order_name = Str::ucfirst($this->order_name);
+                $obj->company_id = session()->get('company_id');
                 $obj->active_id = $this->active_id;
                 $obj->save();
                 $message = "Updated";
@@ -56,6 +58,7 @@ class Index extends Component
     {
         return Order::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

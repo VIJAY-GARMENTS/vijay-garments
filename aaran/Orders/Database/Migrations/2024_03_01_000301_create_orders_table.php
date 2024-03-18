@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('vname')->unique();
             $table->string('order_name')->unique();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->smallInteger('active_id')->nullable();
         });
     }

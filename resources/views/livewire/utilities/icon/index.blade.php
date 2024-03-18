@@ -87,7 +87,7 @@
                 </button>
             </div>
         </div>
-{{--        <----end---->--}}
+{{--        <----end row-1---->--}}
 
 {{--<---icon-2---->--}}
         <div class="flex justify-between items-center bg-white-900 p-2">
@@ -162,7 +162,7 @@
                 </button>
             </div>
         </div>
-        {{--        <----end---->--}}
+        {{--        <----end row-2---->--}}
 {{--            <---row-3---->--}}
         <div class="flex justify-between items-center bg-white-900 p-2">
                 <div>
@@ -204,8 +204,8 @@
                 </button>
             </div>
             <div>
-                <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('paperplane')">
-                    <x-icons.icon :icon="'paperplane'"  class="block w-16 h-auto  grid-rows-1"/>
+                <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('paper-plane')">
+                    <x-icons.icon :icon="'paper-plane'"  class="block w-16 h-auto  grid-rows-1"/>
                     <h5 class="mt-8">paperplane</h5>
                 </button>
             </div>
@@ -222,8 +222,8 @@
                 </button>
             </div>
             <div>
-                <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 "    onclick="copyToClipboard('arrowcircleright')">
-                    <x-icons.icon :icon="'arrowcircleright'"  class="block w-16 h-auto  grid-rows-1 mr-2.5"/>
+                <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 "    onclick="copyToClipboard('arrow-circle-right')">
+                    <x-icons.icon :icon="'arrow-circle-right'"  class="block w-16 h-auto  grid-rows-1 mr-2.5"/>
                     <h5 class="mt-7">arrowright</h5>
                 </button>
             </div>
@@ -234,7 +234,8 @@
                 </button>
             </div>
         </div>
-
+            {{--            <---end row-3---->--}}
+            {{--            <---row-4---->--}}
             <div class="flex justify-between items-center bg-white-900 p-2">
                 <div>
                     <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('adjustments')">
@@ -305,7 +306,8 @@
                     </button>
                 </div>
             </div>
-
+            {{--            <---end row-4---->--}}
+            {{--            <---row-5---->--}}
             <div class="flex justify-between items-center bg-white-900 p-2">
                 <div>
                     <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('newspaper')">
@@ -376,7 +378,8 @@
                     </button>
                 </div>
             </div>
-
+            {{--            <---end row-5---->--}}
+            {{--            <---row-6---->--}}
             <div class="flex justify-between items-center bg-white-900 p-2">
                 <div>
                     <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('controller')">
@@ -446,7 +449,9 @@
                         <h5 class="mt-8">twitter</h5>
                     </button>
                 </div>
-            </div>3
+            </div>
+            {{--            <---end row-6---->--}}
+            {{--            <---row-7---->--}}
             <div class="flex justify-between items-center bg-white-900 p-2">
                 <div>
                     <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('X-diamond')">
@@ -517,7 +522,8 @@
                     </button>
                 </div>
             </div>
-
+            {{--            <---end row-7---->--}}
+            {{--            <---row-8---->--}}
             <div class="flex justify-between items-center bg-white-900 p-2">
                 <div>
                     <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('location_outline')">
@@ -588,7 +594,7 @@
                     </button>
                 </div>
             </div>
-
+            {{--            <---end row-8---->--}}
 
         </div>
 

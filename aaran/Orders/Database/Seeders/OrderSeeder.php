@@ -14,6 +14,7 @@ class OrderSeeder extends Seeder
 
             'vname' => 'order-1',
             'order_name' => '1',
+            'company_id' => '1',
             'active_id' => '1'
         ]);
 
@@ -21,6 +22,7 @@ class OrderSeeder extends Seeder
 
             'vname' => 'order-2',
             'order_name' => '2',
+            'company_id' => '1',
             'active_id' => '1'
         ]);
     }

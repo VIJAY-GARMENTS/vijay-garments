@@ -6,9 +6,11 @@ use Aaran\Entries\Models\Sale;
 use Aaran\Erp\Models\Production\PeOutward;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
+use App\Helper\ConvertTo;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use Rmunate\Utilities\SpellNumber;
 
 class InvoiceController extends Controller
 {
@@ -51,6 +53,8 @@ class InvoiceController extends Controller
                         'size_id' => $data->size_id,
                         'size_name' => $data->size_name,
                         'qty' => $data->qty,
+                        'price' => $data->price,
+                        'gst_percent' => $data->gst_percent,
                     ];
                 });
 
@@ -61,6 +65,7 @@ class InvoiceController extends Controller
 
             $pdf = PDF::loadView('pdf.entries.sales.invoice',[
                 'obj' => $peout,
+                'rupees'=>ConvertTo::ruppesToWords($peout->grand_total),
                 'list' => $peoutItem,
                 'cmp' => $tenant,
                 'contact' => $contact

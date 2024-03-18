@@ -47,7 +47,7 @@ class CompanyModel extends Component
                 'address_2' => $this->address_2,
                 'mobile' => $this->mobile,
                 'landline' => $this->landline,
-                'gstin' => $this->gstin,
+                'gstin' =>Str::upper($this->gstin),
                 'pan' => $this->pan,
                 'email' => $this->email,
                 'website' => $this->website,

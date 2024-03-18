@@ -13,7 +13,7 @@ use Livewire\Attributes\Computed;
 class Index extends Component
 {
 
-    public string $slno = '1';
+    public string $slno = '';
     public mixed $vdate = '';
     public string $vname = '';
     public string $ename = '';
@@ -24,6 +24,7 @@ class Index extends Component
 
     public function mount()
     {
+        $this->slno=Todos::nextNo( );
         $this->vdate = Carbon::parse(Carbon::now());
 
     }
@@ -39,6 +40,7 @@ class Index extends Component
 
     public function saveTodo(): void
     {
+        $this->slno=Todos::nextNo();
         Todos::create([
             'slno' => $this->slno,
             'vdate' => $this->vdate,

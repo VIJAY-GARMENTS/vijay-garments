@@ -520,6 +520,7 @@ class Upsert extends Component
                 $obj->active_id = $this->active_id;
                 $obj->save();
                 DB::table('saleitems')->where('sale_id', '=', $obj->id)->delete();
+                $this->saveItem($obj->id);
                 $message = "Updated";
             }
             $this->getRoute();

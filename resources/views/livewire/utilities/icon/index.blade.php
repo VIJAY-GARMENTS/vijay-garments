@@ -59,7 +59,7 @@
             <div>
                 <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('wordpress')">
                     <x-icons.icons :icons="'wordpress'"  class="block w-16 h-auto  grid-rows-1  ml-5 mt-4"/>
-                    <h5 class="mt-8">wordpress</h5>
+                    <h5 class="mt-8">WordPress</h5>
                 </button>
             </div>
             <div>

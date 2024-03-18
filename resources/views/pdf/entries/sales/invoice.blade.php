@@ -1,4 +1,5 @@
-<!doctype html>
+@php use App\Helper\ConvertTo;use Rmunate\Utilities\SpellNumber;  @endphp
+    <!doctype html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -9,6 +10,10 @@
     <style type="text/css">
         * {
             font-family: Verdana, Arial, sans-serif;
+        }
+
+        .inr-sign::before{
+            content:"\20B9";
         }
 
         table {
@@ -144,7 +149,8 @@
                 <div><span style="vertical-align: middle;font-size: 13px;">&nbsp;&nbsp;Invoice no:&nbsp;</span><span
                         style="font-size: 18px;">&nbsp;&nbsp;{{$obj->invoice_no}}</span></div>
                 <div><span style="vertical-align: middle;font-size: 13px; ">&nbsp;&nbsp;Date:&nbsp;</span><span
-                        style="font-size: 14px;">{{$obj->invoice_date ?date('d-m-Y', strtotime($obj->invoice_date)):''}}</span></div>
+                        style="font-size: 14px;">{{$obj->invoice_date ?date('d-m-Y', strtotime($obj->invoice_date)):''}}</span>
+                </div>
             </div>
         </td>
     </tr>
@@ -153,62 +159,174 @@
 <table width="100%">
     <thead style="background-color: lightgray;">
     <tr>
-        <th width="12px" >#</th>
-        <th width="22px">Product</th>
-        <th>Colour</th>
-        <th>Sizes</th>
-        <th width="70px" >Quantity</th>
-        <th width="70px" >Price</th>
-        <th width="70px" >Taxable</th>
+        <th width="12px">#</th>
+        <th>Product</th>
+        <th width="70px">Colour</th>
+        <th width="70px">Sizes</th>
+        <th width="70px">Quantity</th>
+        <th width="70px">Price</th>
+        <th width="70px">Amount</th>
     </tr>
     </thead>
     <tbody>
     @foreach($list as $index => $row)
 
         <tr>
-            <td align="center">{{$index+1}} </td>
-            <td align="center">&nbsp;{{$row['product_name']}}</td>
-            <td align="center">&nbsp;{{$row['colour_name']}}</td>
-            <td align="center">&nbsp;{{$row['size_name']}}</td>
-            <td align="right">&nbsp;{{$row['qty']}}</td>
-            <td align="right">&nbsp;{{$row['qty']}}</td>
-            <td align="right">&nbsp;{{$row['qty']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_name']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['colour_name']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['size_name']}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['price']}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']*$row['price']}}</td>
         </tr>
 
     @endforeach
 
-    @for($i = 0; $i < 10-$list->count(); $i++)
+    @for($i = 0; $i < 22-$list->count(); $i++)
 
         <tr>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
         </tr>
 
     @endfor
 
 
+    {{--    <tr>--}}
+    {{--        <td colspan="7" align="center"></td>--}}
+    {{--    </tr>--}}
     <tr>
-        <td colspan="7" align="center"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="right" style="border-bottom: none;border-top: none;">Cgst Tax</td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;">{{ $obj->total_gst/2 }}</td>
     </tr>
     <tr>
-        <td colspan="5" align="left">Purpose : {{$obj->receiver_details}}</td>
-        <td align="right">&nbsp;Total&nbsp;Qty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td align="right">&nbsp;{{$obj->total_qty}}</td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="right" style="border-bottom: none;border-top: none;">Sgst Tax</td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;">{{ $obj->total_gst/2 }}</td>
+    </tr>
+    <tr>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="right" style="border-bottom: none;border-top: none;">Round Off</td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;"></td>
+        <td align="center" style="border-bottom: none;border-top: none;">{{ $obj->round_off }}</td>
+    </tr>
+
+    <tr>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+    </tr>
+
+    <tr>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+    </tr>
+
+    <tr>
+        <td colspan="4" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td align="right">{{$obj->total_qty}}</td>
+        <td align="right"></td>
+        <td align="right"><span class="inr-sign"/>{{$obj->grand_total}}</td>
+    </tr>
+
+    <tr>
+        <td colspan="7"><span>Amount Chargeable (in words)</span>
+            <div>
+              {{$rupees}}
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="center" style="border-bottom: none;border-top: none;">Taxable</td>
+        <td colspan="2" align="center" style="border-bottom: none;border-top: none;">CGST</td>
+        <td colspan="2" align="center" style="border-bottom: none;border-top: none;">SGST</td>
+        <td align="center" style="border-bottom: none;border-top: none;">Total</td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="center" style="border-top: none;">value</td>
+        <td align="center">Rate</td>
+        <td align="center">Amount</td>
+        <td align="center">Rate</td>
+        <td align="center">Amount</td>
+        <td align="center" style="border-top: none;">Tax Amount</td>
+    </tr>
+
+    @foreach($list as $index => $row)
+        <tr>
+            <td colspan="2" align="right"
+                style="border-bottom: none;border-top: none;">{{$row['qty']*$row['price']}}</td>
+            <td align="center" style="border-bottom: none; border-top: none;">{{$row['gst_percent']/2}}%</td>
+            <td align="center"
+                style="border-bottom: none; border-top: none;">{{($row['qty']*$row['price']*$row['gst_percent']/100)/2}}</td>
+            <td align="center" style="border-bottom: none; border-top: none;">{{$row['gst_percent']/2}}%</td>
+            <td align="center"
+                style="border-bottom: none; border-top: none;">{{($row['qty']*$row['price']*$row['gst_percent']/100)/2}}</td>
+            <td align="center"
+                style="border-bottom: none;border-top: none;">{{$row['qty']*$row['price']*$row['gst_percent']/100}}</td>
+        </tr>
+
+    @endforeach
+
+    <tr>
+        <td width="120px" align="center" style="border-bottom: none;">Total</td>
+        <td align="right" style="border-bottom: none;">{{$obj->total_taxable}}</td>
+        <td align="center" style="border-bottom: none; "></td>
+        <td align="center" style="border-bottom: none; ">{{$obj->total_gst/2}}</td>
+        <td align="center" style="border-bottom: none; "></td>
+        <td align="center" style="border-bottom: none; ">{{$obj->total_gst/2}}</td>
+        <td align="center" style="border-bottom: none;">{{$obj->total_gst}}</td>
+    </tr>
+
+    <tr>
+        <td colspan="7"><span style="text-underline: #5e5e5e;">Declaration:</span>
+            <div style="padding-top:5px; ">
+                We declare that this invoice shows the actual price of the
+                goods described and that all particulars are true and
+                correct.
+            </div>
+        </td>
+
     </tr>
     <tr>
         <td colspan="3" style="height: 40px; text-align: left; vertical-align: top; padding-top: 5px ">Receiver Sign
         </td>
         <td colspan="4" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px ">
             &nbsp;for&nbsp;{{$cmp->get('company_name')}}
+            <div style="padding-top: 20px;">Authorized signatory</div>
         </td>
     </tr>
     </tbody>
 </table>
+<div style="text-align: center;font-size:10px ">This is a Computer Generated Invoice</div>
 
 </body>
 </html>

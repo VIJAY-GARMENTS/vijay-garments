@@ -11,6 +11,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/purchases', App\Livewire\Entries\Purchase\Index::class)->name('purchases');
     Route::get('/purchases/{id}/upsert', App\Livewire\Entries\Purchase\Upsert::class)->name('purchases.upsert');
+    Route::get('/purchases/{id}/print', App\Http\Controllers\Entries\Purchase\InvoiceController::class)->name('purchases.print');
 
     Route::get('/receipts', App\Livewire\Entries\Receipt\Index::class)->name('receipts');
     Route::get('/receipts/{id}/upsert', App\Livewire\Entries\Receipt\Upsert::class)->name('receipts.upsert');

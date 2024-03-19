@@ -78,6 +78,12 @@ class Index extends Component
         $obj->delete();
     }
 
+    public function print($id)
+    {
+
+        $this->redirect(route('purchases.print', [$this->getObj($id)]));
+    }
+
     public function render()
     {
         return view('livewire.entries.purchase.index')->with([

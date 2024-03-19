@@ -533,6 +533,10 @@
             <div class="flex gap-3">
                 <x-button.save/>
                 <x-button.back/>
+            </div>
+            <div>
+                <x-button.print/>
+            </div>
                 <div class="my-2">
                     <label for="active_id" class="inline-flex relative items-center cursor-pointer">
                         <input type="checkbox" id="active_id" class="sr-only peer"
@@ -547,7 +551,7 @@
                         <span class="ml-3 text-sm font-medium text-gray-900">Active</span>
                     </label>
                 </div>
-            </div>
+
         </div>
     </div>
 </div>

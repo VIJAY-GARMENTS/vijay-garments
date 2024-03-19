@@ -763,6 +763,12 @@ class Upsert extends Component
         return null;
     }
 
+    public function print(): void
+    {
+
+        $this->redirect(route('purchases.print', [$this->vid]));
+    }
+
 
     public function render()
     {

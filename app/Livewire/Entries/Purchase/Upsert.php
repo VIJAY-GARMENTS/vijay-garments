@@ -467,7 +467,6 @@ class Upsert extends Component
 
     public function save(): string
     {
-        $this->validate();
         if ($this->uniqueno != '') {
             if ($this->vid == "") {
                 $obj = Purchase::create([
@@ -518,6 +517,7 @@ class Upsert extends Component
                 $obj->active_id = $this->active_id;
                 $obj->save();
                 DB::table('purchaseitems')->where('purchase_id', '=', $obj->id)->delete();
+                $this->saveItem($obj->id);
                 $message = "Updated";
             }
             $this->getRoute();

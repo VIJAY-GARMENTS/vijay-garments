@@ -84,6 +84,7 @@
                         </x-table.cell>
                         <x-table.cell>
                             <div class="w-full flex justify-center gap-3">
+                                <x-icons.icon :icon="'printer'" wire:click="print({{$row->id}})" class="h-5 w-auto block px-1.5"/>
                                 <a href="{{route('sales.upsert',[$row->id])}}"
                                    class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                     <x-button.link >&nbsp;

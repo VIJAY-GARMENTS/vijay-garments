@@ -513,7 +513,7 @@
                 </div>
                 <div class="grid w-full grid-cols-2 pt-6">
                     <label
-                        class="px-3 pb-2 text-left text-gray-600 text-md">Total Taxablet&nbsp;:&nbsp;&nbsp;</label>
+                        class="px-3 pb-2 text-left text-gray-600 text-md">Total Taxable&nbsp;:&nbsp;&nbsp;</label>
                     <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_taxable }}</label>
                 </div>
                 <div class="grid w-full grid-cols-2 pt-6">

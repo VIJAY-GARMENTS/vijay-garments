@@ -1,5 +1,4 @@
-@php use App\Helper\ConvertTo;use Rmunate\Utilities\SpellNumber;  @endphp
-    <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -12,8 +11,8 @@
             font-family: Verdana, Arial, sans-serif;
         }
 
-        .inr-sign::before{
-            content:"\20B9";
+        .inr-sign::before {
+            content: "\20B9";
         }
 
         table {
@@ -253,7 +252,7 @@
         <td colspan="4" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td align="right">{{$obj->total_qty}}</td>
         <td align="right"></td>
-        <td align="right"><span class="inr-sign"/>{{$obj->grand_total}}</td>
+        <td align="right">{{$obj->grand_total}}</td>
     </tr>
 
     <tr>

@@ -2,6 +2,8 @@
 
 namespace App\Helper;
 
+use NumberFormatter;
+
 class ConvertTo
 {
     public static function rupees(string $v): string
@@ -125,5 +127,15 @@ class ConvertTo
         $Rupees = implode('', array_reverse($str));
         $paise = ($decimal > 0) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Paise' : '';
         return ($Rupees ? $Rupees . 'Rupees ' : '') . $paise;
+    }
+
+    public static function rupeesFormat($v)
+    {
+        if ($v) {
+            $fmt = new NumberFormatter('en_IN', NumberFormatter::CURRENCY);
+            return $fmt->formatCurrency($v, "INR");
+        } else {
+            return '';
+        }
     }
 }

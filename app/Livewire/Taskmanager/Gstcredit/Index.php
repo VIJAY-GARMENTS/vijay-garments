@@ -32,7 +32,7 @@ class Index extends Component
     public function mount()
     {
         $this->month = date("m");
-        $this->year = Years::AY_2023->value;
+        $this->year = Years::AY_2024->value;
     }
 
     public function getSave(): string

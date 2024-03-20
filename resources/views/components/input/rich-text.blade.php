@@ -11,6 +11,8 @@
     {{ $attributes->whereDoesntStartWith('wire:model') }}
 
 >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
     <input id="x" type="hidden">
     <trix-editor x-ref="trix" input="x"
                  class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 purple-textbox h-48"></trix-editor>

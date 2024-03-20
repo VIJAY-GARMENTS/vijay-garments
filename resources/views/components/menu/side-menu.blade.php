@@ -37,6 +37,13 @@
             <x-menu.sub.utilities/>
             <x-menu.sub.task/>
             <x-menu.sub.audit/>
+            @editor
+            <x-menu.sub.admin/>
+            @endeditor
+
+            @magalir
+            <x-menu.sub.magalir/>
+            @endmagalir
             <x-menu.sub.logout/>
 
         </ul>

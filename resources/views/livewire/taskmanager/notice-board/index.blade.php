@@ -35,6 +35,7 @@
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">PRIORITY</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Remarks</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Created At</x-table.ths-center>
+                <x-table.ths-center wire:click.prevent="sortBy('vname')">Action</x-table.ths-center>
             </x-slot>
 
             <x-slot name="table_body">

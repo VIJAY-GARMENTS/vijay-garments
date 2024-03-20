@@ -30,7 +30,7 @@ class Admin extends Component
     public function mount()
     {
         $this->cdate = (Carbon::parse(Carbon::now())->format('Y-m-d'));
-        $this->dates = DB::table('activities')->select('cdate')->distinct('cdate')->limit(3)->orderBy('created_at', 'desc')->get();
+        $this->dates = DB::table('activities')->select('cdate','created_at')->distinct('cdate')->limit(3)->orderBy('created_at', 'desc')->get();
         $this->clients = Client::all();
         $this->users = User::all();
     }

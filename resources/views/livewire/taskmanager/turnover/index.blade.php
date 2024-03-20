@@ -34,6 +34,7 @@
                 <x-table.ths wire:click.prevent="sortBy('client_id')">Achieved</x-table.ths>
                 <x-table.ths wire:click.prevent="sortBy('client_id')">Remarks</x-table.ths>
                 <x-table.ths wire:click.prevent="sortBy('client_id')">Status</x-table.ths>
+                <x-table.ths wire:click.prevent="sortBy('client_id')">Action</x-table.ths>
             </x-slot>
             <x-slot name="table_body">
                 @forelse ($list as $index =>  $row)
@@ -58,7 +59,7 @@
                         <x-table.cell>
                             <button wire:click.prevent="edit({{ $row->id }})">
                                 <p class="flex px-3 text-gray-600 truncate text-xl text-left">
-                                    {{ ConvertTo::rupeesFormat($row->target) }}
+                                    {{ \App\Helper\ConvertTo::rupeesFormat($row->target) }}
                                 </p>
                             </button>
                         </x-table.cell>
@@ -66,7 +67,7 @@
                         <x-table.cell>
                             <button wire:click.prevent="edit({{ $row->id }})">
                                 <p class="flex px-3 text-gray-600 truncate text-xl text-left">
-                                    {{ ConvertTo::rupeesFormat($row->achieved) }}
+                                    {{ \App\Helper\ConvertTo::rupeesFormat($row->achieved) }}
                                 </p>
                             </button>
                         </x-table.cell>

@@ -8,6 +8,7 @@
             <x-slot name="table_header">
                 <x-table.ths-slno wire:click.prevent="sortBy('vname')">Sl.no</x-table.ths-slno>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Sales Track Name</x-table.ths-center>
+                <x-table.ths-center wire:click.prevent="sortBy('vname')">Action</x-table.ths-center>
             </x-slot>
 
             <x-slot name="table_body">

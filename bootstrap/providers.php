@@ -12,6 +12,7 @@ return [
     Aaran\Attendance\Providers\AttendanceServiceProvider::class,
     Aaran\Taskmanager\Providers\TaskmanagerServiceProvider::class,
     Aaran\Audit\Providers\AuditServiceProvider::class,
-
+    Aaran\Admin\Providers\AdminServiceProvider::class,
+    Aaran\Magalir\Providers\MagalirServiceProvider::class,
 
 ];

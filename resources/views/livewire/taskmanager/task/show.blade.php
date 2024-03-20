@@ -11,8 +11,8 @@
                             {{ $task_id }}
                         </a>
                         <div
-                                class="h-1/4 flex items-center justify-center bg-blue-300  {{ Status::tryFrom($status)->getStyle() }}">
-                            {{ Status::tryFrom($status)->getName() }}
+                                class="h-1/4 flex items-center justify-center bg-blue-300  {{  \App\Enums\Status::tryFrom($status)->getStyle() }}">
+                            {{  \App\Enums\Status::tryFrom($status)->getName() }}
                         </div>
                     </div>
 
@@ -41,7 +41,7 @@
                                 <div class="flex flex-row gap-2">
                                     <span class=" text-sm py-0.5 text-gray-500">Assign To :</span>
                                     <span
-                                            class=" text-md text-gray-600">{{ \App\Models\Taskmanager\Task::allocate($allocated) }}</span>
+                                            class=" text-md text-gray-600">{{ \Aaran\Taskmanager\Models\Task::allocate($allocated) }}</span>
 
                                 </div>
 
@@ -62,7 +62,7 @@
                                 {{--                                {{$updated_at->diffForHumans()}}--}}
                                 {{date('d-m-Y -h:i a', strtotime($updated_at))}}
                                 <div
-                                        class="text-center flex items-center w-4 h-4 mr-2 text-sm rounded-full {{Actives::tryFrom($actives)->getStyle()}}">
+                                        class="text-center flex items-center w-4 h-4 mr-2 text-sm rounded-full {{\App\Enums\Active::tryFrom($actives)->getStyle()}}">
                                     &nbsp;
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                 </div>
             @empty
                 <div class="flex justify-center items-center space-x-2">
-                    <x-icon.inbox class="h-8 w-8 text-cool-gray-400"/>
+                    <x-icons.inbox class="h-8 w-8 text-cool-gray-400"/>
                     <span class="font-medium py-8 text-cool-gray-400 text-xl">No Entry found...</span>
                 </div>
             @endforelse

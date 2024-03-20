@@ -15,8 +15,8 @@
                             {{ $row->id }}
                         </a>
                         <div
-                                class="h-1/4 flex items-center justify-center bg-blue-300  {{ Status::tryFrom($row->status)->getStyle() }}">
-                            {{ Status::tryFrom($row->status)->getName() }}
+                                class="h-1/4 flex items-center justify-center bg-blue-300  {{ \App\Enums\Status::tryFrom($row->status)->getStyle() }}">
+                            {{ \App\Enums\Status::tryFrom($row->status)->getName() }}
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@
                                 <div class="flex flex-row gap-2">
                                     <span class=" text-sm py-0.5 text-gray-500">Assign To :</span>
                                     <span
-                                            class=" text-md text-gray-600">{{ \App\Models\Taskmanager\Task::allocate($row->allocated) }}</span>
+                                            class=" text-md text-gray-600">{{\Aaran\Taskmanager\Models\Task::allocate($row->allocated) }}</span>
 
                                 </div>
 
@@ -70,7 +70,7 @@
                             <div class="px-3 py-1 flex flex-row gap-3 items-center">
                                 {{ \App\Helper\ConvertTo::dateTime($row->updated_at)}}
                                 <div
-                                        class="text-center flex items-center w-4 h-4 mr-2 text-sm rounded-full {{Actives::tryFrom($row->active_id)->getStyle()}}">
+                                        class="text-center flex items-center w-4 h-4 mr-2 text-sm rounded-full {{\App\Enums\Active::tryFrom($row->active_id)->getStyle()}}">
                                     &nbsp;
                                 </div>
                             </div>

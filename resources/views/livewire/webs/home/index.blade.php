@@ -8,15 +8,15 @@
                 rel="stylesheet"
                 href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
             />
-            <div class="w-full">
-                <div class="xl:container  mx-auto flex flex-row py-20 bg-white">
-                    <div class="w-full p-5 animate__animated wow animate__fadeInDown ">
+            <div class="w-full sm:flex-row">
+                <div class="xl:container grid grid-row-2 lg:grid-cols-2 mx-auto flex-row py-20 bg-white-900 sm:flex-row">
+                    <div class="w-full  p-5 order-1 grid-row-1 lg:flex-col-1 animate__animated wow animate__fadeInDown ">
                         <h1 class="pt-20 mb-5 font-extrabold text-3xl">Team management Our application</h1>
                         <p class="mb-8 font-light text-2xl ">Start getting things done together with your team based on CODEXSUN revolutionary team management features</p>
                         <a class="btn-solid-lg hover:bg-emerald-400 rounded gap-3 bordered bg-gray-400 border-gray-500 p-3" href="{{ route('register') }}"><i class="fab fa-apple border-gray-500 hover:underline hover:bg-blue-500 "></i>register</a>
                     </div>
-                    <div class="w-full flex mx-auto animate__animated wow animate__bounceInRight bg-gradient-to-r from-white to-gray-50">
-                        <img class="h-auto  rounded ms-auto inline max-w-2xl" src="../../../../images/img9.jpg" alt="image description">
+                    <div class="w-full flex mx-auto  grid-row-2 order-2 flex-row lg:flex-col-2 animate__animated wow animate__bounceInRight bg-gradient-to-r from-white to-gray-50">
+                        <img class="lg:h-auto rounded ms-auto inline lg:max-w-2xl" src="../../../../images/img9.jpg" alt="image description">
                     </div>
                 </div>
             </div>
@@ -96,16 +96,16 @@
                 </div>
             </div>
             {{--<---pricing--->--}}
-            <div id="pricing" class="cards-2 relative pt-8 text-center mx-auto bg-white">
+            <div class=" relative pt-8 text-center mx-auto bg-white">
                 <div class="absolute bottom-0.5 h-40 w-full"></div>
                 {{--        <div class="">--}}
                 <h2 class="mb-2.5 font-semibold grid-rows-1 lg:max-w-xl p-3 lg:mx-auto text-2xl">Pricing options for all budgets</h2>
                 <p class="mb-16 lg:max-w-3xl grid-rows-2 p-3 lg:mx-auto text-2xl"> Our pricing plans are set up in such a way that any user can start enjoying Pavo without worrying so much about costs. They are flexible and work for any type of industry </p>
 
                 {{--           <---items--->--}}
-                <div class="container md:grid-cols-3 flex px-4 pb-px p-5 mx-auto gap-3.5">
-                    <div class="card relative block rounded  w-80 h-auto md:grid-cols-4 gap-3 flex-col mr-auto mb-6 ml-auto mx-auto shadow-md">
-                        <div class="card-body p-8 bg-gray-50 animate__animated wow animate__zoomIn">
+                <div class="container grid grid-rows-3 lg:grid-cols-3 lg:flex lg:px-4 pb-px lg:p-5 mx-auto gap-3.5 sm:flex-row sm:gap-3">
+                    <div class="relative lg:block rounded grid-rows-1 order-2 w-80 h-auto lg:grid-cols-4 gap-3 lg:flex-col mr-auto mb-6 ml-auto mx-auto shadow-md">
+                        <div class="card-body p-8 bg-gray-50 grid-rows-4 animate__animated wow animate__zoomIn">
                             <div class="card-title mb-1.5 text-blue-500 font-bold text-center">STANDARD</div>
                             <div class="price"><span class="currency mr-1.5 text-amber-800 font-light ">$</span><span class="value text-gray-700 font-medium h-5 text-center">13999</span></div>
                             <div class="frequency mb-1.5 font-semibold text-center">monthly</div>
@@ -148,8 +148,8 @@
                         </div>
                     </div>
 
-                    <div class="card relative block w-80 h-auto md:grid-cols-5 gap-3 mr-auto mx-auto mb-6 ml-auto border rounded shadow-md">
-                        <div class="card-body p-8 bg-gray-50 animate__animated wow animate__zoomIn">
+                    <div class="relative lg:block w-80 h-auto grid-rows-2 order-1 lg:grid-cols-5 gap-3 mr-auto mx-auto mb-6 ml-auto border rounded shadow-md">
+                        <div class="card-body p-8 bg-gray-50 grid-rows-5 animate__animated wow animate__zoomIn">
                             <div class="card-title mb-1.5 text-blue-500 font-bold text-center">ADVANCED</div>
                             <div class="price"><span class="currency mr-1.5 text-amber-800 font-light">$</span><span class="value text-gray-700 font-medium h-5 text-center">25999</span></div>
                             <div class="frequency mb-1.5 font-semibold text-center">monthly</div>
@@ -192,13 +192,13 @@
                         </div>
                     </div>
 
-                    <div class=" relative block   w-80 h-auto mr-auto grid-cols-6 gap-3 mb-6 ml-auto mx-auto border rounded shadow-md">
-                        <div id="progress" class="card-body p-8 bg-gray-50 animate__animated wow animate__zoomIn">
-                            <div class="card-title mb-1.5 text-blue-500 font-bold text-center">PREMIUM</div>
-                            <div class="price"><span class="currency mr-1.5 text-amber-800 font-light">$</span><span class="value text-gray-700 font-medium h-5 text-center">35999</span></div>
-                            <div class="frequency mb-1.5 font-semibold text-center">monthly</div>
+                    <div class="relative lg:block grid-rows-3  order-3 w-80 h-auto mr-auto lg:grid-cols-6 gap-3 mb-6  ml-auto mx-auto border rounded shadow-md">
+                        <div class="p-8 bg-gray-50 grid-rows-6 animate__animated wow animate__zoomIn">
+                            <div class=" mb-1.5 text-blue-500 font-bold text-center">PREMIUM</div>
+                            <div class="price"><span class="mr-1.5 text-amber-800 font-light">$</span><span class="text-gray-700 font-medium h-5 text-center">35999</span></div>
+                            <div class="mb-1.5 font-semibold text-center">monthly</div>
                             <p class="mb-3 text-left">This is a comprehensive package designed for big organizations</p>
-                            <ul class="list mb-7 text-left space-y-2">
+                            <ul class="mb-7 text-left space-y-2">
                                 <li class="flex">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                                         <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -240,11 +240,11 @@
         </section>
         {{--<--- Our Team ---->--}}
         <section href="{{ route('about') }}">
-            <div class="team py-32 mx-auto bg-gray-100">
+            <div class="py-32 mx-auto bg-gray-100">
                 <div class="container px-4 mx-auto justify-items-center sm:px-8">
-                    <h2 class="mb-12 text-center font-bold lg:max-w-xl lg:mx-auto">OUR TEAM MEMBERS</h2>
+                    <h2 class="mb-12 text-center text-3xl font-bold lg:max-w-xl lg:mx-auto">OUR TEAM MEMBERS</h2>
                     {{--<---team member--->--}}
-                    <div id="progress" class=" slide-from-left container bg-gray-100 grid md:grid-cols-3 mx-auto justify-items-center">
+                    <div class=" slide-from-left container bg-gray-100 grid md:grid-cols-3 mx-auto justify-items-center">
 
                         <div class="md:grid-cols-1 p-7 gap-4">
                             <div class="entry-thumb portfolio-thumb ">
@@ -340,7 +340,7 @@
         </section>
         {{--<----contact---->--}}
         <section href="{{ route('contact') }}">
-            <div class="contact  relative mx-auto justify-items-center h-full p-10 bg-gray-50" id="contact">
+            <div class="contact  relative mx-auto justify-items-center p-7 bg-gray-200">
                 <div class="container justify-items-center mx-auto ">
                     <div class="section-header  justify-items-center animate__animated wow animate__fadeInTopLeft">
                         <h3 class="text-center font-sans font-bold text-3xl">Contact Us</h3>
@@ -349,46 +349,48 @@
                             We've got the solutions to take your business to the next level.            </p>
                     </div>
                 </div>
-                <div class="row justify-items-center w-full mx-auto p-3 grid md:grid-cols-2 ">
-                    <div class="md:grid-cols-1 w-auto grid-rows-1 h-auto mx-auto p-3 animate__animated wow animate__fadeInLeftBig ">
+                <div class="flex-row items-center w-full mx-auto p-5  grid lg:grid-cols-2">
+                    <div class="lg:grid-cols-1 lg:w-96 lg:ml-80 h-auto w-72 grid-rows-1 lg:p-10 animate__animated wow animate__fadeInLeftBig ">
                         <div class="form">
-                            <form action="" method="get">
+                            <form action="#" method="get">
                                 <div class="form-row">
-                                    <div class="form-group col-md-6 md:p-3.5">
+                                    <div class="form-group p-2.5 col-md-6 md:p-3.5">
                                         <label>
                                             <input type="text" class="form-control  md:w-72" placeholder="Your Name" />
                                         </label>
                                     </div>
-                                    <div class="form-group col-md-6 md:p-3.5">
+                                    <div class="form-group p-2.5 col-md-6 md:p-3.5">
                                         <label>
                                             <input type="email" class="form-control mx-auto md:w-72" placeholder="Your Email" />
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group md:p-3.5">
+                                <div class="form-group p-2.5  md:p-3.5 ">
                                     <label>
                                         <input type="text" class="form-control mx-auto md:w-72" placeholder="Subject" />
                                     </label>
                                 </div>
-                                <div class="form-group md:p-3.5">
+                                <div class="form-group p-2.5 lg:p-3.5">
                                     <label>
                                         <textarea class="form-control mx-auto md:w-72" rows="5" placeholder="Message"></textarea>
                                     </label>
                                 </div>
-                                <div class="p-3 self-center flex-1 text-center">
-                                    <button id="msg" type="Send message" class="bg-indigo-400 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 mx-auto md:w-60">Send message</button>
+                                <div class="p-3 lg:self-center mr-32 lg:flex-1 text-center">
+                                    <button id="msg" type="Send message" class="bg-indigo-400 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 mx-auto lg:w-60">Send message</button>
                                 </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class=" w-full h-full md:w-auto md:h-auto p-5 justify-items-center mx-auto animate__animated wow animate__fadeInRightBig">
-                        <div class="contact-info md:grid-cols-2  md:h-full md:w-full p-5 grid-rows-2">
-                            <div class="h-full bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+                    <div class="w-full h-full lg:w-full lg:h-full lg:p-5 justify-items-center mx-auto animate__animated wow animate__fadeInRightBig">
+                        <div class="contact-info lg:grid-cols-2 w-auto h-auto lg:h-full lg:w-full lg:p-5 grid-rows-2">
+                            <div class="h-full bg-gray-300 rounded-lg overflow-hidden mr-16 lg:p-10 flex items-end justify-start relative">
+{{--                                <div class="hidden">--}}
                                 <iframe width="100%" height="100%" class="absolute inset-0"  title="map"    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d411.4922916291721!2d77.34064677816176!3d11.128529397090245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1690604229895!5m2!1sen!2sin" loading="lazy" style="filter: grayscale(1) contrast(1.2) opacity(0.4);">
                                 </iframe>
-                                <div class="bg-white relative flex flex-wrap py-6 mx-auto rounded shadow-md">
-                                    <div class="lg:w-1/2  px-6">
+{{--                                </div>--}}
+                                <div class="flex bg-white relative lg:flex flex-wrap py-6 lg:mx-auto rounded shadow-md">
+                                    <div class="lg:w-1/2 px-6">
                                         <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
                                         <p class="mt-1">10-A Venkatappa Gounder Street </p>
                                     </div>
@@ -414,8 +416,8 @@
             <section id="last ">
                 <div class="footer-newsletter mx-auto justify-items-center">
                     <div class="container mx-auto justify-items-center">
-                        <div class="row mx-auto justify-items-center ml-32 flex p-10">
-                            <div class="col-lg-6">
+                        <div class="sm:row  mx-auto justify-items-center lg:ml-32 flex p-10">
+                            <div class="lg:col-lg-6">
                                 <h4>Join Our Newsletter</h4>
                                 <p> Making your business vision come true with our deep operational & implementation expertise.
                                     We've got the solutions to take your business to the next level</p>
@@ -430,7 +432,7 @@
 
                 <div class="footer-top">
                     <div class="container mx-auto justify-items-center">
-                        <div class="row grid grid-cols-4 ">
+                        <div class="row grid sm:grid-cols-4 p-5">
 
                             <div class="grid-cols-1 footer-contact">
                                 <h3>Aaran Soft</h3>
@@ -449,17 +451,17 @@
                                     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                             <path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                                         </svg>
-                                        <a href="#">Home</a>
+                                        <a href="{{route('home')}}">Home</a>
                                     </li>
                                     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                             <path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                                         </svg>
-                                        <a href="#">About us</a>
+                                        <a href="{{route('about')}}">About us</a>
                                     </li>
                                     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                             <path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                                         </svg>
-                                        <a href="#">Services</a>
+                                        <a href="{{route('service')}}">Services</a>
                                     </li>
                                     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                             <path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />

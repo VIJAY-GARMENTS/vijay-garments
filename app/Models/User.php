@@ -62,4 +62,57 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isAdmin(): bool
+    {
+        return in_array($this->email, [
+            'sundar@sundar.com',
+            'sundar@codexsun.com',
+            'jagadeesh@aaran.org',
+        ]);
+    }
+
+    public function isEditor(): bool
+    {
+        return in_array($this->email, [
+            'sundar@sundar.com',
+            'jagadeesh@aaran.org',
+            'divya@aaran.org',
+            'kalaiarasan',
+        ]);
+    }
+
+    public function isEntry(): bool
+    {
+        return in_array($this->email, [
+            'office@aaran.com',
+            'sundar@sundar.com',
+            'jagadeesh@aaran.org',
+            'divya@aaran.org',
+            'kalaiarasan',
+
+        ]);
+    }
+
+    public function isMagalir(): bool
+    {
+        return in_array($this->email, [
+            'sundar@sundar.com',
+            'jagadeesh@aaran.org',
+            'divya@aaran.org',
+            'kalaiarasan',
+
+        ]);
+    }
+
+    public function isSupervisor(): bool
+    {
+        return in_array($this->email, [
+            'sundar@sundar.com',
+            'jagadeesh@aaran.org',
+            'divya@aaran.org',
+            'kalaiarasan',
+
+        ]);
+    }
 }

@@ -30,6 +30,7 @@ class Index extends Component
                 ]);
 
                 $this->createClientDetails($client->id);
+                $this->payable='';
 
                 $message = "Saved";
 

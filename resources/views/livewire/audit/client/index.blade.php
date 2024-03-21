@@ -47,7 +47,7 @@
                         <x-table.cell>
                             <a href="{{route('clients.show',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-left">
-                                {{ $row->payable == 1 ? 'yes' : 'No' }}
+                                {{$row->payable == '1' ? 'yes' : 'No'}}
                             </a>
                         </x-table.cell>
 
@@ -69,6 +69,7 @@
             <x-input.model-text wire:model="vname" :label="'company'"/>
             <x-input.model-text wire:model="group" :label="'group'"/>
             <x-input.model-select wire:model="payable" :label="'payable'">
+                <option>Choose</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </x-input.model-select>

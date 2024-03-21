@@ -2,20 +2,11 @@
 
 namespace Aaran\Audit\Models\Client\Sub;
 
-use App\Models\Master\Client;
+use Aaran\Audit\Models\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * App\Models\Master\Client\Sub\SalesTrackBill
- *
- * @property-read Client $client
- * @property-read \App\Models\Master\Client\Sub\SalesTrackItem|null $salesTrackItem
- * @method static \Illuminate\Database\Eloquent\Builder|SalesTrackBill newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SalesTrackBill newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SalesTrackBill query()
- * @mixin \Eloquent
- */
+
 class SalesTrackBill extends Model
 {
 

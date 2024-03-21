@@ -95,7 +95,7 @@ class Items extends Component
     {
 //        $this->generateBills();
 
-        return view('livewire.master.client.sub.sales-track.items')->with([
+        return view('livewire.audit.client.sub.sales-track.items')->with([
             'list' => $this->getList()
         ]);
     }
@@ -155,6 +155,7 @@ class Items extends Component
 
     public function showBillItems(): void
     {
+
         $this->showSubItems = !$this->showSubItems;
     }
 

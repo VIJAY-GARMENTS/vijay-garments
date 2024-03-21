@@ -16,6 +16,7 @@
                     <x-table.ths-center wire:click.prevent="sortBy('vname')">Qty</x-table.ths-center>
                     <x-table.ths-center wire:click.prevent="sortBy('vname')">Price</x-table.ths-center>
                     <x-table.ths-center wire:click.prevent="sortBy('vname')">Margin</x-table.ths-center>
+                    <x-table.ths-center wire:click.prevent="sortBy('vname')">Action</x-table.ths-center>
                 </x-slot>
 
                 <x-slot name="table_body">
@@ -102,6 +103,27 @@
                     <option class="text-gray-400"> choose ..</option>
                     @foreach($products as $product)
                         <option value="{{$product->id}}">{{$product->vname}}</option>
+                    @endforeach
+                </x-input.model-select>
+
+                <x-input.model-select wire:model="category_id" :label="'category'">
+                    <option class="text-gray-400"> choose ..</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->vname}}</option>
+                    @endforeach
+                </x-input.model-select>
+
+                <x-input.model-select wire:model="colour_id" :label="'colour'">
+                    <option class="text-gray-400"> choose ..</option>
+                    @foreach($colours as $colour)
+                        <option value="{{$colour->id}}">{{$colour->vname}}</option>
+                    @endforeach
+                </x-input.model-select>
+
+                <x-input.model-select wire:model="size_id" :label="'size'">
+                    <option class="text-gray-400"> choose ..</option>
+                    @foreach($sizes as $size)
+                        <option value="{{$size->id}}">{{$size->vname}}</option>
                     @endforeach
                 </x-input.model-select>
 

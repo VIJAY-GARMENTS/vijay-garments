@@ -116,7 +116,7 @@ class Bill extends Component
 
     public function render()
     {
-        return view('livewire.master.client.sub.sales-track.bill')->with([
+        return view('livewire.audit.client.sub.sales-track.bill')->with([
             'list' => $this->getList()
         ]);
     }

@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('payment_slips', function (Blueprint $table) {
             $table->id();
+            $table->string('serial')->nullable();
             $table->foreignId('sender_id')->nullable();
             $table->foreignId('receiver_id')->nullable();
             $table->string('due')->nullable();
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->decimal('amount')->nullable();
             $table->decimal('paid')->nullable();
             $table->string('paidOn')->nullable();
+            $table->string('status')->nullable();
             $table->string('active_id',10)->nullable();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();

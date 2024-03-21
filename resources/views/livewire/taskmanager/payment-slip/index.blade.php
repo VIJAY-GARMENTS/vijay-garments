@@ -75,6 +75,7 @@
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Paid</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Paid On</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">&nbsp;</x-table.ths-center>
+                <x-table.ths-center wire:click.prevent="sortBy('vname')">Action</x-table.ths-center>
             </x-slot>
 
             <x-slot name="table_body">

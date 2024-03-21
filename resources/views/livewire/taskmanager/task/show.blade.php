@@ -108,6 +108,9 @@
                         @endforeach
                     </select>
                     <div class="flex flex-row gap-10">
+                        @error('changeStatus')
+                        <span class="text-red-500">{{  'Choose any one and update' }}</span>
+                        @enderror
 
                         @editor
                         <button wire:click.prevent="updateStatus" class="text-sm text-gray-400">Update</button>

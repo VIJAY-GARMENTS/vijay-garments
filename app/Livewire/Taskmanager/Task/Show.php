@@ -84,6 +84,7 @@ class Show extends Component
 
     public function updateStatus(): void
     {
+        $this->validate(['changeStatus'=>'required']);
         $obj = Task::find($this->task_id);
         $obj->status = $this->changeStatus;
         $obj->save();

@@ -16,6 +16,8 @@ class Index extends Component
 
     public function getSave(): string
     {
+        $this->validate(['closing'=>'required|numeric']);
+
         if ($this->vname !== '') {
             if ($this->vid == "") {
                 CreditBook::create([

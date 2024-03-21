@@ -71,6 +71,9 @@
         <x-forms.create :id="$vid">
             <x-input.model-text wire:model="vname" :label="'Name'"/>
             <x-input.model-text wire:model="closing" :label="'Closing'"/>
+            @error('closing')
+            <span class="text-red-500">{{  $message }}</span>
+            @enderror
         </x-forms.create>
 
     </x-forms.m-panel>

@@ -46,6 +46,7 @@
 
                 <x-table.ths-center wire:click.prevent="sortBy('client_id')">Balance</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('client_id')">&nbsp;</x-table.ths-center>
+                <x-table.ths-center wire:click.prevent="sortBy('client_id')">Action</x-table.ths-center>
 
             </x-slot>
             <x-slot name="table_body">

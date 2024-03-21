@@ -8,10 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('sales_bill_items', function (Blueprint $table) {
+        Schema::create('sales_track_bill_items', function (Blueprint $table) {
             $table->id();
             $table->integer('serial');
-            $table->foreignId('sales_bill_id')->references('id')->on('sales_bills');
+            $table->foreignId('sales_track_bill_id')->references('id')->on('sales_track_bills');
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->foreignId('product_id')->references('id')->on('products');
             $table->foreignId('colour_id')->references('id')->on('colours');

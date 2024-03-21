@@ -88,6 +88,7 @@
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Qty</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Price</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Total</x-table.ths-center>
+                <x-table.ths-center wire:click.prevent="sortBy('vname')">Action</x-table.ths-center>
             </x-slot>
 
             <x-slot name="table_body">
@@ -197,7 +198,7 @@ $gst='';
                     <td colspan="4" class="px-2 text-xl text-right text-gray-400 border border-gray-300">&nbsp;Grand
                         Total&nbsp;&nbsp;&nbsp;
                     </td>
-                    <td class="px-3 text-right  text-xl border text-red-500 border-gray-300">{{ConvertTo::rupeesFormat($grandTotal)}}</td>
+                    <td class="px-3 text-right  text-xl border text-red-500 border-gray-300">{{\App\Helper\ConvertTo::rupeesFormat($grandTotal)}}</td>
                     <td class="px-2 text-right  text-xl border border-gray-300">&nbsp;</td>
                 </x-table.row>
 
@@ -211,7 +212,7 @@ $gst='';
             <div>
                 <a href="{{route('salesTracks.bills',[$sales_track_bill->sales_track_item_id] )}}" class="bg-gray-400 text-white tracking-wider px-4 py-1
                 rounded-md flex items-center w-24 hover:bg-gray-500">
-                    <x-aaranUi::icons.icon :icon="'chevrons-left'" class="h-8 w-auto inline-block items-center"/>
+                    <x-icons.icon :icon="'chevrons-left'" class="h-8 w-auto inline-block items-center"/>
                     Back
                 </a>
             </div>
@@ -219,7 +220,7 @@ $gst='';
             <div>
                 <button wire:click.prevent="markAsEntered"
                     class="bg-green-400 text-white tracking-wider px-4 py-1 rounded-md flex items-center hover:bg-red-500">
-                    <x-aaranUi::icons.icon :icon="'annotation'" class="h-8 px-3 w-auto inline-block items-center"/>
+                    <x-icons.icon :icon="'annotation'" class="h-8 px-3 w-auto inline-block items-center"/>
                     Mark as Entered
                 </button>
             </div>
@@ -233,6 +234,27 @@ $gst='';
                 <option class="text-gray-400"> choose ..</option>
                 @foreach($products as $product)
                     <option value="{{$product->id}}">{{$product->vname}}</option>
+                @endforeach
+            </x-input.model-select>
+
+            <x-input.model-select wire:model="category_id" :label="'category'">
+                <option class="text-gray-400"> choose ..</option>
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->vname}}</option>
+                @endforeach
+            </x-input.model-select>
+
+            <x-input.model-select wire:model="colour_id" :label="'colour'">
+                <option class="text-gray-400"> choose ..</option>
+                @foreach($colours as $colour)
+                    <option value="{{$colour->id}}">{{$colour->vname}}</option>
+                @endforeach
+            </x-input.model-select>
+
+            <x-input.model-select wire:model="size_id" :label="'size'">
+                <option class="text-gray-400"> choose ..</option>
+                @foreach($sizes as $size)
+                    <option value="{{$size->id}}">{{$size->vname}}</option>
                 @endforeach
             </x-input.model-select>
 

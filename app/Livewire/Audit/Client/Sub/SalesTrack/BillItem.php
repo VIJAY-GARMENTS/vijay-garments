@@ -5,6 +5,9 @@ namespace App\Livewire\Audit\Client\Sub\SalesTrack;
 use Aaran\Audit\Models\Client;
 use Aaran\Audit\Models\Client\Sub\SalesTrackBill;
 use Aaran\Audit\Models\Client\Sub\SalesTrackBillItem;
+use Aaran\Common\Models\Category;
+use Aaran\Common\Models\Colour;
+use Aaran\Common\Models\Size;
 use Aaran\Master\Models\Product;
 use App\Enums\Active;
 use App\Livewire\Trait\CommonTrait;
@@ -17,17 +20,26 @@ class BillItem extends Component
     public mixed $serial = 1;
     public mixed $sales_track_bill_id;
     public mixed $product_id;
+    public mixed $category_id;
+    public mixed $colour_id;
+    public mixed $size_id;
     public mixed $qty;
     public mixed $price;
 
     public mixed $clients;
     public mixed $products;
+    public mixed $categories;
+    public mixed $colours;
+    public mixed $sizes;
     public mixed $sales_track_bill;
 
     public function mount($id)
     {
         $this->clients = Client::where('active_id', '=', '1')->get();
         $this->products = Product::where('active_id', '=', '1')->get();
+        $this->categories = Category::where('active_id', '=', '1')->get();
+        $this->sizes = Size::where('active_id', '=', '1')->get();
+        $this->colours = Colour::where('active_id', '=', '1')->get();
         $this->sales_track_bill_id = $id;
         $this->sales_track_bill = SalesTrackBill::find($id);
 
@@ -41,6 +53,9 @@ class BillItem extends Component
                     'serial' => $this->serial,
                     'sales_track_bill_id' => $this->sales_track_bill_id,
                     'product_id' => $this->product_id,
+                    'category_id' => $this->category_id,
+                    'colour_id' => $this->colour_id,
+                    'size_id' => $this->size_id,
                     'qty' => $this->qty,
                     'price' => $this->price,
                     'active_id' => $this->active_id ?: '0',
@@ -51,6 +66,9 @@ class BillItem extends Component
                 $obj->serial = $this->serial;
                 $obj->sales_track_bill_id = $this->sales_track_bill_id;
                 $obj->product_id = $this->product_id;
+                $obj->category_id = $this->category_id;
+                $obj->colour_id = $this->colour_id;
+                $obj->size_id = $this->size_id;
                 $obj->qty = $this->qty;
                 $obj->price = $this->price;
                 $obj->active_id = $this->active_id;
@@ -71,6 +89,9 @@ class BillItem extends Component
             $this->serial = $obj->serial;
             $this->sales_track_bill_id = $obj->sales_track_bill_id;
             $this->product_id = $obj->product_id;
+            $this->category_id = $obj->category_id;
+            $this->colour_id = $obj->colour_id;
+            $this->size_id = $obj->size_id;
             $this->qty = $obj->qty + 0;
             $this->price = $obj->price + 0;
             $this->active_id = $obj->active_id;
@@ -117,7 +138,7 @@ class BillItem extends Component
 
     public function render()
     {
-        return view('livewire.master.client.sub.sales-track.bill-item')->with([
+        return view('livewire.audit.client.sub.sales-track.bill-item')->with([
             'list' => $this->getList()
         ]);
     }

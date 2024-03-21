@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('sales_bills', function (Blueprint $table) {
+        Schema::create('sales_track_bills', function (Blueprint $table) {
             $table->id();
             $table->integer('serial');
             $table->foreignId('sales_track_item_id')->references('id')->on('sales_track_items');

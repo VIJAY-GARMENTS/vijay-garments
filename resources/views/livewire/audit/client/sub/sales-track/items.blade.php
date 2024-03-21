@@ -11,6 +11,7 @@
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Total count</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Total Value</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Status</x-table.ths-center>
+                <x-table.ths-center wire:click.prevent="sortBy('vname')">Action</x-table.ths-center>
             </x-slot>
 
             <x-slot name="table_body">
@@ -73,7 +74,7 @@
             <div class="mt-5 flex flex-row gap-5">
                 <a href="{{route('salesTracks')}}" class="mt-5 bg-gray-400 text-white tracking-wider px-4 py-1
                 rounded-md flex items-center w-24 hover:bg-gray-500">
-                    <x-aaranUi::icons.icon :icon="'chevrons-left'" class="h-8 w-auto inline-block items-center"/>
+                    <x-icons.icon :icon="'chevrons-left'" class="h-8 w-auto inline-block items-center"/>
                     Back
                 </a>
 
@@ -108,7 +109,7 @@
 
         @if($showSubItems)
             <div>
-                <livewire:master.client.sub.sales-track.temp-bill-item/>
+                <livewire:audit.client.sub.sales-track.temp-bill-item/>
             </div>
         @endif
 

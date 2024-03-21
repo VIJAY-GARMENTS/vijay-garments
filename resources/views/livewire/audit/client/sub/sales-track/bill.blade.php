@@ -18,6 +18,7 @@
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Grand Total</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Vehicle</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Status</x-table.ths-center>
+                <x-table.ths-center wire:click.prevent="sortBy('vname')">Acton</x-table.ths-center>
             </x-slot>
 
             <x-slot name="table_body">
@@ -112,7 +113,7 @@
             <div class="mt-5">
                 <a href="{{route('salesTracks.items',[$sales_track_item->sales_track_id] )}}" class="mt-5 bg-gray-400 text-white tracking-wider px-4 py-1
                 rounded-md flex items-center w-24 hover:bg-gray-500">
-                    <x-aaranUi::icons.icon :icon="'chevrons-left'" class="h-8 w-auto inline-block items-center"/>
+                    <x-icons.icon :icon="'chevrons-left'" class="h-8 w-auto inline-block items-center"/>
                     Back
                 </a>
             </div>

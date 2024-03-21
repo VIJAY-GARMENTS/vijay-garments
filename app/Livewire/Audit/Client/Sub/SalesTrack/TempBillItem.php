@@ -3,7 +3,7 @@
 namespace App\Livewire\Audit\Client\Sub\SalesTrack;
 
 use Aaran\Master\Models\Product;
-use Aaran\Audit\Models\Client\Sub\TempBillItem as Tbi;
+use Aaran\Audit\Models\Client\Sub\SalesTrackBill as Tbi;
 use App\Livewire\Trait\CommonTrait;
 use Livewire\Component;
 
@@ -88,7 +88,7 @@ class TempBillItem extends Component
 
     public function render()
     {
-        return view('livewire.master.client.sub.sales-track.temp-bill-item')->with([
+        return view('livewire.audit.client.sub.sales-track.temp-bill-item')->with([
             'list' => $this->getList()
         ]);
     }

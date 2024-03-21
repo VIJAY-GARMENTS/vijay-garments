@@ -5,7 +5,7 @@
         <x-forms.top-control-without-search>
             <div class="mt-5 pr-3 cursor-pointer">
                 <button wire:click.prevent="reLoad" class="bg-yellow-300 rounded-full px-1 py-0.5 flex justify-center items-start" >
-                    <x-aaranUi::icons.icon :icon="'refresh'" class="block h-6 w-auto"/>
+                    <x-icons.icon :icon="'refresh'" class="block h-6 w-auto"/>
                 </button>
             </div>
 

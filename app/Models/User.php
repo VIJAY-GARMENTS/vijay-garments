@@ -78,7 +78,7 @@ class User extends Authenticatable
             'sundar@sundar.com',
             'jagadeesh@aaran.org',
             'divya@aaran.org',
-            'kalaiarasan',
+            'kalaiyarasan@aaran.org',
         ]);
     }
 
@@ -89,7 +89,7 @@ class User extends Authenticatable
             'sundar@sundar.com',
             'jagadeesh@aaran.org',
             'divya@aaran.org',
-            'kalaiarasan',
+            'kalaiyarasan@aaran.org',
 
         ]);
     }
@@ -100,7 +100,7 @@ class User extends Authenticatable
             'sundar@sundar.com',
             'jagadeesh@aaran.org',
             'divya@aaran.org',
-            'kalaiarasan',
+            'kalaiyarasan@aaran.org',
 
         ]);
     }
@@ -111,7 +111,7 @@ class User extends Authenticatable
             'sundar@sundar.com',
             'jagadeesh@aaran.org',
             'divya@aaran.org',
-            'kalaiarasan',
+            'kalaiyarasan@aaran.org',
 
         ]);
     }

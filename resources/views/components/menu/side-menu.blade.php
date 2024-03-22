@@ -37,6 +37,7 @@
             <x-menu.sub.utilities/>
             <x-menu.sub.task/>
             <x-menu.sub.audit/>
+            <x-menu.sub.accounts/>
             @editor
             <x-menu.sub.admin/>
             @endeditor

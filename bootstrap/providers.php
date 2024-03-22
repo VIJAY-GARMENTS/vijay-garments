@@ -14,5 +14,6 @@ return [
     Aaran\Audit\Providers\AuditServiceProvider::class,
     Aaran\Admin\Providers\AdminServiceProvider::class,
     Aaran\Magalir\Providers\MagalirServiceProvider::class,
+    Aaran\Accounts\Providers\AccountsServiceProvider::class,
 
 ];

@@ -6,6 +6,9 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
         <div class="team py-32 mx-auto bg-gray-100">
+
+
+
             <div class="container px-4 mx-auto justify-items-center sm:px-8">
                 <h2 class="mb-12 text-center font-bold lg:max-w-xl lg:mx-auto">OUR TEAM MEMBERS</h2>
                 {{--<---team member--->--}}

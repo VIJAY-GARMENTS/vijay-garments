@@ -16,10 +16,9 @@
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Pan</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Email</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Website</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">City</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">State</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">Pin-Code</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">Logo</x-table.ths-center>
+{{--                <x-table.ths-center wire:click.prevent="sortBy('vname')">City</x-table.ths-center>--}}
+{{--                <x-table.ths-center wire:click.prevent="sortBy('vname')">State</x-table.ths-center>--}}
+{{--                <x-table.ths-center wire:click.prevent="sortBy('vname')">Pin-Code</x-table.ths-center>--}}
                 <x-table.heading>Action</x-table.heading>
             </x-slot>
 
@@ -35,10 +34,14 @@
                         </x-table.cell>
 
                         <x-table.cell>
+                            <div class="flex">
+                            <div class="flex-shrink-0 h-10 w-10 mr-4 rounded-xl" >
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($row->logo)}}"/>
+                            </div>
                             <a href="{{route('companies.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-left">
                                 {{ $row->display_name}}
-                            </a>
+                            </a></div>
                         </x-table.cell>
                         <x-table.cell>
                             <a href="{{route('companies.upsert',[$row->id])}}"
@@ -90,36 +93,26 @@
                             </a>
                         </x-table.cell>
 
-                        <x-table.cell>
-                            <a href="{{route('companies.upsert',[$row->id])}}"
-                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                {{ $row->city->vname }}
-                            </a>
-                        </x-table.cell>
+{{--                        <x-table.cell>--}}
+{{--                            <a href="{{route('companies.upsert',[$row->id])}}"--}}
+{{--                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">--}}
+{{--                                {{ $row->city->vname }}--}}
+{{--                            </a>--}}
+{{--                        </x-table.cell>--}}
 
-                        <x-table.cell>
-                            <a href="{{route('companies.upsert',[$row->id])}}"
-                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                {{ $row->state->vname }}
-                            </a>
-                        </x-table.cell>
+{{--                        <x-table.cell>--}}
+{{--                            <a href="{{route('companies.upsert',[$row->id])}}"--}}
+{{--                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">--}}
+{{--                                {{ $row->state->vname }}--}}
+{{--                            </a>--}}
+{{--                        </x-table.cell>--}}
 
-                        <x-table.cell>
-                            <a href="{{route('companies.upsert',[$row->id])}}"
-                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                {{ $row->pincode->vname }}
-                            </a>
-                        </x-table.cell>
-                        <x-table.cell>
-                            <a href="{{route('companies.upsert',[$row->id])}}"
-                               class="flex px-3 text-gray-600 truncate text-xl text-left">
-
-                                <div class="flex-shrink-0 h-10 w-10 mr-4" >
-                                    <img src="{{asset ('aaran-soft/storage/app/'.$row->logo)}}"/>
-                                </div>
-
-                            </a>
-                        </x-table.cell>
+{{--                        <x-table.cell>--}}
+{{--                            <a href="{{route('companies.upsert',[$row->id])}}"--}}
+{{--                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">--}}
+{{--                                {{ $row->pincode->vname }}--}}
+{{--                            </a>--}}
+{{--                        </x-table.cell>--}}
                         <x-table.cell>
                                 <div class="w-full flex justify-center gap-3">
                                     <a href="{{route('companies.upsert',[$row->id])}}"

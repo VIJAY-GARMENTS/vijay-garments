@@ -69,6 +69,7 @@ class User extends Authenticatable
             'sundar@sundar.com',
             'sundar@codexsun.com',
             'jagadeesh@aaran.org',
+            'divya@aaran.org',
         ]);
     }
 

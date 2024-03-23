@@ -24,3 +24,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/icons', App\Livewire\Utilities\Icon\Index::class)->name('icons');
 
 });
+
+
+//sys
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('sys', App\Livewire\Sys\Artisan\Migration::class)->name('sys');
+});

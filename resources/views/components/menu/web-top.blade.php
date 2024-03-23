@@ -1,7 +1,7 @@
 <nav class="w-auto sticky inset-0 z-10 border-b-2 py-5 bg-gray-100">
     <div class="container w-full flex flex-wrap  rounded justify-between items-center mx-auto ">
-        <a href="{{ route('home')}}" class="flex items-center lg:w-auto">
-            <div class="p-1 lg:p-3  rounded py-2">
+        <a href="{{route('home')}}"  class="flex items-center lg:w-auto">
+            <div class="p-1 lg:p-3 rounded py-2 ">
                 <x-assets.logo.cxlogo :icon="'light'"  class="h-7 ml-4 mx-auto w-auto  block"/>
             </div>
 {{--            <x-assets.logo.cxlogo--}}

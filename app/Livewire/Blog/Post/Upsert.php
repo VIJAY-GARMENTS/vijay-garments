@@ -12,7 +12,9 @@ class Upsert extends Component
 
     public mixed $vid='';
     public string $title;
+    public string $description;
     public string $body;
+    public string $author_name;
     public  $image;
 
     public function mount($id)
@@ -21,7 +23,9 @@ class Upsert extends Component
             $post = Post::find($id);
             $this->vid = $post->id;
             $this->title = $post->title;
+            $this->description= $post->description;
             $this->body = $post->body;
+            $this->author_name = $post->author_name;
             $this->image = $post->image;
 
         }
@@ -35,14 +39,18 @@ class Upsert extends Component
             if ($this->vid == "") {
                  Post::create([
                      'title' => $this->title,
+                     'description' => $this->description,
                      'body' => $this->body,
+                     'author_name' => $this->author_name,
                      'image' => $this->save_image(),
                 ]);
                  $this->getRoute();
             }else {
                 $post = Post::find($this->vid);
                 $post->title = $this->title;
+                $post->description = $this->description;
                 $post->body = $this->body;
+                $post->author_name = $this->author_name;
                 $post->image = $this->save_image();
                 $post->save();
 

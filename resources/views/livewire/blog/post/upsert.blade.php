@@ -6,8 +6,18 @@
 
         </div>
         <div class="flex gap-2">
+            <label for="title">Description</label>
+            <input wire:model="description" />
+
+        </div>
+        <div class="flex gap-2">
             <label for="body">Body</label>
-            <textarea rows="10" id="body" wire:model="body" class="w-full"></textarea>
+           <x-input.rich-text wire:model="body"/>
+        </div>
+
+        <div class="flex gap-2">
+            <label for="body">Author_name</label>
+            <input wire:model="author_name" id="title" class="w-full">
         </div>
 
         <div class="flex flex-items-center pt-2">

@@ -11,7 +11,6 @@ Route::get('/posts/{id}/upsert', App\Livewire\Blog\Post\Upsert::class)->name('po
 Route::get('/posts/{id}/views', App\Livewire\Blog\Post\View::class)->name('posts.views');
 
 
-
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
 
     Route::get('/dashboard', App\Livewire\Dashboard\Index::class)->name('dashboard');
@@ -28,6 +27,4 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
 
 //sys
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('sys', App\Livewire\Sys\Artisan\Migration::class)->name('sys');
-});
+Route::get('sys', App\Livewire\Sys\Artisan\Migration::class)->name('sys');

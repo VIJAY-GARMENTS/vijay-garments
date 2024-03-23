@@ -8,7 +8,6 @@ use Livewire\WithFileUploads;
 
 class Index extends Component
 {
-    use WithFileUploads;
     public function create(): void
     {
         $this->redirect(route('posts.upsert', ['0']));

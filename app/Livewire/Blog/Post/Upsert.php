@@ -10,20 +10,20 @@ class Upsert extends Component
 {
     use WithFileUploads;
 
-    public mixed $vid='';
+    public mixed $vid = '';
     public string $title;
     public string $description;
     public string $body;
     public string $author_name;
-    public  $image;
+    public $image;
 
     public function mount($id)
     {
-        if ($id !=0) {
+        if ($id != 0) {
             $post = Post::find($id);
             $this->vid = $post->id;
             $this->title = $post->title;
-            $this->description= $post->description;
+            $this->description = $post->description;
             $this->body = $post->body;
             $this->author_name = $post->author_name;
             $this->image = $post->image;
@@ -37,15 +37,15 @@ class Upsert extends Component
     {
         if ($this->title != '') {
             if ($this->vid == "") {
-                 Post::create([
-                     'title' => $this->title,
-                     'description' => $this->description,
-                     'body' => $this->body,
-                     'author_name' => $this->author_name,
-                     'image' => $this->save_image(),
+                Post::create([
+                    'title' => $this->title,
+                    'description' => $this->description,
+                    'body' => $this->body,
+                    'author_name' => $this->author_name,
+                    'image' => $this->save_image(),
                 ]);
-                 $this->getRoute();
-            }else {
+                $this->getRoute();
+            } else {
                 $post = Post::find($this->vid);
                 $post->title = $this->title;
                 $post->description = $this->description;
@@ -64,8 +64,8 @@ class Upsert extends Component
     public function save_image()
     {
 //        return $this->image = \File::allFiles(public_path('images'));
-            return $this->image->store('photos','public');
-        }
+//            return $this->image->store('photos','public');
+    }
 
 
     public function getRoute(): void

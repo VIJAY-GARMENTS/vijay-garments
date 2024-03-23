@@ -9,6 +9,7 @@ use Livewire\Component;
 class View extends Component
 {
     use CommonTrait;
+
     public Post $post;
     public function mount($id)
     {

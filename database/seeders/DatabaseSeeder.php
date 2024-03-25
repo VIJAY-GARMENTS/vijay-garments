@@ -70,9 +70,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'kalaiarasan',
-            'email' => 'kalai@aaran.org',
-            'password' => bcrypt('123456789'),
+            'name' => 'kalaiyarasan',
+            'email' => 'kalaiyarasan@aaran.org',
+            'password' => bcrypt('987654321'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'tenant_id'=> '1'

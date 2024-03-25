@@ -92,6 +92,7 @@
                             @endif
                         </x-slot>
 
+
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
@@ -107,7 +108,6 @@
                                     {{ __('API Tokens') }}
                                 </x-dropdown-link>
                             @endif
-
                             <div class="border-t border-gray-200"></div>
 
                             <!-- Authentication -->

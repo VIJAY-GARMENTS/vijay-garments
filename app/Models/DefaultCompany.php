@@ -11,6 +11,10 @@ class DefaultCompany extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    /**
+     * @var \Closure|\Illuminate\Support\HigherOrderCollectionProxy|mixed|object|null
+     */
+//    public  $tenant_id;
 
     protected $guarded = [];
 
@@ -24,4 +28,10 @@ class DefaultCompany extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+
 }

@@ -10,17 +10,24 @@ use Livewire\Component;
 class Index extends Component
 {
     public Collection $companies;
+    public $tenant_id;
 
     public bool $showCompanies = false;
     public company $company;
     public string $company_1 = '';
+
+    public function mount()
+    {
+        $this->switchCompany();
+        $this->setDefault(session()->get('tenant_id'));
+    }
 
     public function getDefaultCompany(): void
     {
         $defaultCompany = DefaultCompany::find(1);
 
 
-        if ($defaultCompany != null ) {
+        if ($defaultCompany != null) {
             if ($defaultCompany->company_id != 0) {
                 $this->company = Company::find($defaultCompany->company_id);
                 $this->company_1 = $this->company->vname;
@@ -40,20 +47,23 @@ class Index extends Component
     public
     function getAllCompanies(): void
     {
-        $this->companies = Company::all();
+        $this->companies = Company::where('tenant_id', '=', session()->get('tenant_id'))->get();
         $this->showCompanies = true;
     }
 
     public
-    function setDefault($id): void
-    {
+    function setDefault(
+        $id
+    ): void {
         $obj = DefaultCompany::find(1);
         if ($obj) {
             $obj->company_id = $id;
+            $obj->tenant_id = session()->get('tenant_id');
             $obj->save();
         } else {
             DefaultCompany::create([
                 'company_id' => $id,
+                'tenant_id' => session()->get('tenant_id'),
                 'acyear' => '1'
             ]);
         }
@@ -73,6 +83,7 @@ class Index extends Component
 
         $this->showCompanies = true;
     }
+
     public function render()
     {
         $this->getDefaultCompany();

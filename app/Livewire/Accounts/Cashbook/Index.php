@@ -4,7 +4,6 @@ namespace App\Livewire\Accounts\Cashbook;
 
 use Aaran\Accounts\Models\Cashbook;
 use Aaran\Orders\Models\Order;
-use App\Livewire\Trait\CommonTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\On;
@@ -46,12 +45,14 @@ class Index extends Component
     {
         $this->showEditModal = true;
         $this->mount();
+        $this->vmode="Payment";
 
     }
     public function create_receipt(): void
     {
         $this->showEditModal_1 = true;
         $this->mount();
+        $this->vmode="Receipt";
 
     }
 

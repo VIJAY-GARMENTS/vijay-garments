@@ -30,6 +30,7 @@ use Aaran\Master\Database\Seeders\ProductSeeder;
 use Aaran\Orders\Database\Seeders\OrderSeeder;
 use Aaran\Orders\Database\Seeders\StyleSeeder;
 use App\Models\Blog\Post;
+use App\Models\Tenant;
 use App\Models\User;
 use Database\Factories\Blog\PostFactory;
 use Illuminate\Database\Seeder;
@@ -39,12 +40,15 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        Tenant::create(['t_name'=>'Aaran']);
+        Tenant::create(['t_name'=>'test']);
         User::create([
             'name' => 'sundar',
             'email' => 'sundar@sundar.com',
             'password' => bcrypt('kalarani'),
             'email_verified_at' => now(),
-            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10),
+            'tenant_id'=> '1',
         ]);
 
         User::create([
@@ -52,7 +56,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'divya@aaran.org',
             'password' => bcrypt('123456789'),
             'email_verified_at' => now(),
-            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10),
+            'tenant_id'=> '1'
         ]);
 
         User::create([
@@ -60,7 +65,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'jagadeesh@aaran.org',
             'password' => bcrypt('123456789'),
             'email_verified_at' => now(),
-            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10),
+            'tenant_id'=> '2'
         ]);
 
         User::create([
@@ -68,7 +74,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'kalai@aaran.org',
             'password' => bcrypt('123456789'),
             'email_verified_at' => now(),
-            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10),
+            'tenant_id'=> '1'
         ]);
 
         CitySeeder::run();
@@ -85,7 +92,7 @@ class DatabaseSeeder extends Seeder
         TransportSeeder::run();
 
         CompanySeeder::run();
-        DefaultCompanySeeder::run();
+//        DefaultCompanySeeder::run();
         ContactSeeder::run();
         ProductSeeder::run();
 

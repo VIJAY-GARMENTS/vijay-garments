@@ -5,6 +5,7 @@ namespace Aaran\Master\Models;
 use Aaran\Common\Models\City;
 use Aaran\Common\Models\Pincode;
 use Aaran\Common\Models\State;
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -48,5 +49,9 @@ class Company extends Model
     public function pincode(): BelongsTo
     {
         return $this->belongsTo(Pincode::class);
+    }
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
     }
 }

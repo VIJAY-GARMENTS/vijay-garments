@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
         TransportSeeder::run();
 
         CompanySeeder::run();
-//        DefaultCompanySeeder::run();
+        DefaultCompanySeeder::run();
         ContactSeeder::run();
         ProductSeeder::run();
 

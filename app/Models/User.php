@@ -69,7 +69,6 @@ class User extends Authenticatable
             'sundar@sundar.com',
             'sundar@codexsun.com',
             'jagadeesh@aaran.org',
-            'divya@aaran.org',
         ]);
     }
 
@@ -88,10 +87,6 @@ class User extends Authenticatable
         return in_array($this->email, [
             'office@aaran.com',
             'sundar@sundar.com',
-            'jagadeesh@aaran.org',
-            'divya@aaran.org',
-            'kalaiyarasan@aaran.org',
-
         ]);
     }
 
@@ -99,9 +94,6 @@ class User extends Authenticatable
     {
         return in_array($this->email, [
             'sundar@sundar.com',
-            'jagadeesh@aaran.org',
-            'divya@aaran.org',
-            'kalaiyarasan@aaran.org',
 
         ]);
     }
@@ -110,10 +102,6 @@ class User extends Authenticatable
     {
         return in_array($this->email, [
             'sundar@sundar.com',
-            'jagadeesh@aaran.org',
-            'divya@aaran.org',
-            'kalaiyarasan@aaran.org',
-
         ]);
     }
 }

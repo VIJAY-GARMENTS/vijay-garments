@@ -5,9 +5,9 @@
      :class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': sidebarOpen === false}">
     <div class="flex justify-between px-5 py-6">
         <a href="{{route('dashboard')}}" class="flex gap-2">
-{{--            <span class="p-1 rounded bg-white">--}}
-{{--            <x-assets.logo.aaran class="h-7 w-auto block"/>--}}
-{{--            </span>--}}
+            {{--            <span class="p-1 rounded bg-white">--}}
+            {{--            <x-assets.logo.aaran class="h-7 w-auto block"/>--}}
+            {{--            </span>--}}
             <span class="font-bold text-2xl sm:text-3xl tracking-widest">{{ config('app.name') }}</span>
         </a>
 
@@ -29,18 +29,16 @@
             x-data="{selected:null}">
 
 
+            <x-menu.sub.entries/>
             <x-menu.sub.erp.production/>
             <x-menu.sub.master/>
             <x-menu.sub.order/>
-            <x-menu.sub.entries/>
             <x-menu.sub.common/>
-            <x-menu.sub.utilities/>
-            <x-menu.sub.task/>
-            <x-menu.sub.audit/>
             <x-menu.sub.accounts/>
-            @editor
+            <x-menu.sub.audit/>
+            <x-menu.sub.task/>
+            <x-menu.sub.utilities/>
             <x-menu.sub.admin/>
-            @endeditor
 
             @magalir
             <x-menu.sub.magalir/>

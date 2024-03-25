@@ -97,9 +97,9 @@
 
     <x-jet.modal wire:model.defer="showEditModal">
         <div class="px-6  pt-4">
+            <label class="text-lg font-extrabold">{{$vmode}}</label>
+            <x-forms.section-border class="py-2"/>
             <x-input.model-date wire:model="vdate" :label="'Date'"/>
-            <x-input.model-select wire:model="vmode" :label="'Type'">
-                <option value="payment">payment</option></x-input.model-select>
             <div class="flex flex-col mb-2">
                 <div class="flex ">
                     <label for="order_no" class="gray-label flex">Order No</label>
@@ -171,9 +171,9 @@
     </x-jet.modal>
     <x-jet.modal wire:model.defer="showEditModal_1">
         <div class="px-6  pt-4">
+            <label class="text-lg font-extrabold">{{$vmode}}</label>
+            <x-forms.section-border class="py-2"/>
             <x-input.model-date wire:model="vdate" :label="'Date'"/>
-            <x-input.model-select wire:model="vmode" :label="'Type'">
-                <option value="receipt">Receipt</option></x-input.model-select>
             <x-input.model-text wire:model="paidby" :label="'Person'"/>
             <x-input.model-text wire:model="receipt" :label="'Receipt'"/>
             <x-input.model-text wire:model="remarks" :label="'Purpose'"/>

@@ -594,12 +594,302 @@
                     </button>
                 </div>
             </div>
-            {{--            <---end row-8---->--}}
+                {{--            <---end row-8---->--}}
+                {{--            <---row-9---->--}}
+                <div class="flex justify-between items-center bg-white-900 p-2">
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('list-bullet')">
+                            <x-icons.icon :icon="'list-bullet'"  class="block w-16 h-auto grid-rows-1 mr-3"/>
+                            <h5 class="mt-8 ">list-bullet</h5>
+                        </button>
+                    </div>
+
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('document-duplicate')">
+                            <x-icons.icon :icon="'document-duplicate'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
+                            <h5 class="mt-5">document-duplicate</h5>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 pt-1"    onclick="copyToClipboard('user-circle')">
+                            <x-icons.icon :icon="'user-circle'"  class="block w-16 h-auto  grid-rows-1 mr-3 mt-3"/>
+                            <h5 class="mt-6">user-circle</h5>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 pt-1"    onclick="copyToClipboard('notification')">
+                            <x-icons.icon :icon="'notification'"  class="block w-16 h-auto  grid-rows-1 mr-3 mt-2"/>
+                            <h5 class="mt-8">notification</h5>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300  pt-1"    onclick="copyToClipboard('book')">
+                            <x-icons.icon :icon="'book'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                            <h5 class="mt-5">book</h5>
+                        </button>
+                    </div>
+
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('credit-card')">
+                            <x-icons.icon :icon="'credit-card'"  class="block w-16 h-auto  grid-rows-1  mr-3"/>
+                            <h5 class="mt-7">credit-card</h5>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('clipboard-doc')">
+                            <x-icons.icon :icon="'clipboard-doc'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                            <h5 class="mt-5">clipboard-doc</h5>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('face-smile')">
+                            <x-icons.icon :icon="'face-smile'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                            <h5 class="mt-5">face-smile</h5>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('folder')">
+                            <x-icons.icon :icon="'folder'"  class="block w-16 h-auto  grid-rows-1  mr-3"/>
+                            <h5 class="mt-8">folder</h5>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 "    onclick="copyToClipboard('bulb')">
+                            <x-icons.icon :icon="'bulb'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
+                            <h5 class="mt-5">bulb</h5>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('lock-closed')">
+                            <x-icons.icon :icon="'lock-closed'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                            <h5 class="mt-5">lock-closed</h5>
+                        </button>
+                    </div>
+                </div>
+            {{--            <---end row-9---->--}}
+            {{--            <--- row-10---->--}}
+
+            <div class="flex justify-between items-center bg-white-900 p-2">
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('lock-open')">
+                        <x-icons.icon :icon="'lock-open'"  class="block w-16 h-auto grid-rows-1 mr-3"/>
+                        <h5 class="mt-8 ">lock-open</h5>
+                    </button>
+                </div>
+
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('minus')">
+                        <x-icons.icon :icon="'minus'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
+                        <h5 class="mt-5">minus</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 pt-1"    onclick="copyToClipboard('arrow-down')">
+                        <x-icons.icon :icon="'arrow-down'"  class="block w-16 h-auto  grid-rows-1 mr-3 mt-3"/>
+                        <h5 class="mt-6">arrow-down</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 pt-1"    onclick="copyToClipboard('bar-center')">
+                        <x-icons.icon :icon="'bar-center'"  class="block w-16 h-auto  grid-rows-1 mr-3 mt-2"/>
+                        <h5 class="mt-8">bar-center</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300  pt-1"    onclick="copyToClipboard('window')">
+                        <x-icons.icon :icon="'window'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                        <h5 class="mt-5">window</h5>
+                    </button>
+                </div>
+
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('truck')">
+                        <x-icons.icon :icon="'truck'"  class="block w-16 h-auto  grid-rows-1  mr-3"/>
+                        <h5 class="mt-7">truck</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('scissors')">
+                        <x-icons.icon :icon="'scissors'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                        <h5 class="mt-5">scissors</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('rocket')">
+                        <x-icons.icon :icon="'rocket'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                        <h5 class="mt-5">rocket</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('shop-bag')">
+                        <x-icons.icon :icon="'shop-bag'"  class="block w-16 h-auto  grid-rows-1  mr-3"/>
+                        <h5 class="mt-8">shop-bag</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 "    onclick="copyToClipboard('sparkles')">
+                        <x-icons.icon :icon="'sparkles'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
+                        <h5 class="mt-5">sparkles</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('star')">
+                        <x-icons.icon :icon="'star'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                        <h5 class="mt-5">star</h5>
+                    </button>
+                </div>
+            </div>
+
+            {{-- <---end row-10---->--}}
+            {{--            <--- row-11---->--}}
+
+
+            <div class="flex justify-between items-center bg-white-900 p-2">
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('common')">
+                        <x-icons.icon :icon="'common'"  class="block w-16 h-auto grid-rows-1 mr-3"/>
+                        <h5 class="mt-8 ">common</h5>
+                    </button>
+                </div>
+
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('dashboard')">
+                        <x-icons.icon :icon="'dashboard'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
+                        <h5 class="mt-5">dashboard</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 pt-1"    onclick="copyToClipboard('users')">
+                        <x-icons.icon :icon="'users'"  class="block w-16 h-auto  grid-rows-1 mr-3 mt-3"/>
+                        <h5 class="mt-6">users</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 pt-1"    onclick="copyToClipboard('scale')">
+                        <x-icons.icon :icon="'scale'"  class="block w-16 h-auto  grid-rows-1 mr-3 mt-2"/>
+                        <h5 class="mt-8">scale</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300  pt-1"    onclick="copyToClipboard('user-group')">
+                        <x-icons.icon :icon="'user-group'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                        <h5 class="mt-5">user-group</h5>
+                    </button>
+                </div>
+
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('dashboard-outline')">
+                        <x-icons.icon :icon="'dashboard-outline'"  class="block w-16 h-auto  grid-rows-1  mr-3"/>
+                        <h5 class="mt-7">dashboard-outline</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('mail')">
+                        <x-icons.icon :icon="'mail'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                        <h5 class="mt-5">mail</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('uturn-left')">
+                        <x-icons.icon :icon="'uturn-left'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                        <h5 class="mt-5">uturn-left</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('uturn-right')">
+                        <x-icons.icon :icon="'uturn-right'"  class="block w-16 h-auto  grid-rows-1  mr-3"/>
+                        <h5 class="mt-8">uturn-right</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 "    onclick="copyToClipboard('bug-ant')">
+                        <x-icons.icon :icon="'bug-ant'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
+                        <h5 class="mt-5">bug-ant</h5>
+                    </button>
+                </div>
+                <div>
+                    <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('link')">
+                        <x-icons.icon :icon="'link'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                        <h5 class="mt-5">link</h5>
+                    </button>
+                </div>
+            </div>
+
+                {{-- <---end row-11---->--}}
+                {{--  <--- row-12---->--}}
+                    <div class="flex justify-between items-center bg-white-900 p-2">
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('yin-yang')">
+                                <x-icons.icon :icon="'yin-yang'"  class="block w-16 h-auto grid-rows-1 bg-white-950 mr-3"/>
+                                <h5 class="mt-8 ">yin-yang</h5>
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('dashboard')">
+                                <x-icons.icon :icon="'dashboard'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
+                                <h5 class="mt-5">dashboard</h5>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 pt-1"    onclick="copyToClipboard('users')">
+                                <x-icons.icon :icon="'users'"  class="block w-16 h-auto  grid-rows-1 mr-3 mt-3"/>
+                                <h5 class="mt-6">users</h5>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 pt-1"    onclick="copyToClipboard('scale')">
+                                <x-icons.icon :icon="'scale'"  class="block w-16 h-auto  grid-rows-1 mr-3 mt-2"/>
+                                <h5 class="mt-8">scale</h5>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300  pt-1"    onclick="copyToClipboard('user-group')">
+                                <x-icons.icon :icon="'user-group'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                                <h5 class="mt-5">user-group</h5>
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('dashboard-outline')">
+                                <x-icons.icon :icon="'dashboard-outline'"  class="block w-16 h-auto  grid-rows-1  mr-3"/>
+                                <h5 class="mt-7">dashboard-outline</h5>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('mail')">
+                                <x-icons.icon :icon="'mail'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                                <h5 class="mt-5">mail</h5>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('uturn-left')">
+                                <x-icons.icon :icon="'uturn-left'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                                <h5 class="mt-5">uturn-left</h5>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('uturn-right')">
+                                <x-icons.icon :icon="'uturn-right'"  class="block w-16 h-auto  grid-rows-1  mr-3"/>
+                                <h5 class="mt-8">uturn-right</h5>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300 "    onclick="copyToClipboard('bug-ant')">
+                                <x-icons.icon :icon="'bug-ant'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-5"/>
+                                <h5 class="mt-5">bug-ant</h5>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="border border-gray-300 p-5 bg-white-600 grid grid-rows-2 w-32 h-32 hover:bg-gray-300"    onclick="copyToClipboard('link')">
+                                <x-icons.icon :icon="'link'"  class="block w-16 h-auto  grid-rows-1 mr-3 mb-3"/>
+                                <h5 class="mt-5">link</h5>
+                            </button>
+                        </div>
+                </div>
+            </div>
 
         </div>
-
-
-
     </x-forms.m-panel>
 </div>
 

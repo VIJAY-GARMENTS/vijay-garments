@@ -7,7 +7,7 @@
                                 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-3">
 
                         <span class="inline-flex justify-center items-center ml-4">
-                             <x-icons.menu icon="terminal"/>
+                             <x-icons.icon :icon="'terminal'" class="w-5 h-auto block"/>
                              <x-menu.header>Master</x-menu.header>
                         </span>
 

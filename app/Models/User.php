@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Scopes\TenantScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -69,6 +70,7 @@ class User extends Authenticatable
             'sundar@sundar.com',
             'sundar@codexsun.com',
             'jagadeesh@aaran.org',
+            'divya@aaran.org',
         ]);
     }
 
@@ -87,6 +89,10 @@ class User extends Authenticatable
         return in_array($this->email, [
             'office@aaran.com',
             'sundar@sundar.com',
+            'jagadeesh@aaran.org',
+            'divya@aaran.org',
+            'kalaiyarasan@aaran.org',
+
         ]);
     }
 
@@ -94,6 +100,9 @@ class User extends Authenticatable
     {
         return in_array($this->email, [
             'sundar@sundar.com',
+            'jagadeesh@aaran.org',
+            'divya@aaran.org',
+            'kalaiyarasan@aaran.org',
 
         ]);
     }
@@ -102,6 +111,15 @@ class User extends Authenticatable
     {
         return in_array($this->email, [
             'sundar@sundar.com',
+            'jagadeesh@aaran.org',
+            'divya@aaran.org',
+            'kalaiyarasan@aaran.org',
+
         ]);
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new TenantScope);
     }
 }

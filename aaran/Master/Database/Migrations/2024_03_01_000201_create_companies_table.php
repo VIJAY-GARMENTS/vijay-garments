@@ -28,6 +28,7 @@ return new class extends Migration
                 $table->foreignId('pincode_id')->references('id')->on('pincodes');
                 $table->string('active_id', 3)->nullable();
                 $table->foreignId('user_id')->references('id')->on('users');
+                $table->foreignId('tenant_id')->references('id')->on('tenants');
                 $table->longText('logo')->nullable();
                 $table->timestamps();
         });

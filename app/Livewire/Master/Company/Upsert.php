@@ -204,6 +204,8 @@ class Upsert extends Component
             ->get() : Pincode::all();
     }
 
+    public $tenant_id;
+
 
     public function save(): string
     {
@@ -225,6 +227,7 @@ class Upsert extends Component
                     'pincode_id' => $this->pincode_id,
                     'active_id' => $this->active_id,
                     'user_id' => Auth::id(),
+                    'tenant_id'=>session()->get('tenant_id'),
                     'logo' => $this->save_logo(),
                 ]);
                 $message = "Saved";

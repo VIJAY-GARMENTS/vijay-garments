@@ -2,6 +2,29 @@
     <x-slot name="header">Sales</x-slot>
 
     <x-forms.m-panel>
+        <div class="flex justify-end" wire:click="show_advance">
+            <x-icons.icon :icon="'adjustments'" class="h-6 w-auto block"/>
+        </div>
+        @if($showEditModal_1)
+        <div class="flex justify-end">
+            <div>
+            <x-input.model-select wire:model.live="filter" :label="'Party Name'">
+                <option value="">choose</option>
+                @foreach($contacts as $i)
+                <option value="{{$i->id}}" >{{$i->vname}}</option>
+                @endforeach
+            </x-input.model-select>
+            </div>
+            <div class="ml-3">
+            <x-input.model-select wire:model.live="byOrder" :label="'Order No'">
+                <option value="">choose</option>
+                @foreach($orders as $i)
+                    <option value="{{$i->id}}" >{{$i->vname}}</option>
+                @endforeach
+            </x-input.model-select>
+            </div>
+        </div>
+        @endif
         <x-forms.top-controls :show-filters="$showFilters"/>
 
         <x-forms.table>

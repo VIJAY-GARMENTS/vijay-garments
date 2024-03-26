@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Entries\Purchase;
+namespace App\Http\Controllers\Entries\invoices;
 
 use Aaran\Entries\Models\Purchase;
 use Aaran\Master\Models\Company;
@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 
-class InvoiceController extends Controller
+class Invoice1Controller extends Controller
 {
     public function __invoke($vid)
     {
@@ -61,7 +61,7 @@ class InvoiceController extends Controller
 
             Pdf::setOption(['dpi' => 150, 'defaultPaperSize'=>'a4', 'defaultFont' => 'sans-serif']);
 
-            $pdf = PDF::loadView('pdf.entries.sales.invoice1',[
+            $pdf = PDF::loadView('pdf.entries.purchase.invoice',[
                 'obj' => $peout,
                 'rupees'=>ConvertTo::ruppesToWords($peout->grand_total),
                 'list' => $peoutItem,

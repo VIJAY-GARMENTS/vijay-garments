@@ -3,23 +3,46 @@
 namespace App\Livewire\Entries\Sales;
 
 use Aaran\Entries\Models\Sale;
+use Aaran\Master\Models\Contact;
+use Aaran\Orders\Models\Order;
 use App\Livewire\Trait\CommonTrait;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Index extends Component
 {
     use CommonTrait;
+    public $filter;
+    public $byOrder;
+
+
+    public Collection $contacts;
+    public Collection $orders;
     public $sortField_1='invoice_no';
+    public $showEditModal_1=false;
+
     public function create(): void
     {
         $this->redirect(route('sales.upsert', ['0']));
     }
 
+    public function show_advance()
+    {
+        $this->showEditModal_1=true;
+    }
+
     public function getList()
     {
+
         return Sale::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->when($this->filter,function ($query,$filter){
+                return $query->where('contact_id',$filter);
+            })
+            ->when($this->byOrder,function ($query,$byOrder){
+                return $query->where('order_id',$byOrder);
+            })
             ->where('company_id', '=',  session()->get('company_id'))
             ->orderBy($this->sortField_1, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
@@ -80,9 +103,23 @@ class Index extends Component
         $this->redirect(route('sales.print', [$this->getObj($id)]));
     }
 
+    public function getContact()
+    {
+        $this->contacts=Contact::all();
+
+    }
+    public function getOrder()
+    {
+        $this->orders=Order::all();
+
+    }
+
     public function render()
     {
-        return view('livewire.entries.sales.index')->with([
+        $this->getContact();
+        $this->getOrder();
+        return view('livewire.entries.sales.index')
+            ->with([
             'list' => $this->getList()
         ]);
     }

@@ -7,7 +7,7 @@
             <livewire:sys.default-company.index/>
 
             <div class="flex justify-between gap-3">
-                <livewire:taskmanager.todos.index/>
+{{--                <livewire:taskmanager.todos.index/>--}}
 {{--                <livewire:attendance.attendance.index/>--}}
             </div>
 

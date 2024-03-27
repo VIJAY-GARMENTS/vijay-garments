@@ -46,6 +46,7 @@ class Index extends Component
             'vdate' => $this->vdate,
             'vname' => $this->vname,
             'completed' => $this->completed,
+            'company_id' => session()->get('company_id'),
             'active_id' => '1'
         ]);
 

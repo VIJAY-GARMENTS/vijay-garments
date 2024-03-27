@@ -26,6 +26,7 @@ class ContactSeeder extends Seeder
            'pincode_id' => '1',
            'active_id' => '1',
            'user_id' => '1',
+           'company_id'=>'1',
        ]);
     }
 }

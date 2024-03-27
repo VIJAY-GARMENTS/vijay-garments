@@ -26,6 +26,7 @@ return new class extends Migration
             $table->foreignId('pincode_id')->references('id')->on('pincodes');
             $table->string('active_id', 3)->nullable();
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->timestamps();
             $table->unique(['vname', 'mobile']);
         });

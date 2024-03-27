@@ -18,7 +18,7 @@ class PeOutward extends Model
     public static function search(string $searches)
     {
         return empty($searches) ? static::query()
-            : static::where('vname', 'like', '%' . $searches . '%');
+            : static::where('vno', 'like', '%' . $searches . '%');
     }
 
     protected static function newFactory(): PeOutwardFactory

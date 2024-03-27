@@ -29,7 +29,7 @@ class Index extends Component
 
     public function show_advance()
     {
-        $this->showEditModal_1=true;
+        $this->showEditModal_1 = !$this->showEditModal_1;
     }
 
     public function getList()

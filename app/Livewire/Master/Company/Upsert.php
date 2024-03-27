@@ -7,6 +7,7 @@ use Aaran\Common\Models\Pincode;
 use Aaran\Common\Models\State;
 use Aaran\Master\Models\Company;
 use App\Livewire\Trait\CommonTrait;
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -33,6 +34,8 @@ class Upsert extends Component
     public string $cities;
     public string $states;
     public string $pincode;
+    public $tenant_id;
+    public Collection $tenants;
 
 
     public $city_id = '';
@@ -204,9 +207,6 @@ class Upsert extends Component
             ->get() : Pincode::all();
     }
 
-    public $tenant_id;
-
-
     public function save(): string
     {
         if ($this->vname != '') {
@@ -227,7 +227,7 @@ class Upsert extends Component
                     'pincode_id' => $this->pincode_id,
                     'active_id' => $this->active_id,
                     'user_id' => Auth::id(),
-                    'tenant_id'=>session()->get('tenant_id'),
+                    'tenant_id'=>$this->tenant_id,
                     'logo' => $this->save_logo(),
                 ]);
                 $message = "Saved";
@@ -249,6 +249,7 @@ class Upsert extends Component
                 $obj->state_id = $this->state_id;
                 $obj->pincode_id = $this->pincode_id;
                 $obj->active_id = $this->active_id;
+                $obj->tenant_id = $this->tenant_id;
                 $obj->user_id = Auth::id();
                 $obj->logo = $this->save_logo();
                 $obj->save();
@@ -326,12 +327,18 @@ class Upsert extends Component
     {
         $this->redirect(route('companies'));
     }
+    public function getTenants()
+    {
+        $this->tenants=Tenant::all();
+
+    }
 
     public function render()
     {
         $this->getCityList();
         $this->getStateList();
         $this->getPincodeList();
+        $this->getTenants();
         return view('livewire.master.company.upsert');
     }
 

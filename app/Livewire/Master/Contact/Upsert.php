@@ -206,7 +206,7 @@ class Upsert extends Component
         if ($this->vname != '') {
             if ($this->vid == "") {
                 Contact::create([
-                    'vname' => Str::ucfirst($this->vname),
+                    'vname' => Str::upper($this->vname),
                     'mobile' => $this->mobile,
                     'whatsapp' => $this->whatsapp,
                     'email' => $this->email,
@@ -225,7 +225,7 @@ class Upsert extends Component
 
             } else {
                 $obj = Contact::find($this->vid);
-                $obj->vname = Str::ucfirst($this->vname);
+                $obj->vname = Str::upper($this->vname);
                 $obj->mobile = $this->mobile;
                 $obj->whatsapp = $this->whatsapp;
                 $obj->email = $this->email;

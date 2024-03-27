@@ -92,7 +92,7 @@ class Index extends Component
 
     public function getList()
     {
-        return Todos::all();
+        return Todos::where('company_id','=',session()->get('company_id'));
 
     }
 

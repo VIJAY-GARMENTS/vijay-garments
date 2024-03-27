@@ -26,6 +26,7 @@ class Index extends Component
                     'group' => Str::ucfirst($this->group),
                     'payable' => $this->payable,
                     'active_id' => $this->active_id,
+                    'company_id' => session()->get('company_id'),
                     'user_id' => Auth::id(),
                 ]);
 
@@ -40,6 +41,7 @@ class Index extends Component
                 $obj->group = Str::ucfirst($this->group);
                 $obj->payable = $this->payable;
                 $obj->active_id = $this->active_id ?: '0';
+                $obj->company_id = session()->get('company_id');
                 $obj->user_id = Auth::id();
                 $obj->save();
                 $message = "Updated";
@@ -100,6 +102,7 @@ class Index extends Component
 
         return Client::search($this->searches)
             ->where('active_id','=',$this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

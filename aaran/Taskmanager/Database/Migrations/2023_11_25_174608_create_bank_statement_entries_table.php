@@ -14,6 +14,7 @@ return new class extends Migration
             $table->date('entry')->nullable();
             $table->string('remarks')->nullable();
             $table->string('status_id', 3)->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('active_id',10)->nullable();
             $table->timestamps();

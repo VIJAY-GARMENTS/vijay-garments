@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('group');
             $table->string('payable',3)->nullable();
             $table->string('active_id', 3)->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

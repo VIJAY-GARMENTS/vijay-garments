@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('task_id')->references('id')->on('tasks');
             $table->text('vname');
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

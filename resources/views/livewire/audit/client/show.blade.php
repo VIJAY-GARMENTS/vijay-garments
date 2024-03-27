@@ -7,9 +7,9 @@
             <div class="flex flex-row gap-2 justify-between">
 
                 <div class="flex  flex-row gap-3">
-                <div class="text-xl text-gray-500 py-2">Client Id:</div>
-                <div
-                    class="text-2xl bg-amber-200 rounded-full px-4 py-1 flex items-center justify-center">{{$client->id}}</div>
+{{--                <div class="text-xl text-gray-500 py-2">Client Id:</div>--}}
+{{--                <div--}}
+{{--                    class="text-2xl bg-amber-200 rounded-full px-4 py-1 flex items-center justify-center">{{$client->id}}</div>--}}
                 </div>
 
 

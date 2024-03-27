@@ -19,12 +19,14 @@ class Index extends Component
                 SalesTrack::create([
                     'vname' => $this->vname,
                     'status' => $this->status ?: '1',
+                    'company_id' => session()->get('company_id'),
                     'active_id' => $this->active_id ?: '0'
                 ]);
             } else {
                 $obj = SalesTrack::find($this->vid);
                 $obj->vname = $this->vname;
                 $obj->status = $this->status;
+                $obj->company_id = session()->get('company_id');
                 $obj->active_id = $this->active_id;
                 $obj->save();
             }
@@ -50,6 +52,7 @@ class Index extends Component
     {
         return SalesTrack::search($this->searches)
             ->where('active_id', '=', '1')
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

@@ -21,6 +21,7 @@ class Index extends Component
                     Style::create([
                         'vname' => Str::upper($this->vname),
                         'desc' => Str::ucfirst($this->desc),
+                        'company_id' => session()->get('company_id'),
                         'active_id' => $this->active_id,
                     ]);
                     $message = "Saved";
@@ -29,6 +30,7 @@ class Index extends Component
                     $obj = Style::find($this->vid);
                     $obj->vname = Str::upper($this->vname);
                     $obj->desc = Str::ucfirst($this->desc);
+                    $obj->company_id = session()->get('company_id');
                     $obj->active_id = $this->active_id ?: '0';
                     $obj->save();
                     $message = "Updated";
@@ -59,6 +61,7 @@ class Index extends Component
 
         return Style::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

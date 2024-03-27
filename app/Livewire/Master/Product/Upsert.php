@@ -75,6 +75,7 @@ class Upsert extends Component
     public string $product_type;
     public string $units;
     public string $gst_percent;
+    public  $company_id;
 
     public function save(): string
     {
@@ -87,6 +88,7 @@ class Upsert extends Component
                     'units' => $this->units,
                     'gst_percent' => $this->gst_percent,
                     'active_id' => $this->active_id,
+                    'company_id' => session()->get('company_id'),
                     'user_id' => Auth::id()
                 ]);
                 $message = "Saved";
@@ -100,6 +102,7 @@ class Upsert extends Component
                 $obj->units = $this->units;
                 $obj->gst_percent = $this->gst_percent;
                 $obj->active_id = $this->active_id;
+                $obj->company_id = session()->get('company_id');
                 $obj->user_id = Auth::id();
                 $obj->save();
                 $message = "Updated";

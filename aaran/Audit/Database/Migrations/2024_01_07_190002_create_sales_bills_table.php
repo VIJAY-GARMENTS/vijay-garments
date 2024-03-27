@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->decimal('grand_total')->nullable();
             $table->string('vehicle')->nullable();
             $table->decimal('status')->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->string('active_id', 10)->nullable();
             $table->timestamps();
         });

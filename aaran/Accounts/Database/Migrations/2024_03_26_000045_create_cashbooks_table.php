@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('approved')->nullable();
             $table->string('remarks')->nullable();
             $table->string('status_id')->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->string('active_id',10)->nullable();
             $table->timestamps();
         });

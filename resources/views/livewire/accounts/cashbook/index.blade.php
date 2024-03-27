@@ -24,10 +24,10 @@
 
         <x-slot name="table_body">
 
-            @forelse($list as $row)
+            @forelse($list as $index=> $row)
                 <tr class="hover:bg-yellow-100">
 
-                    <x-table.cell>{{$row->id}}</x-table.cell>
+                    <x-table.cell>{{ $index+1 }}</x-table.cell>
 
                     <x-table.cell>{{date('d-m-Y', strtotime($row->vdate))}}</x-table.cell>
                     {{-- <x-table.cell>{{$row->vmode}}</x-table.cell>--}}

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('gstr3b_arn')->nullable();
             $table->string('gstr3b_date')->nullable();
             $table->string('status_id', 3)->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

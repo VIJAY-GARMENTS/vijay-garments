@@ -13,6 +13,7 @@ return new class extends Migration
             $table->foreignId('client_id')->references('id')->on('clients');
             $table->string('vname');
             $table->string('mode');
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->string('active_id', 3)->nullable();
             $table->timestamps();
         });

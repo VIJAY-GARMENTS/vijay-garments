@@ -220,6 +220,7 @@ class ContactModel extends Component
                 'city_id' => $this->city_id ?: 1,
                 'state_id' => $this->state_id ?: 1,
                 'pincode_id' => $this->pincode_id ?: 1,
+                'company_id'=>session()->get('company_id'),
                 'user_id' => Auth::id(),
                 'active_id' => '1'
             ]);

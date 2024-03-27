@@ -17,6 +17,7 @@ class Index extends Component
     {
         return Product::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

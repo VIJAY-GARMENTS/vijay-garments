@@ -33,6 +33,7 @@ class Index extends Component
                 'in_time' => $this->in_time,
                 'out_time' => $this->out_time,
                 'amount' => $this->amount,
+                'company_id' => session()->get('company_id'),
             ]);
         } else {
             $obj = Attendance::find($this->vid);
@@ -41,6 +42,7 @@ class Index extends Component
             $obj->in_time = $this->in_time;
             $obj->out_time = Carbon::now()->format('g:i:s');
             $obj->amount = 307.69;
+            $obj->company_id = session()->get('company_id');
             $obj->save();
         }
     }
@@ -50,7 +52,7 @@ class Index extends Component
         return Attendance::all()->whereBetween('vdate',  [
             Carbon::now()->startOfMonth()->format('Y-m-d'),
             Carbon::now()->endOfMonth()->format('Y-m-d')
-        ]) ->where('user_id', Auth::id());
+        ])  ->where('company_id', '=', session()->get('company_id'))->where('user_id', Auth::id());
     }
 
     public function getObj($id)

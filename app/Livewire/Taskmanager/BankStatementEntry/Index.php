@@ -49,6 +49,7 @@ class Index extends Component
             $this->entry = $obj->entry;
             $this->remarks = $obj->remarks;
             $this->status_id = $obj->status_id;
+            $obj->company_id = session()->get('company_id');
             $this->active_id = $obj->active_id;
         }
     }
@@ -63,6 +64,7 @@ class Index extends Component
             )
             ->join('client_banks', 'client_banks.id', '=', 'bank_statement_entries.client_banks_id')
             ->where('bank_statement_entries.active_id','=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }
@@ -83,6 +85,7 @@ class Index extends Component
                     'remarks' => '',
                     'status_id' => '1',
                     'active_id' => '1',
+                    'company_id' => session()->get('company_id'),
                     'user_id' => Auth::id()
                 ]);
             }

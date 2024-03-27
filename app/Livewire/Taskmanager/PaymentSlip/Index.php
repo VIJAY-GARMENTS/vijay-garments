@@ -59,6 +59,7 @@ class Index extends Component
                     'paid' => $this->paid ?: 0,
                     'paidOn' => $this->paidOn ?: (Carbon::parse(Carbon::now())->format('Y-m-d')),
                     'active_id' => $this->active_id ?: '0',
+                    'company_id' => session()->get('company_id'),
                     'status' => $this->status ?: '0',
                     'user_id' => Auth::id(),
                 ]);
@@ -77,6 +78,7 @@ class Index extends Component
                 $obj->active_id = $this->active_id ?: '0';
                 $obj->status = $this->status ?: '0';
                 $obj->user_id = Auth::id();
+                $obj->company_id = session()->get('company_id');
                 $obj->save();
                 $message = "Updated";
             }
@@ -126,16 +128,19 @@ class Index extends Component
             return PaymentSlip::search($this->searches)
                 ->whereDate('paidOn', '=', $this->cdate)
                 ->where('active_id', '=', $this->activeRecord)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage);
         } elseif ($this->group) {
             return PaymentSlip::search($this->searches)
                 ->where('group', '=', $this->group)
                 ->where('active_id', '=', $this->activeRecord)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage);
         } elseif ($this->allgroup) {
             return PaymentSlip::search($this->searches)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->where('group', '=', $this->allgroup)
                 ->orderBy('group')
                 ->orderBy('serial')
@@ -146,6 +151,7 @@ class Index extends Component
                 return PaymentSlip::search($this->searches)
                     ->where('sender_id', '=', $this->client_id)
                     ->where('active_id', '=', $this->activeRecord)
+                    ->where('company_id', '=', session()->get('company_id'))
                     ->where('receiver_id', '=', $this->receive_id)
                     ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                     ->paginate($this->perPage);
@@ -153,6 +159,7 @@ class Index extends Component
                 return PaymentSlip::search($this->searches)
                     ->where('sender_id', '=', $this->client_id)
                     ->where('active_id', '=', $this->activeRecord)
+                    ->where('company_id', '=', session()->get('company_id'))
                     ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                     ->paginate($this->perPage);
             }
@@ -162,11 +169,13 @@ class Index extends Component
                 ->where('active_id', '=', $this->activeX)
                 ->orderBy('group')
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                ->where('company_id', '=', session()->get('company_id'))
                 ->paginate($this->perPage);
         }
         return PaymentSlip::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+            ->where('company_id', '=', session()->get('company_id'))
             ->paginate($this->perPage);
     }
 

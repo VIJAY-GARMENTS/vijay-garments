@@ -44,7 +44,7 @@ class Show extends Component
     public function mount($id)
     {
 
-        $this->clients = Client::all();
+        $this->clients = Client::all()->where('company_id','=',session()->get('company_id'));
 
         if ($id) {
             $this->client_id = $id;
@@ -178,7 +178,8 @@ class Show extends Component
                 'client_id' => $this->client_id,
                 'vname' => $this->companyx,
                 'mode' => $this->modex,
-                'active_id' => Active::ACTIVE->value
+                'active_id' => Active::ACTIVE->value,
+                'company_id' => session()->get('company_id'),
             ]);
         }
 
@@ -201,7 +202,8 @@ class Show extends Component
 
     public function getBilling(): void
     {
-        $this->billing = Biller::where('client_id', '=', $this->client_id)->get();
+        $this->billing = Biller::where('client_id', '=', $this->client_id)
+            ->where('company_id', '=', session()->get('company_id'))->get();
     }
 
     public function getTurnover(): void

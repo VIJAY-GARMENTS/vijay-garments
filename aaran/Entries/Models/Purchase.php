@@ -22,7 +22,7 @@ class Purchase extends Model
     public static function search(string $searches): Builder
     {
         return empty($searches) ? static::query()
-            : static::where('invoice_no', 'like', '%' . $searches . '%');
+            : static::where('purchase_no', 'like', '%' . $searches . '%');
     }
 
     public static function nextNo()

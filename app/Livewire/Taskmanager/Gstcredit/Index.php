@@ -55,6 +55,7 @@ class Index extends Component
             $obj->remarks = $this->remarks;
 
             $obj->user_id = Auth::id();
+            $obj->company_id = session()->get('company_id');
             $obj->save();
         }
 
@@ -102,13 +103,14 @@ class Index extends Component
         return Gstcredit::search($this->searches)
             ->where('month', '=', $this->month)
             ->where('year', '=', $this->year)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }
 
     public function generate()
     {
-        $gstClient = Client::all();
+        $gstClient = Client::all()->where('company_id', '=', session()->get('company_id'));
 
         foreach ($gstClient as $obj) {
 
@@ -133,6 +135,7 @@ class Index extends Component
                     'purchase_cgst' => 0,
                     'purchase_sgst' => 0,
                     'remarks' => '',
+                    'company_id' => session()->get('company_id'),
                     'user_id' => Auth::id()
                 ]);
             }

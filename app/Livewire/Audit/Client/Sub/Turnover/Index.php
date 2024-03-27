@@ -32,6 +32,7 @@ class Index extends Component
             $obj = Turnover::find($this->vid);
             $obj->target = $this->target;
             $obj->achieved = $this->achieved;
+            $obj->company_id = session()->get('company_id');
             $obj->remarks = $this->remarks;
 
             if ($this->target == $this->achieved) {
@@ -65,6 +66,7 @@ class Index extends Component
     private function getList(): void
     {
         $this->list = Turnover::where('client_id', '=', $this->client_id)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy('year')
             ->orderBy('month')
             ->get();

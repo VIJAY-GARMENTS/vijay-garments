@@ -110,7 +110,9 @@ class Upsert extends Component
     public function getContactList(): void
     {
 
-        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get() : Contact::all();
+        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))
+            ->where('company_id', '=', session()->get('company_id'))
+            ->get() : Contact::where('company_id', '=', session()->get('company_id'))->get();
 
     }
 

@@ -39,6 +39,7 @@ class Index extends Component
                     'remarks' => $this->remarks,
                     'active_id' => $this->active_id ?: '0',
                     'user_id' => Auth::id(),
+                    'company_id' => session()->get('company_id'),
                     'priority' => $this->priority
                 ]);
                 $message = "Saved";
@@ -51,6 +52,7 @@ class Index extends Component
                 $obj->remarks = $this->remarks;
                 $obj->active_id = $this->active_id ?: '0';
                 $obj->user_id = Auth::id();
+                $obj->company_id = session()->get('company_id');
                 $obj->priority = $this->priority;
                 $obj->save();
                 $message = "Updated";
@@ -88,6 +90,7 @@ class Index extends Component
         if ($this->cdate) {
             return NoticeBoard::search($this->searches)
                 ->whereDate('cdate', '=', $this->cdate)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage);
         } else {

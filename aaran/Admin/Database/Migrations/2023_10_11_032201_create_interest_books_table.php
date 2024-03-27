@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('received',11,2);
             $table->date('received_date');
             $table->string('remarks');
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

@@ -46,6 +46,7 @@ class Bill extends Component
                     'grand_total' => '0',
                     'vehicle' => $this->vehicle ?: '',
                     'status' => '1',
+                    'company_id' => session()->get('company_id'),
                     'active_id' => $this->active_id ?: '0',
                 ]);
 
@@ -57,6 +58,7 @@ class Bill extends Component
                 $obj->vdate = $this->vdate;
                 $obj->client_id = $this->client_id;
                 $obj->vehicle = $this->vehicle ?: '';
+                $obj->company_id = session()->get('company_id');
                 $obj->active_id = $this->active_id;
                 $obj->save();
             }
@@ -105,6 +107,7 @@ class Bill extends Component
         return SalesTrackBill::search($this->searches)
             ->where('sales_track_item_id', '=', $this->sales_track_item_id)
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

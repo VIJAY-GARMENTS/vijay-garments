@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('purchase_cgst',13,2)->nullable();
             $table->decimal('purchase_sgst',13,2)->nullable();
             $table->string('remarks')->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

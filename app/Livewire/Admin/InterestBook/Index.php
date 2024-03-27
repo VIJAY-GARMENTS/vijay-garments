@@ -61,6 +61,7 @@ class Index extends Component
                 'credit' => $this->credit,
                 'debit' => $this->debit,
                 'active_id' => $this->active_id,
+                'company_id' => session()->get('company_id'),
                 'user_id' => Auth::id(),
             ]);
             $message = "Saved";
@@ -72,6 +73,7 @@ class Index extends Component
             $obj->credit = $this->credit;
             $obj->debit = $this->debit;
             $obj->active_id = $this->active_id ?: '0';
+            $obj->company_id = session()->get('company_id');
             $obj->user_id = Auth::id();
             $obj->save();
             $message = "Updated";
@@ -113,6 +115,7 @@ class Index extends Component
 
         return InterestBook::search($this->searches)
             ->where('credit_book_id', '=', $this->creditBook->id)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

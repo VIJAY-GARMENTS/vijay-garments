@@ -10,6 +10,7 @@ class ContactSeeder extends Seeder
     public static function  run(): void
     {
        Contact::create([
+           'contact_no'=>'1',
            'vname' => 'AARAN SOFTWARE',
            'contact_person' => 'SUNDAR',
            'mobile' => '9655227738',

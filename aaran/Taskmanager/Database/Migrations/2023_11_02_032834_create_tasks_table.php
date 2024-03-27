@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('body');
             $table->string('channel', 3)->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('allocated')->references('id')->on('users');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('status', 3)->nullable();

@@ -50,6 +50,7 @@ class Show extends Component
                 Reply::create([
                     'task_id' => $this->task_id,
                     'vname' => $this->reply,
+                    'company_id' => session()->get('company_id'),
                     'user_id' => Auth::user()->id,
                 ]);
 

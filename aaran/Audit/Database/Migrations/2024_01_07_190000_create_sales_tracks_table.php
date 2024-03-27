@@ -14,6 +14,7 @@ return new class extends Migration
             $table->integer('year')->nullable();
             $table->string('vname')->unique();
             $table->integer('status')->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->string('active_id',10)->nullable();
             $table->timestamps();
         });

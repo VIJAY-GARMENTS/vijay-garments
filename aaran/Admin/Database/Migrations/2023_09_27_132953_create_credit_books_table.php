@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('vname')->unique();
             $table->decimal('closing',11,2);
             $table->string('active_id', 3)->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

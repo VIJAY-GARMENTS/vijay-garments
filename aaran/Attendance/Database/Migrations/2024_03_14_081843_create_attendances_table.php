@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('in_time')->nullable();
             $table->string('out_time')->nullable();
             $table->string('amount')->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
 
         });

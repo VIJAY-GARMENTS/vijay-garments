@@ -47,6 +47,7 @@ class Filling extends Component
             } else {
                 $obj->status_id = Status::PENDING->value;
             }
+            $obj->company_id=session()->get('company_id');
             $obj->user_id = Auth::id();
             $obj->save();
         }
@@ -77,19 +78,21 @@ class Filling extends Component
         return Gstfilling::search($this->searches)
             ->where('month', '=', $this->month)
             ->where('year', '=', $this->year)
+            ->where('company_id','=',session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }
 
     public function generate()
     {
-        $gstClient = Client::all();
+        $gstClient = Client::all()->where('company_id','=',session()->get('company_id'));
 
         foreach ($gstClient as $obj) {
 
             $gstv = Gstfilling::where('client_id', '=', $obj->id)
                 ->Where('month', '=', $this->month)
                 ->Where('year', '=', $this->year)
+                ->where('company_id','=',session()->get('company_id'))
                 ->get();
 
             if ($gstv->count() == 0) {
@@ -103,6 +106,7 @@ class Filling extends Component
                     'gstr3b_arn' => '',
                     'gstr3b_date' => '',
                     'status_id' => '1',
+                    'company_id'=> session()->get('company_id'),
                     'user_id' => Auth::id()
                 ]);
             }

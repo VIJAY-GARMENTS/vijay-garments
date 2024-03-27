@@ -1,6 +1,7 @@
 <div >
     <x-slot name="header">Contact Entry</x-slot>
     <x-forms.m-panel>
+        <x-input.model-text wire:model="contact_no" :label="'Sl No'"/>
         <x-input.model-text wire:model="vname" :label="'Name'"/>
         <x-input.model-text wire:model="mobile" :label="'Mobile'"/>
         <x-input.model-text wire:model="whatsapp" :label="'Whatsapp'"/>

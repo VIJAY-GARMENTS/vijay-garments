@@ -29,8 +29,8 @@ class Mytask extends Component
     public function mount()
     {
         $this->cdate = (Carbon::parse(Carbon::now())->format('Y-m-d'));
-        $this->users = User::all();
-        $this->clients = Client::all();
+        $this->users = User::all()->where('tenant_id','=',session()->get('tenant_id'));
+        $this->clients = Client::all()->where('company_id','=',session()->get('company_id'));
     }
 
     public function getSave(): string
@@ -46,6 +46,7 @@ class Mytask extends Component
                     'allocated' => $this->allocated,
                     'user_id' => Auth::user()->id,
                     'status' => 1,
+                    'company_id' => session()->get('company_id'),
                     'active_id' => $this->active_id ? 1 : 0
                 ]);
                 $message = "Saved";
@@ -58,6 +59,7 @@ class Mytask extends Component
                 $obj->channel = $this->channel;
                 $obj->allocated = $this->allocated;
                 $obj->status = $this->status;
+                $obj->company_id = session()->get('company_id');
                 $obj->active_id = $this->active_id;
                 $obj->save();
                 $message = "Updated";
@@ -101,6 +103,7 @@ class Mytask extends Component
         return Task::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
             ->where('allocated', '=', Auth::id())
+            ->where('company_id', '=', session()->get('company_id'))
             ->where('status', '!=', 100)
             ->with('user',)
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')

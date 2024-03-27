@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('vname')->unique();
             $table->string('desc')->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->string('active_id', 3)->nullable();
             $table->timestamps();
         });

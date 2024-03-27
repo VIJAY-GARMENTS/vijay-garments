@@ -24,6 +24,7 @@ class Index extends Component
                     'vname' => Str::upper($this->vname),
                     'closing' => $this->closing,
                     'active_id' => $this->active_id,
+                    'company_id' => session()->get('company_id'),
                     'user_id' => Auth::id(),
                 ]);
                 $message = "Saved";
@@ -33,6 +34,7 @@ class Index extends Component
                 $obj->vname = Str::upper($this->vname);
                 $obj->closing = $this->closing;
                 $obj->active_id = $this->active_id;
+                $obj->company_id = session()->get('company_id');
                 $obj->user_id = Auth::id();
                 $obj->save();
                 $message = "Updated";
@@ -62,6 +64,7 @@ class Index extends Component
 
         return CreditBook::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

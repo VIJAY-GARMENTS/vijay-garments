@@ -44,6 +44,7 @@ class Index extends Component
                     'duration' => $this->duration,
                     'channel' => $this->channel,
                     'remarks' => $this->remarks,
+                    'company_id' => session()->get('company_id'),
                     'active_id' => $this->active_id,
                 ]);
                 $message = "Saved";
@@ -57,6 +58,7 @@ class Index extends Component
                 $obj->duration = $this->duration;
                 $obj->channel = $this->channel;
                 $obj->remarks = $this->remarks;
+                $obj->company_id = session()->get('company_id');
                 $obj->active_id = $this->active_id;
                 $obj->save();
                 $message = "Updated";
@@ -95,6 +97,7 @@ class Index extends Component
 
         return Activities::search($this->searches)
             ->whereDate('cdate', '=', $this->cdate)
+            ->where('company_id', '=', session()->get('company_id'))
             ->where('user_id', '=', Auth::id())
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);

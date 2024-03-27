@@ -291,7 +291,7 @@ class Upsert extends Component
     //
     // properties
     //
-    public string $vno = '';
+    public  $vno = '';
     public string $vdate = '';
     public string $contact_dc = '';
     public string $dc_date = '';

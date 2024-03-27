@@ -90,6 +90,7 @@ class Index extends Component
         $obj->balance = ($this->openingbalance + $this->receipt) - $this->payment;
         $obj->approved = $this->approved;
         $obj->remarks = $this->remarks;
+        $obj->company_id = session()->get('company_id');
         $obj->status_id = $this->status_id;
         $obj->save();
         session()->flash('success', '"' . $this->vmode . '"  has been updated.');
@@ -294,6 +295,7 @@ class Index extends Component
             'balance' => ($this->balance + $this->receipt) - $this->payment,
             'approved' => "0",
             'remarks' =>$this->remarks,
+            'company_id' => session()->get('company_id'),
             'status_id' => '1',
         ]);
 
@@ -320,6 +322,7 @@ class Index extends Component
 
         return view('livewire.accounts.cashbook.index', [
             'list' => Cashbook::search($this->searches)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage)
         ]);

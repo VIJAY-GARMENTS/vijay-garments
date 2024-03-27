@@ -25,6 +25,7 @@ class Upsert extends Component
     public string $address_1 = '';
     public string $address_2 = '';
     public  $company_id;
+    public $contact_no;
 
     public string $cities;
     public string $states;
@@ -207,6 +208,7 @@ class Upsert extends Component
             if ($this->vid == "") {
                 Contact::create([
                     'vname' => Str::upper($this->vname),
+                    'contact_no'=>$this->contact_no,
                     'mobile' => $this->mobile,
                     'whatsapp' => $this->whatsapp,
                     'email' => $this->email,
@@ -226,6 +228,7 @@ class Upsert extends Component
             } else {
                 $obj = Contact::find($this->vid);
                 $obj->vname = Str::upper($this->vname);
+                $obj->contact_no = $this->contact_no;
                 $obj->mobile = $this->mobile;
                 $obj->whatsapp = $this->whatsapp;
                 $obj->email = $this->email;
@@ -260,11 +263,13 @@ class Upsert extends Component
 
     public function mount($id): void
     {
+        $this->contact_no = Contact::nextNo();
         if ($id!=0){
 
         $obj=Contact::find($id);
         $this->vid = $obj->id;
         $this->vname = $obj->vname;
+        $this->contact_no = $obj->contact_no;
         $this->mobile = $obj->mobile;
         $this->whatsapp = $obj->whatsapp;
         $this->email = $obj->email;
@@ -288,6 +293,7 @@ class Upsert extends Component
             $obj = Contact::find($id);
             $this->vid = $obj->id;
             $this->vname = $obj->vname;
+            $this->contact_no = $obj->contact_no;
             $this->mobile = $obj->mobile;
             $this->whatsapp = $obj->whatsapp;
             $this->email = $obj->email;

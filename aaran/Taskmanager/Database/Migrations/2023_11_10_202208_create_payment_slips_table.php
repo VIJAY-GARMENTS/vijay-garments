@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('paidOn')->nullable();
             $table->string('status')->nullable();
             $table->string('active_id',10)->nullable();
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

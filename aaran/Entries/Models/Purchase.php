@@ -27,7 +27,7 @@ class Purchase extends Model
 
     public static function nextNo()
     {
-        return static::max('Entry_no') + 1;
+        return static::where('company_id','=',session()->get('company_id'))->max('Entry_no') + 1;
     }
 
     public function contact(): BelongsTo

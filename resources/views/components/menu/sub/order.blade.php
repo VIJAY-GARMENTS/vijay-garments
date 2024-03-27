@@ -7,7 +7,7 @@
                                 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-3">
 
                         <span class="inline-flex justify-center items-center ml-4">
-                            <x-icons.menu icon="color-swatch"/>
+                            <x-icons.icon :icon="'cart'" class="w-5 h-auto block"/>
                              <x-menu.header>Order Details</x-menu.header>
                         </span>
 

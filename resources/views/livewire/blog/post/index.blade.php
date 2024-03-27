@@ -1,8 +1,8 @@
 <div class="p-10">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="text-right ">
-            @editor
-            <x-button.new class="bg-amber-950 hover:bg-amber-950"></x-button.new>
+        @editor
+            <x-button.new class="bg-amber-950 hover:bg-amber-950 "></x-button.new>
             @endeditor
         </div>
 
@@ -32,4 +32,5 @@
         @endforeach
     </div>
 </div>
+
 

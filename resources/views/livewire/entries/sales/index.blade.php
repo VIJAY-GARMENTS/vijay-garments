@@ -8,6 +8,10 @@
         @if($showEditModal_1)
         <div class="flex justify-end bg-zinc-200 p-4 rounded shadow-inner flex relative">
             <div>
+                <x-input.model-date wire:model.live="start_date" :label="'From'"/>
+                <x-input.model-date wire:model.live="end_date" :label="'To'"/>
+            </div>
+            <div class="ml-3">
             <x-input.model-select wire:model.live="filter" :label="'Party Name'">
                 <option value="">choose</option>
                 @foreach($contacts as $i)
@@ -23,6 +27,7 @@
                 @endforeach
             </x-input.model-select>
             </div>
+
         </div>
         @endif
         <x-forms.top-controls :show-filters="$showFilters"/>

@@ -32,6 +32,9 @@ class Index extends Component
         $this->showEditModal_1 = !$this->showEditModal_1;
     }
 
+    public $start_date;
+    public $end_date;
+
     public function getList()
     {
 
@@ -42,6 +45,12 @@ class Index extends Component
             })
             ->when($this->byOrder,function ($query,$byOrder){
                 return $query->where('order_id',$byOrder);
+            })
+            ->when($this->start_date,function ($query,$start_date){
+                return $query->whereDate('invoice_date','>=',$start_date);
+            })
+            ->when($this->end_date,function ($query,$end_date){
+                return $query->whereDate('invoice_date','<=',$end_date);
             })
             ->where('company_id', '=',  session()->get('company_id'))
             ->orderBy($this->sortField_1, $this->sortAsc ? 'asc' : 'desc')

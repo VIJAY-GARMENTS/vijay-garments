@@ -2,11 +2,11 @@
     <x-slot name="header">Sales</x-slot>
 
     <x-forms.m-panel>
-        <div class="flex justify-end" wire:click="show_advance">
-            <x-icons.icon :icon="'adjustments'" class="h-6 w-auto block"/>
+        <div class="flex justify-end " wire:click="show_advance">
+            <x-icons.icon :icon="$showEditModal_1?'view':'eye-slash'" class="h-6 w-auto block"/>
         </div>
         @if($showEditModal_1)
-        <div class="flex justify-end">
+        <div class="flex justify-end bg-zinc-200 p-4 rounded shadow-inner flex relative">
             <div>
             <x-input.model-select wire:model.live="filter" :label="'Party Name'">
                 <option value="">choose</option>

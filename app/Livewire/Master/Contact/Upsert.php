@@ -24,6 +24,7 @@ class Upsert extends Component
     public string $gstin = '';
     public string $address_1 = '';
     public string $address_2 = '';
+    public  $company_id;
 
     public string $cities;
     public string $states;
@@ -217,6 +218,7 @@ class Upsert extends Component
                     'pincode_id' => $this->pincode_id,
                     'active_id' => $this->active_id,
                     'user_id' => Auth::id(),
+                    'company_id' => session()->get('company_id'),
                 ]);
                 $message = "Saved";
                 $this->getRoute();
@@ -235,6 +237,7 @@ class Upsert extends Component
                 $obj->pincode_id = $this->pincode_id;
                 $obj->active_id = $this->active_id;
                 $obj->user_id = Auth::id();
+                $obj->company_id = session()->get('company_id');
                 $obj->save();
                 $message = "Updated";
                 $this->getRoute();

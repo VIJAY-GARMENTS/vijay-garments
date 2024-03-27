@@ -22,7 +22,7 @@ class Todos extends Model
 
     public static function nextNo()
     {
-        return static::max('slno') + 1;
+        return static::where('company_id','=',session()->get('company_id'))->max('slno') + 1;
     }
 
     protected static function newFactory(): TodosFactory

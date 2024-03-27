@@ -29,7 +29,7 @@ class Cutting extends Model
 
     public static function nextNo()
     {
-        return static::max('vno') + 1;
+        return static::where('company_id','=',session()->get('company_id'))->max('vno') + 1;
     }
 
     public function order(): BelongsTo

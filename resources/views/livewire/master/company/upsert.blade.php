@@ -178,6 +178,15 @@
                 </div>
             </div>
 
+        <div>
+            <x-input.model-select wire:model="tenant_id" :label="'Tenant'">
+                <option>Choose...</option>
+                @foreach($tenants as $i)
+                    <option value="{{ $i->id }}">{{ $i->t_name }}</option>
+                @endforeach
+            </x-input.model-select>
+        </div>
+
 
          <div class="flex flex-items-center pt-2">
              <label for="city_name" class="w-[10rem] text-zinc-500 tracking-wide py-2 ">Logo</label>
@@ -192,6 +201,7 @@
                      </svg>
                   @endif
              </div>
+
              <div>
                 <input type="file" wire:model="logo" class="">
                 <button wire:click.prevent="save_logo">Save photo</button>

@@ -114,12 +114,12 @@ class Index extends Component
 
     public function getContact()
     {
-        $this->contacts=Contact::all();
+        $this->contacts=Contact::where('company_id','=',session()->get('company_id'))->get();
 
     }
     public function getOrder()
     {
-        $this->orders=Order::all();
+        $this->orders=Order::where('company_id','=',session()->get('company_id'))->get();
 
     }
 

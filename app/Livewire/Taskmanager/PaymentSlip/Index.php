@@ -36,12 +36,14 @@ class Index extends Component
 
     public function mount()
     {
-        $this->clients = Client::all();
+        $this->clients = Client::all()->where('company_id', '=', session()->get('company_id'));
         $this->groups = DB::table('payment_slips')->select('group')->distinct('group')
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy('group')->get();
 
         $this->allGroups = DB::table('payment_slips')->select('group')->distinct('group')
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy('group')->get();
     }
 

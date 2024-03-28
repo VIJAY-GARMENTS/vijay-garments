@@ -31,7 +31,7 @@ class Bank extends Component
 
     public function mount()
     {
-        $this->clients = Client::all();
+        $this->clients = Client::all()->where('company_id', '=', session()->get('company_id'));
     }
 
     public function getSave(): string
@@ -55,6 +55,7 @@ class Bank extends Component
                     'email' => $this->email,
                     'dvcatm' => $this->dvcatm,
                     'active_id' => $this->active_id,
+                    'company_id' => session()->get('company_id'),
                     'user_id' => \Auth::id(),
                 ]);
                 $message = "Saved";
@@ -76,6 +77,7 @@ class Bank extends Component
                 $obj->email = $this->email;
                 $obj->dvcatm = $this->dvcatm;
                 $obj->active_id = $this->active_id;
+                $obj->company_id = session()->get('company_id');
                 $obj->user_id = Auth::id();
                 $obj->save();
                 $message = "Updated";
@@ -128,6 +130,7 @@ class Bank extends Component
 
         return ClientBank::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

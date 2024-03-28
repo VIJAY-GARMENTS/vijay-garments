@@ -143,7 +143,7 @@
 
                         <x-table.cell>
                             <div
-                                class="text-center flex items-center w-4 h-4 mr-2 text-sm rounded-full {{$row->status === '0' ?'bg-green-500':'bg-red-500'}}">
+                                class="text-center flex items-center w-4 h-4 mr-2 text-sm rounded-full {{$row->status === '1' ?'bg-green-500':'bg-red-500'}}">
                                 &nbsp;
                             </div>
                         </x-table.cell>

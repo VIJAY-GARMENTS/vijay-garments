@@ -81,6 +81,7 @@ class Fee extends Component
 
             $obj->receipt_ref = $this->receipt_ref;
             $obj->active_id = $this->active_id ?: '0';
+            $obj->company_id = session()->get('company_id');
             $obj->user_id = Auth::id();
             $obj->save();
         }
@@ -95,11 +96,13 @@ class Fee extends Component
     public function generate(): void
     {
         $gstClient = Client::where('payable', '=', '1')
+            ->where('company_id', '=', session()->get('company_id'))
             ->where('active_id', '=', '1')->get();
 
         foreach ($gstClient as $obj) {
 
             $v = ClientFee::where('client_id', '=', $obj->id)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->Where('month', '=', $this->month)
                 ->Where('year', '=', $this->year)
                 ->get();
@@ -119,6 +122,7 @@ class Fee extends Component
                     'receipt_ref' => '',
                     'active_id' => '1',
                     'status_id' => '1',
+                    'company_id' => session()->get('company_id'),
                     'user_id' => Auth::id()
                 ]);
             }
@@ -131,6 +135,7 @@ class Fee extends Component
 
         return ClientFee::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->where('month', '=', $this->month)
             ->where('year', '=', $this->year)
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')

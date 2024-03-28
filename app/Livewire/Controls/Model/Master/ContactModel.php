@@ -23,6 +23,7 @@ class ContactModel extends Component
     public string $gstin = '';
     public string $address_1 = '';
     public string $address_2 = '';
+    public $contact_no;
 
     public string $cities;
     public string $states;
@@ -203,6 +204,7 @@ class ContactModel extends Component
 
     public function mount($name): void
     {
+        $this->contact_no = Contact::nextNo();
         $this->vname = $name;
     }
 
@@ -211,6 +213,7 @@ class ContactModel extends Component
         if ($this->vname != '') {
             $obj = Contact::create([
                 'vname' => Str::upper($this->vname),
+                'contact_no'=>$this->contact_no,
                 'mobile' => $this->mobile,
                 'whatsapp' => $this->whatsapp,
                 'email' => $this->email,

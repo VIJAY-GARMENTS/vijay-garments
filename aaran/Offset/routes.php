@@ -8,7 +8,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/salesoffset', App\Livewire\Offset\Sales\Index::class)->name('salesoffset');
     Route::get('/salesoffset/reports', App\Livewire\Offset\Sales\Report::class)->name('salesoffset.reports');
     Route::get('/salesoffset/{id}/upsert', App\Livewire\Offset\Sales\Upsert::class)->name('salesoffset.upsert');
-//    Route::get('/salesoffset/{id}/print', App\Http\Controllers\Offset\Sales\InvoiceController::class)->name('salesoffset.print');
+    Route::get('/salesoffset/{id}/print', App\Http\Controllers\Offset\Sales\InvoiceController::class)->name('salesoffset.print');
 
     Route::get('/purchasesoffset', App\Livewire\Offset\Purchase\Index::class)->name('purchasesoffset');
     Route::get('/purchasesoffset/{id}/upsert', App\Livewire\Offset\Purchase\Upsert::class)->name('purchasesoffset.upsert');

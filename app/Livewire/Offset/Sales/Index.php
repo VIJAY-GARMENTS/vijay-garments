@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\Entries\Sales;
+namespace App\Livewire\Offset\Sales;
 
-use Aaran\Entries\Models\Sale;
 use Aaran\Master\Models\Contact;
+use Aaran\Offset\Models\Sale_offset;
 use Aaran\Orders\Models\Order;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Database\Eloquent\Collection;
@@ -24,7 +24,7 @@ class Index extends Component
 
     public function create(): void
     {
-        $this->redirect(route('sales.upsert', ['0']));
+        $this->redirect(route('salesoffset.upsert', ['0']));
     }
 
     public function show_advance()
@@ -38,7 +38,7 @@ class Index extends Component
     public function getList()
     {
 
-        return Sale::search($this->searches)
+        return Sale_offset::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
             ->when($this->filter,function ($query,$filter){
                 return $query->where('contact_id',$filter);
@@ -68,7 +68,7 @@ class Index extends Component
     public function getObj($id)
     {
         if ($id) {
-            $obj = Sale::find($id);
+            $obj = Sale_offset::find($id);
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
@@ -82,9 +82,6 @@ class Index extends Component
             $this->order_name = $obj->order->vname;
             $this->sales_type = $obj->sales_type;
             $this->transport_id = $obj->transport_id;
-            $this->transport_name = $obj->transport->vname;
-            $this->destination = $obj->destination;
-            $this->bundle = $obj->bundle;
             $this->total_qty = $obj->total_qty;
             $this->total_taxable= $obj->total_taxable;
             $this->total_gst=$obj->total_gst;
@@ -102,14 +99,14 @@ class Index extends Component
     public function set_delete($id): void
     {
         $obj=$this->getObj($id);
-        DB::table('saleitems')->where('sale_id', '=', $this->vid)->delete();
+        DB::table('saleitem_offsets')->where('sale_offset_id', '=', $this->vid)->delete();
         $obj->delete();
     }
 
     public function print($id)
     {
 
-        $this->redirect(route('sales.print', [$this->getObj($id)]));
+        $this->redirect(route('salesoffset.print', [$this->getObj($id)]));
     }
 
     public function getContact()
@@ -127,7 +124,7 @@ class Index extends Component
     {
         $this->getContact();
         $this->getOrder();
-        return view('livewire.entries.sales.index')
+        return view('livewire.offset.sales.index')
             ->with([
             'list' => $this->getList()
         ]);

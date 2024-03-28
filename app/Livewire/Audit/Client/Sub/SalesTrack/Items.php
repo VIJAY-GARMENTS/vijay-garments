@@ -23,7 +23,7 @@ class Items extends Component
 
     public function mount($id)
     {
-        $this->clients = Client::where('active_id', '=', '1')->get();
+        $this->clients = Client::where('active_id', '=', '1')->where('company_id','=',session()->get('company_id'))->get();
         $this->sales_track_id = $id;
     }
 

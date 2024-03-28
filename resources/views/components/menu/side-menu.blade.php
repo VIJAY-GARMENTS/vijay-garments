@@ -30,6 +30,7 @@
 
 
             <x-menu.sub.entries/>
+            <x-menu.sub.offset/>
             <x-menu.sub.erp.production/>
             <x-menu.sub.master/>
             <x-menu.sub.order/>

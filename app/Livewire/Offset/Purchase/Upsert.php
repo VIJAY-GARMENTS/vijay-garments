@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Livewire\Entries\Sales;
+namespace App\Livewire\Offset\Purchase;
 
 use Aaran\Common\Models\Colour;
 use Aaran\Common\Models\Ledger;
 use Aaran\Common\Models\Size;
 use Aaran\Common\Models\Transport;
-use Aaran\Entries\Models\Sale;
-use Aaran\Entries\Models\Saleitem;
-use Aaran\Master\Models\Company;
+use Aaran\Entries\Models\Purchase;
+use Aaran\Entries\Models\Purchaseitem;
 use Aaran\Master\Models\Contact;
 use Aaran\Master\Models\Product;
+use Aaran\Offset\Models\Purchase_offset;
+use Aaran\Offset\Models\Purchaseitem_offset;
 use Aaran\Orders\Models\Order;
 use App\Livewire\Trait\CommonTrait;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
@@ -23,14 +24,12 @@ use Livewire\Component;
 class Upsert extends Component
 {
     use CommonTrait;
-
     public string $uniqueno = '';
     public string $acyear = '';
-    public string $invoice_no = '';
-    public string $invoice_date = '';
+    public string $purchase_no= '';
+    public string $purchase_date = '';
+    public string $Entry_no = '';
     public string $sales_type = '';
-    public string $destination = '';
-    public string $bundle = '';
     public mixed $total_qty = 0;
     public mixed $total_taxable = '';
     public string $total_gst = '';
@@ -38,8 +37,11 @@ class Upsert extends Component
     public mixed $round_off = '';
     public mixed $grand_total = '';
     public mixed $qty = '';
+    public mixed $po_no = '';
+    public mixed $dc_no = '';
     public mixed $price = '';
     public string $gst_percent = '';
+
     public string $itemIndex = "";
     public $itemList = [];
 
@@ -53,13 +55,13 @@ class Upsert extends Component
     public string $colour;
     public string $size;
 
+    #[Rule('required')]
     public $contact_id = '';
-
     public $contact_name = '';
     public Collection $contactCollection;
     public $highlightContact = 0;
     public $contactTyped = false;
-    public $grandtotalBeforeRound;
+    public  $grandtotalBeforeRound;
 
     public function decrementContact(): void
     {
@@ -110,9 +112,7 @@ class Upsert extends Component
     public function getContactList(): void
     {
 
-        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))
-            ->where('company_id', '=', session()->get('company_id'))
-            ->get() : Contact::where('company_id', '=', session()->get('company_id'))->get();
+        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get() : Contact::all()->where('company_id','=',session()->get('company_id'));
 
     }
 
@@ -173,69 +173,12 @@ class Upsert extends Component
     public function getOrderList(): void
     {
         $this->orderCollection = $this->order_name ? Order::search(trim($this->order_name))
-            ->where('company_id', '=', session()->get('company_id'))
-            ->get() : Order::where('company_id', '=', session()->get('company_id'))->get();;
+            ->get() : Order::all()->where('company_id','=',session()->get('company_id'));
     }
 
 
-    public $transport_id = '';
-    public $transport_name = '';
-    public Collection $transportCollection;
-    public $highlightTransport = 0;
-    public $transportTyped = false;
 
-    public function decrementTransport(): void
-    {
-        if ($this->highlightTransport === 0) {
-            $this->highlightTransport = count($this->transportCollection) - 1;
-            return;
-        }
-        $this->highlightTransport--;
-    }
-
-    public function incrementTransport(): void
-    {
-        if ($this->highlightTransport === count($this->transportCollection) - 1) {
-            $this->highlightTransport = 0;
-            return;
-        }
-        $this->highlightTransport++;
-    }
-
-    public function setTransport($name, $id): void
-    {
-        $this->transport_name = $name;
-        $this->transport_id = $id;
-        $this->getTransportList();
-    }
-
-    public function enterTransport(): void
-    {
-        $obj = $this->transportCollection[$this->highlightTransport] ?? null;
-
-        $this->transport_name = '';
-        $this->transportCollection = Collection::empty();
-        $this->highlightTransport = 0;
-
-        $this->transport_name = $obj['vname'] ?? '';
-        $this->transport_id = $obj['id'] ?? '';
-    }
-
-    #[On('refresh-transport')]
-    public function refreshTransport($v): void
-    {
-        $this->transport_id = $v['id'];
-        $this->transport_name = $v['name'];
-        $this->transportTyped = false;
-
-    }
-
-    public function getTransportList(): void
-    {
-        $this->transportCollection = $this->transport_name ? Transport::search(trim($this->transport_name))
-            ->get() : Transport::all();
-    }
-
+    #[Rule('required')]
     public $ledger_id = '';
     public $ledger_name = '';
     public Collection $ledgerCollection;
@@ -468,29 +411,24 @@ class Upsert extends Component
             ->get() : Size::all();
     }
 
-
     public function save(): string
     {
-//        $this->validate();
         if ($this->uniqueno != '') {
             if ($this->vid == "") {
-
-                $obj = Sale::create([
-                    'uniqueno' => "{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}",
+                $obj = Purchase_offset::create([
+                    'uniqueno' =>"{$this->contact_id}~{$this->purchase_no}~{$this->purchase_date}",
                     'acyear' => '1',
                     'company_id' => session()->get('company_id'),
                     'contact_id' => $this->contact_id,
-                    'invoice_no' => $this->invoice_no,
-                    'invoice_date' => $this->invoice_date,
+                    'purchase_no' => $this->purchase_no,
+                    'purchase_date' => $this->purchase_date,
+                    'Entry_no' => $this->Entry_no,
                     'order_id' => $this->order_id,
                     'sales_type' => $this->sales_type,
-                    'transport_id' => $this->transport_id ?: 1,
-                    'destination' => $this->destination,
-                    'bundle' => $this->bundle,
                     'total_qty' => $this->total_qty,
                     'total_taxable' => $this->total_taxable,
                     'total_gst' => $this->total_gst,
-                    'ledger_id' => $this->ledger_id ?: 1,
+                    'ledger_id' => $this->ledger_id,
                     'additional' => $this->additional,
                     'round_off' => $this->round_off,
                     'grand_total' => $this->grand_total,
@@ -501,18 +439,16 @@ class Upsert extends Component
                 $this->getRoute();
 
             } else {
-                $obj = Sale::find($this->vid);
-                $obj->uniqueno = session()->get('company_id') . '~' . $this->invoice_no . '~' . $this->invoice_date;
+                $obj = Purchase_offset::find($this->vid);
+                $obj->uniqueno = session()->get('company_id') . '~' . $this->purchase_no . '~' . $this->purchase_date;
                 $obj->acyear = 1;
                 $obj->company_id = session()->get('company_id');
                 $obj->contact_id = $this->contact_id;
-                $obj->invoice_no = $this->invoice_no;
-                $obj->invoice_date = $this->invoice_date;
+                $obj->purchase_no = $this->purchase_no;
+                $obj->purchase_date = $this->purchase_date;
+                $obj->Entry_no = $this->Entry_no;
                 $obj->order_id = $this->order_id;
                 $obj->sales_type = $this->sales_type;
-                $obj->transport_id = $this->transport_id;
-                $obj->destination = $this->destination;
-                $obj->bundle = $this->bundle;
                 $obj->total_qty = $this->total_qty;
                 $obj->total_taxable = $this->total_taxable;
                 $obj->total_gst = $this->total_gst;
@@ -522,7 +458,7 @@ class Upsert extends Component
                 $obj->grand_total = $this->grand_total;
                 $obj->active_id = $this->active_id;
                 $obj->save();
-                DB::table('saleitems')->where('sale_id', '=', $obj->id)->delete();
+                DB::table('purchaseitem_offsets')->where('purchase_offset_id', '=', $obj->id)->delete();
                 $this->saveItem($obj->id);
                 $message = "Updated";
             }
@@ -535,8 +471,10 @@ class Upsert extends Component
     public function saveItem($id): void
     {
         foreach ($this->itemList as $sub) {
-            Saleitem::create([
-                'sale_id' => $id,
+            Purchaseitem_offset::create([
+                'purchase_offset_id' => $id,
+                'po_no' => $sub['po_no'],
+                'dc_no' => $sub['dc_no'],
                 'product_id' => $sub['product_id'],
                 'colour_id' => $sub['colour_id'],
                 'size_id' => $sub['size_id'],
@@ -549,23 +487,22 @@ class Upsert extends Component
 
     public function mount($id): void
     {
-        $this->invoice_no = Sale::nextNo();
+        $this->Entry_no = Purchase_offset::nextNo();
         if ($id != 0) {
-            $obj = Sale::find($id);
+            $obj = Purchase_offset::find($id);
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
+            $this->company_id = $obj->company_id;
+            $this->company_name = $obj->company->vname;
             $this->contact_id = $obj->contact_id;
             $this->contact_name = $obj->contact->vname;
-            $this->invoice_no = $obj->invoice_no;
-            $this->invoice_date = $obj->invoice_date;
+            $this->purchase_no = $obj->purchase_no;
+            $this->purchase_date = $obj->purchase_date;
+            $this->Entry_no = $obj->Entry_no;
             $this->order_id = $obj->order_id;
             $this->order_name = $obj->order->vname;
             $this->sales_type = $obj->sales_type;
-            $this->transport_id = $obj->transport_id;
-            $this->transport_name = $obj->transport->vname;
-            $this->destination = $obj->destination;
-            $this->bundle = $obj->bundle;
             $this->total_qty = $obj->total_qty;
             $this->total_taxable = $obj->total_taxable;
             $this->total_gst = $obj->total_gst;
@@ -575,14 +512,17 @@ class Upsert extends Component
             $this->round_off = $obj->round_off;
             $this->grand_total = $obj->grand_total;
             $this->active_id = $obj->active_id;
-            $data = DB::table('saleitems')->select('saleitems.*',
+            $data = DB::table('purchaseitem_offsets')->select('purchaseitem_offsets.*',
                 'products.vname as product_name',
                 'colours.vname as colour_name',
-                'sizes.vname as size_name',)->join('products', 'products.id', '=', 'saleitems.product_id')
-                ->join('colours', 'colours.id', '=', 'saleitems.colour_id')
-                ->join('sizes', 'sizes.id', '=', 'saleitems.size_id')->where('sale_id', '=', $id)->get()->transform(function ($data) {
+                'sizes.vname as size_name',)->join('products', 'products.id', '=', 'purchaseitem_offsets.product_id')
+                ->join('colours', 'colours.id', '=', 'purchaseitem_offsets.colour_id')
+                ->join('sizes', 'sizes.id', '=', 'purchaseitem_offsets.size_id')
+                ->where('purchase_offset_id', '=', $id)->get()->transform(function ($data) {
                     return [
-                        'saleitem_id' => $data->id,
+                        'purchase_offset_id' => $data->id,
+                        'po_no' => $data->po_no,
+                        'dc_no' => $data->dc_no,
                         'product_name' => $data->product_name,
                         'product_id' => $data->product_id,
                         'colour_name' => $data->colour_name,
@@ -593,25 +533,23 @@ class Upsert extends Component
                         'price' => $data->price,
                         'gst_percent' => $data->gst_percent,
                         'taxable' => $data->qty * $data->price,
-                        'gst_amount' => ($data->qty * $data->price) * ($data->gst_percent) / 100,
+                        'gst_amount' => ($data->qty * $data->price) * ($data->gst_percent)/ 100,
                         'subtotal' => $data->qty * $data->price + (($data->qty * $data->price) * $data->gst_percent / 100),
                     ];
                 });
             $this->itemList = $data;
         } else {
-            $this->uniqueno = "{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}";
+            $this->uniqueno="{$this->contact_id}~{$this->purchase_no}~{$this->purchase_date}";
             $this->active_id = true;
-            $this->sales_type = 0;
-            $this->gst_percent = 5;
+            $this->sales_type=0;
+            $this->gst_percent=18;
             $this->additional = 0;
             $this->grand_total = 0;
             $this->total_taxable = 0;
             $this->round_off = 0;
             $this->total_gst = 0;
-            $this->invoice_date = Carbon::now()->format('Y-m-d');
+            $this->purchase_date = Carbon::now()->format('Y-m-d');
         }
-
-        $this->calculateTotal();
     }
 
     public function addItems(): void
@@ -622,6 +560,8 @@ class Upsert extends Component
                 !(empty($this->qty))
             ) {
                 $this->itemList[] = [
+                    'po_no' => $this->po_no,
+                    'dc_no' => $this->dc_no,
                     'product_name' => $this->product_name,
                     'product_id' => $this->product_id,
                     'colour_id' => $this->colour_id,
@@ -638,6 +578,8 @@ class Upsert extends Component
             }
         } else {
             $this->itemList[$this->itemIndex] = [
+                'po_no' => $this->po_no,
+                'dc_no' => $this->dc_no,
                 'product_name' => $this->product_name,
                 'product_id' => $this->product_id,
                 'colour_id' => $this->colour_id,
@@ -653,7 +595,6 @@ class Upsert extends Component
             ];
 
         }
-
         $this->calculateTotal();
         $this->resetsItems();
         $this->render();
@@ -679,6 +620,8 @@ class Upsert extends Component
         $this->itemIndex = $index;
 
         $items = $this->itemList[$index];
+        $this->po_no = $items['po_no'];
+        $this->dc_no = $items['dc_no'];
         $this->product_name = $items['product_name'];
         $this->product_id = $items['product_id'];
         $this->colour_name = $items['colour_name'];
@@ -691,6 +634,12 @@ class Upsert extends Component
         $this->calculateTotal();
     }
 
+    public function getRoute(): void
+    {
+
+        $this->redirect(route('purchasesoffset'));
+    }
+
     public function removeItems($index): void
     {
         unset($this->itemList[$index]);
@@ -698,7 +647,7 @@ class Upsert extends Component
         $this->calculateTotal();
     }
 
-    public function calculateTotal(): void
+    public function calculateTotal()
     {
         if ($this->itemList) {
 
@@ -726,29 +675,29 @@ class Upsert extends Component
             $this->round_off = round(floatval($this->round_off), 2);
             $this->grand_total = round((floatval($this->grand_total)) + (floatval($this->additional)), 2);
         }
+
     }
 
     public function getObj($id)
     {
         if ($id) {
-            $obj = Sale::find($id);
+            $obj = Purchase::find($id);
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
+            $this->company_id = $obj->company_id;
+            $this->company_name = $obj->company->vname;
             $this->contact_id = $obj->contact_id;
             $this->contact_name = $obj->contact->vname;
-            $this->invoice_no = $obj->invoice_no;
-            $this->invoice_date = $obj->invoice_date;
+            $this->purchase_no = $obj->purchase_no;
+            $this->purchase_date = $obj->purchase_date;
+            $this->Entry_no = $obj->Entry_no;
             $this->order_id = $obj->order_id;
             $this->order_name = $obj->order->vname;
             $this->sales_type = $obj->sales_type;
-            $this->transport_id = $obj->transport_id;
-            $this->transport_name = $obj->transport->vname;
-            $this->destination = $obj->destination;
-            $this->bundle = $obj->bundle;
             $this->total_qty = $obj->total_qty;
-            $this->total_taxable = $obj->total_taxable;
-            $this->total_gst = $obj->total_gst;
+            $this->total_taxable= $obj->total_taxable;
+            $this->total_gst=$obj->total_gst;
             $this->ledger_id = $obj->ledger_id;
             $this->ledger_name = $obj->ledger->vname;
             $this->additional = $obj->additional;
@@ -761,27 +710,21 @@ class Upsert extends Component
         return null;
     }
 
-    public function getRoute(): void
-    {
-
-        $this->redirect(route('sales'));
-    }
-
     public function print(): void
     {
 
-        $this->redirect(route('sales.print', [$this->vid]));
+        $this->redirect(route('purchasesoffset.print', [$this->vid]));
     }
+
 
     public function render()
     {
         $this->getContactList();
         $this->getOrderList();
-        $this->getTransportList();
         $this->getLedgerList();
         $this->getColourList();
         $this->getProductList();
         $this->getSizeList();
-        return view('livewire.entries.sales.upsert');
+        return view('livewire.offset.purchase.upsert');
     }
 }

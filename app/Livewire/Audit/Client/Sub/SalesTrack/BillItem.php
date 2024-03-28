@@ -35,8 +35,8 @@ class BillItem extends Component
 
     public function mount($id)
     {
-        $this->clients = Client::where('active_id', '=', '1')->get();
-        $this->products = Product::where('active_id', '=', '1')->get();
+        $this->clients = Client::where('active_id', '=', '1')->where('company_id','=',session()->get('company_id'))->get();
+        $this->products = Product::where('active_id', '=', '1')->where('company_id','=',session()->get('company_id'))->get();
         $this->categories = Category::where('active_id', '=', '1')->get();
         $this->sizes = Size::where('active_id', '=', '1')->get();
         $this->colours = Colour::where('active_id', '=', '1')->get();

@@ -31,6 +31,7 @@ use Aaran\Master\Database\Seeders\ProductSeeder;
 use Aaran\Orders\Database\Seeders\OrderSeeder;
 use Aaran\Orders\Database\Seeders\StyleSeeder;
 use App\Models\Blog\Post;
+use App\Models\Group;
 use App\Models\Tenant;
 use App\Models\User;
 use Database\Factories\Blog\PostFactory;
@@ -114,8 +115,8 @@ class DatabaseSeeder extends Seeder
         SaleSeeder::run();
         ClientSeeder::run();
 
-
         Post::factory(10)->create();
+
 
     }
 }

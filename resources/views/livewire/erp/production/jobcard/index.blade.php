@@ -1,4 +1,4 @@
-<div>
+ <div>
     <x-slot name="header">Job Card</x-slot>
 
     <x-forms.m-panel>

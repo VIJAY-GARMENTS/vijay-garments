@@ -29,7 +29,7 @@ class Index extends Component
     {
         $this->cdate = (Carbon::parse(Carbon::now())->format('Y-m-d'));
         $this->dates = DB::table('activities')->select('cdate','created_at')->distinct('cdate')->limit(3)->orderBy('created_at', 'desc')->get();
-        $this->clients = Client::all();
+        $this->clients = Client::all()->where('company_id', '=', session()->get('company_id')) ;
     }
 
     public function getSave(): string

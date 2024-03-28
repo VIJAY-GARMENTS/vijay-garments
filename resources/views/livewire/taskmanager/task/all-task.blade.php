@@ -6,13 +6,13 @@
         <x-forms.top-controls :show-filters="$showFilters"/>
 
 
-        @forelse ($list as $row)
+        @forelse ($list as $index=> $row)
             <div class="flex flex-col gap-3">
                 <div class="flex border border-gray-300">
                     <div class="w-[8rem] border flex flex-col justify-between">
                         <a href="{{ route('tasks.replies',[$row->id]) }}"
                            class="cursor-pointer text-2xl h-3/4 flex items-center justify-center">
-                            {{ $row->id }}
+                            {{ $index+1 }}
                         </a>
                         <div
                                 class="h-1/4 flex items-center justify-center bg-blue-300  {{ \App\Enums\Status::tryFrom($row->status)->getStyle() }}">

@@ -30,7 +30,7 @@ class AllTask extends Component
     {
         $this->cdate = (Carbon::parse(Carbon::now())->format('Y-m-d'));
         $this->users = User::all();
-        $this->clients = Client::all();
+        $this->clients = Client::all() ->where('company_id', '=', session()->get('company_id'));
     }
 
     public function getSave(): string
@@ -46,6 +46,7 @@ class AllTask extends Component
                     'allocated' => $this->allocated,
                     'user_id' => Auth::user()->id,
                     'status' => 1,
+                    'company_id' => session()->get('company_id'),
                     'active_id' => $this->active_id ? 1 : 0
                 ]);
                 $message = "Saved";
@@ -59,6 +60,7 @@ class AllTask extends Component
                 $obj->allocated = $this->allocated;
                 $obj->status = $this->status;
                 $obj->active_id = $this->active_id;
+                $obj->company_id = session()->get('company_id');
                 $obj->save();
                 $message = "Updated";
             }
@@ -100,6 +102,7 @@ class AllTask extends Component
 
         return Task::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->where('company_id', '=', session()->get('company_id'))
             ->where('status', '!=', 100)
             ->with('user',)
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')

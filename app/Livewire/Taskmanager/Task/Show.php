@@ -38,8 +38,8 @@ class Show extends Component
         $this->getObj($id);
 
 
-        $this->replies = Reply::where('task_id', $id)->get();
-        $this->commentsCount = Reply::where('task_id', $id)->count();
+        $this->replies = Reply::where('task_id', $id) ->where('company_id', '=', session()->get('company_id'))->get();
+        $this->commentsCount = Reply::where('task_id', $id) ->where('company_id', '=', session()->get('company_id'))->count();
     }
 
     public function getSave(): string

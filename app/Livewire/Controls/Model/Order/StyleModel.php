@@ -23,6 +23,7 @@ class StyleModel extends Component
             $obj = Style::create([
                 'vname' => $this->vname,
                 'desc' => $this->desc,
+                'company_id'=>session()->get('company_id'),
                 'active_id' => '1',
             ]);
             $this->dispatch('refresh-style-item', ['name' => $this->vname, 'id' => $obj->id]);

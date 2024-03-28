@@ -36,7 +36,7 @@
                         <x-table.cell>
                             <div class="flex">
                             <div class="flex-shrink-0 h-10 w-10 mr-4 rounded-xl" >
-                                <img src="{{ \Illuminate\Support\Facades\Storage::url($row->logo)}}"/>
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($row->logo)}}" alt="logo"/>
                             </div>
                             <a href="{{route('companies.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-left">

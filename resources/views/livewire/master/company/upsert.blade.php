@@ -189,7 +189,7 @@
 
 
          <div class="flex flex-items-center pt-2">
-             <label for="city_name" class="w-[10rem] text-zinc-500 tracking-wide py-2 ">Logo</label>
+             <label for="logo_in" class="w-[10rem] text-zinc-500 tracking-wide py-2 ">Logo</label>
               <div class="flex-shrink-0 h-20 w-20 mr-4">
                   @if($logo)
                       <div class="flex-shrink-0 h-20 w-20 mr-4">

@@ -1,5 +1,5 @@
-<div class="mt-32 max-w-sm mx-auto  ">
-    <div class="flex float-left flex-col gap-5">
+<div class="p-20">
+    <div class="max-w-3xl mx-auto sm:px-6 lg:px-8 space-y-4">
         <div class="gap-2">
             <label for="title">Title</label>
             <input wire:model="title" id="title" class="w-full">
@@ -9,11 +9,6 @@
         <div class="gap-5">
             <label for="body">Body</label>
            <x-input.rich-text wire:model="body"/>
-        </div>
-
-        <div class="gap-5">
-            <label for="body">Author_name</label>
-            <input wire:model="author_name" id="title" class="w-full">
         </div>
 
         <div class=" flex-items-center pt-2">
@@ -34,5 +29,6 @@
             <x-button.back />
         </div>
     </div>
-
 </div>
+
+

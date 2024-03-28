@@ -1,10 +1,11 @@
 <div>
-    <div class="flex flex-col mt-10 rounded-lg justify-center items-center " >
-        <img src="{{ \Illuminate\Support\Facades\Storage::url($post->image) }}" class="rounded-2xl  w-1/2 h-1/2"/>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <img src="{{ \Illuminate\Support\Facades\Storage::url($post->image) }}" class="rounded-2xl w-1/3 h-1/3"/>
     </div>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <div class="text-center text-xl font-extrabold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$post->title}}</div>
-    <div class="text-sm text-gray-500  text-center font-semibold italic line-clamp-2 mt-2 text-wrap ">{!! $post->body!!}</div>
-    <div class="text-sm text-gray-500  text-center font-semibold italic line-clamp-2 mt-2 text-wrap ">{{$post->author_name}}</div>
+    <div class="text-sm text-gray-500 font-semibold italic mt-2 text-wrap ">{!! $post->body!!}</div>
+    <div class="text-sm text-gray-500  text-center font-semibold italic mt-2 text-wrap ">{{$post->user->name}}</div>
     <div class="text-right px-11">
         @admin
     <a href="{{route('posts.upsert',[$post->id])}}">
@@ -12,5 +13,6 @@
     dark:text-purple-400 dark:focus:ring-purple-900">Edit</button>
     </a>
         @endadmin
+</div>
 </div>
 </div>

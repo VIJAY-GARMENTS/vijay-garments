@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
@@ -16,14 +13,11 @@ return new class extends Migration
             $table->string('title');
             $table->longText('body');
             $table->longText('image')->nullable();
-            $table->text('author_name')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('posts');

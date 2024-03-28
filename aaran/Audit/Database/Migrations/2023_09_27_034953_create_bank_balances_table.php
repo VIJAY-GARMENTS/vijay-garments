@@ -14,6 +14,7 @@ return new class extends Migration
             $table->date('cdate');
             $table->decimal('balance');
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->timestamps();
         });
     }

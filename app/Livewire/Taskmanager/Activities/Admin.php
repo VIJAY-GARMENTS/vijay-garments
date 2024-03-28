@@ -31,8 +31,8 @@ class Admin extends Component
     {
         $this->cdate = (Carbon::parse(Carbon::now())->format('Y-m-d'));
         $this->dates = DB::table('activities')->select('cdate','created_at')->distinct('cdate')->limit(3)->orderBy('created_at', 'desc')->get();
-        $this->clients = Client::all();
-        $this->users = User::all();
+        $this->clients = Client::all() ->where('company_id', '=', session()->get('company_id'));
+        $this->users = User::all() ->where('tenant_id', '=', session()->get('tenant_id'));
     }
 
     public function getSave(): string
@@ -47,6 +47,7 @@ class Admin extends Component
                     'duration' => $this->duration,
                     'channel' => $this->channel,
                     'remarks' => $this->remarks,
+                    'company_id' => session()->get('company_id'),
                     'active_id' => $this->active_id,
                 ]);
                 $message = "Saved";
@@ -60,6 +61,7 @@ class Admin extends Component
                 $obj->duration = $this->duration;
                 $obj->channel = $this->channel;
                 $obj->remarks = $this->remarks;
+                $obj->company_id = session()->get('company_id');
                 $obj->active_id = $this->active_id;
                 $obj->save();
                 $message = "Updated";
@@ -98,12 +100,14 @@ class Admin extends Component
 
         if ($this->user_id) {
             return Activities::search($this->searches)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->whereDate('cdate', '=', $this->cdate)
                 ->where('user_id', '=', $this->user_id)
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage);
         } else {
             return Activities::search($this->searches)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->whereDate('cdate', '=', $this->cdate)
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage);

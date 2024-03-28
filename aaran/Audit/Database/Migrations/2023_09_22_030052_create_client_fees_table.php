@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('active_id', 3)->nullable();
             $table->string('status_id', 3);
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('company_id')->references('id')->on('companies');
             $table->timestamps();
         });
     }

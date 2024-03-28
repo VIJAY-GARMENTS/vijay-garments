@@ -23,7 +23,7 @@ class Balance extends Component
     public function mount()
     {
         $this->cdate = (Carbon::parse(Carbon::now())->format('Y-m-d'));
-        $this->clients = ClientBank::where('active_id', '=', '1')->get();
+        $this->clients = ClientBank::where('active_id', '=', '1')->where('company_id', '=', session()->get('company_id'))->get();
         $this->dates = DB::table('bank_balances')->select('cdate')->distinct('cdate')->limit(3)->orderBy('cdate', 'desc')->get();
     }
 
@@ -36,6 +36,7 @@ class Balance extends Component
                 $obj->cdate = $this->cdate;
                 $obj->balance = $this->balance;
                 $obj->user_id = Auth::id();
+                $obj->company_id = session()->get('company_id');
                 $obj->save();
                 $message = "Updated";
             }
@@ -63,7 +64,7 @@ class Balance extends Component
 
     public function generate(): void
     {
-        $gstClient = ClientBank::where('active_id', '=', '1')->get();
+        $gstClient = ClientBank::where('active_id', '=', '1')->where('company_id', '=', session()->get('company_id'))->get();
 
         if ($this->cdate == '') {
             $this->cdate = now();
@@ -72,6 +73,7 @@ class Balance extends Component
         foreach ($gstClient as $obj) {
 
             $v = BankBalance::where('client_bank_id', '=', $obj->id)
+                ->where('company_id', '=', session()->get('company_id'))
                 ->Where('cdate', '=', $this->cdate)
                 ->get();
 
@@ -80,6 +82,7 @@ class Balance extends Component
                     'client_bank_id' => $obj->id,
                     'cdate' => $this->cdate,
                     'balance' => 0,
+                    'company_id' => session()->get('company_id'),
                     'user_id' => Auth::id()
                 ]);
             }
@@ -93,6 +96,7 @@ class Balance extends Component
 
         return BankBalance::search($this->searches)
             ->whereDate('cdate', '=', $this->cdate)
+            ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }

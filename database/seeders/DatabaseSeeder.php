@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Aaran\Audit\Database\Seeders\ClientSeeder;
 use Aaran\Common\Database\Seeders\CitySeeder;
 use Aaran\Common\Database\Seeders\ColourSeeder;
 use Aaran\Common\Database\Seeders\CountrySeeder;
@@ -111,6 +112,7 @@ class DatabaseSeeder extends Seeder
         IroningSeeder::run();
 
         SaleSeeder::run();
+        ClientSeeder::run();
 
 
         Post::factory(10)->create();

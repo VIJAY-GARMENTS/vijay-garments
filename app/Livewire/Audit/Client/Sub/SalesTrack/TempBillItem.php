@@ -20,7 +20,7 @@ class TempBillItem extends Component
 
     public function mount()
     {
-        $this->products = Product::where('active_id', '=', '1')->get();
+        $this->products = Product::where('active_id', '=', '1')->where('company_id','=',session()->get('company_id'))->get();
     }
 
     public function getSave(): void

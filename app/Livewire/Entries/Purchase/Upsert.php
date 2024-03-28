@@ -109,7 +109,7 @@ class Upsert extends Component
     public function getContactList(): void
     {
 
-        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get() : Contact::all();
+        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get() : Contact::all()->where('company_id','=',session()->get('company_id'));
 
     }
 
@@ -170,7 +170,7 @@ class Upsert extends Component
     public function getOrderList(): void
     {
         $this->orderCollection = $this->order_name ? Order::search(trim($this->order_name))
-            ->get() : Order::all();
+            ->get() : Order::all()->where('company_id','=',session()->get('company_id'));
     }
 
     #[Rule('required')]
@@ -346,7 +346,7 @@ class Upsert extends Component
     public function getProductList(): void
     {
         $this->productCollection = $this->product_name ? Product::search(trim($this->product_name))
-            ->get() : Product::all();
+            ->get() : Product::all()->where('company_id','=',session()->get('company_id'));
     }
 
     public $colour_id = '';
@@ -578,7 +578,7 @@ class Upsert extends Component
                 ->join('colours', 'colours.id', '=', 'purchaseitems.colour_id')
                 ->join('sizes', 'sizes.id', '=', 'purchaseitems.size_id')->where('purchase_id', '=', $id)->get()->transform(function ($data) {
                     return [
-                        'saleitem_id' => $data->id,
+                        'purchase_id' => $data->id,
                         'product_name' => $data->product_name,
                         'product_id' => $data->product_id,
                         'colour_name' => $data->colour_name,

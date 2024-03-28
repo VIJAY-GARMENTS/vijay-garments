@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Livewire\Entries\Payment;
+namespace App\Livewire\Offset\Receipt;
 
 use Aaran\Common\Models\Bank;
 use Aaran\Common\Models\Receipttype;
-use Aaran\Entries\Models\Payment;
+use Aaran\Entries\Models\Receipt;
 use Aaran\Master\Models\Contact;
+use Aaran\Offset\Models\Receipt_offset;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
@@ -72,7 +73,8 @@ class Upsert extends Component
     public function getContactList(): void
     {
 
-        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get() : Contact::all()->where('company_id','=',session()->get('company_id'));
+        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get()
+            : Contact::all()->where('company_id', '=', session()->get('company_id'));
 
     }
 
@@ -200,7 +202,7 @@ class Upsert extends Component
     public string $vid = '';
     public string $vdate = '';
     public string $chq_no = '';
-    public string $payment_amount = '';
+    public string $receipt_amount = '';
     public string $chq_date = '';
     public $list = [];
     public string $receipt_id = "";
@@ -218,19 +220,19 @@ class Upsert extends Component
         $this->chq_date = $this->vdate;
 
         if ($id!= 0) {
-            $obj = Payment::find($id);
-            $this->vid = $obj->id;
-            $this->vdate = $obj->vdate;
-            $this->contact_id = $obj->contact_id;
-            $this->contact_name = $obj->contact->vname;
-            $this->receipttype_id = $obj->receipttype_id;
-            $this->receipttype_name = $obj->receipttype->vname;
-            $this->chq_no = $obj->chq_no;
-            $this->chq_date = $obj->chq_date;
-            $this->bank_id = $obj->bank_id;
-            $this->bank_name= $obj->bank->vname;
-            $this->payment_amount = $obj->payment_amount;
-            $this->active_id=$obj->active_id;
+                $obj = Receipt_offset::find($id);
+                $this->vid = $obj->id;
+                $this->vdate = $obj->vdate;
+                $this->contact_id = $obj->contact_id;
+                $this->contact_name = $obj->contact->vname;
+                $this->receipttype_id = $obj->receipttype_id;
+                $this->receipttype_name = $obj->receipttype->vname;
+                $this->chq_no = $obj->chq_no;
+                $this->chq_date = $obj->chq_date;
+                $this->bank_id = $obj->bank_id;
+                $this->bank_name= $obj->bank->vname;
+                $this->receipt_amount = $obj->receipt_amount;
+                $this->active_id=$obj->active_id;
 
 //                $data = DB::table('receiptitems')->where('receipt_id', '=', $obj->id)
 //                    ->get()
@@ -253,10 +255,50 @@ class Upsert extends Component
         }
     }
 
+    private function getObj($id)
+    {
+        if ($id) {
+            $obj = Receipt_offset::find($id);
+            $this->vid = $obj->id;
+            $this->acyear = $obj->acyear;
+            $this->vdate = $obj->vdate;
+            $this->company_id = $obj->company_id;
+            $this->company_name = $obj->company->vname;
+            $this->contact_id = $obj->contact_id;
+            $this->contact_name = $obj->contact->vname;
+            $this->receipttype_id = $obj->receipttype_id;
+            $this->receipttype_name = $obj->receipttype->vname;
+            $this->chq_no = $obj->chq_no;
+            $this->chq_date = $obj->chq_date;
+            $this->bank_id = $obj->bank_id;
+            $this->bank_name = $obj->bank->vname;
+            $this->receipt_amount = $obj->receipt_amount;
+            $this->active_id = $obj->active_id;
+
+            return $obj;
+        }
+        return null;
+    }
+
+
+
+    public function calculateTotal()
+    {
+        if ($this->itemList) {
+
+            $this->total_ramount = 0;
+
+            foreach ($this->itemList as $row) {
+                $this->total_vamount += $row['vamount'];
+                $this->total_ramount += $row['ramount'];
+            }
+        }
+    }
+
     public function save(): string
     {
         if ($this->vid == "") {
-            $obj = Payment::create([
+            $obj = Receipt_offset::create([
                 'company_id' => session()->get('company_id'),
                 'acyear' => '1',
                 'vdate' => $this->vdate,
@@ -265,7 +307,7 @@ class Upsert extends Component
                 'chq_no' => $this->chq_no,
                 'chq_date' => $this->chq_date,
                 'bank_id' => $this->bank_id,
-                'payment_amount' => $this->payment_amount,
+                'receipt_amount' => $this->receipt_amount,
                 'active_id' => $this->active_id,
 
             ]);
@@ -273,7 +315,7 @@ class Upsert extends Component
             $message = "Saved";
 
         } else {
-            $obj = Payment::find($this->vid);
+            $obj = Receipt_offset::find($this->vid);
             $obj->company_id = session()->get('company_id');
             $obj->acyear = 1;
             $obj->vdate = $this->vdate;
@@ -282,7 +324,7 @@ class Upsert extends Component
             $obj->chq_no = $this->chq_no;
             $obj->chq_date = $this->chq_date;
             $obj->bank_id = $this->bank_id;
-            $obj->payment_amount = $this->payment_amount;
+            $obj->receipt_amount = $this->receipt_amount;
             $obj->active_id = $this->active_id;
             $obj->save();
             DB::table('receiptitems')->where('receipt_id', '=', $obj->id)->delete();
@@ -294,17 +336,34 @@ class Upsert extends Component
         return $message;
     }
 
+    public function saveItem($id): void
+    {
+        foreach ($this->itemList as $sub) {
+
+            Receiptitem::create([
+                'receipt_id' => $id,
+                'againstby' => $sub['againstby'],
+                'vno' => $sub['vno'],
+                'vamount' => $sub['vamount'],
+                'ramount' => $sub['ramount'],
+            ]);
+            $this->calculateTotal();
+        }
+    }
+
     public function getRoute(): void
     {
 
-        $this->redirect(route('payments'));
+        $this->redirect(route('receiptsoffset'));
     }
+
+
 
     public function render()
     {
         $this->getContactList();
         $this->getReceipttypeList();
         $this->getBankList();
-        return view('livewire.entries.payment.upsert');
+        return view('livewire.entries.receipt.upsert');
     }
 }

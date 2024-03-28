@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Livewire\Entries\Payment;
+namespace App\Livewire\Offset\Payment;
 
 use Aaran\Common\Models\Bank;
 use Aaran\Common\Models\Receipttype;
 use Aaran\Entries\Models\Payment;
 use Aaran\Master\Models\Contact;
+use Aaran\Offset\Models\Payment_offset;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
@@ -72,7 +73,7 @@ class Upsert extends Component
     public function getContactList(): void
     {
 
-        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get() : Contact::all()->where('company_id','=',session()->get('company_id'));
+        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get() : Contact::all()->where('company_id', '=', session()->get('company_id'));
 
     }
 
@@ -218,7 +219,7 @@ class Upsert extends Component
         $this->chq_date = $this->vdate;
 
         if ($id!= 0) {
-            $obj = Payment::find($id);
+            $obj = Payment_offset::find($id);
             $this->vid = $obj->id;
             $this->vdate = $obj->vdate;
             $this->contact_id = $obj->contact_id;
@@ -256,7 +257,7 @@ class Upsert extends Component
     public function save(): string
     {
         if ($this->vid == "") {
-            $obj = Payment::create([
+            $obj = Payment_offset::create([
                 'company_id' => session()->get('company_id'),
                 'acyear' => '1',
                 'vdate' => $this->vdate,
@@ -273,7 +274,7 @@ class Upsert extends Component
             $message = "Saved";
 
         } else {
-            $obj = Payment::find($this->vid);
+            $obj = Payment_offset::find($this->vid);
             $obj->company_id = session()->get('company_id');
             $obj->acyear = 1;
             $obj->vdate = $this->vdate;
@@ -297,7 +298,7 @@ class Upsert extends Component
     public function getRoute(): void
     {
 
-        $this->redirect(route('payments'));
+        $this->redirect(route('paymentsoffset'));
     }
 
     public function render()

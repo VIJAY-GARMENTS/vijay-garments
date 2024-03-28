@@ -26,7 +26,7 @@ class Bill extends Component
     public function mount($id)
     {
         $this->vdate =  (Carbon::parse(Carbon::now())->format('Y-m-d'));
-        $this->clients = Client::where('active_id', '=', '1')->get();
+        $this->clients = Client::where('active_id', '=', '1')->where('company_id','=',session()->get('company_id'))->get();
         $this->sales_track_item_id = $id;
         $this->sales_track_item =SalesTrackItem::find($id);
     }

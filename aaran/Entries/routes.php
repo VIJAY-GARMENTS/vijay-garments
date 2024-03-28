@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/sales', App\Livewire\Entries\Sales\Index::class)->name('sales');
+    Route::get('/sales/reports', App\Livewire\Entries\Sales\Report::class)->name('sales.reports');
     Route::get('/sales/{id}/upsert', App\Livewire\Entries\Sales\Upsert::class)->name('sales.upsert');
     Route::get('/sales/{id}/print', App\Http\Controllers\Entries\Sales\InvoiceController::class)->name('sales.print');
 

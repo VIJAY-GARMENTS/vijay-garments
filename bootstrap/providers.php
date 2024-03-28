@@ -16,5 +16,6 @@ return [
     Aaran\Admin\Providers\AdminServiceProvider::class,
     Aaran\Magalir\Providers\MagalirServiceProvider::class,
     Aaran\Accounts\Providers\AccountsServiceProvider::class,
+    Aaran\Offset\Providers\OffsetServiceProvider::class,
 
 ];

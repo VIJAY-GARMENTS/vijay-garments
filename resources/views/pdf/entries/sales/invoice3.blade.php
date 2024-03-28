@@ -175,22 +175,22 @@
     </tr>
     </thead>
 </table>
-<table>
+<table width="100%">
     <thead style="background-color: lightgray;">
     <tr>
         <th width="5px" style="padding: 5px;">#</th>
         <th width="12px" style="padding: 5px; ">Po.No</th>
         <th width="12px" style="padding: 5px;">Dc.No</th>
-        <th width="70px" style="padding: 5px;">Particulars</th>
-        <th width="70px" style="padding: 5px;">HSN Code</th>
-        <th width="70px" style="padding: 5px;">Quantity</th>
-        <th width="70px" style="padding: 5px;">Price</th>
-        <th width="70px" style="padding: 5px;">Taxable Amt</th>
+        <th width="40px" style="padding: 5px;">Particulars</th>
+        <th width="40px" style="padding: 5px;">HSN Code</th>
+        <th width="40px" style="padding: 5px;">Quantity</th>
+        <th width="40px" style="padding: 5px;">Price</th>
+        <th width="40px" style="padding: 5px;">Taxable Amt</th>
         <th style="padding: 1px; width: 1px; border-right: none;text-align: left; margin-bottom: 0;">%</th>
-        <th width="70px" style="padding: 2px; border-left: none; margin-left: 0px;">SGST Amt</th>
+        <th width="40px" style="padding: 2px; border-left: none; margin-left: 0px;">SGST Amt</th>
         <th style="padding: 1px; width: 1px; border-right: none;text-align: left; margin-bottom: 0;">%</th>
-        <th width="70px" style="padding: 2px; border-left: none; margin-left: 0px;">CGST Amt</th>
-        <th width="70px" style="padding: 5px;">sub Total</th>
+        <th width="40px" style="padding: 2px; border-left: none; margin-left: 0px;">CGST Amt</th>
+        <th width="40px" style="padding: 5px;">sub Total</th>
     </tr>
     </thead>
     <tbody>
@@ -204,12 +204,12 @@
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['colour_name']}}</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']}}</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['price']}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['size_name']}}</td>
-            <td align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['price']}}</td>
-            <td align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['colour_name']}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']*$row['price']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_taxable}}</td>
+            <td align="center" style="border-bottom: none; border-left: none;">{{$row['gst_percent']/2}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_gst/2}}</td>
+            <td align="center" style="border-bottom: none; border-left: none;">{{$row['gst_percent']/2}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_gst/2}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->grand_total}}</td>
         </tr>
 
     @endforeach
@@ -236,43 +236,46 @@
 
     <tr>
         <td colspan=3" align="right">&nbsp;E&OE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td colspan="6" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td align="right">{{$obj->total_qty}}</td>
-        <td align="right"></td>
-        <td align="right">{{$obj->grand_total}}</td>
+        <td colspan="2" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td  align="right">{{$obj->total_qty}}</td>
+        <td  align="right"></td>
+        <td  align="right">{{$obj->grand_total}}</td>
+        <td colspan="2" align="right">{{$obj->total_gst/2}}</td>
+        <td colspan="2" align="right">{{$obj->total_gst/2}}</td>
+        <td colspan="1" align="right">{{$obj->grand_total}}</td>
     </tr>
     <tr>
-        <td colspan="6" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-top: none; border-right: none;">Taxable value</td>
         <td align="center" style="border-bottom: none;border-top: none; border-left: none;">{{$obj->total_taxable}}</td>
     </tr>
     <tr>
-        <td colspan="6" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">CGST</td>
         <td align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
     </tr>
     <tr>
-        <td colspan="6" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">SGST</td>
         <td align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
     </tr>
     <tr>
-        <td colspan="6" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">Total GST</td>
         <td align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst}}</td>
     </tr>
     <tr>
-        <td colspan="6" align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">&nbsp;</td>
         <td align="center" style="border-bottom: none; border-left: none;">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="6" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">Round Off</td>
         <td align="center" style="border-bottom: none; border-left: none;">{{$obj->round_off}}</td>
     </tr>
     <tr>
-        <td colspan="6"><span>Amount Chargeable (in words)</span>
+        <td colspan="7"><span>Amount Chargeable (in words)</span>
             <div style="margin-top: 5px">
                 {{$rupees}}
             </div>
@@ -281,9 +284,9 @@
         <td align="center" style="border-bottom: none; border-left: none;font-weight: bold; font-size:medium;">{{$obj->grand_total}}</td>
     </tr>
     <tr>
-        <td colspan="5" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px ;">Receiver Sign
+        <td colspan="6" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px ;">Receiver Sign
         </td>
-        <td colspan="6" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px; ">
+        <td colspan="7" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px; ">
             &nbsp;for&nbsp;{{$cmp->get('company_name')}}
             <div style="padding-top: 20px;  margin-top:16px">Authorized signatory</div>
         </td>

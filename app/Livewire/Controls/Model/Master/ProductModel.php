@@ -34,6 +34,7 @@ class ProductModel extends Component
                 'units' => $this->units,
                 'gst_percent' => $this->gst_percent,
                 'user_id' => Auth::id(),
+                'company_id'=>session()->get('company_id'),
                 'active_id' => '1'
             ]);
             $this->dispatch('refresh-product', ['name' => $this->vname, 'id' => $obj->id]);

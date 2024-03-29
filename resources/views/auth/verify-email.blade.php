@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet.authentication-card>
         <x-slot name="logo">
-            <x-jet.authentication-card-logo />
+            <x-assets.logo.cxlogo :icon="'light'" class="h-20 ml-4 mx-auto w-auto  block"/>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -35,7 +35,8 @@
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
 
-                    <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ms-2">
+                    <button type="submit"
+                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ms-2">
                         {{ __('Log Out') }}
                     </button>
                 </form>

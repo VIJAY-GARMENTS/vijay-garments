@@ -1,4 +1,4 @@
-<div class="loading w-full flex justify-center h-auto object-cover bg-white-100">
+<div class="loading w-full flex justify-center h-auto object-cover bg-[#f9f9f9]">
     <div class="w-full rounded h-full">
 
         <header id="header" class="header text-center">
@@ -22,9 +22,9 @@
                             Start getting things done together with your team based on
                             CODEXSUN revolutionary team management features
                         </p>
-                        <a class="btn-solid-lg hover:bg-emerald-400 rounded gap-3 bordered bg-gray-400 border-gray-500 p-3"
+                        <a class="btn-solid-lg hover:#37517e rounded gap-3 bordered bg-[#47b2e4] border-gray-500 p-3 hover:bg-[#1da1f2]"
                            href="{{ route('register') }}">
-                            <i class="fab fa-apple border-gray-500 hover:underline hover:bg-blue-500 ">register</i>
+                            <i class="fab fa-apple border-gray-500 hover:text-white">register</i>
                         </a>
                     </div>
 
@@ -150,8 +150,8 @@
                         class="relative lg:block rounded grid-rows-1 order-2 w-80 h-auto lg:grid-cols-4 gap-3 lg:flex-col mr-auto mb-6 ml-auto mx-auto shadow-md">
                         <div class="card-body p-8 bg-gray-50 grid-rows-4 animate__animated wow animate__zoomIn">
                             <div class="card-title mb-1.5 text-blue-500 font-bold text-center">STANDARD</div>
-                            <div class="price"><span class="currency mr-1.5 text-amber-800 font-light ">$</span><span
-                                    class="value text-gray-700 font-medium h-5 text-center">13999</span></div>
+                            <div class="price"><span class="currency mr-1.5 text-amber-800 font-light ">₹</span><span
+                                    class="value text-gray-700 font-medium h-5 text-center">3999</span></div>
                             <div class="frequency mb-1.5 font-semibold text-center">monthly</div>
                             <p class="mb-1.5 text-left">This basic package covers the marketing needs of small
                                 startups</p>
@@ -213,8 +213,8 @@
                         class="relative lg:block w-80 h-auto grid-rows-2 order-1 lg:grid-cols-5 gap-3 mr-auto mx-auto mb-6 ml-auto border rounded shadow-md">
                         <div class="card-body p-8 bg-gray-50 grid-rows-5 animate__animated wow animate__zoomIn">
                             <div class="card-title mb-1.5 text-blue-500 font-bold text-center">ADVANCED</div>
-                            <div class="price"><span class="currency mr-1.5 text-amber-800 font-light">$</span><span
-                                    class="value text-gray-700 font-medium h-5 text-center">25999</span></div>
+                            <div class="price"><span class="currency mr-1.5 text-amber-800 font-light">₹</span><span
+                                    class="value text-gray-700 font-medium h-5 text-center">5999</span></div>
                             <div class="frequency mb-1.5 font-semibold text-center">monthly</div>
                             <p class="mb-1.5 text-left">This is a more advanced package suited for medium companies</p>
                             <ul class="list mb-7 space-y-2 text-left">
@@ -276,8 +276,8 @@
                         class="relative lg:block grid-rows-3  order-3 w-80 h-auto mr-auto lg:grid-cols-6 gap-3 mb-6  ml-auto mx-auto border rounded shadow-md">
                         <div class="p-8 bg-gray-50 grid-rows-6 animate__animated wow animate__zoomIn">
                             <div class=" mb-1.5 text-blue-500 font-bold text-center">PREMIUM</div>
-                            <div class="price"><span class="mr-1.5 text-amber-800 font-light">$</span><span
-                                    class="text-gray-700 font-medium h-5 text-center">35999</span></div>
+                            <div class="price"><span class="mr-1.5 text-amber-800 font-light">₹</span><span
+                                    class="text-gray-700 font-medium h-5 text-center">7999</span></div>
                             <div class="mb-1.5 font-semibold text-center">monthly</div>
                             <p class="mb-3 text-left">This is a comprehensive package designed for big organizations</p>
                             <ul class="mb-7 text-left space-y-2">
@@ -338,7 +338,7 @@
         </section>
         {{--<--- Our Team ---->--}}
         <section href="{{ route('about') }}">
-            <div class="py-32 mx-auto bg-gray-100">
+            <div class="py-32 mx-auto bg-gray-200">
                 <div class="container px-4 mx-auto justify-items-center sm:px-8">
 
 
@@ -436,43 +436,74 @@
                 </div>
             </div>
             {{--<---counter--->--}}
-            <div class="counter w-full xl:flex sm:flex bg-white">
-                <div class="container flex mx-auto mt-8 py-4 px-4 sm:px-8 ">
-
-                    <div
-                        class="grid md:grid-cols-5  mx-auto items-center gap-10 text-center animate__animated wow animate__zoomInDown">
-                        <div class="cell mr-2.5 md:grid-cols-1 ml-2.5 text-3xl">
-                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                                  class="purecounter"></span>
-                            <p class="counter-info text-2xl">Happy Users</p>
+{{--            <div class="counter w-full xl:flex sm:flex bg-white">--}}
+{{--                <div class="container flex mx-auto mt-8 py-4 px-4 sm:px-8 ">--}}
+                    <div class="section-counter">
+                        <div class="counter-item animate__animated wow animate__zoomInDown">
+                            <div class="counter">
+                                <h2 data-purecounter-start="0" data-purecounter-end="5000" data-purecounter-duration="5" class="counter-number  purecounter" id="studentsEnrolled"></h2>
+                                <span class="counter-label">Happy Users </span>
+                            </div>
                         </div>
-                        <div
-                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-2 animate__animated wow animate_zoomInDown">
-                            <span data-purecounter-start="0" data-purecounter-end="385" data-purecounter-duration="1"
-                                  class="purecounter"></span>
-                            <p class="counter-info text-2xl">Issues Solved</p>
+                        <div class="counter-item animate__animated wow animate__zoomInDown">
+                            <div class="counter">
+                                <h2 data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="5" class="counter-number  purecounter" id="successRate">%</h2>
+                                <span class="counter-label">Success Rate</span>
+                            </div>
                         </div>
-                        <div
-                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-3 animate__animated wow animate_zoomInDown">
-                            <span data-purecounter-start="0" data-purecounter-end="159" data-purecounter-duration="1"
-                                  class="purecounter"></span>
-                            <p class="counter-info text-2xl">Good Reviews</p>
+                        <div class="counter-item animate__animated wow animate__zoomInDown">
+                            <div class="counter">
+                                <h2 data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="5" class="counter-number  purecounter" id="certifiedTeachers"></h2>
+                                <span class="counter-label">Good Reviews</span>
+                            </div>
                         </div>
-                        <div
-                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-4 animate__animated wow animate_zoomInDown">
-                            <span data-purecounter-start="0" data-purecounter-end="127" data-purecounter-duration="1"
-                                  class="purecounter"></span>
-                            <p class="counter-info text-2xl">Case Studies</p>
+                        <div class="counter-item animate__animated wow animate__zoomInDown">
+                            <div class="counter">
+                                <h2 data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="5" class="counter-number  purecounter" id="completeCourses">%</h2>
+                                <span class="counter-label"> Orders Received</span>
+                            </div>
                         </div>
-                        <div
-                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-5 animate__animated wow animate_zoomInDown">
-                            <span data-purecounter-start="0" data-purecounter-end="333" data-purecounter-duration="1"
-                                  class="purecounter"></span>
-                            <p class="counter-info text-2xl">Orders Received</p>
+                        <div class="counter-item animate__animated wow animate__zoomInDown">
+                            <div class="counter">
+                                <h2 data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="5" class="counter-number purecounter" id="completeCourses"></h2>
+                                <span class="counter-label"> Issues Solved</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+{{--<---old--->--}}
+{{--                    <div class="grid md:grid-cols-5  mx-auto items-center gap-10 text-center animate__animated wow animate__zoomInDown">--}}
+{{--                        <div class="cell mr-2.5 md:grid-cols-1 ml-2.5 text-3xl">--}}
+{{--                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"--}}
+{{--                                  class="purecounter"></span>--}}
+{{--                            <p class="counter-info text-2xl">Happy Users</p>--}}
+{{--                        </div>--}}
+{{--                        <div--}}
+{{--                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-2 animate__animated wow animate_zoomInDown">--}}
+{{--                            <span data-purecounter-start="0" data-purecounter-end="385" data-purecounter-duration="1"--}}
+{{--                                  class="purecounter"></span>--}}
+{{--                            <p class="counter-info text-2xl">Issues Solved</p>--}}
+{{--                        </div>--}}
+{{--                        <div--}}
+{{--                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-3 animate__animated wow animate_zoomInDown">--}}
+{{--                            <span data-purecounter-start="0" data-purecounter-end="159" data-purecounter-duration="1"--}}
+{{--                                  class="purecounter"></span>--}}
+{{--                            <p class="counter-info text-2xl">Good Reviews</p>--}}
+{{--                        </div>--}}
+{{--                        <div--}}
+{{--                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-4 animate__animated wow animate_zoomInDown">--}}
+{{--                            <span data-purecounter-start="0" data-purecounter-end="127" data-purecounter-duration="1"--}}
+{{--                                  class="purecounter"></span>--}}
+{{--                            <p class="counter-info text-2xl">Case Studies</p>--}}
+{{--                        </div>--}}
+{{--                        <div--}}
+{{--                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-5 animate__animated wow animate_zoomInDown">--}}
+{{--                            <span data-purecounter-start="0" data-purecounter-end="333" data-purecounter-duration="1"--}}
+{{--                                  class="purecounter"></span>--}}
+{{--                            <p class="counter-info text-2xl">Orders Received</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </section>
         {{--<----contact---->--}}
         <section href="{{ route('contact') }}">
@@ -644,12 +675,12 @@
                     </div>
                 </div>
 
-                <div class="footer-top">
-                    <div class="container mx-auto justify-items-center">
+                <div class="footer-top dark:bg-gray-900">
+                    <div class="container mx-auto justify-items-center dark:bg-gray-900">
                         <div class="row grid sm:grid-cols-4 p-5">
 
                             <div class="grid-cols-1 footer-contact">
-                                <h3>Aaran Soft</h3>
+                                <h3 class="text-white">Aaran </h3>
                                 <p>
                                     10-A Venkatappa Gounder Street<br>
                                     Tiruppur,-641654.<br>
@@ -763,7 +794,7 @@
 
                             <div class="grid-cols-4  footer-links">
                                 <h4>Our Social Networks</h4>
-                                <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                                <p class="text-white">Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
                                 <div class="social-links mt-3">
                                     <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                                     <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -778,19 +809,19 @@
                 </div>
             </section>
 
-            <div class="w-full bg-gray-300 ">
+            <div class="w-full dark:bg-gray-800">
                 <div
-                    class="container xl:flex sm:flex  w-full h-auto px-5 py-6 mx-auto flex items-center sm:flex-row flex-col bg-gray-300 ">
+                    class="container xl:flex sm:flex  w-full h-auto px-5 py-6 mx-auto flex items-center sm:flex-row flex-col dark:bg-gray-800">
                     <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
                              stroke-linejoin="round" stroke-width="2"
                              class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                         </svg>
-                        <span class="ml-3 text-xl">AARAN SOFT</span>
+                        <span class="ml-3 text-xl text-white">AARAN </span>
                     </a>
-                    <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2023 Sundar —
-                        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1"
+                    <p class="text-sm text-gray-100 sm:ml-6 sm:mt-0 mt-4 ">© 2023 Sundar —
+                        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-200 ml-1"
                            target="_blank">@aaransoftwares@gmail.com</a>
                     </p>
                 </div>

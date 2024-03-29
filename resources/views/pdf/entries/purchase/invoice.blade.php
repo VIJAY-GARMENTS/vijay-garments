@@ -24,6 +24,7 @@
             border: solid 1px rgba(161, 161, 161, 0.9);
             border-collapse: collapse;
             padding: 2px;
+            position: relative;
             /*margin: 2px;*/
         }
 
@@ -44,37 +45,37 @@
             Width: auto !important;
         }
 
-        .companyname {
-            position: fixed;
-            margin-top: 2px;
-            margin-left: 20px;
-            /*font-weight: 400;*/
-            /*font-size: 36px;*/
-            /*font-size: x-large;*/
-            font-size: 30px;
-            text-align: center;
-            text-transform: uppercase;
-            height: 35px;
-        }
+        /*.companyname {*/
+        /*    position: fixed;*/
+        /*    margin-top: 2px;*/
+        /*    margin-left: 20px;*/
+        /*    !*font-weight: 400;*!*/
+        /*    !*font-size: 36px;*!*/
+        /*    !*font-size: x-large;*!*/
+        /*    font-size: 30px;*/
+        /*    text-align: center;*/
+        /*    text-transform: uppercase;*/
+        /*    height: 35px;*/
+        /*}*/
 
-        .address1 {
-            position: fixed;
-            margin-top: 34px;
-            font-weight: 400;
-            font-size: 12px;
-            text-align: center;
-            font-family: sans-serif;
-        }
+        /*.address1 {*/
+        /*    position: fixed;*/
+        /*    margin-top: 34px;*/
+        /*    font-weight: 400;*/
+        /*    font-size: 12px;*/
+        /*    text-align: center;*/
+        /*    font-family: sans-serif;*/
+        /*}*/
 
-        .address2 {
-            position: fixed;
-            margin-top: 30px;
-            top: 20px !important;
-            font-weight: 400;
-            font-size: 12px;
-            text-align: center;
-            font-family: sans-serif;
-        }
+        /*.address2 {*/
+        /*    position: fixed;*/
+        /*    margin-top: 30px;*/
+        /*    top: 20px !important;*/
+        /*    font-weight: 400;*/
+        /*    font-size: 12px;*/
+        /*    text-align: center;*/
+        /*    font-family: sans-serif;*/
+        /*}*/
 
         .gst {
             position: fixed;
@@ -107,6 +108,18 @@
             page-break-after: always;
         }
 
+        .column1 {
+            width: 300px;
+            height: auto;
+
+        }
+        .column2 {
+            width: 300px;
+            height: auto;
+
+        }
+
+
     </style>
 
 </head>
@@ -115,11 +128,18 @@
 <table width="100%" class="print:*">
     <thead>
     <tr>
-        <td colspan="2">
-            <div style="height: 65px;" class="bg-blue-400 ">
-                <div style="text-align: center; width: 100%;" class="companyname">{{$cmp->get('company_name')}}</div>
-                <div style="text-align: center; width: 100%;" class="address1">{{$cmp->get('address_1')}}</div>
-                <div style="text-align: center; width: 100%;" class="address2">{{$cmp->get('address_2')}}</div>
+        <td colspan="1">
+            {{--            <div class="logoLeft">--}}
+            {{--                <img src="{{ \Illuminate\Support\Facades\Storage::url('logo')}}"/>--}}
+            {{--            </div>--}}
+            <div style="height: 65px; padding: 10px;" class="bg-blue-400 column1">
+                <div style="text-align: center;position: relative; width: 100%;" class="companyname">{{$cmp->get('company_name')}}</div>
+            </div>
+        </td>
+        <td>
+            <div style="height: 65px; padding-top: 0px; padding-left: 5px;" class="bg-blue-400 column2">
+                <div style="text-align: center; width: 100%; position: relative" class="address1">{{$cmp->get('address_1')}}</div>
+                <div style="text-align: center; width: 100%; position: relative" class="address2">{{$cmp->get('address_2')}}</div>
             </div>
         </td>
     </tr>
@@ -158,13 +178,19 @@
 <table width="100%">
     <thead style="background-color: lightgray;">
     <tr>
-        <th width="12px">#</th>
-        <th>Product</th>
-        <th width="70px">Colour</th>
-        <th width="70px">Sizes</th>
-        <th width="70px">Quantity</th>
-        <th width="70px">Price</th>
-        <th width="70px">Amount</th>
+        <th width="5px" style="padding: 5px;">#</th>
+        <th width="12px" style="padding: 5px; ">Po.No</th>
+        <th width="12px" style="padding: 5px;">Dc.No</th>
+        <th width="40px" style="padding: 5px;">Particulars</th>
+        <th width="40px" style="padding: 5px;">HSN Code</th>
+        <th width="40px" style="padding: 5px;">Quantity</th>
+        <th width="40px" style="padding: 5px;">Price</th>
+        <th width="40px" style="padding: 5px;">Taxable Amt</th>
+        <th style="padding: 1px; width: 1px; border-right: none;text-align: left; margin-bottom: 0;">%</th>
+        <th width="40px" style="padding: 2px; border-left: none; margin-left: 0px;">SGST Amt</th>
+        <th style="padding: 1px; width: 1px; border-right: none;text-align: left; margin-bottom: 0;">%</th>
+        <th width="40px" style="padding: 2px; border-left: none; margin-left: 0px;">CGST Amt</th>
+        <th width="40px" style="padding: 5px;">sub Total</th>
     </tr>
     </thead>
     <tbody>
@@ -172,19 +198,31 @@
 
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_name']}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['colour_name']}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['size_name']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']}}</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['price']}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']*$row['price']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_taxable}}</td>
+            <td align="center" style="border-bottom: none; border-left: none;">{{$row['gst_percent']/2}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_gst/2}}</td>
+            <td align="center" style="border-bottom: none; border-left: none;">{{$row['gst_percent']/2}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_gst/2}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->grand_total}}</td>
         </tr>
 
     @endforeach
 
-    @for($i = 0; $i < 28-$list->count(); $i++)
+    @for($i = 0; $i < 24-$list->count(); $i++)
 
         <tr>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
@@ -197,55 +235,58 @@
     @endfor
 
     <tr>
-        <td colspan=1" align="right">&nbsp;E&OE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td colspan="3" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td align="right">{{$obj->total_qty}}</td>
-        <td align="right"></td>
-        <td align="right">{{$obj->grand_total}}</td>
+        <td colspan=3" align="right">&nbsp;E&OE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td colspan="2" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td  align="right">{{$obj->total_qty}}</td>
+        <td  align="right"></td>
+        <td  align="right">{{$obj->grand_total}}</td>
+        <td colspan="2" align="right">{{$obj->total_gst/2}}</td>
+        <td colspan="2" align="right">{{$obj->total_gst/2}}</td>
+        <td colspan="1" align="right">{{$obj->grand_total}}</td>
     </tr>
     <tr>
-        <td colspan="4" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="2" align="left" style="border-bottom: none;border-top: none; border-right: none;">Taxable value</td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="5" align="left" style="border-bottom: none;border-top: none; border-right: none;">Taxable value</td>
         <td align="center" style="border-bottom: none;border-top: none; border-left: none;">{{$obj->total_taxable}}</td>
     </tr>
     <tr>
-        <td colspan="4" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="2" align="left" style="border-bottom: none;border-right: none;">CGST</td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">CGST</td>
         <td align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
     </tr>
     <tr>
-        <td colspan="4" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="2" align="left" style="border-bottom: none;border-right: none;">SGST</td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">SGST</td>
         <td align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
     </tr>
     <tr>
-        <td colspan="4" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="2" align="left" style="border-bottom: none;border-right: none;">Total GST</td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">Total GST</td>
         <td align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst}}</td>
     </tr>
     <tr>
-        <td colspan="4" align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-        <td colspan="2" align="left" style="border-bottom: none;border-right: none;">&nbsp;</td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">&nbsp;</td>
         <td align="center" style="border-bottom: none; border-left: none;">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="4" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="2" align="left" style="border-bottom: none;border-right: none;">Round Off</td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">Round Off</td>
         <td align="center" style="border-bottom: none; border-left: none;">{{$obj->round_off}}</td>
     </tr>
     <tr>
-        <td colspan="4"><span>Amount Chargeable (in words)</span>
+        <td colspan="7"><span>Amount Chargeable (in words)</span>
             <div style="margin-top: 5px">
                 {{$rupees}}
             </div>
         </td>
-        <td colspan="2" align="left" style="border-bottom: none;border-right: none; font-weight: bold; font-size:medium;">GRAND TOTAL</td>
+        <td colspan="5" align="left" style="border-bottom: none;border-right: none; font-weight: bold; font-size:medium;">GRAND TOTAL</td>
         <td align="center" style="border-bottom: none; border-left: none;font-weight: bold; font-size:medium;">{{$obj->grand_total}}</td>
     </tr>
     <tr>
-        <td colspan="3" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px ;">Receiver Sign
+        <td colspan="6" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px ;">Receiver Sign
         </td>
-        <td colspan="4" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px; ">
+        <td colspan="7" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px; ">
             &nbsp;for&nbsp;{{$cmp->get('company_name')}}
             <div style="padding-top: 20px;  margin-top:16px">Authorized signatory</div>
         </td>
@@ -451,7 +492,7 @@
         <tr>
             <th align="center" style="border-bottom: none;">{{$index+1}} </th>
             <th align="center" style="border-bottom: none;">&nbsp;{{$row['product_name']}}</th>
-            <th align="center" style="border-bottom: none;">&nbsp;{{$row['colour_name']}}</th>
+            <th align="center" style="border-bottom: none;">&nbsp;</th>
             <th align="center" style="border-bottom: none;">&nbsp;{{$row['size_name']}}</th>
             <th align="right" style="border-bottom: none;">&nbsp;{{$row['qty']}}</th>
             <th align="right" style="border-bottom: none;">&nbsp;{{$row['price']}}</th>

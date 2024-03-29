@@ -92,130 +92,116 @@
 @media (min-width: 1280px) {
     /* Your destop styles here */
 }
-/*<---loading--->*/
-/*body {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
-
-/*.container {*/
-/*    width: 100%;*/
-/*    height: 100vh;*/
-/*    position: relative;*/
-/*    background: black;*/
-/*    !*overflow: hidden;*!*/
-/*}*/
-
-/*.span-container {*/
-/*    width: 100px;*/
-/*    height: 100px;*/
-/*    transform: translate(-50% -50%);*/
-/*    position: absolute;*/
-/*    top: 42%;*/
-/*    left: 45%;*/
-/*    !*overflow: hidden;*!*/
-/*}*/
-
-/*span {*/
-/*    display: block;*/
-/*    position: absolute;*/
-/*    width: 40%;*/
-/*    height: 40%;*/
-/*    border-radius: 50%;*/
-/*    animation: speed 2s infinite ease-in-out;*/
-/*}*/
-
-/*.one {*/
-/*    background: #c9ba12;*/
-/*    animation-delay: 3.5s;*/
-/*}*/
-
-/*.two {*/
-/*    background: #a11cc7;*/
-/*    animation-delay: 1s;*/
-/*}*/
-
-/*.three {*/
-/*    background: #237ead;*/
-/*    animation-delay: 0.5s;*/
-/*}*/
-
-/*.four {*/
-/*    background: #e0bcbc;*/
-/*}*/
-
-/*@keyframes speed {*/
-/*    0% {*/
-/*        transform: translate(0%);*/
-/*        border-radius: 50%;*/
-/*    }*/
-
-/*    25% {*/
-/*        transform: translate(150%) scale(0.5);*/
-/*        border-radius: 0%;*/
-/*    }*/
-
-/*    50% {*/
-/*        transform: translate(150%, 150%);*/
-/*        border-radius: 50%;*/
-/*    }*/
-
-/*    75% {*/
-/*        transform: translate(0, 150%) scale(0.5);*/
-/*        border-radius: 0%;*/
-/*    }*/
-/*}*/
-
-/*@media screen and (max-width: 500px) {*/
-/*    .span-container {*/
-/*        left: 40%;*/
-/*        !*overflow: hidden;*!*/
-/*    }*/
-/*}*/
 
 
+.section-counter {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.counter-item {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 .counter {
-    padding-top: 2rem;
-    padding-bottom: 4.5rem;
-    text-align: center;
-}
-
-.counter #counter {
-    margin-bottom: 0.75rem;
-}
-
-.counter #counter .cell {
-    display: inline-block;
+    position: relative;
     width: 120px;
-    margin-right: 1.75rem;
-    margin-bottom: 3.5rem;
-    margin-left: 1.75rem;
-    vertical-align: top;
+    height: 120px;
+    border-radius: 50%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(135deg, #e6a6f4, #9d77e5);
 }
 
-.counter #counter .cell {
-    margin-right: 2.5rem;
-    margin-left: 2.5rem;
+.counter:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.counter #counter .counter-value {
-    font-size: 3.75rem;
-    line-height: 4.25rem;
-}
-.counter #counter .counter-value {
-    color: #252c38;
-    font-weight: 700;
-    font-size: 3.25rem;
-    line-height: 3.75rem;
-    vertical-align: middle;
+.counter:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 8px solid #f2f2f2;
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    opacity: 0.8;
 }
 
-.counter #counter .counter-info {
-    margin-bottom: 0;
-    font-size: 0.875rem;
-    vertical-align: middle;
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
+
+.counter-number {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+    font-family: "Helvetica", sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: color 0.3s ease;
+}
+
+.counter:hover .counter-number {
+    color: #fff;
+}
+
+.counter-label {
+    font-size: 14px;
+    color: #fff;
+    font-family: "Arial", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.counter:hover .counter-label {
+    color: #fff;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+    .counter-number {
+        font-size: 28px;
+    }
+
+    .counter-label {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .counter-number {
+        font-size: 32px;
+    }
+
+    .counter-label {
+        font-size: 13px;
+    }
+}
+
 .team {
     font-size: 2.75rem;
     text-align: center;
@@ -395,6 +381,30 @@
 }
 
 
+.hover-underline {
+    display: inline-block;
+    position: relative;
+    color: cadetblue;
+}
+
+.hover-underline:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
 
 /*--------------------------------------------------------------
 # Footer
@@ -472,7 +482,7 @@
     line-height: 1;
     text-transform: uppercase;
     font-weight: 600;
-    color: #37517e;
+    color: white;
 }
 
 .footer-top .footer-contact p {
@@ -480,13 +490,13 @@
     line-height: 24px;
     margin-bottom: 0;
     font-family: "Jost", sans-serif;
-    color: #5e5e5e;
+    color: white;
 }
 
 .footer-top h4 {
     font-size: 16px;
     font-weight: bold;
-    color: #37517e;
+    color: white;
     position: relative;
     padding-bottom: 12px;
 }
@@ -502,7 +512,7 @@
 }
 .footer-top .footer-links ul svg {
     padding-right: 2px;
-    color: #47b2e4;
+    color: white;
     font-size: 18px;
     line-height: 1;
 }
@@ -518,7 +528,7 @@
 }
 
 .footer-top .footer-links ul a {
-    color: #777777;
+    color: white;
     transition: 0.3s;
     display: inline-block;
     line-height: 1;
@@ -526,13 +536,13 @@
 
 .footer-top .footer-links ul a:hover {
     text-decoration: none;
-    color: #47b2e4;
+    color: white;
 }
 
 .footer-top .social-links a {
     font-size: 18px;
     display: inline-block;
-    background: #47b2e4;
+    background: white;
     color: #fff;
     line-height: 1;
     padding: 8px 0;

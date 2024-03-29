@@ -3,7 +3,6 @@
 namespace App\Livewire\Blog\Post;
 
 use App\Models\Blog\Post;
-use FontLib\TrueType\Collection;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -14,8 +13,8 @@ class Upsert extends Component
     public mixed $vid = '';
     public string $title;
     public string $body;
-    public string $user_id;
     public $image;
+    public string $user_id;
 
     public function mount($id)
     {
@@ -24,8 +23,8 @@ class Upsert extends Component
             $this->vid = $post->id;
             $this->title = $post->title;
             $this->body = $post->body;
-            $this->user_id = $post->user_id;
             $this->image = $post->image;
+            $this->user_id = $post->user_id;
 
         }
 
@@ -39,16 +38,21 @@ class Upsert extends Component
                 Post::create([
                     'title' => $this->title,
                     'body' => $this->body,
-                    'user_id' => \Auth::id(),
                     'image' => $this->save_image(),
+                    'user_id' => \Auth::id(),
                 ]);
                 $this->getRoute();
             } else {
                 $post = Post::find($this->vid);
                 $post->title = $this->title;
                 $post->body = $this->body;
-                $post->user_id = \Auth::id();
+                if ($post->image!=$this->image){
                 $post->image = $this->save_image();
+                }else{
+                    $post->image=$this->image;
+                }
+
+                $post->user_id = \Auth::id();
                 $post->save();
 
                 $this->redirect(route('posts'));
@@ -60,7 +64,6 @@ class Upsert extends Component
 
     public function save_image()
     {
-//        return $this->image = \File::allFiles(public_path('images'));
             return $this->image->store('photos','public');
     }
 

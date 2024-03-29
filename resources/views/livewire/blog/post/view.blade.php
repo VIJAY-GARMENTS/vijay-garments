@@ -1,5 +1,5 @@
 <div>
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto sm:px-6 p-20 lg:px-8">
         <img src="{{ \Illuminate\Support\Facades\Storage::url($post->image) }}" class="rounded-2xl w-1/3 h-1/3"/>
     </div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

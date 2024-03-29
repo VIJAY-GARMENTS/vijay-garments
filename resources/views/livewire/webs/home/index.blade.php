@@ -1,4 +1,4 @@
-<div class="loading w-full flex justify-center h-auto object-cover bg-[#f9f9f9]">
+<div class="loading w-full flex justify-center h-auto object-cover">
     <div class="w-full rounded h-full">
 
         <header id="header" class="header text-center">
@@ -9,48 +9,48 @@
             <div class="w-full sm:flex-row">
 
                 <div
-                    class="xl:container grid grid-row-2 lg:grid-cols-2 mx-auto flex-row py-5 sm:py-10 px-5 sm:px-10 bg-white-900 sm:flex-row">
+                    class="xl:container grid grid-row-2 lg:grid-cols-2 mx-auto flex-row py-2 sm:py-5 px-5 sm:px-10 bg-white-900 sm:flex-row">
 
                     <div>
-                        <x-storyset.asset-selection/>
+                        <x-storyset.programer/>
                     </div>
 
                     <div
                         class="w-full  p-5 order-1 grid-row-1 lg:flex-col-1 animate__animated wow animate__fadeInDown ">
-                        <h1 class="pt-20 mb-5 font-extrabold text-3xl">Team management Our application</h1>
-                        <p class="mb-8 font-light text-2xl ">
-                            Start getting things done together with your team based on
-                            CODEXSUN revolutionary team management features
+                        <h1 class="pt-20 mb-5 text-blue-600 text-2xl font-semibold">CODEXSUN</h1>
+                        <h1 class="mb-5 font-extrabold text-3xl text-zinc-600">Manage your business like never
+                            before</h1>
+                        <p class="py-2 font-light text-sm/relaxed text-zinc-500">
+                            The perfect key for unlocking business growth is Infusing Intelligence to your business.
                         </p>
-                        <a class="btn-solid-lg hover:#37517e rounded gap-3 bordered bg-[#47b2e4] border-gray-500 p-3 hover:bg-[#1da1f2]"
+                        <p class="mb-5 font-light text-sm/relaxed  text-zinc-500">
+                            Start getting complete business solution package with end-to-end management.</p>
+                        <a class="rounded-lg shadow hover:border-b-4 hover:border-green-200 hover:transition duration-200 ease-out hover:text-lg  bg-green-600 py-2 px-3 font-bold tracking-wider font-mono text-white"
                            href="{{ route('register') }}">
-                            <i class="fab fa-apple border-gray-500 hover:text-white">register</i>
+                            Book for demo
                         </a>
                     </div>
-
-{{--                    <div--}}
-{{--                        class="w-full flex mx-auto  grid-row-2 order-2 flex-row lg:flex-col-2 animate__animated wow animate__bounceInRight bg-gradient-to-r from-white to-gray-50">--}}
-{{--                        <img class="lg:h-auto rounded ms-auto inline lg:max-w-2xl" src="../../../../images/img9.jpg"--}}
-{{--                             alt="image description">--}}
-{{--                    </div>--}}
-
                 </div>
             </div>
         </header>
 
-        <div class="pt-4 pb-14 text-center font-sans animate__animated wow animate__bounce bg-gray-100">
+        <div class="pt-4 pb-14 text-center font-sans animate__animated wow animate__bounce">
             <div
                 class="container px-4 sm:px-8 xl:px-4 justify-items-center mx-auto  animate__animated animate__backInUp">
-                <p class="mb-4 text-gray-800 text-3xl leading-10 lg:max-w-5xl lg:mx-auto"> Team management mobile apps
-                    don’t get better than CODEXSUN. It’s probably the best app in the world for this purpose. Don’t
-                    hesitate to give it a try today, and you will fall in love with it</p>
+                <p class="mb-4 text-gray-800 text-xl leading-10 lg:max-w-5xl lg:mx-auto">
+                    The ability to trace requirements flow from their source (originator),
+                    through the various project phases (design, prototyping, customizations, testing, piloting, and
+                    delivery)
+                    is a requirements generation best practice. Don’t
+                    hesitate to give it a try today, and you will fall in love with it
+                </p>
             </div>
         </div>
         {{--<---services--->--}}
         <section href="{{ route('service') }}">
-            <div class="w-full bg-gray-100">
+            <div class="w-full">
                 <div id="services"
-                     class="container  mx-auto xl:flex  md:flex-row  sm:flex-row sm:gap-3 pt-4 pb-1.5  text-center bg-gray-100">
+                     class="container  mx-auto xl:flex  md:flex-row  sm:flex-row sm:gap-3 pt-4 pb-1.5  text-center">
                     <div class=" justify-items-center grid md:grid-cols-3 p-3 gap-3 w-full mx-auto">
 
                         <div
@@ -338,176 +338,57 @@
         </section>
         {{--<--- Our Team ---->--}}
         <section href="{{ route('about') }}">
-            <div class="py-32 mx-auto bg-gray-200">
                 <div class="container px-4 mx-auto justify-items-center sm:px-8">
-
-
-
-                    {{--<---team member--->--}}
-{{--                    <div--}}
-{{--                        class=" slide-from-left container bg-gray-100 grid md:grid-cols-3 mx-auto justify-items-center">--}}
-
-{{--                        <div class="md:grid-cols-1 p-7 gap-4">--}}
-{{--                            <div class="entry-thumb portfolio-thumb ">--}}
-{{--                                --}}
-{{--                                <div--}}
-{{--                                    class="imgoverlay relative overflow-hidden rounded-2xl disabled:block text-light animate__animated wow animate__backInUp">--}}
-{{--                                    <a href="../../../../images/taylor.jpg">--}}
-{{--                                        <img class="h-96 pt-1.5" src="../../../../images/taylor.jpg" alt="image">--}}
-{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
-{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>TaylorOtwall</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                                --}}
-{{--                                --}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="md:grid-cols-2 p-7 gap-4">--}}
-{{--                            <div class="entry-thumb portfolio-thumb">--}}
-{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
-{{--                                    <a href="../../../../images/way1.jpg">--}}
-{{--                                        <img src="../../../../images/way1.jpg" alt="image">--}}
-{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
-{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Jeffrey Way</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="md:grid-cols-3 p-7 gap-4">--}}
-{{--                            <div class="entry-thumb portfolio-thumb ">--}}
-{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
-{{--                                    <a href="../../../../images/caleb.jpg">--}}
-{{--                                        <img src="../../../../images/caleb.jpg" alt="image">--}}
-{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
-{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Caleb Porzio</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="md:grid-cols-4 p-7 grid-rows-1 gap-4">--}}
-{{--                            <div class="entry-thumb portfolio-thumb ">--}}
-{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
-{{--                                    <a href="../../../../images/rasmus%20.jpg">--}}
-{{--                                        <img src="../../../../images/rasmus%20.jpg" alt="image">--}}
-{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
-{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Rasmus Lerdorf</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="md:grid-cols-5 p-7 gap-4">--}}
-{{--                            <div class="entry-thumb portfolio-thumb">--}}
-{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
-{{--                                    <a href="../../../../images/adam.jpg">--}}
-{{--                                        <img class="w-80" src="../../../../images/adam.jpg" alt="image">--}}
-{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
-{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>adam wathan</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="md:grid-cols-6 p-7 gap-4">--}}
-{{--                            <div class="entry-thumb portfolio-thumb">--}}
-{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
-{{--                                    <a href="../../../../images/eich.jpg">--}}
-{{--                                        <img class="h-80 w-72" src="../../../../images/eich.jpg" alt="image">--}}
-{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
-{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Eich</h6></div>--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-
                     <x-webs.home.teams-one/>
-
                 </div>
-            </div>
+
             {{--<---counter--->--}}
-{{--            <div class="counter w-full xl:flex sm:flex bg-white">--}}
-{{--                <div class="container flex mx-auto mt-8 py-4 px-4 sm:px-8 ">--}}
-                    <div class="section-counter">
-                        <div class="counter-item animate__animated wow animate__zoomInDown">
-                            <div class="counter">
-                                <h2 data-purecounter-start="0" data-purecounter-end="5000" data-purecounter-duration="5" class="counter-number  purecounter" id="studentsEnrolled"></h2>
-                                <span class="counter-label">Happy Users </span>
-                            </div>
+
+            <div class="section-counter">
+                <div class="counter-item animate__animated wow animate__zoomInDown">
+                    <div
+                        class="grid md:grid-cols-5  mx-auto items-center gap-10 text-center animate__animated wow animate__zoomInDown">
+                        <div class="cell mr-2.5 md:grid-cols-1 ml-2.5 text-3xl">
+                                        <span data-purecounter-start="0" data-purecounter-end="232"
+                                              data-purecounter-duration="1"
+                                              class="purecounter"></span>
+                            <p class="counter-info text-2xl">Happy Users</p>
                         </div>
-                        <div class="counter-item animate__animated wow animate__zoomInDown">
-                            <div class="counter">
-                                <h2 data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="5" class="counter-number  purecounter" id="successRate">%</h2>
-                                <span class="counter-label">Success Rate</span>
-                            </div>
+                        <div
+                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-2 animate__animated wow animate_zoomInDown">
+                                        <span data-purecounter-start="0" data-purecounter-end="385"
+                                              data-purecounter-duration="1"
+                                              class="purecounter"></span>
+                            <p class="counter-info text-2xl">Issues Solved</p>
                         </div>
-                        <div class="counter-item animate__animated wow animate__zoomInDown">
-                            <div class="counter">
-                                <h2 data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="5" class="counter-number  purecounter" id="certifiedTeachers"></h2>
-                                <span class="counter-label">Good Reviews</span>
-                            </div>
+                        <div
+                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-3 animate__animated wow animate_zoomInDown">
+                                        <span data-purecounter-start="0" data-purecounter-end="159"
+                                              data-purecounter-duration="1"
+                                              class="purecounter"></span>
+                            <p class="counter-info text-2xl">Good Reviews</p>
                         </div>
-                        <div class="counter-item animate__animated wow animate__zoomInDown">
-                            <div class="counter">
-                                <h2 data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="5" class="counter-number  purecounter" id="completeCourses">%</h2>
-                                <span class="counter-label"> Orders Received</span>
-                            </div>
+                        <div
+                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-4 animate__animated wow animate_zoomInDown">
+                                        <span data-purecounter-start="0" data-purecounter-end="127"
+                                              data-purecounter-duration="1"
+                                              class="purecounter"></span>
+                            <p class="counter-info text-2xl">Case Studies</p>
                         </div>
-                        <div class="counter-item animate__animated wow animate__zoomInDown">
-                            <div class="counter">
-                                <h2 data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="5" class="counter-number purecounter" id="completeCourses"></h2>
-                                <span class="counter-label"> Issues Solved</span>
-                            </div>
+                        <div
+                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-5 animate__animated wow animate_zoomInDown">
+                                        <span data-purecounter-start="0" data-purecounter-end="333"
+                                              data-purecounter-duration="1"
+                                              class="purecounter"></span>
+                            <p class="counter-info text-2xl">Orders Received</p>
                         </div>
                     </div>
-{{--<---old--->--}}
-{{--                    <div class="grid md:grid-cols-5  mx-auto items-center gap-10 text-center animate__animated wow animate__zoomInDown">--}}
-{{--                        <div class="cell mr-2.5 md:grid-cols-1 ml-2.5 text-3xl">--}}
-{{--                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"--}}
-{{--                                  class="purecounter"></span>--}}
-{{--                            <p class="counter-info text-2xl">Happy Users</p>--}}
-{{--                        </div>--}}
-{{--                        <div--}}
-{{--                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-2 animate__animated wow animate_zoomInDown">--}}
-{{--                            <span data-purecounter-start="0" data-purecounter-end="385" data-purecounter-duration="1"--}}
-{{--                                  class="purecounter"></span>--}}
-{{--                            <p class="counter-info text-2xl">Issues Solved</p>--}}
-{{--                        </div>--}}
-{{--                        <div--}}
-{{--                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-3 animate__animated wow animate_zoomInDown">--}}
-{{--                            <span data-purecounter-start="0" data-purecounter-end="159" data-purecounter-duration="1"--}}
-{{--                                  class="purecounter"></span>--}}
-{{--                            <p class="counter-info text-2xl">Good Reviews</p>--}}
-{{--                        </div>--}}
-{{--                        <div--}}
-{{--                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-4 animate__animated wow animate_zoomInDown">--}}
-{{--                            <span data-purecounter-start="0" data-purecounter-end="127" data-purecounter-duration="1"--}}
-{{--                                  class="purecounter"></span>--}}
-{{--                            <p class="counter-info text-2xl">Case Studies</p>--}}
-{{--                        </div>--}}
-{{--                        <div--}}
-{{--                            class="cell text-3xl mr-2.5 ml-2.5 md:grid-cols-5 animate__animated wow animate_zoomInDown">--}}
-{{--                            <span data-purecounter-start="0" data-purecounter-end="333" data-purecounter-duration="1"--}}
-{{--                                  class="purecounter"></span>--}}
-{{--                            <p class="counter-info text-2xl">Orders Received</p>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+                </div>
+            </div>
         </section>
         {{--<----contact---->--}}
         <section href="{{ route('contact') }}">
-            <div class="contact  relative mx-auto justify-items-center p-7 bg-gray-200">
+            <div class="contact  relative mx-auto justify-items-center p-7 bg-zinc-400">
                 <div class="container justify-items-center mx-auto ">
                     <div class="section-header  justify-items-center animate__animated wow animate__fadeInTopLeft">
                         <h3 class="text-center font-sans font-bold text-3xl">Contact Us</h3>
@@ -794,7 +675,8 @@
 
                             <div class="grid-cols-4  footer-links">
                                 <h4>Our Social Networks</h4>
-                                <p class="text-white">Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                                <p class="text-white">Cras fermentum odio eu feugiat lide par naso tierra videa magna
+                                    derita valies</p>
                                 <div class="social-links mt-3">
                                     <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                                     <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>

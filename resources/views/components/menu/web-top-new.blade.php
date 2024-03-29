@@ -7,7 +7,7 @@
                         <x-assets.logo.cxlogo :icon="'light'" class="h-9 ml-4 mx-auto w-auto  block"/>
                     </div>
                     <span
-                        class="self-center text-3xl font-semibold whitespace-nowrap px-2 -mt-2 tracking-wider text-blue-900">CODEXSUN</span>
+                        class="self-center text-3xl font-semibold whitespace-nowrap px-2 -mt-2 tracking-wider">CODEXSUN</span>
                 </a>
             </div>
 
@@ -15,23 +15,23 @@
             <div class="hidden md:block">
                 <ul class="flex items-center space-x-8">
                     <li>
-                        <a class="hover-underline hover:bg-gray-200 rounded-md font-serif text-2xl p-2 grid-rows-1 lg:p-3 lg:grid-cols-1"
-                           href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                        <a class="text-2xl font-sans text-zinc-500 hover:bg-blue-100 hover:text-zinc-700 rounded-md px-2 hover:border-b-4 py-1 hover:border-blue-400 transition-all duration-500"
+                           href="{{route('home')}}">Home</a>
                     </li>
                     <li>
-                        <a class="hover-underline  hover:bg-gray-200 rounded-md text-2xl p-2 grid-rows-2 font-serif lg:p-3 lg:grid-cols-2"
+                        <a class="text-2xl font-sans text-zinc-500 hover:bg-blue-100 hover:text-zinc-700 rounded-md px-2 hover:border-b-4 py-1 hover:border-blue-400 transition-all duration-500"
                            href="{{route('service')}}">services</a>
                     </li>
                     <li>
-                        <a class="hover-underline hover:bg-gray-200 rounded-md text-2xl p-2 grid-rows-3 font-serif lg:p-3 lg:grid-cols-3"
+                        <a class="text-2xl font-sans text-zinc-500 hover:bg-blue-100 hover:text-zinc-700 rounded-md px-2 hover:border-b-4 py-1 hover:border-blue-400 transition-all duration-500"
                            href="{{route('about')}}">About Us</a>
                     </li>
                     <li>
-                        <a class="hover-underline hover:bg-gray-200 rounded-md text-2xl p-2 grid-rows-4 font-serif lg:p-3 lg:grid-cols-4"
+                        <a class="text-2xl font-sans text-zinc-500 hover:bg-blue-100 hover:text-zinc-700 rounded-md px-2 hover:border-b-4 py-1 hover:border-blue-400 transition-all duration-500"
                            href="{{route('contact')}}">Contact</a>
                     </li>
                     <li>
-                        <a class="hover-underline hover:bg-gray-200 rounded-md text-2xl p-2 grid-rows-5 font-serif lg:p-3 lg:grid-cols-5"
+                        <a class="text-2xl font-sans text-zinc-500 hover:bg-blue-100 hover:text-zinc-700 rounded-md px-2 hover:border-b-4 py-1 hover:border-blue-400 transition-all duration-500"
                            href="{{route('posts')}}">Blog</a>
                     </li>
                 </ul>
@@ -84,14 +84,15 @@
 
                         @else
                             <a href="{{ route('login') }}"
-                               class="font-semibold text-xl hover:text-white hover:bg-[#1da1f2] px-3 py-1 rounded-md
-                                   focus:outline-none focus:underline transition ease-in-out duration-700">
+                               class="font-semibold text-xl hover:text-white hover:bg-blue-600 px-3 py-1 rounded-md
+                                   focus:outline-none transition ease-in-out duration-500">
                                 Log in
                             </a>
                         @endauth
                     </div>
                 @endif
             </div>
+
         </div>
 
 

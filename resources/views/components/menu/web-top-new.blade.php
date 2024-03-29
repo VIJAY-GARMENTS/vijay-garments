@@ -10,6 +10,8 @@
                         class="self-center text-3xl font-semibold whitespace-nowrap px-2 -mt-2 tracking-wider text-zinc-700">CODEXSUN</span>
                 </a>
             </div>
+
+            <!--main menu ---------------------------------------------------------------------------------------------->
             <div class="hidden md:block">
                 <ul class="flex items-center space-x-8">
                     <li>
@@ -34,6 +36,8 @@
                     </li>
                 </ul>
             </div>
+
+            <!--hamburger button---------------------------------------------------------------------------------------->
             <div class="md:hidden">
                 <nav>
                     <button class="w-10 h-10 relative focus:outline-none text-gray-800" @click="open = !open">
@@ -54,6 +58,7 @@
 
             </div>
 
+            <!--login--------------------------------------------------------------------------------------------------->
             <div class="hidden md:block">
                 @if (Route::has('login'))
                     <div id="menu" class="space-x-4 ">
@@ -90,6 +95,7 @@
         </div>
 
 
+        <!--mobile view------------------------------------------------------------------------------------------------->
         <div :class="{'block': open, 'hidden': ! open}"
              class="hidden sm:hidden transform transition duration-800 ease-in-out">
             <ul class="mt-4 space-y-4">

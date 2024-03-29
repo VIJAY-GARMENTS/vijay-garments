@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet.authentication-card>
         <x-slot name="logo">
-            <x-assets.logo.cxlogo :icon="'light'" class="h-20 ml-4 mx-auto w-auto  block"/>
+            <x-assets.logo.cxlogo :icon="'light'" class="h-16 ml-4 mx-auto w-auto  block"/>
         </x-slot>
 
         <x-jet.validation-errors class="mb-4"/>

@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Offset\Sales;
 
-use Aaran\Entries\Models\Sale;
 use Aaran\Master\Models\Contact;
 use Aaran\Offset\Models\Sale_offset;
 use Aaran\Orders\Models\Order;
@@ -58,7 +57,7 @@ class Report extends Component
     {
         $this->getContact();
         $this->getOrder();
-        return view('livewire.entries.sales.report')->with([
+        return view('livewire.offset.sales.report')->with([
             'list' => $this->getList()
         ]);
     }

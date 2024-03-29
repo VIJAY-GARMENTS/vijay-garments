@@ -13,7 +13,6 @@ class Index extends Component
     public Collection $companies;
     public $tenant_id;
 
-    public bool $showCompanies = false;
     public company $company;
     public string $company_1 = '';
 
@@ -22,7 +21,6 @@ class Index extends Component
         $this->showEditModal = true;
     }
 
-    public $show;
     public function mount()
     {
 //        $this->switchCompany();
@@ -39,14 +37,11 @@ class Index extends Component
                 $this->company = Company::find($defaultCompany->company_id);
                 $this->company_1 = $this->company->vname;
                 session()->put('company_id', $defaultCompany->company_id);
-                $this->showCompanies = false;
             } else {
                 $this->company_1 = '';
-                $this->showCompanies = true;
                 $this->getAllCompanies();
             }
         } else {
-            $this->showCompanies = true;
             $this->getAllCompanies();
         }
     }
@@ -54,7 +49,6 @@ class Index extends Component
     public function getAllCompanies(): void
     {
         $this->companies = Company::where('tenant_id', '=', session()->get('tenant_id'))->get();
-        $this->showCompanies = true;
     }
 
     public function setDefault(
@@ -72,7 +66,6 @@ class Index extends Component
                 'acyear' => '1'
             ]);
         }
-        $this->showCompanies = false;
         $this->showEditModal=false;
 
         session()->put('company_id', $id);

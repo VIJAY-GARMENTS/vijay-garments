@@ -18,7 +18,12 @@ class Report extends Component
     public $byOrder;
     public $start_date;
     public $end_date;
+    public $store;
 
+    public function export()
+    {
+        return $this->store->list()->toCsv();
+    }
 
 
     public function getContact()

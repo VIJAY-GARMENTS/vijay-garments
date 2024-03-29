@@ -1,7 +1,5 @@
 <div>
-    <x-slot name="header">Order</x-slot>
-
-    <div class="border border-gray-300 max-w-screen-md rounded  overflow-scroll shadow-lg">
+    <div class="border border-gray-300 max-w-screen-md rounded  overflow-scroll shadow-lg bg-white">
 
         <div>
             <div class="flex items-center gap-3 p-2 border-b border-gray-300">

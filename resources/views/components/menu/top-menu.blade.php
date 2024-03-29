@@ -24,7 +24,8 @@
                 {{$slot}}
             </div>
 
-            <div class="flex gap-3 w-full px-12">
+            <div class="flex gap-3 w-full px-12 justify-end">
+                <livewire:sys.default-company.index/>
                 {{-- @livewire('controls.searchbars.topsearch')--}}
                 {{-- @livewire('controls.searchbars.searchbar')--}}
                 {{-- @livewire('controls.searchbars.filters')--}}
@@ -63,7 +64,9 @@
                             @endauth
                         </x-slot>
 
+
                         <x-slot name="content">
+
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
@@ -73,13 +76,14 @@
                                 {{ __('Profile') }}
                             </x-jet.dropdown-link>
 
+                            <x-jet.dropdown-link >
+                            </x-jet.dropdown-link>
+
                             {{--                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())--}}
                             {{--                                <x-jet.dropdown-link href="{{ route('api-tokens.index') }}">--}}
                             {{--                                    {{ __('API Tokens') }}--}}
                             {{--                                </x-jet.dropdown-link>--}}
                             {{--                            @endif--}}
-
-                            <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">

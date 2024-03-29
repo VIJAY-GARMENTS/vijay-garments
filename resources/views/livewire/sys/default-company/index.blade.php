@@ -1,4 +1,14 @@
 <div>
+    <button type="button" wire:click="create" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100
+    focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white
+    dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Select Company</button>
+
+    <x-jet.modal wire:model.defer="showEditModal" >
+        <div class=" px-6 pt-4 text-xl font-semibold text-blue-600/100 dark:text-blue-500/100 ">
+            Choose Company
+        </div>
+        <x-forms.section-border class="py-2"/>
+    <div class=" mt-4 mb-5 px-6  pt-4">
     <div class="flex justify-between w-full mb-3">
         <div>
             @if(isset($company_1))
@@ -33,4 +43,6 @@
             @endforelse
         </table>
     @endif
+    </div>
+    </x-jet.modal>
 </div>

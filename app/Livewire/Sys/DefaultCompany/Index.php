@@ -9,12 +9,19 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public $showEditModal=false;
     public Collection $companies;
     public $tenant_id;
 
     public bool $showCompanies = false;
     public company $company;
     public string $company_1 = '';
+
+    public function create(): void
+    {
+        $this->showEditModal = true;
+
+    }
 
     public function mount()
     {
@@ -68,6 +75,7 @@ class Index extends Component
             ]);
         }
         $this->showCompanies = false;
+        $this->showEditModal=false;
 
         session()->put('company_id', $id);
     }

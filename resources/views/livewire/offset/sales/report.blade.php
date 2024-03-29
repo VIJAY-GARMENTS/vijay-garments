@@ -26,7 +26,7 @@
                 </x-input.model-select>
             </div>
             <div class="ml-auto mr-2">
-                <button class="bg-blue-600 flex rounded-lg px-5 py-3 text-white"><x-icons.icon :icon="'arrow-down'" class="h-6 w-auto block"/><div class="pl-2">Export</div></button>
+                <button wire:click="export" class="bg-blue-600 flex rounded-lg px-5 py-3 text-white"><x-icons.icon :icon="'arrow-down'" class="h-6 w-auto block"/><div class="pl-2">Export</div></button>
             </div>
 
         </div>

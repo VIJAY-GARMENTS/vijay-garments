@@ -382,7 +382,7 @@
                     </tbody>
                     <tfoot class="mt-2">
                     <tr class="h-8 text-sm border border-gray-400 bg-cyan-50">
-                        <td colspan="4" class="px-2 text-xs text-right border border-gray-300">&nbsp;TOTALS&nbsp;&nbsp;&nbsp;</td>
+                        <td colspan="6" class="px-2 text-xs text-right border border-gray-300">&nbsp;TOTALS&nbsp;&nbsp;&nbsp;</td>
                         <td class="px-2 text-center border border-gray-300">{{$total_qty}}</td>
                         <td class="px-2 text-center border border-gray-300">&nbsp;</td>
                         <td class="px-2 text-right border border-gray-300">{{$total_taxable}}</td>

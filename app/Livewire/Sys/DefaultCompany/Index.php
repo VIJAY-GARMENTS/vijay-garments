@@ -20,12 +20,12 @@ class Index extends Component
     public function create(): void
     {
         $this->showEditModal = true;
-
     }
 
+    public $show;
     public function mount()
     {
-        $this->switchCompany();
+//        $this->switchCompany();
         $this->setDefault(session()->get('tenant_id'));
     }
 
@@ -51,15 +51,13 @@ class Index extends Component
         }
     }
 
-    public
-    function getAllCompanies(): void
+    public function getAllCompanies(): void
     {
         $this->companies = Company::where('tenant_id', '=', session()->get('tenant_id'))->get();
         $this->showCompanies = true;
     }
 
-    public
-    function setDefault(
+    public function setDefault(
         $id
     ): void {
         $obj = DefaultCompany::find(1);
@@ -81,19 +79,20 @@ class Index extends Component
     }
 
     public
-    function switchCompany(): void
+    function switchCompany($id): void
     {
         $obj = DefaultCompany::find(1);
-        $obj->company_id = 0;
+        $obj->company_id = $id;
         $obj->save();
 
         session()->put('company_id', 0);
 
-        $this->showCompanies = true;
+        $this->showEditModal = false;
     }
 
     public function render()
     {
+        $this->getAllCompanies();
         $this->getDefaultCompany();
         return view('livewire.sys.default-company.index');
     }

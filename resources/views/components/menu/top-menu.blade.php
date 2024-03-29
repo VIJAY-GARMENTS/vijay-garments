@@ -24,7 +24,8 @@
                 {{$slot}}
             </div>
 
-            <div class="flex gap-3 w-full px-12 justify-end">
+            <div class="flex w-full justify-end">
+
                 <livewire:sys.default-company.index/>
                 {{-- @livewire('controls.searchbars.topsearch')--}}
                 {{-- @livewire('controls.searchbars.searchbar')--}}
@@ -33,7 +34,7 @@
             </div>
 
             {{-- login menu--}}
-            <div class="sm:flex sm:items-center sm:ml-6">
+            <div class="sm:flex sm:items-center sm:ml-3">
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-jet.dropdown align="right" width="48">
@@ -42,7 +43,7 @@
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                     <button
                                         class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                        <img class="h-8 w-8 rounded-full object-cover"
+                                        <img class="h-10 w-12 rounded-full object-cover"
                                              src="{{ Auth::user()->profile_photo_url }}"
                                              alt="{{ Auth::user()->name }}"/>
                                     </button>
@@ -74,9 +75,6 @@
 
                             <x-jet.dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
-                            </x-jet.dropdown-link>
-
-                            <x-jet.dropdown-link >
                             </x-jet.dropdown-link>
 
                             {{--                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())--}}

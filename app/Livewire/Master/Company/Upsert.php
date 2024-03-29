@@ -15,6 +15,7 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use function Livewire\store;
+
 class Upsert extends Component
 {
     use CommonTrait;
@@ -25,11 +26,11 @@ class Upsert extends Component
     public string $gstin = '';
     public string $address_1 = '';
     public string $address_2 = '';
-    public string $display_name='';
-    public string $landline='';
-    public string $website='';
-    public  $logo='';
-    public string $pan='';
+    public string $display_name = '';
+    public string $landline = '';
+    public string $website = '';
+    public $logo = '';
+    public string $pan = '';
 
     public string $cities;
     public string $states;
@@ -61,6 +62,7 @@ class Upsert extends Component
         }
         $this->highlightCity++;
     }
+
     public function setCity($name, $id): void
     {
         $this->city_name = $name;
@@ -91,7 +93,7 @@ class Upsert extends Component
 
     public function getCityList(): void
     {
-        $this->cityCollection = $this->city_name ? City::search(trim($this->city_name ))->get():City::all();
+        $this->cityCollection = $this->city_name ? City::search(trim($this->city_name))->get() : City::all();
     }
 
     public $state_id = '';
@@ -117,6 +119,7 @@ class Upsert extends Component
         }
         $this->highlightState++;
     }
+
     public function setState($name, $id): void
     {
         $this->state_name = $name;
@@ -147,10 +150,9 @@ class Upsert extends Component
 
     public function getStateList(): void
     {
-        $this->stateCollection = $this->state_name ? State::search(trim($this->state_name ))
-            ->get():State::all();
+        $this->stateCollection = $this->state_name ? State::search(trim($this->state_name))
+            ->get() : State::all();
     }
-
 
 
     public $pincode_id = '';
@@ -167,6 +169,7 @@ class Upsert extends Component
         }
         $this->highlightPincode--;
     }
+
     public function incrementPincode(): void
     {
         if ($this->highlightPincode === count($this->pincodeCollection) - 1) {
@@ -194,6 +197,7 @@ class Upsert extends Component
         $this->pincode_id = $id;
         $this->getPincodeList();
     }
+
     #[On('refresh-pincode')]
     public function refreshPincode($v): void
     {
@@ -201,6 +205,7 @@ class Upsert extends Component
         $this->pincode_name = $v['name'];
         $this->pincodeTyped = false;
     }
+
     public function getPincodeList(): void
     {
         $this->pincodeCollection = $this->pincode_name ? Pincode::search(trim($this->pincode_name))
@@ -213,7 +218,7 @@ class Upsert extends Component
             if ($this->vid == "") {
                 Company::create([
                     'vname' => Str::ucfirst($this->vname),
-                    'display_name'=>$this->display_name,
+                    'display_name' => $this->display_name,
                     'address_1' => $this->address_1,
                     'address_2' => $this->address_2,
                     'mobile' => $this->mobile,
@@ -222,12 +227,12 @@ class Upsert extends Component
                     'pan' => $this->pan,
                     'email' => $this->email,
                     'website' => $this->website,
-                    'city_id' => $this->city_id,
-                    'state_id' => $this->state_id,
-                    'pincode_id' => $this->pincode_id,
-                    'active_id' => $this->active_id,
+                    'city_id' => $this->city_id ?: '1',
+                    'state_id' => $this->state_id ?: '1',
+                    'pincode_id' => $this->pincode_id ?: '1',
+                    'active_id' => $this->active_id ?: '1',
                     'user_id' => Auth::id(),
-                    'tenant_id'=>$this->tenant_id,
+                    'tenant_id' => $this->tenant_id ?: '1',
                     'logo' => $this->save_logo(),
                 ]);
                 $message = "Saved";
@@ -263,9 +268,9 @@ class Upsert extends Component
 
     public function mount($id): void
     {
-        if ($id!=0){
+        if ($id != 0) {
 
-            $obj=Company::find($id);
+            $obj = Company::find($id);
             $this->vid = $obj->id;
             $this->vname = $obj->vname;
             $this->display_name = $obj->display_name;
@@ -278,17 +283,18 @@ class Upsert extends Component
             $this->email = $obj->email;
             $this->website = $obj->website;
             $this->city_id = $obj->city_id;
-            $this->city_name=$obj->city->vname;
+            $this->city_name = $obj->city->vname;
             $this->state_id = $obj->state_id;
-            $this->state_name= $obj->state->vname;
+            $this->state_name = $obj->state->vname;
             $this->pincode_id = $obj->pincode_id;
             $this->pincode_name = $obj->pincode->vname;
             $this->active_id = $obj->active_id;
             $this->logo = $obj->logo;
-        }else{
-            $this->active_id=true;
+        } else {
+            $this->active_id = true;
         }
     }
+
     public function getObj($id)
     {
         if ($id) {
@@ -305,9 +311,9 @@ class Upsert extends Component
             $this->email = $obj->email;
             $this->website = $obj->website;
             $this->city_id = $obj->city_id;
-            $this->city_name=$obj->city->vname;
+            $this->city_name = $obj->city->vname;
             $this->state_id = $obj->state_id;
-            $this->state_name= $obj->state->vname;
+            $this->state_name = $obj->state->vname;
             $this->pincode_id = $obj->pincode_id;
             $this->pincode_name = $obj->pincode->vname;
             $this->active_id = $obj->active_id;
@@ -319,7 +325,11 @@ class Upsert extends Component
 
     public function save_logo()
     {
-//        return $this->logo->store('logo','public');
+        if ($this->logo == '') {
+            return $this->logo = 'empty';
+        } else {
+            return $this->logo->store('logo', 'public');
+        }
     }
 
 
@@ -327,9 +337,10 @@ class Upsert extends Component
     {
         $this->redirect(route('companies'));
     }
+
     public function getTenants()
     {
-        $this->tenants=Tenant::all();
+        $this->tenants = Tenant::all();
 
     }
 

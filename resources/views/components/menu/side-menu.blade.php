@@ -4,10 +4,8 @@
      class="absolute inset-0 transform duration-500 z-30 w-80 bg-gray-900 text-white h-auto print:hidden"
      :class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': sidebarOpen === false}">
     <div class="flex justify-between px-5 py-6">
-        <a href="{{route('dashboard')}}" class="flex gap-2">
-            {{--            <span class="p-1 rounded bg-white">--}}
-            {{--            <x-assets.logo.aaran class="h-7 w-auto block"/>--}}
-            {{--            </span>--}}
+        <a href="{{route('dashboard')}}" class="flex gap-3">
+            <x-assets.logo.cxlogo :icon="'dark'" class="h-10 w-auto block"/>
             <span class="font-bold text-2xl sm:text-3xl tracking-widest">AARAN</span>
         </a>
 

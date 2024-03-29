@@ -340,90 +340,99 @@
         <section href="{{ route('about') }}">
             <div class="py-32 mx-auto bg-gray-100">
                 <div class="container px-4 mx-auto justify-items-center sm:px-8">
-                    <h2 class="mb-12 text-center text-3xl font-bold lg:max-w-xl lg:mx-auto">OUR TEAM MEMBERS</h2>
-                    {{--<---team member--->--}}
-                    <div
-                        class=" slide-from-left container bg-gray-100 grid md:grid-cols-3 mx-auto justify-items-center">
 
-                        <div class="md:grid-cols-1 p-7 gap-4">
-                            <div class="entry-thumb portfolio-thumb ">
-                                <div
-                                    class="imgoverlay relative overflow-hidden rounded-2xl disabled:block text-light animate__animated wow animate__backInUp">
-                                    <a href="../../../../images/taylor.jpg">
-                                        <img class="h-96 pt-1.5" src="../../../../images/taylor.jpg" alt="image">
-                                        <div class="overlay"><span class="overlaycolor"></span>
-                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>TaylorOtwall</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:grid-cols-2 p-7 gap-4">
-                            <div class="entry-thumb portfolio-thumb">
-                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">
-                                    <a href="../../../../images/way1.jpg">
-                                        <img src="../../../../images/way1.jpg" alt="image">
-                                        <div class="overlay"><span class="overlaycolor"></span>
-                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Jeffrey Way</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:grid-cols-3 p-7 gap-4">
-                            <div class="entry-thumb portfolio-thumb ">
-                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">
-                                    <a href="../../../../images/caleb.jpg">
-                                        <img src="../../../../images/caleb.jpg" alt="image">
-                                        <div class="overlay"><span class="overlaycolor"></span>
-                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Caleb Porzio</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:grid-cols-4 p-7 grid-rows-1 gap-4">
-                            <div class="entry-thumb portfolio-thumb ">
-                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">
-                                    <a href="../../../../images/rasmus%20.jpg">
-                                        <img src="../../../../images/rasmus%20.jpg" alt="image">
-                                        <div class="overlay"><span class="overlaycolor"></span>
-                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Rasmus Lerdorf</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:grid-cols-5 p-7 gap-4">
-                            <div class="entry-thumb portfolio-thumb">
-                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">
-                                    <a href="../../../../images/adam.jpg">
-                                        <img class="w-80" src="../../../../images/adam.jpg" alt="image">
-                                        <div class="overlay"><span class="overlaycolor"></span>
-                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>adam wathan</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:grid-cols-6 p-7 gap-4">
-                            <div class="entry-thumb portfolio-thumb">
-                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">
-                                    <a href="../../../../images/eich.jpg">
-                                        <img class="h-80 w-72" src="../../../../images/eich.jpg" alt="image">
-                                        <div class="overlay"><span class="overlaycolor"></span>
-                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Eich</h6></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
+                    {{--<---team member--->--}}
+{{--                    <div--}}
+{{--                        class=" slide-from-left container bg-gray-100 grid md:grid-cols-3 mx-auto justify-items-center">--}}
+
+{{--                        <div class="md:grid-cols-1 p-7 gap-4">--}}
+{{--                            <div class="entry-thumb portfolio-thumb ">--}}
+{{--                                --}}
+{{--                                <div--}}
+{{--                                    class="imgoverlay relative overflow-hidden rounded-2xl disabled:block text-light animate__animated wow animate__backInUp">--}}
+{{--                                    <a href="../../../../images/taylor.jpg">--}}
+{{--                                        <img class="h-96 pt-1.5" src="../../../../images/taylor.jpg" alt="image">--}}
+{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
+{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>TaylorOtwall</h6>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                                --}}
+{{--                                --}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="md:grid-cols-2 p-7 gap-4">--}}
+{{--                            <div class="entry-thumb portfolio-thumb">--}}
+{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
+{{--                                    <a href="../../../../images/way1.jpg">--}}
+{{--                                        <img src="../../../../images/way1.jpg" alt="image">--}}
+{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
+{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Jeffrey Way</h6>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="md:grid-cols-3 p-7 gap-4">--}}
+{{--                            <div class="entry-thumb portfolio-thumb ">--}}
+{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
+{{--                                    <a href="../../../../images/caleb.jpg">--}}
+{{--                                        <img src="../../../../images/caleb.jpg" alt="image">--}}
+{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
+{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Caleb Porzio</h6>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="md:grid-cols-4 p-7 grid-rows-1 gap-4">--}}
+{{--                            <div class="entry-thumb portfolio-thumb ">--}}
+{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
+{{--                                    <a href="../../../../images/rasmus%20.jpg">--}}
+{{--                                        <img src="../../../../images/rasmus%20.jpg" alt="image">--}}
+{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
+{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Rasmus Lerdorf</h6>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="md:grid-cols-5 p-7 gap-4">--}}
+{{--                            <div class="entry-thumb portfolio-thumb">--}}
+{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
+{{--                                    <a href="../../../../images/adam.jpg">--}}
+{{--                                        <img class="w-80" src="../../../../images/adam.jpg" alt="image">--}}
+{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
+{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>adam wathan</h6>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="md:grid-cols-6 p-7 gap-4">--}}
+{{--                            <div class="entry-thumb portfolio-thumb">--}}
+{{--                                <div class="imgoverlay text-light rounded-2xl animate__animated wow animate__backInUp">--}}
+{{--                                    <a href="../../../../images/eich.jpg">--}}
+{{--                                        <img class="h-80 w-72" src="../../../../images/eich.jpg" alt="image">--}}
+{{--                                        <div class="overlay"><span class="overlaycolor"></span>--}}
+{{--                                            <div class="overlayinfo" style="margin-top: -11px;"><h6>Eich</h6></div>--}}
+{{--                                        </div>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+
+                    <x-webs.home.teams-one/>
+
                 </div>
             </div>
             {{--<---counter--->--}}

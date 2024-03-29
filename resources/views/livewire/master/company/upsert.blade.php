@@ -83,9 +83,9 @@
                             @keydown.escape.window="isTyped = false"
                             @keydown.tab.window="isTyped = false"
                             @keydown.enter.prevent="isTyped = false"
-                            wire:keydown.arrow-up="decrementstate"
-                            wire:keydown.arrow-down="incrementstate"
-                            wire:keydown.enter="enterstate"
+                            wire:keydown.arrow-up="decrementState"
+                            wire:keydown.arrow-down="incrementState"
+                            wire:keydown.enter="enterState"
                             class="block w-full purple-textbox"
                         />
 

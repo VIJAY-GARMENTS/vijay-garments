@@ -319,7 +319,7 @@ class Upsert extends Component
 
     public function save_logo()
     {
-        return $this->logo->store('logo','public');
+//        return $this->logo->store('logo','public');
     }
 
 

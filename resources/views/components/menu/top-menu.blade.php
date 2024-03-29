@@ -20,7 +20,7 @@
 
             <!-- Page Heading -->
             <div class="font-semibold text-xl text-gray-800 leading-tight justify-start shrink-0 ">
-                <x-assets.logo.cxlogo :icon="'light'" class="h-9 ml-4 mx-auto w-auto  block"/>
+
                 {{$slot}}
             </div>
 

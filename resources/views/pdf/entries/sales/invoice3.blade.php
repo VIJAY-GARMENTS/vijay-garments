@@ -133,13 +133,13 @@
 {{--                <img src="{{ \Illuminate\Support\Facades\Storage::url('logo')}}"/>--}}
 {{--            </div>--}}
             <div style="height: 65px; padding: 10px;" class="bg-blue-400 column1">
-                <div style="text-align: left;position: relative; width: 100%;" class="companyname">{{$cmp->get('company_name')}}</div>
+                <div style="text-align: center;position: relative; width: 100%;" class="companyname">{{$cmp->get('company_name')}}</div>
             </div>
         </td>
         <td>
             <div style="height: 65px; padding-top: 0px; padding-left: 5px;" class="bg-blue-400 column2">
-            <div style="text-align: left; width: 100%; position: relative" class="address1">{{$cmp->get('address_1')}}</div>
-            <div style="text-align: left; width: 100%; position: relative" class="address2">{{$cmp->get('address_2')}}</div>
+            <div style="text-align: center; width: 100%; position: relative" class="address1">{{$cmp->get('address_1')}}</div>
+            <div style="text-align: center; width: 100%; position: relative" class="address2">{{$cmp->get('address_2')}}</div>
             </div>
         </td>
     </tr>
@@ -201,7 +201,7 @@
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_name']}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['colour_name']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']}}</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['price']}}</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_taxable}}</td>
@@ -492,7 +492,7 @@
         <tr>
             <th align="center" style="border-bottom: none; ">{{$index+1}} </th>
             <th align="center" style="border-bottom: none; ">&nbsp;{{$row['product_name']}}</th>
-            <th align="center" style="border-bottom: none; ">&nbsp;{{$row['colour_name']}}</th>
+            <th align="center" style="border-bottom: none; ">&nbsp;</th>
             <th align="center" style="border-bottom: none; ">&nbsp;{{$row['size_name']}}</th>
             <th align="right" style="border-bottom: none; ">&nbsp;{{$row['qty']}}</th>
             <th align="right" style="border-bottom: none; ">&nbsp;{{$row['price']}}</th>

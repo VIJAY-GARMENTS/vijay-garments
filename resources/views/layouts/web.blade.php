@@ -19,7 +19,7 @@
 </head>
 <body>
 <div>
-    <x-menu.web-top/>
+    <x-menu.web-top-new/>
 
     {{ $slot }}
 

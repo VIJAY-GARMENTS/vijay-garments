@@ -14,6 +14,7 @@ class Upsert extends Component
     public string $title;
     public string $body;
     public $image;
+    public $id;
     public string $user_id;
 
     public function mount($id)
@@ -29,6 +30,12 @@ class Upsert extends Component
         }
 
 
+    }
+    public function set_delete($id): void
+    {
+        $post = Post::find($id);
+        $post->delete();
+        $this->redirect(route('posts'));
     }
 
     public function save()
@@ -61,6 +68,8 @@ class Upsert extends Component
         }
 
     }
+
+
 
     public function save_image()
     {

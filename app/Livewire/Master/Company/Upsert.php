@@ -42,6 +42,7 @@ class Upsert extends Component
     public $city_id = '';
     public $city_name = '';
     public Collection $cityCollection;
+
     public $highlightCity = 0;
     public $cityTyped = false;
 

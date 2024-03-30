@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Listeners\SetSoftwareIdInSession;
 use App\Listeners\SetTenantIdInSession;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
@@ -19,7 +20,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array<string, array<int, string>>
      */
     protected $listen = [ Login::class=>[
-        SetTenantIdInSession::class,
+        SetTenantIdInSession::class,SetSoftwareIdInSession::class,
     ]];
 
     /**

@@ -32,6 +32,7 @@ use Aaran\Orders\Database\Seeders\OrderSeeder;
 use Aaran\Orders\Database\Seeders\StyleSeeder;
 use App\Models\Blog\Post;
 use App\Models\Group;
+use App\Models\Software;
 use App\Models\Tenant;
 use App\Models\User;
 use Database\Factories\Blog\PostFactory;
@@ -44,6 +45,8 @@ class DatabaseSeeder extends Seeder
     {
         Tenant::create(['t_name'=>'Aaran']);
         Tenant::create(['t_name'=>'test']);
+        Software::create(['s_name'=>'Garments']);
+        Software::create(['s_name'=>'Printing']);
         User::create([
             'name' => 'sundar',
             'email' => 'sundar@sundar.com',
@@ -51,6 +54,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'tenant_id'=> '1',
+            'software_id'=> '1',
         ]);
 
         User::create([
@@ -59,7 +63,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456789'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'tenant_id'=> '1'
+            'tenant_id'=> '1',
+            'software_id'=> '1',
         ]);
 
         User::create([
@@ -68,7 +73,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456789'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'tenant_id'=> '2'
+            'tenant_id'=> '2',
+            'software_id'=> '2',
         ]);
 
         User::create([
@@ -77,7 +83,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('987654321'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'tenant_id'=> '1'
+            'tenant_id'=> '1',
+            'software_id'=> '1',
         ]);
 
         CitySeeder::run();

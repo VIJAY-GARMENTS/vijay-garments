@@ -27,8 +27,12 @@
             x-data="{selected:null}">
 
 
+            @if(session()->get('software_id')==1)
             <x-menu.sub.entries/>
+            @endif
+            @if(session()->get('software_id')==2)
             <x-menu.sub.offset/>
+            @endif
             <x-menu.sub.erp.production/>
             <x-menu.sub.master/>
             <x-menu.sub.order/>

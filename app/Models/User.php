@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Scopes\SoftwareScope;
 use App\Scopes\TenantScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -121,5 +122,6 @@ class User extends Authenticatable
     protected static function booted(): void
     {
         static::addGlobalScope(new TenantScope);
+        static::addGlobalScope(new SoftwareScope);
     }
 }

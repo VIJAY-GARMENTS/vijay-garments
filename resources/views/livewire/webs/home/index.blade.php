@@ -580,9 +580,9 @@
                         </div>
                     </div>
 
-                    <div class="footer-top dark:bg-gray-900">
-                        <div class="container mx-auto justify-items-center dark:bg-gray-900">
-                            <div class="row grid sm:grid-cols-4 p-5">
+                    <div class="bg-gray-700">
+                        <div class="container mx-auto justify-items-center bg-gray-700 dark:bg-gray-900">
+                            <div class="row grid sm:grid-cols-4 p-5 text-white">
 
                                 <div class="grid-cols-1 footer-contact">
                                     <h3 class="text-white">Aaran </h3>

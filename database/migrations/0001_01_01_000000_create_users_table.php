@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->unsignedBigInteger('software_id')->nullable();
+            $table->unsignedBigInteger('usertype_id')->nullable();
             $table->timestamps();
         });
 

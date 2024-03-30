@@ -35,6 +35,7 @@ use App\Models\Group;
 use App\Models\Software;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Models\Usertype;
 use Database\Factories\Blog\PostFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -47,6 +48,8 @@ class DatabaseSeeder extends Seeder
         Tenant::create(['t_name'=>'test']);
         Software::create(['s_name'=>'Garments']);
         Software::create(['s_name'=>'Printing']);
+        Usertype::create(['usertype'=>'Admin']);
+        Usertype::create(['usertype'=>'member']);
         User::create([
             'name' => 'sundar',
             'email' => 'sundar@sundar.com',
@@ -55,6 +58,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'tenant_id'=> '1',
             'software_id'=> '1',
+            'usertype_id'=>'1'
         ]);
 
         User::create([
@@ -65,6 +69,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'tenant_id'=> '1',
             'software_id'=> '1',
+            'usertype_id'=>'2'
         ]);
 
         User::create([
@@ -75,6 +80,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'tenant_id'=> '2',
             'software_id'=> '2',
+            'usertype_id'=>'2'
         ]);
 
         User::create([
@@ -85,6 +91,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'tenant_id'=> '1',
             'software_id'=> '1',
+            'usertype_id'=>'2'
         ]);
 
         CitySeeder::run();

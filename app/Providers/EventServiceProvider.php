@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Listeners\SetSoftwareIdInSession;
 use App\Listeners\SetTenantIdInSession;
+use App\Listeners\SetUsertypeIdInSession;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -20,7 +21,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array<string, array<int, string>>
      */
     protected $listen = [ Login::class=>[
-        SetTenantIdInSession::class,SetSoftwareIdInSession::class,
+        SetTenantIdInSession::class,
+        SetSoftwareIdInSession::class,
+        SetUsertypeIdInSession::class,
     ]];
 
     /**

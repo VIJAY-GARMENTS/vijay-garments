@@ -521,9 +521,19 @@ class Upsert extends Component
                 $obj->round_off = $this->round_off;
                 $obj->grand_total = $this->grand_total;
                 $obj->active_id = $this->active_id;
+                if ($this->time_passed<48){
                 $obj->save();
                 DB::table('saleitems')->where('sale_id', '=', $obj->id)->delete();
                 $this->saveItem($obj->id);
+                }else{
+                    if (session()->get('usertype_id')==1){
+                        $obj->save();
+                        DB::table('saleitems')->where('sale_id', '=', $obj->id)->delete();
+                        $this->saveItem($obj->id);
+                    }else{
+                    $this->flash=true;
+                    }
+                }
                 $message = "Updated";
             }
             $this->getRoute();
@@ -546,9 +556,14 @@ class Upsert extends Component
             ]);
         }
     }
+    public $created_at;
+    public $now;
+    public $time_passed;
+    public $flash=false;
 
     public function mount($id): void
     {
+        $this->now=\Illuminate\Support\Carbon::now();
         $this->invoice_no = Sale::nextNo();
         if ($id != 0) {
             $obj = Sale::find($id);
@@ -575,6 +590,7 @@ class Upsert extends Component
             $this->round_off = $obj->round_off;
             $this->grand_total = $obj->grand_total;
             $this->active_id = $obj->active_id;
+            $this->created_at=$obj->created_at;
             $data = DB::table('saleitems')->select('saleitems.*',
                 'products.vname as product_name',
                 'colours.vname as colour_name',
@@ -610,7 +626,7 @@ class Upsert extends Component
             $this->total_gst = 0;
             $this->invoice_date = Carbon::now()->format('Y-m-d');
         }
-
+        $this->time_passed=$this->created_at->diffInHours($this->now);
         $this->calculateTotal();
     }
 
@@ -763,7 +779,6 @@ class Upsert extends Component
 
     public function getRoute(): void
     {
-
         $this->redirect(route('sales'));
     }
 

@@ -562,6 +562,11 @@
 
         </section>
     </x-forms.m-panel>
+    <x-jet.modal wire:model="flash">
+        <div class="m-3 font-bold text-red-700">
+        This Invoice can not be edited
+        </div>
+    </x-jet.modal>
     <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md shadow-lg w-full ">
 
         <div class="flex flex-col md:flex-row justify-between gap-3 mt-5 mb-0">

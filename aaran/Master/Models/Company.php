@@ -32,7 +32,7 @@ class Company extends Model
         return collect([
             'company_name' => $obj->display_name,
             'address_1' => $obj->address_1 . ', ' . $obj->address_2 . ' - ' . $obj->city->vname . ' - ' . $obj->pincode->vname . '.',
-            'address_2' => 'GSTin - ' . $obj->gstin . ', Mobile - ' . $obj->mobile,
+            'address_2' => 'GSTin - ' . $obj->gstin . ', Mobile - ' . $obj->mobile.' / PAN-'.$obj->pan,
             'email'=>$obj->email,
             'logo'=>$obj->logo,
         ]);

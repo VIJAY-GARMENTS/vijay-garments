@@ -1,53 +1,58 @@
 <div>
 <div class="py-12">
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 space-y-20">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-20">
 <div><h1 class="text-black text-6xl font-extrabold">Latest Updates</h1></div>
         <div class="text-right ">
          @editor
                 <x-button.new class="bg-amber-950 hover:bg-amber-950 "></x-button.new>
             @endeditor
         </div>
-        <article class="transition-colors duration-300 bg-white shadow-2xl hover:bg-gray-100 border border-black border-opacity-50 hover:border-opacity-5 rounded-xl">
-                       <a href="{{route('posts.views',[$list1->id])}}">
-            <div class="py-6 px-5 lg:flex">
-                <div class="flex-1 lg:mr-8">
-                           <img src="{{  \Illuminate\Support\Facades\Storage::url($list1->image) }}"  class="rounded-xl">
-                </div>
-                <div class="flex-1 flex flex-col justify-between">
-                    <header class="mt-8 lg:mt-0">
-                        <div class="mt-4">
-                            <h1 class="text-3xl">
-                                    {{ $list1->title }}
-                            </h1>
+{{--        <article class="transition-colors duration-300 bg-white shadow-2xl hover:bg-gray-100 border border-black border-opacity-50 hover:border-opacity-5 rounded-xl">--}}
+{{--                       <a href="{{route('posts.views',[$list1->id])}}">--}}
+{{--            <div class="py-6 px-5 lg:flex">--}}
+{{--                <div class="flex-1 lg:mr-8">--}}
+{{--                           <img src="{{  \Illuminate\Support\Facades\Storage::url($list1->image) }}"  class="rounded-xl">--}}
+{{--                </div>--}}
+{{--                <div class="flex-1 flex flex-col justify-between">--}}
+{{--                    <header class="mt-8 lg:mt-0">--}}
+{{--                        <div class="mt-4">--}}
+{{--                            <h1 class="text-3xl">--}}
+{{--                                    {{ $list1->title }}--}}
+{{--                            </h1>--}}
 
-                            <span class="mt-2 block text-gray-400 text-xs">
-                        Published <time>{{  $list1->created_at->diffForHumans() }}</time>
-                    </span>
-                        </div>
-                    </header>
-                    <div class="text-sm mt-2 space-y-4">
-                        {!!  \Illuminate\Support\Str::limit($list1->body, 200 )!!}
-                    </div>
+{{--                            <span class="mt-2 block text-gray-400 text-xs">--}}
+{{--                        Published <time>{{  $list1->created_at->diffForHumans() }}</time>--}}
+{{--                    </span>--}}
+{{--                        </div>--}}
+{{--                    </header>--}}
+{{--                    <div class="text-lg mt-2 space-y-4">--}}
+{{--                        {!!  \Illuminate\Support\Str::limit($list1->body, 200 )!!}--}}
+{{--                    </div>--}}
 
-                    <footer class="flex justify-between items-center mt-8">
-                        <div class="flex items-center text-sm">
-                            <div class="ml-3">
-                                <h5 class="font-bold">
-                                    {{$list1->user->name}}
-                                </h5>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
-            </div>
-                       </a>
-        </article>
-        <div class="lg:grid lg:grid-cols-2">
-        @foreach($list->skip(1) as $row)
+{{--                    <footer class="flex justify-between items-center mt-8">--}}
+{{--                        <div class="flex items-center text-sm">--}}
+{{--                            <div class="ml-3">--}}
+{{--                                <h5 class="font-bold">--}}
+{{--                                    {{$list1->user->name}}--}}
+{{--                                </h5>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </footer>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--                       </a>--}}
+{{--        </article>--}}
+        <div class="lg:grid lg:grid-cols-3">
+        @foreach($list as $row)
         <article
             class="transition-colors bg-white shadow-2xl 8duration-300 hover:bg-gray-100 border border-black border-opacity-50 hover:border-opacity-5 rounded-xl mx-3 my-2 px-4 py-3">
             <a href="{{route('posts.views',[$row->id])}}">
-            <div class="py-6 px-5 lg:flex">
+                <div class="mt-4">
+                    <h1 class="text-3xl">
+                        {{ $row->title }}
+                    </h1>
+
+                    <div class="py-6 px-5 lg:flex">
                 <div class="flex-1 lg:mr-8">
                     <img src="{{ \Illuminate\Support\Facades\Storage::url($row->image) }}" class="rounded-xl">
                 </div>
@@ -55,19 +60,15 @@
 
             <div class="flex-1 flex flex-col justify-between">
             <header class="mt-8 lg:mt-0">
-            <div class="mt-4">
-                <h1 class="text-3xl">
-                        {{ $row->title }}
-                </h1>
 
                 <span class="mt-2 block text-gray-400 text-xs">
                         Published <time>{{ $row->created_at->diffForHumans() }}</time>
                     </span>
-            </div>
             </header>
+            </div>
 
-            <div class="text-sm mt-4 space-y-4">
-                {!! \Illuminate\Support\Str::limit($row->body, 200 )!!}
+            <div class="text-lg mt-4 space-y-4">
+                {!! \Illuminate\Support\Str::limit($row->body, 100 )!!}
             </div>
             <footer class="flex justify-between items-center mt-8">
 

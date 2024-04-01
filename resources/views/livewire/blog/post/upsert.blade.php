@@ -1,6 +1,4 @@
-
-
-<div class="p-20">
+<div class="p-12">
     <div class="max-w-3xl mx-auto bg-white shadow-2xl rounded-lg sm:px-6 p-10 lg:px-8  space-y-4">
         <div class="gap-2 ">
             <label for="title">Title</label>
@@ -31,7 +29,8 @@
         <div class="flex gap-2" >
         <x-button.save wire:click.prevent="save" class="w-6"/>
             <x-button.back />
-        <div >
+
+            <div>
         <button wire:click="set_delete({{$id}})" wire:confirm="Are you sure you want to delete this ?" class='inline-flex items-center px-2 py-2 border border-transparent
                                rounded-md font-semibold text-xs text-white uppercase tracking-widest
                                focus:outline-none focus:ring-2 focus:ring-offset-2 transition ease-in-out duration-150

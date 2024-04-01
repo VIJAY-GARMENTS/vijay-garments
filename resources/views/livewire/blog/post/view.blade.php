@@ -1,9 +1,12 @@
-<div>
+    <div>
 <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6 ">
 
     <article class="max-w-4xl mx-auto gap-x-10">
+        <h1 class="font-bold text-3xl text-left lg:text-4xl mb-10">
+            {{ $post->title }}
+        </h1>
         <div class=" lg:pt-14 mb-10">
-            <img src="{{ \Illuminate\Support\Facades\Storage::url($post->image) }}" alt="" class="h-auto w-full rounded-xl">
+            <img src="{{ \Illuminate\Support\Facades\Storage::url($post->image) }}" alt="" class="h-auto w-full rounded-xl shadow-2xl">
 
             <p class="mt-4 block text-end mr-5 text-gray-400 text-xs">
                 Published
@@ -36,21 +39,20 @@
                     </a>
                 </div>
 
-                <h1 class="font-bold text-3xl text-center lg:text-4xl mb-10">
-                    {{ $post->title }}
-                </h1>
+
 
                 <div class="space-y-4 lg:text-lg leading-loose">{!! $post->body !!}</div>
             </div>
 
         </div>
-        <div class="my-2 text-end">
+        <div class="my-2 text-end">@editor
             <a href="{{route('posts.upsert',[$post->id])}}">
             <button  type="button" class="items-end text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center
             dark:text-purple-400 dark:focus:ring-purple-900">Edit</button>
-            </a></div>
+            </a>@endeditor</div>
     </article>
 </main>
+
     <footer>
         <div class="w-full bg-gray-800">
             <div
@@ -71,7 +73,7 @@
             </div>
         </div>
     </footer>
-</div>
+    </div>
 
 
 {{--<div>--}}

@@ -1,23 +1,20 @@
 <div class="p-12">
-    <div class="max-w-3xl mx-auto bg-white shadow-2xl rounded-lg sm:px-6 p-10 lg:px-8  space-y-4">
+    <div class=" bg-white  rounded-lg sm:px-6 p-10 lg:px-8  space-y-4">
+
         <div class="gap-2 ">
             <label for="title">Title</label>
             <input wire:model="title" id="title" class="w-full">
-
         </div>
 
         <div class="gap-5">
             <label for="body">Body</label>
-           <x-input.rich-text wire:model="body"/><div>
-            </div>
+           <x-input.rich-text wire:model="body"/>
         </div>
 
         <div class=" flex-items-center pt-2">
             <label  class="w-[10rem] text-zinc-500 tracking-wide py-2 ">Image</label>
             <div class="flex-shrink-0 h-20 w-20 mr-4">
-                    <div class="flex-shrink-0 h-20 w-20 mr-4">
                         <img src="{{\Illuminate\Support\Facades\Storage::url($image)}}" alt="{{$image}}"/>
-                    </div>
             </div>
 
             <div>
@@ -27,8 +24,10 @@
         </div>
 
         <div class="flex gap-2" >
-        <x-button.save wire:click.prevent="save" class="w-6"/>
-            <x-button.back />
+            <div class="text-end">
+                <x-button.save wire:click.prevent="save" class="w-6"/>
+                <x-button.back />
+            </div>
 
             <div>
         <button wire:click="set_delete({{$id}})" wire:confirm="Are you sure you want to delete this ?" class='inline-flex items-center px-2 py-2 border border-transparent

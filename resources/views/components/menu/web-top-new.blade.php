@@ -98,26 +98,26 @@
 
         <!--mobile view------------------------------------------------------------------------------------------------->
         <div :class="{'block': open, 'hidden': ! open}"
-             class="hidden sm:hidden transform transition duration-800 ease-in-out">
+             class="hidden sm:hidden transform transition duration-800 ease-in-out w-1/2 text-center ml-auto mr-0 bg-gray-800 rounded-lg ">
             <ul class="mt-4 space-y-4">
                 <li>
-                    <a class="hover:underline font-serif block px-4 py-2 text-white bg-[#37517e] rounded"
+                    <a class="hover:underline font-serif block px-4 py-2 text-white "
                        href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li>
-                    <a class="hover:underline font-serif block px-4 py-2 text-white bg-[#37517e] rounded"
+                    <a class="hover:underline font-serif block px-4 py-2 text-white "
                        href="{{route('service')}}">services</a>
                 </li>
                 <li>
-                    <a class="hover:underline font-serif block px-4 py-2 text-white bg-[#37517e] rounded"
+                    <a class="hover:underline font-serif block px-4 py-2 text-white "
                        href="{{route('about')}}">About Us</a>
                 </li>
                 <li>
-                    <a class="hover:underline font-serif block px-4 py-2 text-white bg-[#37517e] rounded"
+                    <a class="hover:underline font-serif block px-4 py-2 text-white "
                        href="{{route('contact')}}">Contact</a>
                 </li>
                 <li>
-                    <a class="hover:underline font-serif block px-4 py-2 text-white bg-[#37517e] rounded"
+                    <a class="hover:underline font-serif block px-4 py-2 text-white "
                        href="{{route('posts')}}">Blog</a>
                 </li>
 
@@ -127,7 +127,7 @@
                     @auth
                         <li>
                             <a href="{{route('dashboard')}}" role="button"
-                               class="hover:underline font-serif block px-4 py-2 text-white bg-[#37517e] rounded">
+                               class="hover:underline font-serif block px-4 py-2 text-white ">
                                 Dashboard
                             </a>
                         </li>
@@ -135,7 +135,7 @@
                             <a
                                 href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                class="hover:underline font-serif block px-4 py-2 text-white bg-[#37517e] rounded"
+                                class="hover:underline font-serif block px-4 py-2 text-white "
                             >
                                 Log out
                             </a>
@@ -148,7 +148,7 @@
                     @else
                         <li>
                             <a href="{{ route('login') }}"
-                               class="hover:underline font-serif block px-4 py-2 text-white bg-[#37517e] rounded">
+                               class="hover:underline font-serif block px-4 py-2 text-white ">
                                 Log in
                             </a>
                         </li>

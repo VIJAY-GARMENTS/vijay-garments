@@ -127,22 +127,26 @@
 
 <table width="100%" class="print:*">
     <thead>
+    <tr><td colspan="2" style="margin-top: 2px; margin-bottom: 2px;border-bottom: none;">&nbsp;</td></tr>
     <tr>
-        <td colspan="1">
+        <td colspan="1" style="border-top: none;border-bottom: none;">
 {{--            <div class="logoLeft">--}}
-{{--                <img src="{{ \Illuminate\Support\Facades\Storage::url('logo')}}"/>--}}
+{{--                <img src="{{ \Illuminate\Support\Facades\Storage::url($cmp->get('logo'))}}"/>--}}
 {{--            </div>--}}
             <div style="height: 65px; padding: 10px;" class="bg-blue-400 column1">
-                <div style="text-align: left;position: relative; width: 100%;" class="companyname">{{$cmp->get('company_name')}}</div>
+                <div style="text-align: center;position: relative; width: 100%;flex: auto;color: #16a34a;" class="companyname ">{{$cmp->get('company_name')}}</div>
+                <div style="text-align: center;position: relative; width: 100%;flex: auto" class="companyname">E-mail:{{$cmp->get('email')}}</div>
             </div>
         </td>
-        <td>
+        <td style="border-top: none;border-bottom: none;">
             <div style="height: 65px; padding-top: 0px; padding-left: 5px;" class="bg-blue-400 column2">
             <div style="text-align: left; width: 100%; position: relative" class="address1">{{$cmp->get('address_1')}}</div>
-            <div style="text-align: left; width: 100%; position: relative" class="address2">{{$cmp->get('address_2')}}</div>
+                <div style="text-align: left; width: 100%; position: relative" class="address2">&nbsp;</div>
+                <div style="text-align: left; width: 100%; position: relative" class="address2">{{$cmp->get('address_2')}}</div>
             </div>
         </td>
     </tr>
+    <tr><td colspan="2" style="margin-top: 2px; margin-bottom: 2px;border-top: none;">&nbsp;</td></tr>
     <tr>
         <td colspan="2" style="  background-color: darkgray">
             <div style=" height: 18px;text-align: center;  vertical-align: middle; color: white; font-size: medium  ">
@@ -198,18 +202,18 @@
 
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
-            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
-            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$row['po_no']}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$row['dc_no']}} </td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_name']}}</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']}}</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['price']}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_taxable}}</td>
-            <td align="center" style="border-bottom: none; border-left: none;">{{$row['gst_percent']/2}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_gst/2}}</td>
-            <td align="center" style="border-bottom: none; border-left: none;">{{$row['gst_percent']/2}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_gst/2}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->grand_total}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']*$row['price']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none; border-left: none;">{{$row['gst_percent']/2}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{($row['qty']*$row['price']*$row['gst_percent']/100)/2}}</td>
+            <td align="center" style="border-bottom: none;border-top: none; border-left: none;">{{$row['gst_percent']/2}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{($row['qty']*$row['price']*$row['gst_percent']/100)/2}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']*$row['price']*$row['gst_percent']/100+$row['qty']*$row['price']}}</td>
         </tr>
 
     @endforeach
@@ -235,11 +239,11 @@
     @endfor
 
     <tr>
-        <td colspan=3" align="right">&nbsp;E&OE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td colspan="2" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td colspan=2" align="right" style="border-right: none;">&nbsp;E&OE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td colspan="3" align="right" style="border-left: none;">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td  align="right">{{$obj->total_qty}}</td>
         <td  align="right"></td>
-        <td  align="right">{{$obj->grand_total}}</td>
+        <td  align="right">{{$obj->total_taxable}}</td>
         <td colspan="2" align="right">{{$obj->total_gst/2}}</td>
         <td colspan="2" align="right">{{$obj->total_gst/2}}</td>
         <td colspan="1" align="right">{{$obj->grand_total}}</td>
@@ -300,7 +304,6 @@
 {{--<----End original_copy--->--}}
 
 {{--<----start second_copy--->--}}
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -430,22 +433,26 @@
 
 <table width="100%" class="print:*">
     <thead>
+    <tr><td colspan="2" style="margin-top: 2px; margin-bottom: 2px;border-bottom: none;">&nbsp;</td></tr>
     <tr>
-        <td colspan="1">
-            {{--            <div class="logoLeft">--}}
-            {{--                <img src="{{ \Illuminate\Support\Facades\Storage::url('logo')}}"/>--}}
-            {{--            </div>--}}
+        <td colspan="1" style="border-top: none;border-bottom: none;">
+            <div class="logoLeft">
+                <img src="{{ \Illuminate\Support\Facades\Storage::url($cmp->get('logo'))}}"/>
+            </div>
             <div style="height: 65px; padding: 10px;" class="bg-blue-400 column1">
-                <div style="text-align: left;position: relative; width: 100%;" class="companyname">{{$cmp->get('company_name')}}</div>
+                <div style="text-align: center;position: relative; width: 100%;flex: auto" class="companyname">{{$cmp->get('company_name')}}</div>
+                <div style="text-align: center;position: relative; width: 100%;flex: auto" class="companyname">E-mail:{{$cmp->get('email')}}</div>
             </div>
         </td>
-        <td>
+        <td style="border-top: none;border-bottom: none;">
             <div style="height: 65px; padding-top: 0px; padding-left: 5px;" class="bg-blue-400 column2">
                 <div style="text-align: left; width: 100%; position: relative" class="address1">{{$cmp->get('address_1')}}</div>
+                <div style="text-align: left; width: 100%; position: relative" class="address2">&nbsp;</div>
                 <div style="text-align: left; width: 100%; position: relative" class="address2">{{$cmp->get('address_2')}}</div>
             </div>
         </td>
     </tr>
+    <tr><td colspan="2" style="margin-top: 2px; margin-bottom: 2px;border-top: none;">&nbsp;</td></tr>
     <tr>
         <td colspan="2" style="  background-color: darkgray">
             <div style=" height: 18px;text-align: center;  vertical-align: middle; color: white; font-size: medium  ">
@@ -507,12 +514,12 @@
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']}}</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['price']}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_taxable}}</td>
-            <td align="center" style="border-bottom: none; border-left: none;">{{$row['gst_percent']/2}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_gst/2}}</td>
-            <td align="center" style="border-bottom: none; border-left: none;">{{$row['gst_percent']/2}}</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->total_gst/2}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$obj->grand_total}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']*$row['price']}}</td>
+            <td align="center" style="border-bottom: none;border-top: none; border-left: none;">{{$row['gst_percent']/2}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{($row['qty']*$row['price']*$row['gst_percent']/100)/2}}</td>
+            <td align="center" style="border-bottom: none;border-top: none; border-left: none;">{{$row['gst_percent']/2}}</td>
+            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{($row['qty']*$row['price']*$row['gst_percent']/100)/2}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']*$row['price']*$row['gst_percent']/100+$row['qty']*$row['price']}}</td>
         </tr>
 
     @endforeach
@@ -538,11 +545,11 @@
     @endfor
 
     <tr>
-        <td colspan=3" align="right">&nbsp;E&OE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td colspan="2" align="right">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td colspan=2" align="right" style="border-right: none;">&nbsp;E&OE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td colspan="3" align="right" style="border-left: none;">&nbsp;Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td  align="right">{{$obj->total_qty}}</td>
         <td  align="right"></td>
-        <td  align="right">{{$obj->grand_total}}</td>
+        <td  align="right">{{$obj->total_taxable}}</td>
         <td colspan="2" align="right">{{$obj->total_gst/2}}</td>
         <td colspan="2" align="right">{{$obj->total_gst/2}}</td>
         <td colspan="1" align="right">{{$obj->grand_total}}</td>
@@ -600,6 +607,7 @@
 
 </body>
 </html>
+
 {{--<----End original_copy--->--}}
 
 {{--<----start second_copy--->--}}

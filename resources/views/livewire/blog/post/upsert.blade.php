@@ -3,16 +3,16 @@
 
         <div class="gap-2 ">
             <label for="title">Title</label>
-            <input wire:model="title" id="title" class="w-full">
+            <input wire:model="title" id="title" class="w-full purple-textbox">
         </div>
 
         <div class="gap-5">
             <label for="body">Body</label>
-           <x-input.rich-text wire:model="body"/>
+           <x-input.rich-text wire:model="body" :height="'h-96'"/>
         </div>
 
         <div class=" flex-items-center pt-2">
-            <label  class="w-[10rem] text-zinc-500 tracking-wide py-2 ">Image</label>
+            <label  class="w-[10rem] text-zinc-500 tracking-wide py-2">Image</label>
             <div class="flex-shrink-0 h-20 w-20 mr-4">
                         <img src="{{\Illuminate\Support\Facades\Storage::url($image)}}" alt="{{$image}}"/>
             </div>

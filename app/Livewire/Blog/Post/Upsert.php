@@ -31,6 +31,7 @@ class Upsert extends Component
 
 
     }
+
     public function set_delete($id): void
     {
         $post = Post::find($id);
@@ -45,18 +46,18 @@ class Upsert extends Component
                 Post::create([
                     'title' => $this->title,
                     'body' => $this->body,
-                    'image' => $this->save_image(),
                     'user_id' => \Auth::id(),
+                    'image' => $this->save_image(),
                 ]);
                 $this->getRoute();
             } else {
                 $post = Post::find($this->vid);
                 $post->title = $this->title;
                 $post->body = $this->body;
-                if ($post->image!=$this->image){
-                $post->image = $this->save_image();
-                }else{
-                    $post->image=$this->image;
+                if ($post->image != $this->image) {
+                    $post->image = $this->save_image();
+                } else {
+                    $post->image = $this->image;
                 }
 
                 $post->user_id = \Auth::id();
@@ -70,10 +71,9 @@ class Upsert extends Component
     }
 
 
-
     public function save_image()
     {
-            return $this->image->store('photos','public');
+        return $this->image->store('photos', 'public');
     }
 
 

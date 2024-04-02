@@ -19,7 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
     <input id="x" type="hidden">
     <trix-editor x-ref="trix" input="x"
-                 class="overflow-auto text-ellipsis form-textarea block w-full
+                 class="overflow-auto text-ellipsis form-textarea block w-full text
                     rounded-lg appearance-none border-2 {{$height}}
                     border-gray-200 py-2 px-3 bg-white text-zinc-700
                     placeholder-gray-400 text-base focus:outline-none

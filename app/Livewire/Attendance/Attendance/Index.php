@@ -18,7 +18,7 @@ class Index extends Component
     public $in_time = '';
     public $out_time = '';
     public mixed $amount= '';
-    public mixed $total_amount= 0;
+    public mixed $total_amount= 307.69;
     public $user_name = '';
     public $user_id = '';
 

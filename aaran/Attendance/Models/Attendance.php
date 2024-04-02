@@ -11,7 +11,7 @@ class Attendance extends Model
 {
     use HasFactory;
 
-    protected $fillable=['user_id','vname','vdate','in_time','out_time'];
+    protected $fillable=['user_id','vname','vdate','in_time','out_time','company_id'];
 
     public $timestamps = false;
 

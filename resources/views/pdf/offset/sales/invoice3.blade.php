@@ -37,13 +37,13 @@
             font-weight: bold;
         }
 
-        .logoLeft {
-            position: fixed;
-            margin-top: 10px;
-            margin-left: 20px;
-            height: 80px !important;
-            Width: auto !important;
-        }
+        /*.logoLeft {*/
+        /*    position: fixed;*/
+        /*    margin-top: 10px;*/
+        /*    margin-left: 20px;*/
+        /*    height: 80px !important;*/
+        /*    Width: auto !important;*/
+        /*}*/
 
         /*.companyname {*/
         /*    position: fixed;*/
@@ -130,11 +130,12 @@
     <tr><td colspan="2" style="margin-top: 2px; margin-bottom: 2px;border-bottom: none;">&nbsp;</td></tr>
     <tr>
         <td colspan="1" style="border-top: none;border-bottom: none;">
-{{--            <div class="logoLeft">--}}
-{{--                <img src="{{ \Illuminate\Support\Facades\Storage::url($cmp->get('logo'))}}"/>--}}
-{{--            </div>--}}
+            <div class="logoLeft">
+                <img style="position: fixed;margin-left: 20px;padding-top: 10px;height: 50px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>
+            </div>
             <div style="height: 65px; padding: 10px;" class="bg-blue-400 column1">
                 <div style="text-align: center;position: relative; width: 100%;flex: auto;color: #16a34a;" class="companyname ">{{$cmp->get('company_name')}}</div>
+                <div style="text-align: left; width: 100%; position: relative" class="address2">&nbsp;</div>
                 <div style="text-align: center;position: relative; width: 100%;flex: auto" class="companyname">E-mail:{{$cmp->get('email')}}</div>
             </div>
         </td>
@@ -343,13 +344,13 @@
             font-weight: bold;
         }
 
-        .logoLeft {
-            position: fixed;
-            margin-top: 10px;
-            margin-left: 20px;
-            height: 80px !important;
-            Width: auto !important;
-        }
+        /*.logoLeft {*/
+        /*    position: fixed;*/
+        /*    margin-top: 10px;*/
+        /*    margin-left: 20px;*/
+        /*    height: 80px !important;*/
+        /*    Width: auto !important;*/
+        /*}*/
 
         /*.companyname {*/
         /*    position: fixed;*/
@@ -437,11 +438,12 @@
     <tr>
         <td colspan="1" style="border-top: none;border-bottom: none;">
             <div class="logoLeft">
-                <img src="{{ \Illuminate\Support\Facades\Storage::url($cmp->get('logo'))}}"/>
+                <img style="position: fixed;margin-left: 20px;padding-top: 10px;height: 50px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>
             </div>
             <div style="height: 65px; padding: 10px;" class="bg-blue-400 column1">
-                <div style="text-align: center;position: relative; width: 100%;flex: auto" class="companyname">{{$cmp->get('company_name')}}</div>
-                <div style="text-align: center;position: relative; width: 100%;flex: auto" class="companyname">E-mail:{{$cmp->get('email')}}</div>
+                <div style="margin-left: 2px;text-align: center;position: relative; width: 100%;flex: auto" class="companyname">{{$cmp->get('company_name')}}</div>
+                <div style="text-align: left; width: 100%; position: relative" class="address2">&nbsp;</div>
+                <div style="margin-left: 2px;text-align: center;position: relative; width: 100%;flex: auto" class="companyname">E-mail:{{$cmp->get('email')}}</div>
             </div>
         </td>
         <td style="border-top: none;border-bottom: none;">
@@ -508,8 +510,8 @@
 
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
-            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
-            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$row['po_no']}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$row['dc_no']}} </td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_name']}}</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']}}</td>

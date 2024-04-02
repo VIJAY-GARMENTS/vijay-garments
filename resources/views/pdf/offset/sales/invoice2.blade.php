@@ -21,6 +21,7 @@
         }
 
         th, td {
+            font-size: xx-small;
             border: solid 1px rgba(161, 161, 161, 0.9);
             border-collapse: collapse;
             padding: 2px;
@@ -37,13 +38,13 @@
             font-weight: bold;
         }
 
-        .logoLeft {
-            position: fixed;
-            margin-top: 10px;
-            margin-left: 20px;
-            height: 80px !important;
-            Width: auto !important;
-        }
+        /*.logoLeft {*/
+        /*    position: fixed;*/
+        /*    margin-top: 10px;*/
+        /*    margin-left: 20px;*/
+        /*    height: 80px !important;*/
+        /*    Width: auto !important;*/
+        /*}*/
 
         /*.companyname {*/
         /*    position: fixed;*/
@@ -129,9 +130,9 @@
     <thead>
     <tr>
         <td colspan="2" style="padding-top: 10px">
-{{--            <div class="logoLeft">--}}
-{{--                <img src="{{ \Illuminate\Support\Facades\Storage::url($cmp->get('logo'))}}"/>--}}
-{{--            </div>--}}
+            <div class="logoLeft">
+                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 70px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>
+            </div>
             <div style="height: 65px;" class="bg-blue-400 ">
                 <div style="text-align: center; width: 100%;color: #3b82f6;" class="companyname">{{$cmp->get('company_name')}}</div>
                 <div style="text-align: center; width: 100%;" class="address1">{{$cmp->get('address_1')}}</div>
@@ -177,7 +178,7 @@
         <th width="5px" style="padding: 5px;">#</th>
         <th width="12px" style="padding: 5px; ">Po.No</th>
         <th width="12px" style="padding: 5px;">Dc.No</th>
-        <th width="40px" style="padding: 5px;">Particulars</th>
+        <th width="160px" style="padding: 5px;">Particulars</th>
         <th width="40px" style="padding: 5px;">HSN Code</th>
         <th width="40px" style="padding: 5px;">Quantity</th>
         <th width="40px" style="padding: 5px;">Price</th>
@@ -205,12 +206,12 @@
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{($row['qty']*$row['price']*$row['gst_percent']/100)/2}}</td>
             <td align="center" style="border-bottom: none;border-top: none; border-left: none;">{{$row['gst_percent']/2}}</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{($row['qty']*$row['price']*$row['gst_percent']/100)/2}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']*$row['price']*$row['gst_percent']/100+$row['qty']*$row['price']}}</td>
+            <td align="right" style="border-bottom: none;border-top: none; ">&nbsp;{{$row['qty']*$row['price']*$row['gst_percent']/100+$row['qty']*$row['price']}}</td>
         </tr>
 
     @endforeach
 
-    @for($i = 0; $i < 24-$list->count(); $i++)
+    @for($i = 0; $i < 30-$list->count(); $i++)
 
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
@@ -335,13 +336,13 @@
             font-weight: bold;
         }
 
-        .logoLeft {
-            position: fixed;
-            margin-top: 2px;
-            margin-left: 20px;
-            height: 80px !important;
-            Width: auto !important;
-        }
+        /*.logoLeft {*/
+        /*    position: fixed;*/
+        /*    margin-top: 2px;*/
+        /*    margin-left: 20px;*/
+        /*    height: 20px !important;*/
+        /*    Width: 40px !important;*/
+        /*}*/
 
         /*.companyname {*/
         /*    position: fixed;*/
@@ -428,7 +429,7 @@
     <tr>
         <td colspan="2" style="padding-top: 10px">
             <div class="logoLeft">
-                <img src="{{ \Illuminate\Support\Facades\Storage::url($cmp->get('logo'))}}"/>
+                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 70px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>
             </div>
             <div style="height: 65px;" class="bg-blue-400 ">
                 <div style="text-align: center; width: 100%;color: #3b82f6;" class="companyname">{{$cmp->get('company_name')}}</div>
@@ -492,8 +493,8 @@
 
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
-            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
-            <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$row['po_no']}} </td>
+            <td align="center" style="border-bottom: none;border-top: none;">{{$row['dc_no']}} </td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_name']}}</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']}}</td>
@@ -508,7 +509,7 @@
 
     @endforeach
 
-    @for($i = 0; $i < 24-$list->count(); $i++)
+    @for($i = 0; $i < 30-$list->count(); $i++)
 
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>

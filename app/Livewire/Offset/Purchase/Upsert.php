@@ -120,8 +120,8 @@ class Upsert extends Component
 
 
     #[Rule('required')]
-    public $order_id = '';
-    public $order_name = '';
+    public $order_id = '1';
+    public $order_name = '-';
     public Collection $orderCollection;
     public $highlightOrder = 0;
     public $orderTyped = false;
@@ -427,7 +427,7 @@ class Upsert extends Component
                     'purchase_no' => $this->purchase_no,
                     'purchase_date' => $this->purchase_date,
                     'Entry_no' => $this->Entry_no,
-                    'order_id' => $this->order_id,
+                    'order_id' => $this->order_id?: '1',
                     'sales_type' => $this->sales_type,
                     'total_qty' => $this->total_qty,
                     'total_taxable' => $this->total_taxable,
@@ -451,7 +451,7 @@ class Upsert extends Component
                 $obj->purchase_no = $this->purchase_no;
                 $obj->purchase_date = $this->purchase_date;
                 $obj->Entry_no = $this->Entry_no;
-                $obj->order_id = $this->order_id;
+                $obj->order_id = $this->order_id?: '1';
                 $obj->sales_type = $this->sales_type;
                 $obj->total_qty = $this->total_qty;
                 $obj->total_taxable = $this->total_taxable;

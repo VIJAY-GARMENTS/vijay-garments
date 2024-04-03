@@ -705,13 +705,13 @@ class Upsert extends Component
     public function getRoute(): void
     {
 
-        $this->redirect(route('salesoffset'));
+        $this->redirect(route('saleOffsets'));
     }
 
     public function print(): void
     {
 
-        $this->redirect(route('salesoffset.print', [$this->vid]));
+        $this->redirect(route('saleOffsets.print', [$this->vid]));
     }
 
     public function render()

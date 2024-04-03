@@ -355,7 +355,7 @@ class Upsert extends Component
     public function getRoute(): void
     {
 
-        $this->redirect(route('receiptsoffset'));
+        $this->redirect(route('receiptOffsets'));
     }
 
 

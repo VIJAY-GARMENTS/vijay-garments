@@ -641,7 +641,7 @@ class Upsert extends Component
     public function getRoute(): void
     {
 
-        $this->redirect(route('purchasesoffset'));
+        $this->redirect(route('purchaseOffsets'));
     }
 
     public function removeItems($index): void
@@ -717,7 +717,7 @@ class Upsert extends Component
     public function print(): void
     {
 
-        $this->redirect(route('purchasesoffset.print', [$this->vid]));
+        $this->redirect(route('purchaseOffsets.print', [$this->vid]));
     }
 
 

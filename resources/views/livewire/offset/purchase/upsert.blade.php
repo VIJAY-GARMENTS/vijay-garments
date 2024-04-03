@@ -456,6 +456,10 @@
 
 
                 <x-input.model-text wire:model="additional"  wire:change.debounce="calculateTotal" :label="'Additional'"/>
+
+            </div>
+        </section>
+            <section>
                 <div class="grid w-full grid-cols-2 pt-6">
                     <label
                         class="px-3 pb-2 text-left text-gray-600 text-md">Round off&nbsp;:&nbsp;&nbsp;</label>
@@ -477,8 +481,7 @@
                     <label
                         class="px-3 pb-2 text-xl font-extrabold text-right text-gray-800">{{$grand_total}}</label>
                 </div>
-            </div>
-        </section>
+            </section>
         </section>
 
     </x-forms.m-panel>

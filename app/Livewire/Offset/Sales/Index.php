@@ -106,7 +106,7 @@ class Index extends Component
     public function print($id)
     {
 
-        $this->redirect(route('salesOffsets.print', [$this->getObj($id)]));
+        $this->redirect(route('saleOffsets.print', [$this->getObj($id)]));
     }
 
     public function getContact()

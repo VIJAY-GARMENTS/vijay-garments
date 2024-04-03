@@ -14,6 +14,7 @@ class Upsert extends Component
     public string $title;
     public string $body;
     public $image;
+    public $isUploaded=false;
     public $id;
     public string $user_id;
 
@@ -68,6 +69,15 @@ class Upsert extends Component
             }
         }
 
+    }
+
+    public function updatedImage()
+    {
+        $this->validate([
+            'image'=>'image|max:1024',
+        ]);
+
+        $this->isUploaded=true;
     }
 
 

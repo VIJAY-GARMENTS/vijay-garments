@@ -19,15 +19,19 @@
         <div class=" flex-items-center pt-2">
             <label class="w-[10rem] text-zinc-500 tracking-wide py-2">Image</label>
             <div class="flex-shrink-0 h-80 w-80 mr-4">
-                @if($id==0)
-                    @if($image)
-                        <img src="{{$image->temporaryUrl() }}" alt="{{$image}}"
-                             class=" mt-8 mb-8 h-80 w-full rounded-lg pb-4"/>
-                    @endif
-                @else
-                    <img src="{{ \Illuminate\Support\Facades\Storage::url($image)}}" alt="{{$image}} "
-                         class=" mt-8 mb-8 h-80 w-full rounded-lg pb-4"/>
+{{--                @if($id==0)--}}
+{{--                    @if($image)--}}
+{{--                        <img src="{{$image->temporaryUrl() }}" alt="{{$image}}"--}}
+{{--                             class=" mt-8 mb-8 h-80 w-full rounded-lg pb-4"/>--}}
+{{--                    @endif--}}
+{{--                @else--}}
+{{--                    <img src="{{ \Illuminate\Support\Facades\Storage::url($image)}}" alt="{{$image}} "--}}
+{{--                         class=" mt-8 mb-8 h-80 w-full rounded-lg pb-4"/>--}}
 
+{{--                @endif--}}
+                @if($image)
+                    Photo Preview:
+                    <img src="{{$isUploaded? $image->temporaryUrl() : url(\Illuminate\Support\Facades\Storage::url($image)) }}" width="250" height="250">
                 @endif
             </div>
 

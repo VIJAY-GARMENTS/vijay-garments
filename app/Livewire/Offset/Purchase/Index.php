@@ -14,7 +14,7 @@ class Index extends Component
 
     public function create(): void
     {
-        $this->redirect(route('purchasesoffset.upsert', ['0']));
+        $this->redirect(route('purchaseOffsets.upsert', ['0']));
     }
 
     public function getList()
@@ -78,7 +78,7 @@ class Index extends Component
     public function print($id)
     {
 
-        $this->redirect(route('purchasesoffset.print', [$this->getObj($id)]));
+        $this->redirect(route('purchasesOffsets.print', [$this->getObj($id)]));
     }
 
     public function render()

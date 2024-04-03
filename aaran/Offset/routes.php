@@ -5,19 +5,20 @@ use Illuminate\Support\Facades\Route;
 //Offset
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    Route::get('/salesoffset', App\Livewire\Offset\Sales\Index::class)->name('salesoffset');
-    Route::get('/salesoffset/reports', App\Livewire\Offset\Sales\Report::class)->name('salesoffset.reports');
-    Route::get('/salesoffset/{id}/upsert', App\Livewire\Offset\Sales\Upsert::class)->name('salesoffset.upsert');
-    Route::get('/salesoffset/{id}/print', App\Http\Controllers\Offset\Sales\InvoiceController::class)->name('salesoffset.print');
+    Route::get('/saleOffsets', App\Livewire\Offset\Sales\Index::class)->name('saleOffsets');
+    Route::get('/saleOffsets/{id}/upsert', App\Livewire\Offset\Sales\Upsert::class)->name('saleOffsets.upsert');
+    Route::get('/saleOffsets/{id}/print', App\Http\Controllers\Offset\Sales\InvoiceController::class)->name('saleOffsets.print');
 
-    Route::get('/purchasesoffset', App\Livewire\Offset\Purchase\Index::class)->name('purchasesoffset');
-    Route::get('/purchasesoffset/{id}/upsert', App\Livewire\Offset\Purchase\Upsert::class)->name('purchasesoffset.upsert');
-//    Route::get('/purchasesoffset/{id}/print', App\Http\Controllers\Offset\Purchase\InvoiceController::class)->name('purchasesoffset.print');
+    Route::get('/saleOffsets/reports', App\Livewire\Offset\Sales\Report::class)->name('saleOffsets.reports');
 
-    Route::get('/receiptsoffset', App\Livewire\Offset\Receipt\Index::class)->name('receiptsoffset');
-    Route::get('/receiptsoffset/{id}/upsert', App\Livewire\Offset\Receipt\Upsert::class)->name('receiptsoffset.upsert');
+    Route::get('/purchaseOffsets', App\Livewire\Offset\Purchase\Index::class)->name('purchaseOffsets');
+    Route::get('/purchaseOffsets/{id}/upsert', App\Livewire\Offset\Purchase\Upsert::class)->name('purchaseOffsets.upsert');
+//    Route::get('/purchaseOffsets/{id}/print', App\Http\Controllers\Offset\Purchase\InvoiceController::class)->name('purchaseOffsets.print');
 
-    Route::get('/paymentsoffset', App\Livewire\Offset\Payment\Index::class)->name('paymentsoffset');
-    Route::get('/paymentsoffset/{id}/upsert', App\Livewire\Offset\Payment\Upsert::class)->name('paymentsoffset.upsert');
+    Route::get('/receiptOffsets', App\Livewire\Offset\Receipt\Index::class)->name('receiptOffsets');
+    Route::get('/receiptOffsets/{id}/upsert', App\Livewire\Offset\Receipt\Upsert::class)->name('receiptOffsets.upsert');
+
+    Route::get('/paymentOffsets', App\Livewire\Offset\Payment\Index::class)->name('paymentOffsets');
+    Route::get('/paymentOffsets/{id}/upsert', App\Livewire\Offset\Payment\Upsert::class)->name('paymentOffsets.upsert');
 
 });

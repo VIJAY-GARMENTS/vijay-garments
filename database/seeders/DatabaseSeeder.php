@@ -112,24 +112,23 @@ class DatabaseSeeder extends Seeder
         ContactSeeder::run();
         ProductSeeder::run();
 
-
         OrderSeeder::run();
         StyleSeeder::run();
         FabricLotSeeder::run();
 
 
-        JobcardSeeder::run();
-        CuttingSeeder::run();
-        PeOutwardSeeder::run();
-        PeInwardSeeder::run();
-        SectionOutwardSeeder::run();
-        SectionInwardSeeder::run();
-        IroningSeeder::run();
-
-        SaleSeeder::run();
-        ClientSeeder::run();
-
-        Post::factory(10)->create();
+//        JobcardSeeder::run();
+//        CuttingSeeder::run();
+//        PeOutwardSeeder::run();
+//        PeInwardSeeder::run();
+//        SectionOutwardSeeder::run();
+//        SectionInwardSeeder::run();
+//        IroningSeeder::run();
+//
+//        SaleSeeder::run();
+//        ClientSeeder::run();
+//
+//        Post::factory(10)->create();
 
 
     }

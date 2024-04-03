@@ -6,7 +6,7 @@
             <x-icons.icon :icon="$showEditModal_1?'view':'eye-slash'" class="h-6 w-auto block"/>
         </div>
         @if($showEditModal_1)
-        <div class="flex justify-end bg-zinc-200 p-4 rounded shadow-inner flex relative">
+        <div class="flex justify-end bg-zinc-200 p-4 rounded shadow-inner relative">
             <div>
                 <x-input.model-date wire:model.live="start_date" :label="'From'"/>
                 <x-input.model-date wire:model.live="end_date" :label="'To'"/>
@@ -58,7 +58,7 @@
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-left">
                                 {{ $row->order->vname}}
                             </a>
@@ -66,46 +66,46 @@
 
 
                         <x-table.cell>
-                            <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->invoice_no}}
                             </a>
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->invoice_date}}
                             </a>
                         </x-table.cell>
                         <x-table.cell>
-                            <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-left">
                                 {{ $row->contact->vname}}
                             </a>
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->total_qty}}
                             </a>
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->total_taxable }}
                             </a>
                         </x-table.cell>
                         <x-table.cell>
-                            <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->total_gst }}
                             </a>
                         </x-table.cell>
                         <x-table.cell>
-                            <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->grand_total }}
                             </a>
@@ -113,7 +113,7 @@
                         <x-table.cell>
                             <div class="w-full flex justify-center gap-3">
                                 <x-icons.icon :icon="'printer'" wire:click="print({{$row->id}})" class="h-5 w-auto block px-1.5"/>
-                                <a href="{{route('salesoffset.upsert',[$row->id])}}"
+                                <a href="{{route('saleOffsets.upsert',[$row->id])}}"
                                    class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                     <x-button.link >&nbsp;
                                         <x-icons.icon :icon="'pencil'"

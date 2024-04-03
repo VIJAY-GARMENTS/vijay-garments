@@ -116,8 +116,8 @@ class Upsert extends Component
 
 
     #[Rule('required')]
-    public $order_id = '';
-    public $order_name = '';
+    public $order_id = '1';
+    public $order_name = '-';
     public Collection $orderCollection;
     public $highlightOrder = 0;
     public $orderTyped = false;
@@ -174,7 +174,6 @@ class Upsert extends Component
             ->where('company_id', '=', session()->get('company_id'))
             ->get() : Order::where('company_id', '=', session()->get('company_id'))->get();;
     }
-
 
 
     public $ledger_id = '';
@@ -291,7 +290,7 @@ class Upsert extends Component
     {
         $this->productCollection = $this->product_name ? Product::search(trim($this->product_name))
             ->where('company_id', '=', session()->get('company_id'))
-            ->get() : Product::all()->where('company_id','=',session()->get('company_id'));
+            ->get() : Product::all()->where('company_id', '=', session()->get('company_id'));
     }
 
     public $colour_id = '';
@@ -447,7 +446,7 @@ class Upsert extends Component
                 $obj->contact_id = $this->contact_id;
                 $obj->invoice_no = $this->invoice_no;
                 $obj->invoice_date = $this->invoice_date;
-                $obj->order_id = $this->order_id;
+                $obj->order_id = $this->order_id ?: '1';
                 $obj->sales_type = $this->sales_type;
                 $obj->total_qty = $this->total_qty;
                 $obj->total_taxable = $this->total_taxable;
@@ -604,8 +603,8 @@ class Upsert extends Component
     public function resetsItems(): void
     {
         $this->itemIndex = '';
-        $this->po_no='';
-        $this->dc_no='';
+        $this->po_no = '';
+        $this->dc_no = '';
         $this->product_name = '';
         $this->product_id = '';
         $this->colour_name = '';

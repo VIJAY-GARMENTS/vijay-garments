@@ -18,7 +18,7 @@
                     <x-table.row>
 
                         <x-table.cell>
-                            <a href="{{route('paymentsoffset.upsert',[$row->id])}}"
+                            <a href="{{route('paymentOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3">
                                 <div class="text-gray-600 truncate text-xl text-left">
                                     {{ $index+1}}
@@ -27,21 +27,21 @@
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('paymentsoffset.upsert',[$row->id])}}"
+                            <a href="{{route('paymentOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-left">
                                 {{date('d-m-Y', strtotime($row->vdate))}}
                             </a>
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('paymentsoffset.upsert',[$row->id])}}"
+                            <a href="{{route('paymentOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-left">
                                 {{ $row->contact->vname }}
                             </a>
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('paymentsoffset.upsert',[$row->id])}}"
+                            <a href="{{route('paymentOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3">
                                 <div class="text-gray-600 truncate text-xl text-left">
                                     {{ $row->receipttype->vname}}
@@ -50,21 +50,22 @@
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('paymentsoffset.upsert',[$row->id])}}"
+                            <a href="{{route('paymentOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->payment_amount}}
                             </a>
                         </x-table.cell>
                         <x-table.cell>
                             <div class="w-full flex justify-center gap-3">
-                                <a href="{{route('paymentsoffset.upsert',[$row->id])}}"
+                                <a href="{{route('paymentOffsets.upsert',[$row->id])}}"
                                    class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                    <x-button.link >&nbsp;
+                                    <x-button.link>&nbsp;
                                         <x-icons.icon :icon="'pencil'"
                                                       class="text-blue-500 h-5 w-auto block"/>
                                     </x-button.link>
                                 </a>
-                                <x-button.link wire:click="set_delete({{$row->id}})" wire:confirm="Are you sure you want to delete this ?">&nbsp;
+                                <x-button.link wire:click="set_delete({{$row->id}})"
+                                               wire:confirm="Are you sure you want to delete this ?">&nbsp;
                                     <x-icons.icon :icon="'trash'"
                                                   class="text-red-600 h-5 w-auto block"/>
                                 </x-button.link>

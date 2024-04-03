@@ -8,7 +8,7 @@
 
                         <span class="inline-flex justify-center items-center ml-4">
                             <x-icons.icon :icon="'pencil'" class="w-5 h-auto block"/>
-                             <x-menu.header>Offset-Entries</x-menu.header>
+                             <x-menu.header>Entries</x-menu.header>
                         </span>
 
         <span class="inline-flex justify-center items-center">

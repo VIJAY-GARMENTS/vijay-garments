@@ -6,7 +6,7 @@
     <div class="flex justify-between px-5 py-6">
         <a href="{{route('dashboard')}}" class="flex gap-3">
             <x-assets.logo.cxlogo :icon="'dark'" class="h-10 w-auto block"/>
-            <span class="font-bold text-2xl sm:text-3xl tracking-widest">AARAN</span>
+            <span class="font-bold text-2xl sm:text-3xl tracking-widest">{{config('app.name')}}</span>
         </a>
 
         <button
@@ -27,28 +27,30 @@
             x-data="{selected:null}">
 
 
-            @if(session()->get('software_id')==1)
-                <x-menu.sub.entries/>
-                <x-menu.sub.erp.production/>
-            @endif
-            @if(session()->get('software_id')==2)
-                <x-menu.sub.offset/>
-            @endif
-            @if(session()->get('software_id')==3)
-                <x-menu.sub.entries/>
-                <x-menu.sub.offset/>
-                <x-menu.sub.erp.production/>
-                    <x-menu.sub.accounts/>
-                    <x-menu.sub.audit/>
-                    <x-menu.sub.task/>
-                    <x-menu.sub.utilities/>
-                    <x-menu.sub.admin/>
-                    @magalir
-                    <x-menu.sub.magalir/>
-                    @endmagalir
-            @endif
+            {{--            @if(session()->get('software_id')==1)--}}
+            {{--                <x-menu.sub.entries/>--}}
+            {{--                <x-menu.sub.erp.production/>--}}
+            {{--            @endif--}}
+            {{--            @if(session()->get('software_id')==2)--}}
+            {{--                <x-menu.sub.offset/>--}}
+            {{--            @endif--}}
+            {{--            @if(session()->get('software_id')==3)--}}
+            {{--                <x-menu.sub.entries/>--}}
+            {{--                <x-menu.sub.offset/>--}}
+            {{--                <x-menu.sub.erp.production/>--}}
+            {{--                <x-menu.sub.accounts/>--}}
+            {{--                <x-menu.sub.audit/>--}}
+            {{--                <x-menu.sub.task/>--}}
+            {{--                <x-menu.sub.utilities/>--}}
+            {{--                <x-menu.sub.admin/>--}}
+            {{--                @magalir--}}
+            {{--                <x-menu.sub.magalir/>--}}
+            {{--                @endmagalir--}}
+            {{--            @endif--}}
+
+            <x-menu.sub.offset/>
             <x-menu.sub.master/>
-            <x-menu.sub.order/>
+            {{--            <x-menu.sub.order/>--}}
             <x-menu.sub.common/>
             <x-menu.sub.logout/>
 

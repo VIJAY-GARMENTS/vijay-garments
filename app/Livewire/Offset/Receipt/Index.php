@@ -14,7 +14,7 @@ class Index extends Component
     public $sortField_1='vdate';
     public function create(): void
     {
-        $this->redirect(route('receiptsoffset.upsert', ['0']));
+        $this->redirect(route('receiptOffsets.upsert', ['0']));
     }
 
 

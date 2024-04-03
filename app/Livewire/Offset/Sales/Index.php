@@ -24,7 +24,7 @@ class Index extends Component
 
     public function create(): void
     {
-        $this->redirect(route('salesoffset.upsert', ['0']));
+        $this->redirect(route('saleOffsets.upsert', ['0']));
     }
 
     public function show_advance()
@@ -106,7 +106,7 @@ class Index extends Component
     public function print($id)
     {
 
-        $this->redirect(route('salesoffset.print', [$this->getObj($id)]));
+        $this->redirect(route('salesOffsets.print', [$this->getObj($id)]));
     }
 
     public function getContact()

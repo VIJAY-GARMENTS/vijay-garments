@@ -30,7 +30,7 @@
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-left">
                                 {{ $row->order->vname}}
                             </a>
@@ -38,46 +38,46 @@
 
 
                         <x-table.cell>
-                            <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->purchase_no}}
                             </a>
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->purchase_date}}
                             </a>
                         </x-table.cell>
                         <x-table.cell>
-                            <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                class="flex px-3 text-gray-600 truncate text-xl text-left">
                                 {{ $row->contact->vname}}
                             </a>
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->total_qty}}
                             </a>
                         </x-table.cell>
 
                         <x-table.cell>
-                            <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->total_taxable }}
                             </a>
                         </x-table.cell>
                         <x-table.cell>
-                            <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->total_gst }}
                             </a>
                         </x-table.cell>
                         <x-table.cell>
-                            <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                            <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->grand_total }}
                             </a>
@@ -85,7 +85,7 @@
                         <x-table.cell>
                             <div class="w-full flex justify-center gap-3">
                                 <x-icons.icon :icon="'printer'" wire:click="print({{$row->id}})" class="h-5 w-auto block px-1.5"/>
-                                <a href="{{route('purchasesoffset.upsert',[$row->id])}}"
+                                <a href="{{route('purchaseOffsets.upsert',[$row->id])}}"
                                    class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
                                     <x-button.link >&nbsp;
                                         <x-icons.icon :icon="'pencil'"

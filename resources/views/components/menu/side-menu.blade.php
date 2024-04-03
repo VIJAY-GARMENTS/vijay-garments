@@ -28,24 +28,28 @@
 
 
             @if(session()->get('software_id')==1)
-            <x-menu.sub.entries/>
+                <x-menu.sub.entries/>
+                <x-menu.sub.erp.production/>
             @endif
             @if(session()->get('software_id')==2)
-            <x-menu.sub.offset/>
+                <x-menu.sub.offset/>
             @endif
-            <x-menu.sub.erp.production/>
+            @if(session()->get('software_id')==3)
+                <x-menu.sub.entries/>
+                <x-menu.sub.offset/>
+                <x-menu.sub.erp.production/>
+                    <x-menu.sub.accounts/>
+                    <x-menu.sub.audit/>
+                    <x-menu.sub.task/>
+                    <x-menu.sub.utilities/>
+                    <x-menu.sub.admin/>
+                    @magalir
+                    <x-menu.sub.magalir/>
+                    @endmagalir
+            @endif
             <x-menu.sub.master/>
             <x-menu.sub.order/>
             <x-menu.sub.common/>
-            <x-menu.sub.accounts/>
-            <x-menu.sub.audit/>
-            <x-menu.sub.task/>
-            <x-menu.sub.utilities/>
-            <x-menu.sub.admin/>
-
-            @magalir
-            <x-menu.sub.magalir/>
-            @endmagalir
             <x-menu.sub.logout/>
 
         </ul>

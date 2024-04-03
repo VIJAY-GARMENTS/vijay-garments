@@ -614,6 +614,7 @@ class Upsert extends Component
                     ];
                 });
             $this->itemList = $data;
+            $this->time_passed=$this->created_at->diffInHours($this->now);
         } else {
             $this->uniqueno = "{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}";
             $this->active_id = true;
@@ -626,7 +627,7 @@ class Upsert extends Component
             $this->total_gst = 0;
             $this->invoice_date = Carbon::now()->format('Y-m-d');
         }
-        $this->time_passed=$this->created_at->diffInHours($this->now);
+
         $this->calculateTotal();
     }
 

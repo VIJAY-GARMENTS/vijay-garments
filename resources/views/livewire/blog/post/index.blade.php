@@ -24,7 +24,7 @@
                                     <div class="flex">
                                         <div>
                                             <div class="h-40 w-40 lg:mr-8">
-                                                <img class="rounded-xl justify-items-start h-40 w-40"
+                                                <img class="rounded-xl justify-items-start h-40 w-40 transition duration-300 ease-in-out hover:scale-110"
                                                      src="{{ \Illuminate\Support\Facades\Storage::url($row->image) }}">
                                             </div>
                                         </div>

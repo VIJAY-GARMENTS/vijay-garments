@@ -92,6 +92,7 @@ class Upsert extends Component
     public function getOrderList(): void
     {
         $this->orderCollection = $this->order_no ? Order::search(trim($this->order_no))
+            ->where('company_id', '=', session()->get('company_id'))
             ->get() : Order::all()->where('company_id','=',session()->get('company_id'));
     }
 
@@ -154,6 +155,7 @@ class Upsert extends Component
     public function getStyleList(): void
     {
         $this->styleCollection = $this->style_name ? Style::search(trim($this->style_name))
+            ->where('company_id', '=', session()->get('company_id'))
             ->get() : Style::all()->where('company_id','=',session()->get('company_id'));
     }
 

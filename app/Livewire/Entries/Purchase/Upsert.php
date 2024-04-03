@@ -109,7 +109,10 @@ class Upsert extends Component
     public function getContactList(): void
     {
 
-        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))->get() : Contact::all()->where('company_id','=',session()->get('company_id'));
+
+        $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))
+            ->where('company_id', '=', session()->get('company_id'))->get()
+            : Contact::all()->where('company_id','=',session()->get('company_id'));
 
     }
 
@@ -170,6 +173,7 @@ class Upsert extends Component
     public function getOrderList(): void
     {
         $this->orderCollection = $this->order_name ? Order::search(trim($this->order_name))
+            ->where('company_id', '=', session()->get('company_id'))
             ->get() : Order::all()->where('company_id','=',session()->get('company_id'));
     }
 
@@ -346,6 +350,7 @@ class Upsert extends Component
     public function getProductList(): void
     {
         $this->productCollection = $this->product_name ? Product::search(trim($this->product_name))
+            ->where('company_id', '=', session()->get('company_id'))
             ->get() : Product::all()->where('company_id','=',session()->get('company_id'));
     }
 

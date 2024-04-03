@@ -137,8 +137,8 @@ class Upsert extends Component
 
     public function getStyleList(): void
     {
-        $this->styleCollection = $this->style_name ? Style::search(trim($this->style_name))
-            ->get() : Style::all();
+        $this->styleCollection = $this->style_name ? Style::search(trim($this->style_name))->where('company_id', '=', session()->get('company_id'))
+            ->get() : Style::all()->where('company_id', '=', session()->get('company_id'));
     }
 
     //
@@ -200,7 +200,8 @@ class Upsert extends Component
     public function getFabricLotList(): void
     {
         $this->fabricLotCollection = $this->fabric_lot_name ? FabricLot::search(trim($this->fabric_lot_name))
-            ->get() : FabricLot::all();
+            ->where('company_id', '=', session()->get('company_id'))
+            ->get() : FabricLot::all() ->where('company_id', '=', session()->get('company_id'));
     }
     //
     // Colour name

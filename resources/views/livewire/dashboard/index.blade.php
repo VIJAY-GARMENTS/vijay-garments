@@ -5,7 +5,9 @@
             <div class="w-1/4">
 
                 @if(Aaran\Aaconfig\Src\Customise::hasTodoList())
-                <livewire:taskmanager.todos.index/>
+                    @if(session()->get('software_id')==1)
+                        <livewire:taskmanager.todos.index/>
+                    @endif
                 @endif
             </div>
 

@@ -437,7 +437,7 @@
                                         wire:keydown.arrow-up="decrementLedger"
                                         wire:keydown.arrow-down="incrementLedger"
                                         wire:keydown.enter="enterLedger"
-                                        class="block w-full purple-textbox ml-6"
+                                        class="block w-11/12 purple-textbox ml-16"
                                     />
                                     @error('ledger_id')
                                     <span class="text-red-500">{{'The Ledger is Required.'}}</span>
@@ -479,33 +479,36 @@
                                         class="text-right purple-textbox w-full ml-20" :label="'Additional'"/>
 
 
-                    <div class="grid w-full grid-cols-2 pt-6">
-                        <label
-                            class="px-3 pb-2 text-left text-gray-600 text-md">Taxable&nbsp;Amount&nbsp;:&nbsp;&nbsp;</label>
-                        <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_taxable }}</label>
-                    </div>
+
+                </div>
+            </section>
+            <section>
+                <div class="grid w-full grid-cols-2 pt-6">
+                    <label
+                        class="px-3 pb-2 text-left text-gray-600 text-md">Taxable&nbsp;Amount&nbsp;:&nbsp;&nbsp;</label>
+                    <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_taxable }}</label>
+                </div>
 
 
-                    <div class="grid w-full grid-cols-2 pt-6">
-                        <label
-                            class="px-3 pb-2 text-left text-gray-600 text-md">Gst&nbsp;:&nbsp;&nbsp;</label>
-                        <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_gst }}</label>
-                    </div>
+                <div class="grid w-full grid-cols-2 pt-6">
+                    <label
+                        class="px-3 pb-2 text-left text-gray-600 text-md">Gst&nbsp;:&nbsp;&nbsp;</label>
+                    <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_gst }}</label>
+                </div>
 
 
-                    <div class="grid w-full grid-cols-2 pt-6">
-                        <label
-                            class="px-3 pb-2 text-left text-gray-600 text-md">Round off&nbsp;:&nbsp;&nbsp;</label>
-                        <label class="px-3 pb-2 text-right text-gray-800 text-md">{{$round_off}}</label>
-                    </div>
+                <div class="grid w-full grid-cols-2 pt-6">
+                    <label
+                        class="px-3 pb-2 text-left text-gray-600 text-md">Round off&nbsp;:&nbsp;&nbsp;</label>
+                    <label class="px-3 pb-2 text-right text-gray-800 text-md">{{$round_off}}</label>
+                </div>
 
 
-                    <div class="grid w-full grid-cols-2 pt-6">
-                        <label
-                            class="px-3 pb-2 text-xl text-left text-gray-600">Grand&nbsp;Total&nbsp;:&nbsp;&nbsp;</label>
-                        <label
-                            class="px-3 pb-2 text-xl font-extrabold text-right text-gray-800">{{$grand_total}}</label>
-                    </div>
+                <div class="grid w-full grid-cols-2 pt-6">
+                    <label
+                        class="px-3 pb-2 text-xl text-left text-gray-600">Grand&nbsp;Total&nbsp;:&nbsp;&nbsp;</label>
+                    <label
+                        class="px-3 pb-2 text-xl font-extrabold text-right text-gray-800">{{$grand_total}}</label>
                 </div>
             </section>
 

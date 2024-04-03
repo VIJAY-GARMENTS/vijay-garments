@@ -64,7 +64,7 @@ class InvoiceController extends Controller
 
             Pdf::setOption(['dpi' => 150, 'defaultPaperSize'=>'a4', 'defaultFont' => 'sans-serif']);
 
-            $pdf = PDF::loadView('pdf.offset.sales.invoice1',[
+            $pdf = PDF::loadView('pdf.offset.sales.invoice2',[
                 'obj' => $peout,
                 'rupees'=>ConvertTo::ruppesToWords($peout->grand_total),
                 'list' => $peoutItem,

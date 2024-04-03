@@ -130,14 +130,20 @@
     <thead>
     <tr>
         <td colspan="2" style="padding-top: 10px">
-            <div class="logoLeft">
-                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 70px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>
-            </div>
+{{--            <div class="logoLeft">--}}
+{{--                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 70px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>--}}
+{{--            </div>--}}
             <div style="height: 65px;" class="bg-blue-400 ">
-                <div style="text-align: center; width: 100%;color: #3b82f6;" class="companyname">{{$cmp->get('company_name')}}</div>
-                <div style="text-align: center; width: 100%;" class="address1">{{$cmp->get('address_1')}}</div>
-                <div style="text-align: center; width: 100%;" class="address2">{{$cmp->get('address_2')}}</div>
+                <div style="text-align: center; width: 100%;color: #3b82f6;" class="companyname"></div>
+                <div style="text-align: center; width: 100%;" class="address1"></div>
+                <div style="text-align: center; width: 100%;" class="address1"></div>
+                <div style="text-align: center; width: 100%;" class="address2"></div>
             </div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
         </td>
     </tr>
     <tr>
@@ -428,14 +434,20 @@
     <thead>
     <tr>
         <td colspan="2" style="padding-top: 10px">
-            <div class="logoLeft">
-                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 70px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>
-            </div>
+            {{--            <div class="logoLeft">--}}
+            {{--                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 70px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>--}}
+            {{--            </div>--}}
             <div style="height: 65px;" class="bg-blue-400 ">
-                <div style="text-align: center; width: 100%;color: #3b82f6;" class="companyname">{{$cmp->get('company_name')}}</div>
-                <div style="text-align: center; width: 100%;" class="address1">{{$cmp->get('address_1')}}</div>
-                <div style="text-align: center; width: 100%;" class="address2">{{$cmp->get('address_2')}}</div>
+                <div style="text-align: center; width: 100%;color: #3b82f6;" class="companyname"></div>
+                <div style="text-align: center; width: 100%;" class="address1"></div>
+                <div style="text-align: center; width: 100%;" class="address1"></div>
+                <div style="text-align: center; width: 100%;" class="address2"></div>
             </div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
+            <div style="text-align: center; width: 100%;" class="address1">&nbsp;</div>
         </td>
     </tr>
     <tr>

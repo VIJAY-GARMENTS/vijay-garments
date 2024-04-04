@@ -6,6 +6,7 @@ use Aaran\Common\Models\City;
 use Aaran\Common\Models\Pincode;
 use Aaran\Common\Models\State;
 use Aaran\Master\Models\Contact;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -23,7 +24,12 @@ class ContactModel extends Component
     public string $gstin = '';
     public string $address_1 = '';
     public string $address_2 = '';
-    public $contact_no;
+    public $contact_person;
+    public $contact_type;
+    public $msme_no;
+    public $msme_type;
+    public $opening_balance;
+    public $effective_from;
 
     public string $cities;
     public string $states;
@@ -204,8 +210,8 @@ class ContactModel extends Component
 
     public function mount($name): void
     {
-        $this->contact_no = Contact::nextNo();
         $this->vname = $name;
+        $this->effective_from=Carbon::now()->format('Y-m-d');
     }
 
     public function save(): void
@@ -213,18 +219,23 @@ class ContactModel extends Component
         if ($this->vname != '') {
             $obj = Contact::create([
                 'vname' => Str::upper($this->vname),
-                'contact_no'=>$this->contact_no,
-                'mobile' => $this->mobile,
-                'whatsapp' => $this->whatsapp,
-                'email' => $this->email,
-                'gstin' => $this->gstin,
                 'address_1' => $this->address_1,
                 'address_2' => $this->address_2,
-                'city_id' => $this->city_id ?: 1,
-                'state_id' => $this->state_id ?: 1,
-                'pincode_id' => $this->pincode_id ?: 1,
-                'company_id'=>session()->get('company_id'),
+                'city_id' => $this->city_id?:'1',
+                'state_id' => $this->state_id?:'1',
+                'pincode_id' => $this->pincode_id?:'1',
+                'gstin' => $this->gstin,
+                'email' => $this->email,
+                'mobile' => $this->mobile,
+                'whatsapp' => $this->whatsapp,
+                'contact_person' => $this->contact_person,
+                'contact_type' => $this->contact_type,
+                'msme_no' => $this->msme_no,
+                'msme_type' => $this->msme_type,
+                'opening_balance' => $this->opening_balance,
+                'effective_from' => $this->effective_from,
                 'user_id' => Auth::id(),
+                'company_id' => session()->get('company_id'),
                 'active_id' => '1'
             ]);
             $this->dispatch('refresh-contact', ['name' => $this->vname, 'id' => $obj->id]);
@@ -234,7 +245,7 @@ class ContactModel extends Component
 
     public function clearAll(): void
     {
-        $this->vname = "";
+        $this->vname = '';
         $this->mobile = '';
         $this->whatsapp = '';
         $this->email = '';
@@ -244,6 +255,12 @@ class ContactModel extends Component
         $this->city_id = '';
         $this->state_id = '';
         $this->pincode_id = '';
+        $this->contact_person = '';
+        $this->contact_type = '';
+        $this->msme_no = '';
+        $this->msme_type = '';
+        $this->opening_balance = '';
+        $this->effective_from = '';
         $this->showModel = false;
     }
 

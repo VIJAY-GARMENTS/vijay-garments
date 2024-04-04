@@ -284,8 +284,8 @@
             <div>IFSC CODE</div>
         </td>
         <td  align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-right: none;border-left: none">
-            <div>:</div>
-            <div>:</div>
+            <div>:&nbsp;{{$cmp->get('acc_no')}}</div>
+            <div>:&nbsp;{{$cmp->get('ifsc_code')}}</div>
         </td>
         <td  colspan="3" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-left: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">&nbsp;</td>
@@ -297,8 +297,8 @@
             <div>BRANCH </div>
         </td>
         <td  align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-right: none;border-left: none">
-            <div>:</div>
-            <div>:</div>
+            <div>:&nbsp;{{$cmp->get('bank')}}</div>
+            <div>:&nbsp;{{$cmp->get('branch')}}</div>
         </td>
         <td  colspan="3" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-left: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">Round Off</td>
@@ -616,8 +616,8 @@
             <div>IFSC CODE</div>
         </td>
         <td  align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-right: none;border-left: none">
-            <div>:</div>
-            <div>:</div>
+            <div>:&nbsp;{{ $cmp->get('acc_no') }}</div>
+            <div>:&nbsp;{{ $cmp->get('ifsc_code') }}</div>
         </td>
         <td  colspan="3" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-left: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">&nbsp;</td>
@@ -629,8 +629,8 @@
             <div>BRANCH </div>
         </td>
         <td  align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-right: none;border-left: none">
-            <div>:</div>
-            <div>:</div>
+            <div>:&nbsp;{{ $cmp->get('bank') }}</div>
+            <div>:&nbsp;{{ $cmp->get('branch') }}</div>
         </td>
         <td  colspan="3" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-left: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">Round Off</td>

@@ -10,21 +10,22 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('contact_no');
             $table->string('vname');
-            $table->string('contact_person')->nullable();
-            $table->string('mobile')->nullable();
-            $table->string('whatsapp')->nullable();
-            $table->string('landline')->nullable();
-            $table->string('gstin')->nullable();
-            $table->string('pan')->nullable();
-            $table->string('email')->nullable();
-            $table->string('website')->nullable();
             $table->string('address_1')->nullable();
             $table->string('address_2')->nullable();
             $table->foreignId('city_id')->references('id')->on('cities');
             $table->foreignId('state_id')->references('id')->on('states');
             $table->foreignId('pincode_id')->references('id')->on('pincodes');
+            $table->string('gstin')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('contact_person')->nullable();
+            $table->string('contact_type')->nullable();
+            $table->string('msme_no')->nullable();
+            $table->string('msme_type')->nullable();
+            $table->string('opening_balance')->nullable();
+            $table->string('effective_from')->nullable();
             $table->string('active_id', 3)->nullable();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('company_id')->references('id')->on('companies');

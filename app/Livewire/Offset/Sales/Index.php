@@ -30,6 +30,9 @@ class Index extends Component
     public function show_advance()
     {
         $this->showEditModal_1 = !$this->showEditModal_1;
+        $this->filter='';
+        $this->start_date='';
+        $this->end_date='';
     }
 
     public $start_date;

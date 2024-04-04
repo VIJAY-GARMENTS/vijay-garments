@@ -26,6 +26,10 @@ return new class extends Migration
                 $table->foreignId('city_id')->references('id')->on('cities');
                 $table->foreignId('state_id')->references('id')->on('states');
                 $table->foreignId('pincode_id')->references('id')->on('pincodes');
+                $table->string('bank')->nullable();
+                $table->string('acc_no')->nullable();
+                $table->string('ifsc_code')->nullable();
+                $table->string('branch')->nullable();
                 $table->string('active_id', 3)->nullable();
                 $table->foreignId('user_id')->references('id')->on('users');
                 $table->foreignId('tenant_id')->references('id')->on('tenants');

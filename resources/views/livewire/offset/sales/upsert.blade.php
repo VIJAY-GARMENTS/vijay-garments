@@ -186,7 +186,7 @@
 
                                                 <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
                                                         {{ $highlightProduct === $i ? 'bg-yellow-100' : '' }}"
-                                                    wire:click.prevent="setProduct('{{$product->vname}}','{{$product->id}}')"
+                                                    wire:click.prevent="setProduct('{{$product->vname}}','{{$product->id}}','{{$product->gst_percent}}')"
                                                     x-on:click="isTyped = false">
                                                     {{ $product->vname }}
                                                 </li>
@@ -212,15 +212,15 @@
                 <input id="price" wire:model="price" class="block w-full purple-textbox-no-rounded" autocomplete="false"
                        placeholder="price">
             </div>
-            <div class="w-full">
-                <label for="price"></label>
-                <select id="price" wire:model="gst_percent" class="block w-full purple-textbox-no-rounded"
-                        autocomplete="false" placeholder="price">
-                    <option class="text-gray-400"> choose ..</option>
-                    @foreach(\App\Enums\GstPercent::cases() as $gst_percent)
-                        <option value="{{$gst_percent->value}}">{{$gst_percent->getName()}}</option>
-                    @endforeach</select>
-            </div>
+{{--            <div class="w-full">--}}
+{{--                <label for="price"></label>--}}
+{{--                <select id="price" wire:model="gst_percent" class="block w-full purple-textbox-no-rounded"--}}
+{{--                        autocomplete="false" placeholder="price">--}}
+{{--                    <option class="text-gray-400"> choose ..</option>--}}
+{{--                    @foreach(\App\Enums\GstPercent::cases() as $gst_percent)--}}
+{{--                        <option value="{{$gst_percent->value}}">{{$gst_percent->getName()}}</option>--}}
+{{--                    @endforeach</select>--}}
+{{--            </div>--}}
             <button wire:click="addItems" class="px-3 bg-green-500 text-white font-semibold tracking-wider ">Add
             </button>
         </section>

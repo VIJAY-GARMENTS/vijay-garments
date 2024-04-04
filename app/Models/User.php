@@ -9,6 +9,7 @@ use App\Scopes\UsertypeScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -66,8 +67,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function isAdmin(): bool
+    public function isAdmin()
     {
+        if (session()->get('usertype_id')==1){
+            return in_array($this->email,[
+                Auth::user()->email
+            ]);
+        }
         return in_array($this->email, [
             'sundar@sundar.com',
             'sundar@codexsun.com',

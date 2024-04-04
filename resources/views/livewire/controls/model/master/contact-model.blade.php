@@ -1,14 +1,8 @@
 <div>
     <x-controls.lookup.model :show-model="$showModel" :height="'h-[40rem]'" :width="'w-4/5'" >
-        <x-input.model-text wire:model="vname" :label="'name'"/>
-        <x-input.model-text wire:model="mobile" :label="'Mobile'"/>
-        <x-input.model-text wire:model="whatsapp" :label="'Whatsapp'"/>
-        <x-input.model-text wire:model="email" :label="'Email'"/>
-        <x-input.model-text wire:model="gstin" :label="'GSTin'"/>
+        <x-input.model-text wire:model="vname" :label="'Name'"/>
         <x-input.model-text wire:model="address_1" :label="'Address'"/>
         <x-input.model-text wire:model="address_2" :label="'Area-Road'"/>
-
-
         <div class="flex flex-row py-3 gap-3">
             <div class="xl:flex w-full gap-2">
                 <label for="city_name" class="w-[10rem] text-zinc-500 tracking-wide h- py-2">City</label>
@@ -63,8 +57,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="flex flex-col gap-2">
             <div class="xl:flex w-full gap-2">
                 <label for="state_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">State</label>
@@ -120,7 +112,6 @@
                 </div>
             </div>
         </div>
-
         <div class="flex flex-col gap-2">
             <div class="xl:flex w-full gap-2">
                 <label for="pincode_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Pincode</label>
@@ -174,5 +165,23 @@
                 </div>
             </div>
         </div>
+        <x-input.model-text wire:model="gstin" :label="'GSTin'"/>
+        <x-input.model-text wire:model="email" :label="'Email'"/>
+        <x-input.model-text wire:model="mobile" :label="'Mobile'"/>
+        <x-input.model-text wire:model="whatsapp" :label="'Whatsapp'"/>
+        <x-input.model-text wire:model="contact_person" :label="'Contact Person'"/>
+        <x-input.model-select wire:model="contact_type" :label="'Contact Type'">
+            <option class="text-gray-400"> choose ..</option>
+            @foreach(\App\Enums\ContactType::cases() as $contact_type)
+                <option value="{{$contact_type->value}}">{{$contact_type->getName()}}</option>
+            @endforeach
+        </x-input.model-select>
+        <x-input.model-text wire:model="msme_no" :label="'MSME No'"/>
+        <x-input.model-text wire:model="msme_type" :label="'MSME Type'"/>
+        <x-input.model-text wire:model="opening_balance" :label="'Opening Balance'"/>
+        <x-input.model-date wire:model="effective_from" :label="'Opening Date'"/>
+
+
+
     </x-controls.lookup.model>
 </div>

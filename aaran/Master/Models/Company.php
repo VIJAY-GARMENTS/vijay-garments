@@ -35,6 +35,10 @@ class Company extends Model
             'address_2' => 'GSTin - ' . $obj->gstin . ', Mobile - ' . $obj->mobile.' / PAN-'.$obj->pan,
             'email'=>$obj->email,
             'logo'=>$obj->logo,
+            'bank'=>$obj->bank,
+            'acc_no'=>$obj->acc_no,
+            'ifsc_code'=>$obj->ifsc_code,
+            'branch'=>$obj->branch,
         ]);
     }
 

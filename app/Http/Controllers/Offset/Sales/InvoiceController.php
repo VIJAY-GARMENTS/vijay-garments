@@ -16,13 +16,13 @@ class InvoiceController extends Controller
     {
         if($vid != ''){
             $peout = Sale_offset::select(
-                'Sale_offsets.*',
+                'sale_offsets.*',
                 'contacts.vname as contact_name',
                 'orders.vname as order_name'
             )
-                ->join('contacts', 'contacts.id', '=', 'Sale_offsets.contact_id')
-                ->join('orders', 'orders.id', '=', 'Sale_offsets.order_id')
-                ->where('Sale_offsets.id', '=', $vid)
+                ->join('contacts', 'contacts.id', '=', 'sale_offsets.contact_id')
+                ->join('orders', 'orders.id', '=', 'sale_offsets.order_id')
+                ->where('sale_offsets.id', '=', $vid)
                 ->get()->firstOrFail();
 
 
@@ -34,12 +34,8 @@ class InvoiceController extends Controller
                 ->select(
                     'saleitem_offsets.*',
                     'products.vname as product_name',
-                    'colours.vname as colour_name',
-                    'sizes.vname as size_name'
                 )
                 ->join('products', 'products.id', '=', 'saleitem_offsets.product_id')
-                ->join('colours', 'colours.id', '=', 'saleitem_offsets.colour_id')
-                ->join('sizes', 'sizes.id', '=', 'saleitem_offsets.size_id')
                 ->where('sale_offset_id', '=', $vid)
                 ->get()
                 ->transform(function ($data) {
@@ -49,10 +45,6 @@ class InvoiceController extends Controller
                         'dc_no'=>$data->dc_no,
                         'product_id' => $data->product_id,
                         'product_name' => $data->product_name,
-                        'colour_id' => $data->colour_id,
-                        'colour_name' => $data->colour_name,
-                        'size_id' => $data->size_id,
-                        'size_name' => $data->size_name,
                         'qty' => $data->qty,
                         'price' => $data->price,
                         'gst_percent' => $data->gst_percent,

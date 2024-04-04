@@ -48,8 +48,6 @@ class Upsert extends Component
     public string $ledger;
     public string $sale;
     public string $product;
-    public string $colour;
-    public string $size;
 
     public $contact_id = '';
 
@@ -293,123 +291,6 @@ class Upsert extends Component
             ->get() : Product::all()->where('company_id', '=', session()->get('company_id'));
     }
 
-    public $colour_id = '';
-    public $colour_name = '';
-    public Collection $colourCollection;
-    public $highlightColour = 0;
-    public $colourTyped = false;
-
-    public function decrementColour(): void
-    {
-        if ($this->highlightColour === 0) {
-            $this->highlightColour = count($this->colourCollection) - 1;
-            return;
-        }
-        $this->highlightColour--;
-    }
-
-    public function incrementColour(): void
-    {
-        if ($this->highlightColour === count($this->colourCollection) - 1) {
-            $this->highlightColour = 0;
-            return;
-        }
-        $this->highlightColour++;
-    }
-
-    public function enterColour(): void
-    {
-        $obj = $this->colourCollection[$this->highlightColour] ?? null;
-
-        $this->colour_name = '';
-        $this->colourCollection = Collection::empty();
-        $this->highlightColour = 0;
-
-        $this->colour_name = $obj['vname'] ?? '';
-        $this->colour_id = $obj['id'] ?? '';
-    }
-
-    public function setColour($name, $id): void
-    {
-        $this->colour_name = $name;
-        $this->colour_id = $id;
-        $this->getColourList();
-    }
-
-    #[On('refresh-colour')]
-    public function refreshColour($v): void
-    {
-        $this->colour_id = $v['id'];
-        $this->colour_name = $v['name'];
-        $this->colourTyped = false;
-    }
-
-    public function getColourList(): void
-    {
-        $this->colourCollection = $this->colour_name ? Colour::search(trim($this->colour_name))
-            ->get() : Colour::all();
-    }
-
-
-    public $size_id = '';
-    public $size_name = '';
-    public Collection $sizeCollection;
-    public $highlightSize = 0;
-    public $sizeTyped = false;
-
-    public function decrementSize(): void
-    {
-        if ($this->highlightSize === 0) {
-            $this->highlightSize = count($this->sizeCollection) - 1;
-            return;
-        }
-        $this->highlightSize--;
-    }
-
-    public function incrementSize(): void
-    {
-        if ($this->highlightSize === count($this->sizeCollection) - 1) {
-            $this->highlightSize = 0;
-            return;
-        }
-        $this->highlightSize++;
-    }
-
-    public function setSize($name, $id): void
-    {
-        $this->size_name = $name;
-        $this->size_id = $id;
-        $this->getSizeList();
-    }
-
-    public function enterSize(): void
-    {
-        $obj = $this->sizeCollection[$this->highlightSize] ?? null;
-
-        $this->size_name = '';
-        $this->sizeCollection = Collection::empty();
-        $this->highlightSize = 0;
-
-        $this->size_name = $obj['vname'] ?? '';
-        $this->size_id = $obj['id'] ?? '';
-    }
-
-    #[On('refresh-size')]
-    public function refreshSize($v): void
-    {
-        $this->size_id = $v['id'];
-        $this->size_name = $v['name'];
-        $this->sizeTyped = false;
-
-    }
-
-    public function getSizeList(): void
-    {
-        $this->sizeCollection = $this->size_name ? Size::search(trim($this->size_name))
-            ->get() : Size::all();
-    }
-
-
     public function save(): string
     {
 //        $this->validate();
@@ -475,8 +356,6 @@ class Upsert extends Component
                 'po_no' => $sub['po_no'],
                 'dc_no' => $sub['dc_no'],
                 'product_id' => $sub['product_id'],
-                'colour_id' => $sub['colour_id'],
-                'size_id' => $sub['size_id'],
                 'qty' => $sub['qty'],
                 'price' => $sub['price'],
                 'gst_percent' => $sub['gst_percent'],
@@ -509,11 +388,8 @@ class Upsert extends Component
             $this->grand_total = $obj->grand_total;
             $this->active_id = $obj->active_id;
             $data = DB::table('saleitem_offsets')->select('saleitem_offsets.*',
-                'products.vname as product_name',
-                'colours.vname as colour_name',
-                'sizes.vname as size_name',)->join('products', 'products.id', '=', 'saleitem_offsets.product_id')
-                ->join('colours', 'colours.id', '=', 'saleitem_offsets.colour_id')
-                ->join('sizes', 'sizes.id', '=', 'saleitem_offsets.size_id')
+                'products.vname as product_name',)
+                ->join('products', 'products.id', '=', 'saleitem_offsets.product_id')
                 ->where('sale_offset_id', '=', $id)
                 ->get()->transform(function ($data) {
                     return [
@@ -522,10 +398,6 @@ class Upsert extends Component
                         'dc_no' => $data->dc_no,
                         'product_name' => $data->product_name,
                         'product_id' => $data->product_id,
-                        'colour_name' => $data->colour_name,
-                        'colour_id' => $data->colour_id,
-                        'size_name' => $data->size_name,
-                        'size_id' => $data->size_id,
                         'qty' => $data->qty,
                         'price' => $data->price,
                         'gst_percent' => $data->gst_percent,
@@ -554,8 +426,7 @@ class Upsert extends Component
     public function addItems(): void
     {
         if ($this->itemIndex == "") {
-            if (!(empty($this->colour_name)) &&
-                !(empty($this->size_name)) &&
+            if (!(empty($this->product_name)) &&
                 !(empty($this->qty))
             ) {
                 $this->itemList[] = [
@@ -563,10 +434,6 @@ class Upsert extends Component
                     'dc_no' => $this->dc_no,
                     'product_name' => $this->product_name,
                     'product_id' => $this->product_id,
-                    'colour_id' => $this->colour_id,
-                    'colour_name' => $this->colour_name,
-                    'size_id' => $this->size_id,
-                    'size_name' => $this->size_name,
                     'qty' => $this->qty,
                     'price' => $this->price,
                     'gst_percent' => $this->gst_percent,
@@ -581,10 +448,6 @@ class Upsert extends Component
                 'dc_no' => $this->dc_no,
                 'product_name' => $this->product_name,
                 'product_id' => $this->product_id,
-                'colour_id' => $this->colour_id,
-                'colour_name' => $this->colour_name,
-                'size_id' => $this->size_id,
-                'size_name' => $this->size_name,
                 'qty' => $this->qty,
                 'price' => $this->price,
                 'gst_percent' => $this->gst_percent,
@@ -607,10 +470,6 @@ class Upsert extends Component
         $this->dc_no = '';
         $this->product_name = '';
         $this->product_id = '';
-        $this->colour_name = '';
-        $this->colour_id = '';
-        $this->size_name = '';
-        $this->size_id = '';
         $this->qty = '';
         $this->price = '';
         $this->gst_percent = '';
@@ -626,10 +485,6 @@ class Upsert extends Component
         $this->dc_no = $items['dc_no'];
         $this->product_name = $items['product_name'];
         $this->product_id = $items['product_id'];
-        $this->colour_name = $items['colour_name'];
-        $this->colour_id = $items['colour_id'];
-        $this->size_name = $items['size_name'];
-        $this->size_id = $items['size_id'];
         $this->qty = $items['qty'] + 0;
         $this->price = $items['price'] + 0;
         $this->gst_percent = $items['gst_percent'];
@@ -719,9 +574,7 @@ class Upsert extends Component
         $this->getContactList();
         $this->getOrderList();
         $this->getLedgerList();
-        $this->getColourList();
         $this->getProductList();
-        $this->getSizeList();
         return view('livewire.offset.sales.upsert');
     }
 }

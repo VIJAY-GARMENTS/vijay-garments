@@ -35,8 +35,6 @@ return new class extends Migration
             $table->string('dc_no')->nullable();
             $table->foreignId('sale_offset_id')->references('id')->on('sale_offsets');
             $table->foreignId('product_id')->references('id')->on('products');
-            $table->foreignId('colour_id')->references('id')->on('colours');
-            $table->foreignId('size_id')->references('id')->on('sizes');
             $table->decimal('qty');
             $table->decimal('price');
             $table->string('gst_percent')->nullable();

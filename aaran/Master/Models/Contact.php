@@ -22,11 +22,6 @@ class Contact extends Model
             : static::where('vname', 'like', '%' . $searches . '%');
     }
 
-    public static function nextNo()
-    {
-        return static::where('company_id','=',session()->get('company_id'))->max('contact_no') + 1;
-    }
-
     public static function printDetails($ids): Collection
     {
         $obj = self::find($ids);

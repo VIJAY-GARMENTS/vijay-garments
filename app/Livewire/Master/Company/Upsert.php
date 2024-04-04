@@ -31,6 +31,11 @@ class Upsert extends Component
     public string $website = '';
     public $logo = '';
     public string $pan = '';
+    public $bank;
+    public $acc_no;
+    public $ifsc_code;
+    public $branch;
+
 
     public string $cities;
     public string $states;
@@ -231,6 +236,10 @@ class Upsert extends Component
                     'city_id' => $this->city_id ?: '1',
                     'state_id' => $this->state_id ?: '1',
                     'pincode_id' => $this->pincode_id ?: '1',
+                    'bank' => $this->bank,
+                    'acc_no' => $this->acc_no,
+                    'ifsc_code' => $this->ifsc_code,
+                    'branch' => $this->branch,
                     'active_id' => $this->active_id ?: '1',
                     'user_id' => Auth::id(),
                     'tenant_id' => $this->tenant_id ?: '1',
@@ -254,10 +263,18 @@ class Upsert extends Component
                 $obj->city_id = $this->city_id;
                 $obj->state_id = $this->state_id;
                 $obj->pincode_id = $this->pincode_id;
+                $obj->bank = $this->bank;
+                $obj->acc_no = $this->acc_no;
+                $obj->ifsc_code = $this->ifsc_code;
+                $obj->branch = $this->branch;
                 $obj->active_id = $this->active_id;
-                $obj->tenant_id = $this->tenant_id;
+                $obj->tenant_id = $this->tenant_id?:'1';
                 $obj->user_id = Auth::id();
-                $obj->logo = $this->save_logo();
+                if ($obj->logo != $obj->logo) {
+                    $obj->logo = $this->save_logo();
+                } else {
+                    $obj->logo = $this->logo;
+                }
                 $obj->save();
                 $message = "Updated";
             }
@@ -289,6 +306,10 @@ class Upsert extends Component
             $this->state_name = $obj->state->vname;
             $this->pincode_id = $obj->pincode_id;
             $this->pincode_name = $obj->pincode->vname;
+            $this->bank = $obj->bank;
+            $this->acc_no = $obj->acc_no;
+            $this->ifsc_code = $obj->ifsc_code;
+            $this->branch = $obj->branch;
             $this->active_id = $obj->active_id;
             $this->logo = $obj->logo;
         } else {
@@ -317,6 +338,10 @@ class Upsert extends Component
             $this->state_name = $obj->state->vname;
             $this->pincode_id = $obj->pincode_id;
             $this->pincode_name = $obj->pincode->vname;
+            $this->bank = $obj->bank;
+            $this->acc_no = $obj->acc_no;
+            $this->ifsc_code = $obj->ifsc_code;
+            $this->branch = $obj->branch;
             $this->active_id = $obj->active_id;
             $this->logo = $obj->logo;
             return $obj;

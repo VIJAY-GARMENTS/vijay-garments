@@ -29,7 +29,7 @@
                             <p class="mb-5 font-light text-sm/relaxed  text-zinc-500">
                                 Start getting complete business solution package with end-to-end management.</p>
 
-                            <a href="{{ route('register') }}"
+                            <a href="{{ route('demo-requests') }}"
                                class="animate-bounce focus:animate-none hover:animate-none inline-flex text-md bg-green-600 mt-3 px-4 py-2 rounded-lg tracking-wide text-white font-mono font-bold">
                                 <span class="ml-2"> Book for demo 🏀</span>
                             </a>

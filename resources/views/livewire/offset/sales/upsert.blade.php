@@ -61,61 +61,61 @@
                     </div>
                 </div>
 
-{{--                <div class="flex flex-col gap-2 pt-6">--}}
-{{--                    <div class="xl:flex w-full gap-2">--}}
-{{--                        <label for="order_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Order NO</label>--}}
-{{--                        <div x-data="{isTyped: @entangle('orderTyped')}" @click.away="isTyped = false" class="w-full">--}}
-{{--                            <div class="relative">--}}
-{{--                                <input--}}
-{{--                                    id="order_name"--}}
-{{--                                    type="search"--}}
-{{--                                    wire:model.live="order_name"--}}
-{{--                                    autocomplete="off"--}}
-{{--                                    placeholder="Order.."--}}
-{{--                                    @focus="isTyped = true"--}}
-{{--                                    @keydown.escape.window="isTyped = false"--}}
-{{--                                    @keydown.tab.window="isTyped = false"--}}
-{{--                                    @keydown.enter.prevent="isTyped = false"--}}
-{{--                                    wire:keydown.arrow-up="decrementOrder"--}}
-{{--                                    wire:keydown.arrow-down="incrementOrder"--}}
-{{--                                    wire:keydown.enter="enterOrder"--}}
-{{--                                    class="block w-full purple-textbox"--}}
-{{--                                />--}}
-{{--                                @error('order_id')--}}
-{{--                                <span class="text-red-500">{{'The Order is Required.'}}</span>--}}
-{{--                                @enderror--}}
+                {{--                <div class="flex flex-col gap-2 pt-6">--}}
+                {{--                    <div class="xl:flex w-full gap-2">--}}
+                {{--                        <label for="order_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Order NO</label>--}}
+                {{--                        <div x-data="{isTyped: @entangle('orderTyped')}" @click.away="isTyped = false" class="w-full">--}}
+                {{--                            <div class="relative">--}}
+                {{--                                <input--}}
+                {{--                                    id="order_name"--}}
+                {{--                                    type="search"--}}
+                {{--                                    wire:model.live="order_name"--}}
+                {{--                                    autocomplete="off"--}}
+                {{--                                    placeholder="Order.."--}}
+                {{--                                    @focus="isTyped = true"--}}
+                {{--                                    @keydown.escape.window="isTyped = false"--}}
+                {{--                                    @keydown.tab.window="isTyped = false"--}}
+                {{--                                    @keydown.enter.prevent="isTyped = false"--}}
+                {{--                                    wire:keydown.arrow-up="decrementOrder"--}}
+                {{--                                    wire:keydown.arrow-down="incrementOrder"--}}
+                {{--                                    wire:keydown.enter="enterOrder"--}}
+                {{--                                    class="block w-full purple-textbox"--}}
+                {{--                                />--}}
+                {{--                                @error('order_id')--}}
+                {{--                                <span class="text-red-500">{{'The Order is Required.'}}</span>--}}
+                {{--                                @enderror--}}
 
-{{--                                <div x-show="isTyped"--}}
-{{--                                     x-transition:leave="transition ease-in duration-100"--}}
-{{--                                     x-transition:leave-start="opacity-100"--}}
-{{--                                     x-transition:leave-end="opacity-0"--}}
-{{--                                     x-cloak--}}
-{{--                                >--}}
-{{--                                    <div class="absolute z-20 w-full mt-2">--}}
-{{--                                        <div class="block py-1 shadow-md w-full--}}
-{{--                rounded-lg border-transparent flex-1 appearance-none border--}}
-{{--                                 bg-white text-gray-800 ring-1 ring-purple-600">--}}
-{{--                                            <ul class="overflow-y-scroll h-96">--}}
-{{--                                                @if($orderCollection)--}}
-{{--                                                    @forelse ($orderCollection as $i => $order)--}}
-{{--                                                        <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8--}}
-{{--                                                        {{ $highlightOrder === $i ? 'bg-yellow-100' : '' }}"--}}
-{{--                                                            wire:click.prevent="setOrder('{{$order->vname}}','{{$order->id}}')"--}}
-{{--                                                            x-on:click="isTyped = false">--}}
-{{--                                                            {{ $order->vname }}--}}
-{{--                                                        </li>--}}
-{{--                                                    @empty--}}
-{{--                                                        @livewire('controls.model.order.order-model',[$order_name])--}}
-{{--                                                    @endforelse--}}
-{{--                                                @endif--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                                <div x-show="isTyped"--}}
+                {{--                                     x-transition:leave="transition ease-in duration-100"--}}
+                {{--                                     x-transition:leave-start="opacity-100"--}}
+                {{--                                     x-transition:leave-end="opacity-0"--}}
+                {{--                                     x-cloak--}}
+                {{--                                >--}}
+                {{--                                    <div class="absolute z-20 w-full mt-2">--}}
+                {{--                                        <div class="block py-1 shadow-md w-full--}}
+                {{--                rounded-lg border-transparent flex-1 appearance-none border--}}
+                {{--                                 bg-white text-gray-800 ring-1 ring-purple-600">--}}
+                {{--                                            <ul class="overflow-y-scroll h-96">--}}
+                {{--                                                @if($orderCollection)--}}
+                {{--                                                    @forelse ($orderCollection as $i => $order)--}}
+                {{--                                                        <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8--}}
+                {{--                                                        {{ $highlightOrder === $i ? 'bg-yellow-100' : '' }}"--}}
+                {{--                                                            wire:click.prevent="setOrder('{{$order->vname}}','{{$order->id}}')"--}}
+                {{--                                                            x-on:click="isTyped = false">--}}
+                {{--                                                            {{ $order->vname }}--}}
+                {{--                                                        </li>--}}
+                {{--                                                    @empty--}}
+                {{--                                                        @livewire('controls.model.order.order-model',[$order_name])--}}
+                {{--                                                    @endforelse--}}
+                {{--                                                @endif--}}
+                {{--                                            </ul>--}}
+                {{--                                        </div>--}}
+                {{--                                    </div>--}}
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
 
             </div>
 
@@ -134,7 +134,7 @@
 
         </section>
 
-        <x-forms.section-border/>
+{{--        <x-forms.section-border/>--}}
 
         <section class="text-xl font-bold text-orange-400">
             Sales Item
@@ -188,7 +188,8 @@
                                                         {{ $highlightProduct === $i ? 'bg-yellow-100' : '' }}"
                                                     wire:click.prevent="setProduct('{{$product->vname}}','{{$product->id}}','{{$product->gst_percent}}')"
                                                     x-on:click="isTyped = false">
-                                                    {{ $product->vname }}  &nbsp;-&nbsp; GST&nbsp;: &nbsp;{{$product->gst_percent}}%
+                                                    {{ $product->vname }} &nbsp;-&nbsp; GST&nbsp;:
+                                                    &nbsp;{{$product->gst_percent}}%
                                                 </li>
 
                                             @empty
@@ -212,15 +213,15 @@
                 <input id="price" wire:model="price" class="block w-full purple-textbox-no-rounded" autocomplete="false"
                        placeholder="price">
             </div>
-{{--            <div class="w-full">--}}
-{{--                <label for="price"></label>--}}
-{{--                <select id="price" wire:model="gst_percent" class="block w-full purple-textbox-no-rounded"--}}
-{{--                        autocomplete="false" placeholder="price">--}}
-{{--                    <option class="text-gray-400"> choose ..</option>--}}
-{{--                    @foreach(\App\Enums\GstPercent::cases() as $gst_percent)--}}
-{{--                        <option value="{{$gst_percent->value}}">{{$gst_percent->getName()}}</option>--}}
-{{--                    @endforeach</select>--}}
-{{--            </div>--}}
+            {{--            <div class="w-full">--}}
+            {{--                <label for="price"></label>--}}
+            {{--                <select id="price" wire:model="gst_percent" class="block w-full purple-textbox-no-rounded"--}}
+            {{--                        autocomplete="false" placeholder="price">--}}
+            {{--                    <option class="text-gray-400"> choose ..</option>--}}
+            {{--                    @foreach(\App\Enums\GstPercent::cases() as $gst_percent)--}}
+            {{--                        <option value="{{$gst_percent->value}}">{{$gst_percent->getName()}}</option>--}}
+            {{--                    @endforeach</select>--}}
+            {{--            </div>--}}
             <button wire:click="addItems" class="px-3 bg-green-500 text-white font-semibold tracking-wider ">Add
             </button>
         </section>
@@ -231,18 +232,18 @@
 
                 <table class="w-full">
                     <thead>
-                    <tr class="h-8 text-xs bg-gray-100 border border-gray-300">
-                        <th class="w-12 px-2 text-center border border-gray-300">#</th>
-                        <th class="px-2 text-center border border-gray-300">Po No</th>
-                        <th class="px-2 text-center border border-gray-300">Dc No</th>
-                        <th class="px-2 text-center border border-gray-300">PRODUCT</th>
-                        <th class="px-2 text-center border border-gray-300">QTY</th>
-                        <th class="px-2 text-center border border-gray-300">PRICE</th>
-                        <th class="px-2 text-center border border-gray-300">TAXABLE</th>
-                        <th class="px-2 text-center border border-gray-300">GST PERCENT</th>
-                        <th class="px-2 text-center border border-gray-300">GST</th>
-                        <th class="px-2 text-center border border-gray-300">SUBTOTAL</th>
-                        <th class="w-12 px-1 text-center border border-gray-300">ACTION</th>
+                    <tr class="h-8 text-xs bg-gray-50 border border-gray-200">
+                        <th class="w-12 px-2 text-center border border-gray-100">#</th>
+                        <th class="px-2 text-center border border-gray-100">Po No</th>
+                        <th class="px-2 text-center border border-gray-100">Dc No</th>
+                        <th class="px-2 text-center border border-gray-100">PRODUCT</th>
+                        <th class="px-2 text-center border border-gray-100">QTY</th>
+                        <th class="px-2 text-center border border-gray-100">PRICE</th>
+                        <th class="px-2 text-center border border-gray-100">TAXABLE</th>
+                        <th class="px-2 text-center border border-gray-100">GST PERCENT</th>
+                        <th class="px-2 text-center border border-gray-100">GST</th>
+                        <th class="px-2 text-center border border-gray-100">SUBTOTAL</th>
+                        <th class="w-12 px-1 text-center border border-gray-100">ACTION</th>
                     </tr>
 
                     </thead>
@@ -304,7 +305,7 @@
             </div>
 
         </section>
-        <x-forms.section-border/>
+{{--        <x-forms.section-border/>--}}
         <section class="grid grid-cols-2 gap-2 ">
             <section class="w-full">
                 <div class="w-3/4 mr-3 ">
@@ -370,7 +371,6 @@
                                         :label="'Additional'" class="text-right w-full purple-textbox"/>
 
 
-
                 </div>
             </section>
             <section>
@@ -405,33 +405,6 @@
 
         </section>
     </x-forms.m-panel>
-    <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md shadow-lg w-full ">
-
-        <div class="flex flex-col md:flex-row justify-between gap-3 mt-5 mb-0">
-
-            <div class="flex gap-3">
-                <x-button.save/>
-                <x-button.back/>
-            </div>
-
-            <div>
-                <x-button.print/>
-            </div>
-            <div class="my-2">
-                <label for="active_id" class="inline-flex relative items-center cursor-pointer">
-                    <input type="checkbox" id="active_id" class="sr-only peer"
-                           wire:model="active_id">
-                    <div
-                        class="w-10 h-5 bg-gray-200 rounded-full peer peer-focus:ring-2
-                                        peer-focus:ring-blue-300
-                                         peer-checked:after:translate-x-full peer-checked:after:border-white
-                                         after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300
-                                         after:border after:rounded-full after:h-4 after:w-4 after:transition-all
-                                         peer-checked:bg-blue-600"></div>
-                    <span class="ml-3 text-sm font-medium text-gray-900">Active</span>
-                </label>
-            </div>
-        </div>
-    </div>
+    <x-forms.m-panel-bottom-button/>
 </div>
 

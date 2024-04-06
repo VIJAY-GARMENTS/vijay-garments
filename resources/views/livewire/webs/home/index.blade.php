@@ -28,10 +28,12 @@
                             </p>
                             <p class="mb-5 font-light text-sm/relaxed  text-zinc-500">
                                 Start getting complete business solution package with end-to-end management.</p>
-                            <a class="rounded-lg shadow hover:border-b-4 hover:border-green-200 hover:transition duration-200 ease-out hover:text-lg  bg-green-600 py-2 px-3 font-bold tracking-wider font-mono text-white"
-                               href="{{ route('register') }}">
-                                Book for demo
+
+                            <a href="{{ route('register') }}"
+                               class="animate-bounce focus:animate-none hover:animate-none inline-flex text-md bg-green-600 mt-3 px-4 py-2 rounded-lg tracking-wide text-white font-mono font-bold">
+                                <span class="ml-2"> Book for demo 🏀</span>
                             </a>
+
                         </div>
                     </div>
                 </div>

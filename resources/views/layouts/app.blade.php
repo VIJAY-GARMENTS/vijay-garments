@@ -21,14 +21,14 @@
 
 
 <div x-data="{ sidebarOpen: false }" @keydown.window.escape="sidebarOpen=false"
-     class="min-h-screen bg-gray-300 print:bg-white">
+     class="min-h-screen bg-white print:bg-white">
     <div class="flex-1">
 
         <x-menu.top-menu>{{$header}}</x-menu.top-menu>
         <x-menu.side-menu/>
 
         <!-- Page Content -->
-        <main class="p-3 bg-gray-300 print:bg-white">
+        <main class="p-3 bg-white print:bg-white">
             {{ $slot }}
         </main>
 

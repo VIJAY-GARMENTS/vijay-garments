@@ -1,4 +1,4 @@
-<x-guest-layout>
+<div>
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
             <x-assets.logo.cxlogo :icon="'light'" class="h-20 ml-4 mx-auto w-auto  block"/>
@@ -31,5 +31,5 @@
             </form>
         </div>
     </div>
-</x-guest-layout>
+</div>
 

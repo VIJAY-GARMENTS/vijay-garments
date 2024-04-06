@@ -32,6 +32,6 @@ class DemoRequest extends Component
 
     public function render()
     {
-        return view('livewire.webs.demo-request')->layout('layouts.web');
+        return view('livewire.webs.demo-request')->layout('layouts.guest');
     }
 }

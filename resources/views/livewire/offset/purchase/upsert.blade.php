@@ -185,117 +185,14 @@
 
                                                 <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
                                                         {{ $highlightProduct === $i ? 'bg-yellow-100' : '' }}"
-                                                    wire:click.prevent="setProduct('{{$product->vname}}','{{$product->id}}')"
+                                                    wire:click.prevent="setProduct('{{$product->vname}}','{{$product->id}}','{{$product->gst_percent}}')"
                                                     x-on:click="isTyped = false">
-                                                    {{ $product->vname }}
+                                                    {{ $product->vname }} &nbsp;-&nbsp; GST&nbsp;:
+                                                    &nbsp;{{$product->gst_percent}}%
                                                 </li>
 
                                             @empty
                                                 @livewire('controls.model.master.product-model',[$product_name])
-                                            @endforelse
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full">
-                <label for="colour_name"></label>
-                <div x-data="{isTyped: @entangle('colourTyped')}" @click.away="isTyped = false">
-                    <div class="relative">
-                        <input
-                            id="colour_name"
-                            type="search"
-                            wire:model.live="colour_name"
-                            autocomplete="off"
-                            placeholder="Colour Name.."
-                            @focus="isTyped = true"
-                            @keydown.escape.window="isTyped = false"
-                            @keydown.tab.window="isTyped = false"
-                            @keydown.enter.prevent="isTyped = false"
-                            wire:keydown.arrow-up="decrementColour"
-                            wire:keydown.arrow-down="incrementColour"
-                            wire:keydown.enter="enterColour"
-                            class="block w-full purple-textbox-no-rounded"
-                        />
-
-                        <div x-show="isTyped"
-                             x-transition:leave="transition ease-in duration-100"
-                             x-transition:leave-start="opacity-100"
-                             x-transition:leave-end="opacity-0"
-                             x-cloak
-                        >
-                            <div class="absolute z-20 w-full mt-2">
-                                <div class="block py-1 shadow-md w-full
-                rounded-lg border-transparent flex-1 appearance-none border
-                                 bg-white text-gray-800 ring-1 ring-purple-600">
-                                    <ul class="overflow-y-scroll h-96">
-                                        @if($colourCollection)
-                                            @forelse ($colourCollection as $i => $colour)
-
-                                                <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
-                                                        {{ $highlightColour === $i ? 'bg-yellow-100' : '' }}"
-                                                    wire:click.prevent="setColour('{{$colour->vname}}','{{$colour->id}}')"
-                                                    x-on:click="isTyped = false">
-                                                    {{ $colour->vname }}
-                                                </li>
-
-                                            @empty
-                                                @livewire('controls.model.common.colour-model',[$colour_name])
-                                            @endforelse
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full">
-                <label for="size_name"></label>
-                <div x-data="{isTyped: @entangle('sizeTyped')}" @click.away="isTyped = false">
-                    <div class="relative">
-                        <input
-                            id="size_name"
-                            type="search"
-                            wire:model.live="size_name"
-                            autocomplete="off"
-                            placeholder="Size.."
-                            @focus="isTyped = true"
-                            @keydown.escape.window="isTyped = false"
-                            @keydown.tab.window="isTyped = false"
-                            @keydown.enter.prevent="isTyped = false"
-                            wire:keydown.arrow-up="decrementSize"
-                            wire:keydown.arrow-down="incrementSize"
-                            wire:keydown.enter="enterSize"
-                            class="block w-full purple-textbox-no-rounded"
-                        />
-
-                        <div x-show="isTyped"
-                             x-transition:leave="transition ease-in duration-100"
-                             x-transition:leave-start="opacity-100"
-                             x-transition:leave-end="opacity-0"
-                             x-cloak
-                        >
-                            <div class="absolute z-20 w-full mt-2">
-                                <div class="block py-1 shadow-md w-full
-                rounded-lg border-transparent flex-1 appearance-none border
-                                 bg-white text-gray-800 ring-1 ring-purple-600">
-                                    <ul class="overflow-y-scroll h-96">
-                                        @if($sizeCollection)
-                                            @forelse ($sizeCollection as $i => $size)
-
-                                                <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
-                                                        {{ $highlightSize === $i ? 'bg-yellow-100' : '' }}"
-                                                    wire:click.prevent="setSize('{{$size->vname}}','{{$size->id}}')"
-                                                    x-on:click="isTyped = false">
-                                                    {{ $size->vname }}
-                                                </li>
-
-                                            @empty
-                                                @livewire('controls.model.common.size-model',[$size_name])
                                             @endforelse
                                         @endif
                                     </ul>
@@ -313,14 +210,6 @@
                 <label for="price"></label>
                 <input id="price" wire:model="price" class="block w-full purple-textbox-no-rounded" autocomplete="false" placeholder="price">
             </div>
-            <div class="w-full">
-                <label for="price"></label>
-                <select id="price" wire:model="gst_percent" class="block w-full purple-textbox-no-rounded" autocomplete="false" placeholder="price">
-                    <option class="text-gray-400"> choose ..</option>
-                    @foreach(\App\Enums\GstPercent::cases() as $gst_percent)
-                        <option value="{{$gst_percent->value}}">{{$gst_percent->getName()}}</option>
-                    @endforeach</select>
-            </div>
             <button wire:click="addItems" class="px-3 bg-green-500 text-white font-semibold tracking-wider ">Add
             </button>
         </section>
@@ -328,13 +217,11 @@
             <div class="py-2 mt-5">
                 <table class="w-full">
                     <thead>
-                    <tr class="h-8 text-xs bg-gray-100 border border-gray-300">
+                    <tr class="h-8 text-xs bg-cyan-50 border border-gray-300">
                         <th class="w-12 px-2 text-center border border-gray-300">#</th>
                         <th class="px-2 text-center border border-gray-300">Po No</th>
                         <th class="px-2 text-center border border-gray-300">Dc No</th>
                         <th class="px-2 text-center border border-gray-300">PRODUCT</th>
-                        <th class="px-2 text-center border border-gray-300">COLOUR</th>
-                        <th class="px-2 text-center border border-gray-300">SIZE</th>
                         <th class="px-2 text-center border border-gray-300">QTY</th>
                         <th class="px-2 text-center border border-gray-300">PRICE</th>
                         <th class="px-2 text-center border border-gray-300">TAXABLE</th>
@@ -352,7 +239,7 @@
                         @foreach($itemList as $index => $row)
 
                             <tr class="border border-gray-400 hover:bg-amber-50">
-                                <td class="text-center border border-gray-300 bg-gray-100">
+                                <td class="text-center border border-gray-300 bg-cyan-50">
                                     <button class="w-full h-full cursor-pointer" wire:click.prevent="changeItems({{$index}})">
                                         {{$index+1}}
                                     </button>
@@ -362,8 +249,6 @@
                                 <td class="px-2 text-center border border-gray-300 cursor-pointer"
                                     wire:click.prevent="changeItems({{$index}})">{{$row['dc_no']}}</td>
                                 <td class="px-2 text-left border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['product_name']}}</td>
-                                <td class="px-2 text-left border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['colour_name']}}</td>
-                                <td class="px-2 text-left border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['size_name']}}</td>
                                 <td class="px-2 text-center border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['qty']}}</td>
                                 <td class="px-2 text-right border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['price']}}</td>
                                 <td class="px-2 text-right border border-gray-300 cursor-pointer" wire:click.prevent="changeItems({{$index}})">{{$row['taxable']}}</td>
@@ -381,8 +266,8 @@
                     @endif
                     </tbody>
                     <tfoot class="mt-2">
-                    <tr class="h-8 text-sm border border-gray-400 bg-cyan-50">
-                        <td colspan="6" class="px-2 text-xs text-right border border-gray-300">&nbsp;TOTALS&nbsp;&nbsp;&nbsp;</td>
+                    <tr class="h-8 text-sm border border-gray-400 bg-green-100">
+                        <td colspan="4" class="px-2 text-xs text-right border border-gray-300">&nbsp;TOTALS&nbsp;&nbsp;&nbsp;</td>
                         <td class="px-2 text-center border border-gray-300">{{$total_qty}}</td>
                         <td class="px-2 text-center border border-gray-300">&nbsp;</td>
                         <td class="px-2 text-right border border-gray-300">{{$total_taxable}}</td>
@@ -485,31 +370,32 @@
         </section>
 
     </x-forms.m-panel>
-    <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md shadow-lg w-full ">
+    <x-forms.m-panel-bottom-button/>
+{{--    <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md shadow-lg w-full ">--}}
 
-        <div class="flex flex-col md:flex-row justify-between gap-3 mt-5 mb-0">
-            <div class="flex gap-3">
-                <x-button.save/>
-                <x-button.back/>
-            </div>
-            <div>
-                <x-button.print/>
-            </div>
-                <div class="my-2">
-                    <label for="active_id" class="inline-flex relative items-center cursor-pointer">
-                        <input type="checkbox" id="active_id" class="sr-only peer"
-                               wire:model="active_id">
-                        <div
-                            class="w-10 h-5 bg-gray-200 rounded-full peer peer-focus:ring-2
-                                        peer-focus:ring-blue-300
-                                         peer-checked:after:translate-x-full peer-checked:after:border-white
-                                         after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300
-                                         after:border after:rounded-full after:h-4 after:w-4 after:transition-all
-                                         peer-checked:bg-blue-600"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900">Active</span>
-                    </label>
-                </div>
+{{--        <div class="flex flex-col md:flex-row justify-between gap-3 mt-5 mb-0">--}}
+{{--            <div class="flex gap-3">--}}
+{{--                <x-button.save/>--}}
+{{--                <x-button.back/>--}}
+{{--            </div>--}}
+{{--            <div>--}}
+{{--                <x-button.print/>--}}
+{{--            </div>--}}
+{{--                <div class="my-2">--}}
+{{--                    <label for="active_id" class="inline-flex relative items-center cursor-pointer">--}}
+{{--                        <input type="checkbox" id="active_id" class="sr-only peer"--}}
+{{--                               wire:model="active_id">--}}
+{{--                        <div--}}
+{{--                            class="w-10 h-5 bg-gray-200 rounded-full peer peer-focus:ring-2--}}
+{{--                                        peer-focus:ring-blue-300--}}
+{{--                                         peer-checked:after:translate-x-full peer-checked:after:border-white--}}
+{{--                                         after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300--}}
+{{--                                         after:border after:rounded-full after:h-4 after:w-4 after:transition-all--}}
+{{--                                         peer-checked:bg-blue-600"></div>--}}
+{{--                        <span class="ml-3 text-sm font-medium text-gray-900">Active</span>--}}
+{{--                    </label>--}}
+{{--                </div>--}}
 
-        </div>
-    </div>
+{{--        </div>--}}
+{{--    </div>--}}
 </div>

@@ -2,36 +2,7 @@
     <x-slot name="header">sales</x-slot>
 
     <x-forms.m-panel>
-        <div class="flex justify-end " wire:click="show_advance">
-            <x-icons.icon :icon="$showEditModal_1?'view':'eye-slash'" class="h-6 w-auto block"/>
-        </div>
-        @if($showEditModal_1)
-        <div class="flex justify-end bg-zinc-200 p-4 rounded shadow-inner relative">
-            <div>
-                <x-input.model-date wire:model.live="start_date" :label="'From'"/>
-                <x-input.model-date wire:model.live="end_date" :label="'To'"/>
-            </div>
-            <div class="ml-3">
-            <x-input.model-select wire:model.live="filter" :label="'Party Name'">
-                <option value="">choose</option>
-                @foreach($contacts as $i)
-                <option value="{{$i->id}}" >{{$i->vname}}</option>
-                @endforeach
-            </x-input.model-select>
-            </div>
-{{--            <div class="ml-3">--}}
-{{--            <x-input.model-select wire:model.live="byOrder" :label="'Order No'">--}}
-{{--                <option value="">choose</option>--}}
-{{--                @foreach($list as $i)--}}
-{{--                    <option value="{{$i->id}}" >{{$i->dc_no}}</option>--}}
-{{--                @endforeach--}}
-{{--            </x-input.model-select>--}}
-{{--            </div>--}}
-
-        </div>
-        @endif
-        <x-forms.top-controls :show-filters="$showFilters"/>
-
+        <x-forms.top-controls-filter :show-filters="$showFilters" :contacts="$contacts" :orders="''" />
         <x-forms.table>
             <x-slot name="table_header">
                 <x-table.ths-slno wire:click.prevent="sortBy('invoice_no')">Sl.no</x-table.ths-slno>

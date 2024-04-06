@@ -2,36 +2,7 @@
     <x-slot name="header">Sales</x-slot>
 
     <x-forms.m-panel>
-        <div class="flex justify-end " wire:click="show_advance">
-            <x-icons.icon :icon="$showEditModal_1?'view':'eye-slash'" class="h-6 w-auto block"/>
-        </div>
-        @if($showEditModal_1)
-        <div class="flex justify-end bg-zinc-200 p-4 rounded shadow-inner flex relative">
-            <div>
-                <x-input.model-date wire:model.live="start_date" :label="'From'"/>
-                <x-input.model-date wire:model.live="end_date" :label="'To'"/>
-            </div>
-            <div class="ml-3">
-            <x-input.model-select wire:model.live="filter" :label="'Party Name'">
-                <option value="">choose</option>
-                @foreach($contacts as $i)
-                <option value="{{$i->id}}" >{{$i->vname}}</option>
-                @endforeach
-            </x-input.model-select>
-            </div>
-            <div class="ml-3">
-            <x-input.model-select wire:model.live="byOrder" :label="'Order No'">
-                <option value="">choose</option>
-                @foreach($orders as $i)
-                    <option value="{{$i->id}}" >{{$i->vname}}</option>
-                @endforeach
-            </x-input.model-select>
-            </div>
-
-        </div>
-        @endif
-        <x-forms.top-controls :show-filters="$showFilters"/>
-
+        <x-forms.top-controls-filter :show-filters="$showFilters" :contacts="$contacts" :orders="$orders"/>
         <x-forms.table>
             <x-slot name="table_header">
                 <x-table.ths-slno wire:click.prevent="sortBy('invoice_no')">Sl.no</x-table.ths-slno>
@@ -112,15 +83,17 @@
                         </x-table.cell>
                         <x-table.cell>
                             <div class="w-full flex justify-center gap-3">
-                                <x-icons.icon :icon="'printer'" wire:click="print({{$row->id}})" class="h-5 w-auto block px-1.5"/>
+                                <x-icons.icon :icon="'printer'" wire:click="print({{$row->id}})"
+                                              class="h-5 w-auto block px-1.5"/>
                                 <a href="{{route('sales.upsert',[$row->id])}}"
                                    class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                    <x-button.link >&nbsp;
+                                    <x-button.link>&nbsp;
                                         <x-icons.icon :icon="'pencil'"
                                                       class="text-blue-500 h-5 w-auto block"/>
                                     </x-button.link>
                                 </a>
-                                <x-button.link wire:click="set_delete({{$row->id}})" wire:confirm="Are you sure you want to delete this ?">&nbsp;
+                                <x-button.link wire:click="set_delete({{$row->id}})"
+                                               wire:confirm="Are you sure you want to delete this ?">&nbsp;
                                     <x-icons.icon :icon="'trash'"
                                                   class="text-red-600 h-5 w-auto block"/>
                                 </x-button.link>

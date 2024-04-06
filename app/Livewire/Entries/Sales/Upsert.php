@@ -296,6 +296,7 @@ class Upsert extends Component
 
     public $product_id = '';
     public $product_name = '';
+    public int $gst_percent1;
     public Collection $productCollection;
     public $highlightProduct = 0;
     public $productTyped = false;
@@ -318,23 +319,24 @@ class Upsert extends Component
         $this->highlightProduct++;
     }
 
-    public function setProduct($name, $id): void
+    public function setProduct($name, $id,$percent): void
     {
         $this->product_name = $name;
         $this->product_id = $id;
+        $this->gst_percent1=$percent;
         $this->getProductList();
     }
 
     public function enterProduct(): void
     {
         $obj = $this->productCollection[$this->highlightProduct] ?? null;
-
         $this->product_name = '';
         $this->productCollection = Collection::empty();
         $this->highlightProduct = 0;
 
         $this->product_name = $obj['vname'] ?? '';
         $this->product_id = $obj['id'] ?? '';
+        $this->gst_percent1 = $obj['gst_percent'] ?? '';
     }
 
     #[On('refresh-product')]
@@ -350,7 +352,7 @@ class Upsert extends Component
     {
         $this->productCollection = $this->product_name ? Product::search(trim($this->product_name))
             ->where('company_id', '=', session()->get('company_id'))
-            ->get() : Product::all()->where('company_id','=',session()->get('company_id'));
+            ->get() : Product::all()->where('company_id', '=', session()->get('company_id'));
     }
 
     public $colour_id = '';
@@ -648,10 +650,10 @@ class Upsert extends Component
                     'size_name' => $this->size_name,
                     'qty' => $this->qty,
                     'price' => $this->price,
-                    'gst_percent' => $this->gst_percent,
+                    'gst_percent' => $this->gst_percent1,
                     'taxable' => $this->qty * $this->price,
-                    'gst_amount' => ($this->qty * $this->price) * $this->gst_percent / 100,
-                    'subtotal' => $this->qty * $this->price + (($this->qty * $this->price) * $this->gst_percent / 100),
+                    'gst_amount' => ($this->qty * $this->price) * $this->gst_percent1 / 100,
+                    'subtotal' => $this->qty * $this->price + (($this->qty * $this->price) * $this->gst_percent1 / 100),
                 ];
             }
         } else {
@@ -664,10 +666,10 @@ class Upsert extends Component
                 'size_name' => $this->size_name,
                 'qty' => $this->qty,
                 'price' => $this->price,
-                'gst_percent' => $this->gst_percent,
+                'gst_percent' => $this->gst_percent1,
                 'taxable' => $this->qty * $this->price,
-                'gst_amount' => ($this->qty * $this->price) * $this->gst_percent / 100,
-                'subtotal' => $this->qty * $this->price + (($this->qty * $this->price) * $this->gst_percent / 100),
+                'gst_amount' => ($this->qty * $this->price) * $this->gst_percent1 / 100,
+                'subtotal' => $this->qty * $this->price + (($this->qty * $this->price) * $this->gst_percent1 / 100),
             ];
 
         }

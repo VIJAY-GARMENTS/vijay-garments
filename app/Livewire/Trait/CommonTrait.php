@@ -8,6 +8,10 @@ use Livewire\WithPagination;
 trait CommonTrait
 {
     use WithPagination;
+    public $start_date;
+    public $end_date;
+    public $filter;
+    public $byOrder;
     public bool $showEditModal = false;
     public bool $showFilters = false;
     public bool $showDeleteModal = false;
@@ -74,6 +78,10 @@ trait CommonTrait
         $this->activeRecord='1';
         $this->resetPage();
         $this->showFilters = false;
+        $this->start_date='';
+        $this->end_date='';
+        $this->filter='';
+        $this->byOrder='';
     }
 
     public function save(): void

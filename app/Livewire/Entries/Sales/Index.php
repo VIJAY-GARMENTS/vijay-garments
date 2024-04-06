@@ -13,7 +13,6 @@ use Livewire\Component;
 class Index extends Component
 {
     use CommonTrait;
-    public $filter;
     public $byOrder;
 
 
@@ -31,9 +30,6 @@ class Index extends Component
     {
         $this->showEditModal_1 = !$this->showEditModal_1;
     }
-
-    public $start_date;
-    public $end_date;
 
     public function getList()
     {

@@ -83,7 +83,7 @@ class Upsert extends Component
 
     public function save_image()
     {
-        return $this->image->store('photos', 'public');
+        return $this->image->store('photos','public');
     }
 
 

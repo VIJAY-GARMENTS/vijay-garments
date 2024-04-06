@@ -17,7 +17,7 @@
 >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
-    <input id="x" type="hidden">
+    <input id="x" class="hidden">
     <trix-editor x-ref="trix" input="x"
                  class="overflow-auto text-ellipsis form-textarea block w-full text
                     rounded-lg appearance-none border-2 {{$height}}

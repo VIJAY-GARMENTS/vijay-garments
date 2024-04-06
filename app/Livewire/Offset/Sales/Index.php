@@ -13,30 +13,17 @@ use Livewire\Component;
 class Index extends Component
 {
     use CommonTrait;
-    public $filter;
     public $byOrder;
 
 
     public Collection $contacts;
     public Collection $orders;
     public $sortField_1='invoice_no';
-    public $showEditModal_1=false;
 
     public function create(): void
     {
         $this->redirect(route('saleOffsets.upsert', ['0']));
     }
-
-    public function show_advance()
-    {
-        $this->showEditModal_1 = !$this->showEditModal_1;
-        $this->filter='';
-        $this->start_date='';
-        $this->end_date='';
-    }
-
-    public $start_date;
-    public $end_date;
 
     public function getList()
     {

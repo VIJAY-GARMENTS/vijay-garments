@@ -2,8 +2,7 @@
     <x-slot name="header">Purchase</x-slot>
 
     <x-forms.m-panel>
-        <x-forms.top-controls :show-filters="$showFilters"/>
-
+        <x-forms.top-controls-filter :orders="$orders" :contacts="$contacts" :show-filters="$showFilters"/>
         <x-forms.table>
             <x-slot name="table_header">
                 <x-table.ths-slno wire:click.prevent="sortBy('purchase_no')">Sl.no</x-table.ths-slno>
@@ -84,15 +83,17 @@
                         </x-table.cell>
                         <x-table.cell>
                             <div class="w-full flex justify-center gap-3">
-                                <x-icons.icon :icon="'printer'" wire:click="print({{$row->id}})" class="h-5 w-auto block px-1.5"/>
+                                <x-icons.icon :icon="'printer'" wire:click="print({{$row->id}})"
+                                              class="h-5 w-auto block px-1.5"/>
                                 <a href="{{route('purchases.upsert',[$row->id])}}"
                                    class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                    <x-button.link >&nbsp;
+                                    <x-button.link>&nbsp;
                                         <x-icons.icon :icon="'pencil'"
                                                       class="text-blue-500 h-5 w-auto block"/>
                                     </x-button.link>
                                 </a>
-                                <x-button.link wire:click="set_delete({{$row->id}})" wire:confirm="Are you sure you want to delete this ?">&nbsp;
+                                <x-button.link wire:click="set_delete({{$row->id}})"
+                                               wire:confirm="Are you sure you want to delete this ?">&nbsp;
                                     <x-icons.icon :icon="'trash'"
                                                   class="text-red-600 h-5 w-auto block"/>
                                 </x-button.link>

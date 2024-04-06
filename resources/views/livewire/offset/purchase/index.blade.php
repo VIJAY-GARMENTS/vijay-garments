@@ -2,7 +2,7 @@
     <x-slot name="header">Purchase</x-slot>
 
     <x-forms.m-panel>
-        <x-forms.top-controls :show-filters="$showFilters"/>
+        <x-forms.top-controls-filter :show-filters="$showFilters" :contacts="$contacts" :orders="''"/>
 
         <x-forms.table>
             <x-slot name="table_header">

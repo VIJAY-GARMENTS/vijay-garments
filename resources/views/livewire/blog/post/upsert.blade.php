@@ -43,7 +43,7 @@
 
         <div class="flex gap-2">
             <div class="text-end">
-                <x-button.save wire:click.prevent="save" class="w-6"/>
+                <x-button.save wire:click.prevent="save" class=""/>
                 <x-button.back/>
             </div>
 

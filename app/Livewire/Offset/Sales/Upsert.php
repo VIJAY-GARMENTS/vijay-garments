@@ -234,7 +234,7 @@ class Upsert extends Component
 
     public $product_id = '';
     public $product_name = '';
-    public int $gst_percent1;
+    public mixed $gst_percent1 = 0;
     public Collection $productCollection;
     public $highlightProduct = 0;
     public $productTyped = false;

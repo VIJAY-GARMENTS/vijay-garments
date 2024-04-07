@@ -264,7 +264,7 @@
 
     <tr>
 
-        <td colspan="7"><span>Amount Chargeable (in words)</span>
+        <td colspan="7"><span>Amount (in words)</span>
             <div>
                 {{$rupees}}
             </div>

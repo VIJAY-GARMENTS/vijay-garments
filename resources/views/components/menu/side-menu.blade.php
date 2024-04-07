@@ -41,7 +41,7 @@
             {{--                <x-menu.sub.accounts/>--}}
             {{--                <x-menu.sub.audit/>--}}
             {{--                <x-menu.sub.task/>--}}
-                            <x-menu.sub.utilities/>
+{{--                            <x-menu.sub.utilities/>--}}
             {{--                <x-menu.sub.admin/>--}}
             {{--                @magalir--}}
             {{--                <x-menu.sub.magalir/>--}}

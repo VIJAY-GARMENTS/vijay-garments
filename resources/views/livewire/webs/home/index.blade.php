@@ -3,21 +3,20 @@
         <div class="w-full rounded h-full">
 
             <x-webs.home.hero/>
-            <x-webs.home.steps/>
 
 
-            <div class="pt-4 pb-14 text-center font-sans animate__animated wow animate__bounce">
-                <div
-                    class="container px-4 sm:px-8 xl:px-4 justify-items-center mx-auto  animate__animated animate__backInUp">
-                    <p class="mb-4 text-gray-800 text-xl leading-10 lg:max-w-5xl lg:mx-auto">
-                        The ability to trace requirements flow from their source (originator),
-                        through the various project phases (design, prototyping, customizations, testing, piloting, and
-                        delivery)
-                        is a requirements generation best practice. Don’t
-                        hesitate to give it a try today, and you will fall in love with it
-                    </p>
-                </div>
-            </div>
+{{--            <div class="pt-4 pb-14 text-center font-sans animate__animated wow animate__bounce">--}}
+{{--                <div--}}
+{{--                    class="container px-4 sm:px-8 xl:px-4 justify-items-center mx-auto  animate__animated animate__backInUp">--}}
+{{--                    <p class="mb-4 text-gray-800 text-xl leading-10 lg:max-w-5xl lg:mx-auto">--}}
+{{--                        The ability to trace requirements flow from their source (originator),--}}
+{{--                        through the various project phases (design, prototyping, customizations, testing, piloting, and--}}
+{{--                        delivery)--}}
+{{--                        is a requirements generation best practice. Don’t--}}
+{{--                        hesitate to give it a try today, and you will fall in love with it--}}
+{{--                    </p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
 
         </div>

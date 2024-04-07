@@ -1,37 +1,39 @@
 <?php
 
-namespace App\Livewire\Webs;
+namespace App\Livewire\Webs\DemoRequest;
 
+use App\Models\DemoRequest;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
-class DemoRequest extends Component
+class Upsert extends Component
 {
     public $company_name;
     public $contact_person;
     public $email;
-    public $ph_no;
+    public $mobile;
 
 
-    public function getSave(): string
+    public function getSave()
     {
         if ($this->company_name != '') {
             if ($this->contact_person != "") {
-                \App\Models\DemoRequest::create([
+                DemoRequest::create([
                     'company_name' => Str::ucfirst($this->company_name),
                     'contact_person' => Str::ucfirst($this->contact_person),
                     'email' => $this->email,
-                    'ph_no' => $this->ph_no,
+                    'mobile' => $this->mobile,
                 ]);
             }
-            session()->flash('message', 'Request successfully updated-Our Team Contact You Soon.');
-            return redirect()->to('/');
-        }
+            session()->flash('message', 'Request successfully updated, Our Team Contact You Soon.');
 
+//            $this->redirect(route('home'));
+
+        }
     }
 
     public function render()
     {
-        return view('livewire.webs.demo-request')->layout('layouts.guest');
+        return view('livewire.webs.demo-request.upsert')->layout('layouts.guest');
     }
 }

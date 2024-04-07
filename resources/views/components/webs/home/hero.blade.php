@@ -24,7 +24,7 @@
         <p class="mb-5 font-light  tracking-widest  text-zinc-500">
             Start getting complete business solution package with end-to-end management.</p>
 
-        <a href="{{ route('demo-requests') }}"
+        <a href="{{ route('demo-requests.upsert') }}"
            class="animate-pulse focus:animate-none hover:animate-none inline-flex text-2xl bg-green-600 px-4 py-2 rounded-lg
                     tracking-wide text-white font-mono font-bold">
             <span class="px-5"> Book for demo</span>

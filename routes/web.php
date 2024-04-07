@@ -10,8 +10,8 @@ Route::get('/posts', App\Livewire\Blog\Post\Index::class)->name('posts');
 Route::get('/posts/{id}/upsert', App\Livewire\Blog\Post\Upsert::class)->name('posts.upsert');
 Route::get('/posts/{id}/views', App\Livewire\Blog\Post\View::class)->name('posts.views');
 
-Route::get('/demo-requests', App\Livewire\Webs\DemoRequest::class)->name('demo-requests');
-Route::get('/demo-requests/upsert', App\Livewire\Webs\Upsert::class)->name('demo-requests.upsert');
+Route::get('/demo-requests', App\Livewire\Webs\DemoRequest\Index::class)->name('demo-requests');
+Route::get('/demo-requests/upsert', App\Livewire\Webs\DemoRequest\Upsert::class)->name('demo-requests.upsert');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
 

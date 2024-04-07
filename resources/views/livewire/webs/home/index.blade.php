@@ -3,6 +3,8 @@
         <div class="w-full rounded h-full">
 
             <x-webs.home.hero/>
+            <x-webs.home.steps/>
+
 
             <div class="pt-4 pb-14 text-center font-sans animate__animated wow animate__bounce">
                 <div

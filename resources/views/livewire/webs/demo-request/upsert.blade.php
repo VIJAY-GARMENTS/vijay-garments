@@ -1,6 +1,6 @@
 <div>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div>
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 p-3">
+        <div class="py-5">
             <x-assets.logo.cxlogo :icon="'light'" class="h-20 ml-4 mx-auto w-auto  block"/>
         </div>
         <div class="px-6 py-8 bg-white shadow-md rounded-xl w-full sm:max-w-2xl">
@@ -20,7 +20,7 @@
             </form>
 
             @session('message')
-            <p class="text-green-600 text-lg font-bold italic tracking-wide py-5 px-3 animate__animated animate__bounce">
+            <p class="text-green-600 text-lg font-bold italic tracking-wide mt-2 rounded-xl text-justify py-5 bg-green-50 px-3 animate__animated animate__bounce">
                 Hi {{$contact_person}}, Thank you for requesting a demo of CODEXSUN! We're excited to show you how our
                 solution can support your business goals. We look forward to
                 demonstrating to our team and answering any questions you may have.

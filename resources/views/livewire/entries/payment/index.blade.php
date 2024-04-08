@@ -2,7 +2,17 @@
     <x-slot name="header">Payment</x-slot>
 
     <x-forms.m-panel>
-        <x-forms.top-controls :show-filters="$showFilters"/>
+        <x-forms.top-controls-filter :show-filters="$showFilters"/>
+        <x-input.advance-search-filter :show-filters="$showFilters" :contacts="$contacts" :orders="''">
+            <div>
+                <x-input.model-select wire:model.live="byModel" :label="'Model'">
+                    <option value="">choose</option>
+                    @foreach($receipt_types as $i)
+                        <option value="{{$i->id}}">{{$i->vname}}</option>
+                    @endforeach
+                </x-input.model-select>
+            </div>
+        </x-input.advance-search-filter>
 
         <x-forms.table>
             <x-slot name="table_header">
@@ -59,12 +69,13 @@
                             <div class="w-full flex justify-center gap-3">
                                 <a href="{{route('payments.upsert',[$row->id])}}"
                                    class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                    <x-button.link >&nbsp;
+                                    <x-button.link>&nbsp;
                                         <x-icons.icon :icon="'pencil'"
                                                       class="text-blue-500 h-5 w-auto block"/>
                                     </x-button.link>
                                 </a>
-                                <x-button.link wire:click="set_delete({{$row->id}})" wire:confirm="Are you sure you want to delete this ?">&nbsp;
+                                <x-button.link wire:click="set_delete({{$row->id}})"
+                                               wire:confirm="Are you sure you want to delete this ?">&nbsp;
                                     <x-icons.icon :icon="'trash'"
                                                   class="text-red-600 h-5 w-auto block"/>
                                 </x-button.link>

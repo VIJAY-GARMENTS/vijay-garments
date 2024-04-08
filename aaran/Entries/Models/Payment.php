@@ -21,7 +21,7 @@ class Payment extends Model
     public static function search(string $searches)
     {
         return empty($searches) ? static::query()
-            : static::where('vdate', 'like', '%' . $searches . '%');
+            : static::where('payment_amount', 'like', '%' . $searches . '%');
     }
 
     public static function nextNo()

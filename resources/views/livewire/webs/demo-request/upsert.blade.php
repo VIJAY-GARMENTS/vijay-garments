@@ -7,7 +7,9 @@
 
             <form type="submit">
                 <x-input.model-text wire:model="company_name" :label="'Company Name'"/>
+                @error('company_name')<span class="text-red-500">{{$message}}</span>@enderror
                 <x-input.model-text wire:model="contact_person" :label="'Contact Person'"/>
+                @error('contact_person')<span class="text-red-500">{{$message}}</span>@enderror
                 <x-input.model-text wire:model="email" :label="'Email'"/>
                 <x-input.model-text wire:model="mobile" :label="'Mobile No'"/>
 
@@ -17,6 +19,7 @@
                 shadow-blue-200 hover:shadow-2xl hover:shadow-blue-400 hover:-tranneutral-y-px p-2">Book Demo
                     </button>
                 </div>
+
             </form>
 
             @session('message')

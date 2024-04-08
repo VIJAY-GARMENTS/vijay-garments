@@ -2,7 +2,8 @@
     <x-slot name="header">Sales</x-slot>
 
     <x-forms.m-panel>
-        <x-forms.top-controls-filter :show-filters="$showFilters" :contacts="$contacts" :orders="$orders"/>
+        <x-forms.top-controls-filter :show-filters="$showFilters" />
+        <x-input.advance-search-filter :show-filters="$showFilters" :contacts="$contacts" :orders="$orders"/>
         <x-forms.table>
             <x-slot name="table_header">
                 <x-table.ths-slno wire:click.prevent="sortBy('invoice_no')">Sl.no</x-table.ths-slno>

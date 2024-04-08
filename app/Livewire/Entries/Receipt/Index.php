@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Entries\Receipt;
 
+use Aaran\Common\Models\Receipttype;
 use Aaran\Entries\Models\Receipt;
+use Aaran\Master\Models\Contact;
 use App\Livewire\Trait\CommonTrait;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -11,6 +14,21 @@ class Index extends Component
 {
     use CommonTrait;
     public $sortField_1='vdate';
+    public Collection $contacts;
+    public Collection $receipt_types;
+    public $byModel;
+
+    public function getContact()
+    {
+        $this->contacts=Contact::where('company_id','=',session()->get('company_id'))->get();
+
+    }
+
+    public function getReceipt()
+    {
+        $this->receipt_types = Receipttype::where('active_id', '=', $this->activeRecord)->get();
+
+    }
     public function create(): void
     {
         $this->redirect(route('receipts.upsert', ['0']));
@@ -21,6 +39,18 @@ class Index extends Component
     {
         return Receipt::search($this->searches)
             ->where('active_id', '=', $this->activeRecord)
+            ->when($this->filter,function ($query,$filter){
+                return $query->where('contact_id',$filter);
+            })
+            ->when($this->byModel,function ($query,$byModel){
+                return $query->where('receipttype_id',$byModel);
+            })
+            ->when($this->start_date,function ($query,$start_date){
+                return $query->whereDate('vdate','>=',$start_date);
+            })
+            ->when($this->end_date,function ($query,$end_date){
+                return $query->whereDate('vdate','<=',$end_date);
+            })
             ->where('company_id', '=', session()->get('company_id'))
             ->orderBy($this->sortField_1, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
@@ -70,6 +100,8 @@ class Index extends Component
     }
     public function render()
     {
+        $this->getContact();
+        $this->getReceipt();
         return view('livewire.entries.receipt.index')->with([
             'list' => $this->getList()
         ]);

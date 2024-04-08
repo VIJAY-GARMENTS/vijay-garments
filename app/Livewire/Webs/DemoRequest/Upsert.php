@@ -16,6 +16,10 @@ class Upsert extends Component
 
     public function getSave()
     {
+        $this->validate([
+            'company_name'=>'required|min:3',
+            'contact_person'=>'required|min:3',
+        ]);
         if ($this->company_name != '') {
             if ($this->contact_person != "") {
                 DemoRequest::create([

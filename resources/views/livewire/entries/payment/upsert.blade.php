@@ -1,8 +1,8 @@
 <div>
     <x-slot name="header">Payment Entry</x-slot>
     <x-forms.m-panel>
-        <section class="grid grid-cols-3 gap-2 ">
-            <section>
+        <div class="md:grid grid-cols-2 gap-2 ">
+            <div class="px-4">
                 <div class="xl:flex w-full gap-2 pt-3">
                     <label for="size_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Party Name</label>
                     <div x-data="{isTyped: @entangle('contactTyped')}" @click.away="isTyped = false" class="w-full">
@@ -107,21 +107,14 @@
                         </div>
                     </div>
                 </div>
-                <x-input.model-text wire:model="payment_amount" :label="'Payment-Amount'"/>
-            </section>
-            <section>
-                <div class="xl:flex flex-row gap-3 py-3">
-                    <label class="w-[10rem] text-zinc-500 tracking-wide py-2">Date</label>
-                    <input type="date" wire:model="vdate" class="w-full purple-textbox"/>
-                </div>
+
+            </div>
+            <div class="px-4">
+                <x-input.model-date wire:model="vdate" :label="'Date'"/>
+                <x-input.model-text wire:model="payment_amount" :label="'Payment Amount'"/>
                 <x-input.model-text wire:model="chq_no" :label="'Cheque No'"/>
-            </section>
-            <section>
-                <div class="xl:flex flex-row gap-3 py-3">
-                    <label class="w-[10rem] text-zinc-500 tracking-wide py-2">Cheque Date</label>
-                    <input type="date" wire:model="chq_date" class="w-full purple-textbox"/>
-                </div>
-                <div class="flex w-full gap-2 pt-3">
+                <x-input.model-date wire:model="chq_date" :label="'Cheque Date'"/>
+                <div class="md:flex w-full gap-2 pt-3">
                     <label for="bank_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Bank Name</label>
                     <div x-data="{isTyped: @entangle('bankTyped')}" @click.away="isTyped = false" class="w-full">
                         <div class="relative">
@@ -173,29 +166,15 @@
                         </div>
                     </div>
                 </div>
-            </section>
-        </section>
+            </div>
+        </div>
     </x-forms.m-panel>
-    <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md shadow-lg w-full ">
+    <div class="px-8 border border-gray-400 border-t-0 bg-gray-100 rounded-b-md shadow-lg w-full">
 
-        <div class="flex flex-col md:flex-row justify-between gap-3 mt-5 mb-0">
+        <div class="flex flex-row justify-between py-4">
             <div class="flex gap-3">
                 <x-button.save/>
                 <x-button.back/>
-                <div class="my-2">
-                    <label for="active_id" class="inline-flex relative items-center cursor-pointer">
-                        <input type="checkbox" id="active_id" class="sr-only peer"
-                               wire:model="active_id">
-                        <div
-                            class="w-10 h-5 bg-gray-200 rounded-full peer peer-focus:ring-2
-                                        peer-focus:ring-blue-300
-                                         peer-checked:after:translate-x-full peer-checked:after:border-white
-                                         after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300
-                                         after:border after:rounded-full after:h-4 after:w-4 after:transition-all
-                                         peer-checked:bg-blue-600"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900">Active</span>
-                    </label>
-                </div>
             </div>
         </div>
     </div>

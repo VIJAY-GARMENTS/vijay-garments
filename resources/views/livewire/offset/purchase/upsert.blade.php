@@ -217,7 +217,7 @@
             <div class="py-2 mt-5">
                 <table class="w-full">
                     <thead>
-                    <tr class="h-8 text-xs bg-cyan-50 border border-gray-300">
+                    <tr class="h-8 text-xs bg-gray-50 border border-gray-300">
                         <th class="w-12 px-2 text-center border border-gray-300">#</th>
                         <th class="px-2 text-center border border-gray-300">Po No</th>
                         <th class="px-2 text-center border border-gray-300">Dc No</th>
@@ -239,7 +239,7 @@
                         @foreach($itemList as $index => $row)
 
                             <tr class="border border-gray-400 hover:bg-amber-50">
-                                <td class="text-center border border-gray-300 bg-cyan-50">
+                                <td class="text-center border border-gray-300 bg-gray-100">
                                     <button class="w-full h-full cursor-pointer" wire:click.prevent="changeItems({{$index}})">
                                         {{$index+1}}
                                     </button>
@@ -266,7 +266,7 @@
                     @endif
                     </tbody>
                     <tfoot class="mt-2">
-                    <tr class="h-8 text-sm border border-gray-400 bg-green-100">
+                    <tr class="h-8 text-sm border border-gray-400 bg-cyan-50">
                         <td colspan="4" class="px-2 text-xs text-right border border-gray-300">&nbsp;TOTALS&nbsp;&nbsp;&nbsp;</td>
                         <td class="px-2 text-center border border-gray-300">{{$total_qty}}</td>
                         <td class="px-2 text-center border border-gray-300">&nbsp;</td>

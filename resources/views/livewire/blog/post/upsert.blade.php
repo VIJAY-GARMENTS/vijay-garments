@@ -13,7 +13,7 @@
 
         <div class="gap-5">
             <label for="body">Body</label>
-            <x-input.rich-text wire:model="body" :height="'h-96'"/>
+            <x-input.rich-text wire:model="body" :height="'h-96'" :placeholder="''"/>
         </div>
 
         <div class=" flex-items-center pt-2">

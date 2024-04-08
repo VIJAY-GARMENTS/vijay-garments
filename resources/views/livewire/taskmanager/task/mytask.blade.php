@@ -104,7 +104,7 @@
             <x-input.model-text wire:model="vname" :label="'Title'"/>
 
             <div class="px-1 py-4">
-                <x-input.rich-text wire:model.lazy="body" id="body"/>
+                <x-input.rich-text wire:model.lazy="body" id="body" :placeholder="''"/>
             </div>
 
 

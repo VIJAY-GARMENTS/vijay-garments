@@ -16,10 +16,19 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->string('user_name');
+            $table->foreignId('post_id')->references('id')->on('posts');
+            $table->text('body');
+            $table->timestamps();
+        });
     }
 
     public function down(): void
     {
         Schema::dropIfExists('posts');
+        Schema::dropIfExists('comments');
     }
 };

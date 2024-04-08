@@ -1,5 +1,6 @@
 @props([
-    'height'=>'h-96'
+    'height'=>'h-96',
+    'placeholder'
 ])
 
 <div
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
     <input id="x" class="hidden">
-    <trix-editor x-ref="trix" input="x"
+    <trix-editor x-ref="trix" input="x" placeholder="{{$placeholder}}"
                  class="overflow-auto text-ellipsis form-textarea block w-full text
                     rounded-lg appearance-none border-2 {{$height}}
                     border-gray-200 py-2 px-3 bg-white text-zinc-700

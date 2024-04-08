@@ -13,7 +13,7 @@
                 class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
         </div>
 
-        <h1 class="text-zinc-400 py-3 text-lg font-semibold">Software make simple clean and good</h1>
+        <h1 class="text-zinc-400 py-3 text-lg font-semibold">Software make simple</h1>
 
         <h1 class="mb-5 font-extrabold text-2xl sm:text-4xl text-zinc-500">Manage your business like never
             before</h1>

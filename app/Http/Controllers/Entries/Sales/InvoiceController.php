@@ -54,7 +54,9 @@ class InvoiceController extends Controller
                         'size_name' => $data->size_name,
                         'qty' => $data->qty,
                         'price' => $data->price,
-                        'gst_percent' => $data->gst_percent,
+                        'gst_percent' => $data->gst_percent / 2,
+                        'gst_amount' => ($data->qty * $data->price) * (($data->gst_percent / 2) / 100),
+                        'sub_total' => (($data->qty * $data->price) * ($data->gst_percent / 100)) + ($data->qty * $data->price),
                     ];
                 });
 

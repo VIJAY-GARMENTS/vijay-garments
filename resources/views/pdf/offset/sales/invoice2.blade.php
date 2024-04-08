@@ -168,6 +168,8 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$contact->get('address_3')}}</p>
                 <p style="line-height: 5px">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$contact->get('gstCell')}}</p>
+                <p style="line-height: 5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSME No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span>:{{$contact->get('msme_no')}}<span></span></p>
+                <p style="line-height: 5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSME Type&nbsp;<span></span>:{{$contact->get('msme_type')}}<span></span></p>
             </div>
         </td>
         <td style="padding: 0;margin: 0;">
@@ -240,7 +242,7 @@
 
     @endforeach
 
-    @for($i = 0; $i < 30-$list->count(); $i++)
+    @for($i = 0; $i < 26-$list->count(); $i++)
 
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
@@ -272,39 +274,67 @@
         <td colspan="1" align="right">{{$obj->total_taxable + $obj->total_gst }}</td>
     </tr>
     <tr>
-        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="5" align="left" style="border-bottom: none;border-top: none; border-right: none;">Taxable value
+        <td colspan="7" align="left" style="border-bottom: none;border-top: none; margin-bottom: 0px;">
+            <div>We hereby certify that our registration under the GST Act 2017 is inforceon the date on which sale of </div>
+            <div>the goods specified in this invoice is made by us and the transcation of sale is covered by this invoice</div>
         </td>
-        <td align="right"
-            style="border-bottom: none;border-top: none; border-left: none;">{{$obj->total_taxable}}</td>
+        <td colspan="4" align="left" style="border-bottom: none;border-top: none; border-right: none;">Taxable value</td>
+        <td colspan="2" align="center" style="border-bottom: none;border-top: none; border-left: none;">{{$obj->total_taxable}}</td>
     </tr>
     <tr>
-        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">CGST</td>
-        <td align="right" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
+        <td colspan="7" align="left" style="border-bottom: none;border-top: none;margin-top: 0px;">
+            <div>
+                has been effected by us in the regular
+                course of our business. All the Disputes are subject to Tirupur Jurisdiction Only.
+            </div>
+        </td>
+        <td colspan="4" align="left" style="border-bottom: none;border-right: none;">CGST</td>
+        <td colspan="2" align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
     </tr>
     <tr>
-        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">SGST</td>
-        <td align="right" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
+        <td colspan="7" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;">
+            <div>* Goods once sold cannot be return back or exchanged</div>
+            <div>* Seller cannot be responsible for any damage/mistakes.</div>
+        </td>
+        <td colspan="4" align="left" style="border-bottom: none;border-right: none;">SGST</td>
+        <td colspan="2" align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst/2}}</td>
     </tr>
     <tr>
-        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
-        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">Total GST</td>
-        <td align="right" style="border-bottom: none; border-left: none;">{{$obj->total_gst}}</td>
+        <td colspan="7" align="center" style="border-bottom: none;border-top: none;">
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+        </td>
+        <td colspan="4" align="left" style="border-bottom: none;border-right: none;">Total GST</td>
+        <td colspan="2" align="center" style="border-bottom: none; border-left: none;">{{$obj->total_gst}}</td>
     </tr>
     <tr>
-        <td colspan="7" align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">{{$obj->ledger?:'' }}</td>
-        <td align="right" style="border-bottom: none; border-left: none;">{{$obj->additional?:''}}</td>
+        <td colspan="3" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-right: none;">
+            <div>ACCOUNT NO</div>
+            <div>IFSC CODE</div>
+        </td>
+        <td  align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-right: none;border-left: none">
+            <div>:&nbsp;{{$cmp->get('acc_no')}}</div>
+            <div>:&nbsp;{{$cmp->get('ifsc_code')}}</div>
+        </td>
+        <td  colspan="3" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-left: none;"></td>
+        <td colspan="5" align="left" style="border-bottom: none;border-right: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none; border-left: none;">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="7" align="center" style="border-bottom: none;border-top: none;"></td>
+        <td colspan="3" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-right: none;">
+            <div>BANK NAME</div>
+            <div>BRANCH </div>
+        </td>
+        <td  align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-right: none;border-left: none">
+            <div>:&nbsp;{{$cmp->get('bank')}}</div>
+            <div>:&nbsp;{{$cmp->get('branch')}}</div>
+        </td>
+        <td  colspan="3" align="left" style="border-bottom: none;border-top: none;font-weight: bolder;border-left: none;"></td>
         <td colspan="5" align="left" style="border-bottom: none;border-right: none;">Round Off</td>
-        <td align="right" style="border-bottom: none; border-left: none;">{{$obj->round_off}}</td>
+        <td align="center" style="border-bottom: none; border-left: none;">{{$obj->round_off}}</td>
     </tr>
     <tr>
-        <td colspan="7"><span>&nbsp;Amount&nbsp;(in&nbsp;words)</span>
+        <td colspan="7"><span>&nbsp;Amount Chargeable (in words)</span>
             <div style="margin-top: 5px">&nbsp;{{$rupees}}</div>
         </td>
         <td colspan="5" align="left"

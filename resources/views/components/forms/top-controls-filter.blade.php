@@ -1,7 +1,5 @@
 @props([
 'showFilters'=>false,
-'contacts',
-'orders'
 ])
 
 <div class="flex justify-between pb-5">
@@ -18,4 +16,3 @@
     </div>
 </div>
 
-<x-input.advance-search-filter :show-filters="$showFilters" :contacts="$contacts" :orders="$orders"/>

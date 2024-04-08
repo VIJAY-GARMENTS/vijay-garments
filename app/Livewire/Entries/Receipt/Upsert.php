@@ -215,7 +215,6 @@ class Upsert extends Component
     public function mount($id)
     {
         $this->vdate = (Carbon::parse(Carbon::now())->format('Y-m-d'));
-        $this->chq_date = $this->vdate;
 
         if ($id!= 0) {
                 $obj = Receipt::find($id);
@@ -302,9 +301,9 @@ class Upsert extends Component
                 'vdate' => $this->vdate,
                 'contact_id' => $this->contact_id,
                 'receipttype_id' => $this->receipttype_id,
-                'chq_no' => $this->chq_no,
+                'chq_no' => $this->chq_no?:'-',
                 'chq_date' => $this->chq_date,
-                'bank_id' => $this->bank_id,
+                'bank_id' => $this->bank_id?:'1',
                 'receipt_amount' => $this->receipt_amount,
                 'active_id' => $this->active_id,
 

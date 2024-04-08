@@ -2,7 +2,8 @@
     <x-slot name="header">Purchase</x-slot>
 
     <x-forms.m-panel>
-        <x-forms.top-controls-filter :orders="$orders" :contacts="$contacts" :show-filters="$showFilters"/>
+        <x-forms.top-controls-filter :orders="$orders" />
+        <x-input.advance-search-filter :show-filters="$showFilters" :contacts="$contacts" :orders="''"/>
         <x-forms.table>
             <x-slot name="table_header">
                 <x-table.ths-slno wire:click.prevent="sortBy('purchase_no')">Sl.no</x-table.ths-slno>

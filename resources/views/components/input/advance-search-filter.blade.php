@@ -8,18 +8,6 @@
     @if ($showFilters)
         <div class="bg-zinc-200 p-4 rounded shadow-inner flex relative">
             <div class="flex justify-between w-full ">
-                <div class="pr-2 space-y-4 ">
-                    <x-input.model-select wire:model.live="activeRecord" id="activeRecord" :label="'Active'">
-                        <option value="" disabled>Select...</option>
-                        <option value="1">Active</option>
-                        <option value="0">Not Active</option>
-                    </x-input.model-select>
-
-                    <div class="h-5">
-                        &nbsp;
-                    </div>
-
-                </div>
                 @if($orders!="")
                     <div class="ml-3">
                         <x-input.model-select wire:model.live="byOrder" :label="'Order No'">
@@ -40,6 +28,9 @@
                         </x-input.model-select>
                     </div>
                 @endif
+                    <div class="ml-3">
+                        {{$slot}}
+                    </div>
 
                 <div class="ml-3">
                     <x-input.model-date wire:model.live="start_date" :label="'From'"/>

@@ -2,8 +2,17 @@
     <x-slot name="header">Receipt</x-slot>
 
     <x-forms.m-panel>
-        <x-forms.top-controls :show-filters="$showFilters"/>
-
+        <x-forms.top-controls-filter :show-filters="$showFilters" />
+        <x-input.advance-search-filter :show-filters="$showFilters" :contacts="$contacts" :orders="''">
+            <div>
+                <x-input.model-select wire:model.live="byModel" :label="'Model'">
+                    <option value="">choose</option>
+                    @foreach($receipt_types as $i)
+                        <option value="{{$i->id}}">{{$i->vname}}</option>
+                    @endforeach
+                </x-input.model-select>
+            </div>
+        </x-input.advance-search-filter>
         <x-forms.table>
             <x-slot name="table_header">
                 <x-table.ths wire:click.prevent="sortBy('vname')">Sl No</x-table.ths>

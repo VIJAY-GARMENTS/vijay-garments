@@ -22,7 +22,7 @@ class Receipt extends Model
     public static function search(string $searches)
     {
         return empty($searches) ? static::query()
-            : static::where('vdate', 'like', '%' . $searches . '%');
+            : static::where('receipt_amount', 'like', '%' . $searches . '%');
     }
 
     public static function nextNo()

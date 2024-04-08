@@ -1,6 +1,12 @@
 <div>
     <main class="max-w-6xl  mx-auto mt-10  lg:mt-20 space-y-6 ">
         <article class="max-w-6xl mx-auto">
+            <div class="my-2 text-end">@editor
+                <a href="{{route('posts.upsert',[$post->id])}}">
+                    <button type="button" class="items-end text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center
+            dark:text-purple-400 dark:focus:ring-purple-900">Edit
+                    </button>
+                </a>@endeditor</div>
 
             <h1 class="font-bold capitalize text-3xl text-left lg:text-4xl mb-10">
                 {{ $post->title }}
@@ -51,13 +57,46 @@
                 </div>
 
             </div>
+            <div class="border-t-2 border-gray-300 my-2"/>
 
-            <div class="my-2 text-end">@editor
-                <a href="{{route('posts.upsert',[$post->id])}}">
-                    <button type="button" class="items-end text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center
-            dark:text-purple-400 dark:focus:ring-purple-900">Edit
+            <div class="gap-5 my-5">
+                <label for="comments" class="font-extrabold text-3xl">Comments</label>
+                <div class="w-3/5">
+                    <x-input.model-text wire:model="user_name" :label="'user name'"/>
+                    @error('user_name')<div class="text-red-500">{{$message}}</div>  @enderror
+                    <x-input.rich-text wire:model="body" :height="'h-44'" :placeholder="'write your thoughts....!'"/>
+
+                    <button type="submit" wire:click.prevent="save" class="mt-5">
+                        <div
+                            class="w-full relative inline-flex items-center px-10 py-1.5 overflow-hidden text-md font-medium text-indigo-600
+                                border-2 border-indigo-600 rounded-full hover:text-white group ">
+                    <span
+                        class="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100
+                        group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+                            <span
+                                class="absolute right-0 flex items-center justify-start w-8 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round"
+                                                                               stroke-linejoin="round"
+                                                                               stroke-width="2"
+                                                                               d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </span>
+                            <span class="relative">Post </span>
+                        </div>
                     </button>
-                </a>@endeditor</div>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-2 my-2">
+                    @foreach($list as $row)
+                        <div class="text-lg mt-3 text-ellipsis overflow-hidden space-y-4">
+                            <div class="flex w-full">
+                                <span class="w-full">{!!($row->body)!!}</span>&nbsp;<span class="opacity-65 text-right w-full"> Command By:&nbsp;{{$row->user_name}}</span>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{ $list->links() }}
+                </div>
+            </div>
+
         </article>
     </main>
 

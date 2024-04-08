@@ -42,7 +42,7 @@
                                             @if($contactCollection)
                                                 @forelse ($contactCollection as $i => $contact)
 
-                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300  w-full h-fit
                                                         {{ $highlightContact === $i ? 'bg-yellow-100' : '' }}"
                                                         wire:click.prevent="setContact('{{$contact->vname}}','{{$contact->id}}')"
                                                         x-on:click="isTyped = false">
@@ -184,11 +184,11 @@
                                         @if($productCollection)
                                             @forelse ($productCollection as $i => $product)
 
-                                                <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                <li class="cursor-pointer w-full h-fit px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300
                                                         {{ $highlightProduct === $i ? 'bg-yellow-100' : '' }}"
                                                     wire:click.prevent="setProduct('{{$product->vname}}','{{$product->id}}','{{$product->gst_percent}}')"
                                                     x-on:click="isTyped = false">
-                                                    {{ $product->vname }} &nbsp;-&nbsp; GST&nbsp;:
+                                                    {{ $product->vname }}&nbsp;&nbsp;&nbsp;-&nbsp;@&nbsp;:
                                                     &nbsp;{{$product->gst_percent}}%
                                                 </li>
 

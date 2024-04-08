@@ -15,10 +15,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/purchaseOffsets/{id}/upsert', App\Livewire\Offset\Purchase\Upsert::class)->name('purchaseOffsets.upsert');
 //    Route::get('/purchaseOffsets/{id}/print', App\Http\Controllers\Offset\Purchase\InvoiceController::class)->name('purchaseOffsets.print');
 
-    Route::get('/receiptOffsets', App\Livewire\Offset\Receipt\Index::class)->name('receiptOffsets');
-    Route::get('/receiptOffsets/{id}/upsert', App\Livewire\Offset\Receipt\Upsert::class)->name('receiptOffsets.upsert');
-
-    Route::get('/paymentOffsets', App\Livewire\Offset\Payment\Index::class)->name('paymentOffsets');
-    Route::get('/paymentOffsets/{id}/upsert', App\Livewire\Offset\Payment\Upsert::class)->name('paymentOffsets.upsert');
-
 });

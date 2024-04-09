@@ -196,6 +196,7 @@
                 <x-icons.utilities :icon="'trash-bold'"/>
                 <x-icons.utilities :icon="'upload'"/>
                 <x-icons.utilities :icon="'download'"/>
+                <x-icons.utilities :icon="'heart'"/>
 
                 </div>
             </div>

@@ -1,6 +1,6 @@
-<div>
-    <main class="max-w-6xl  mx-auto mt-10  lg:mt-20 space-y-6 ">
-        <article class="max-w-6xl mx-auto">
+<div class="bg-gray-50">
+    <main class="max-w-6xl p-2 mx-auto space-y-6 ">
+        <article class="max-w-6xl bg-white rounded-xl shadow-2xl p-5 pl-8 mx-auto">
             <div class="my-2 text-end">@editor
                 <a href="{{route('posts.upsert',[$post->id])}}">
                     <button type="button" class="items-end text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center
@@ -54,16 +54,21 @@
                     </div>
                     <div
                         class="space-y-4 lg:text-lg leading-loose text-left overflow-hidden text-wrap">{!! $post->body !!}</div>
+                    <div class="mt-4">
+                        {{$likes->count()}}
+                        <x-icons.icon :icon="'heart'" wire:model="like" wire:click="incrementLike" class="h-4 w-4 justify-end"/>
+                    </div>
                 </div>
 
             </div>
             <div class="border-t-2 border-gray-300 my-2"/>
 
-            <div class="gap-5 my-5">
+            <div class="gap-5 capitalize my-5">
                 <label for="comments" class="font-extrabold text-3xl">Comments</label>
                 <div class="w-3/5">
                     <x-input.model-text wire:model="user_name" :label="'user name'"/>
-                    @error('user_name')<div class="text-red-500">{{$message}}</div>  @enderror
+                    @error('user_name')
+                    <div class="text-red-500">{{$message}}</div> @enderror
                     <x-input.rich-text wire:model="body" :height="'h-44'" :placeholder="'write your thoughts....!'"/>
 
                     <button type="submit" wire:click.prevent="save" class="mt-5">
@@ -84,17 +89,19 @@
                             <span class="relative">Post </span>
                         </div>
                     </button>
+
+
                 </div>
-                <div class="bg-gray-100 rounded-lg p-2 my-2">
-                    @foreach($list as $row)
-                        <div class="text-lg mt-3 text-ellipsis overflow-hidden space-y-4">
-                            <div class="flex w-full">
-                                <span class="w-full">{!!($row->body)!!}</span>&nbsp;<span class="opacity-65 text-right w-full"> Command By:&nbsp;{{$row->user_name}}</span>
-                            </div>
+
+                @foreach($list as $row)
+                    <div class="bg-gray-100 rounded-lg p-2 my-2 text-lg mt-3 text-ellipsis overflow-hidden space-y-4">
+                        <div class="flex w-full">
+                            <span class="w-full">{!!($row->body)!!}</span>&nbsp;<span
+                                class="opacity-65 text-right capitalize w-full"> Command By:&nbsp;{{$row->user_name}}</span>
                         </div>
-                    @endforeach
-                    {{ $list->links() }}
-                </div>
+                    </div>
+                @endforeach
+                {{ $list->links() }}
             </div>
 
         </article>

@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 
+
 {
-    protected $fillable=['user_name','body','post_id'];
+    protected $fillable=['user_name','body','post_id','is_dislike'];
 
 }

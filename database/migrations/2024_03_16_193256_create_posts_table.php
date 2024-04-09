@@ -24,11 +24,19 @@ return new class extends Migration
             $table->text('body');
             $table->timestamps();
         });
+
+        Schema::create('likes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('post_id')->references('id')->on('posts');
+            $table->tinyInteger('like')->default(0);
+            $table->timestamps();
+        });
     }
 
     public function down(): void
     {
         Schema::dropIfExists('posts');
         Schema::dropIfExists('comments');
+        Schema::dropIfExists('likes');
     }
 };

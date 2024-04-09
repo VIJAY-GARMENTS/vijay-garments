@@ -297,12 +297,12 @@
             </div>
             <div class="w-full">
                 <label for="qty"></label>
-                <input id="qty" wire:model="qty" class="block w-full purple-textbox-no-rounded" autocomplete="false"
+                <input id="qty" wire:model.live="qty" class="block w-full purple-textbox-no-rounded" autocomplete="false"
                        placeholder="Qty">
             </div>
             <div class="w-full">
                 <label for="price"></label>
-                <input id="price" wire:model="price" class="block w-full purple-textbox-no-rounded" autocomplete="false"
+                <input id="price" wire:model.live="price" class="block w-full purple-textbox-no-rounded" autocomplete="false"
                        placeholder="price">
             </div>
             <button wire:click="addItems" class="px-3 bg-green-500 text-white font-semibold tracking-wider ">Add

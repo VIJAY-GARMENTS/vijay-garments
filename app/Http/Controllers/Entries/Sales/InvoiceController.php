@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Entries\Sales;
 
 use Aaran\Entries\Models\Sale;
-use Aaran\Erp\Models\Production\PeOutward;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
 use App\Helper\ConvertTo;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
-use Rmunate\Utilities\SpellNumber;
 
 class InvoiceController extends Controller
 {
@@ -29,16 +27,18 @@ class InvoiceController extends Controller
 
 
             $contact = Contact::printDetails($peout->contact_id);
-            $tenant = Company::printDetails(1);
+            $tenant = Company::printDetails(session()->get('company_id'));
 
             $data = DB::table('saleitems')
                 ->select(
                     'saleitems.*',
                     'products.vname as product_name',
+                    'hsncodes.vname as hsncode',
                     'colours.vname as colour_name',
-                    'sizes.vname as size_name'
+                    'sizes.vname as size_name',
                 )
                 ->join('products', 'products.id', '=', 'saleitems.product_id')
+                ->join('hsncodes', 'hsncodes.id', '=', 'products.hsncode_id')
                 ->join('colours', 'colours.id', '=', 'saleitems.colour_id')
                 ->join('sizes', 'sizes.id', '=', 'saleitems.size_id')
                 ->where('sale_id', '=', $vid)
@@ -48,15 +48,17 @@ class InvoiceController extends Controller
                         'saleitem_id' => $data->id,
                         'product_id' => $data->product_id,
                         'product_name' => $data->product_name,
+                        'hsncode' => $data->hsncode,
                         'colour_id' => $data->colour_id,
                         'colour_name' => $data->colour_name,
                         'size_id' => $data->size_id,
                         'size_name' => $data->size_name,
                         'qty' => $data->qty,
                         'price' => $data->price,
+                        'total_taxable' => number_format($data->qty * $data->price,2,'.',''),
                         'gst_percent' => $data->gst_percent / 2,
-                        'gst_amount' => ($data->qty * $data->price) * (($data->gst_percent / 2) / 100),
-                        'sub_total' => (($data->qty * $data->price) * ($data->gst_percent / 100)) + ($data->qty * $data->price),
+                        'gst_amount' => number_format(($data->qty * $data->price) * (($data->gst_percent / 2) / 100),2,'.',''),
+                        'sub_total' => number_format((($data->qty * $data->price) * ($data->gst_percent / 100)) + ($data->qty * $data->price),2,'.',''),
                     ];
                 });
 

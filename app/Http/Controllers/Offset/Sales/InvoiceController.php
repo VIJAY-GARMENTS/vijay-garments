@@ -52,10 +52,10 @@ class InvoiceController extends Controller
                         'hsncode' => $data->hsncode,
                         'qty' => $data->qty,
                         'price' => $data->price,
-                        'taxable' =>$data->qty * $data->price,
+                        'taxable' =>number_format($data->qty * $data->price,2,'.',''),
                         'gst_percent' => $data->gst_percent / 2,
-                        'gst_amount' => ($data->qty * $data->price) * (($data->gst_percent / 2) / 100),
-                        'sub_total' => (($data->qty * $data->price) * ($data->gst_percent / 100)) + ($data->qty * $data->price),
+                        'gst_amount' =>number_format(($data->qty * $data->price) * (($data->gst_percent / 2) / 100),2,'.',''),
+                        'sub_total' => number_format((($data->qty * $data->price) * ($data->gst_percent / 100)) + ($data->qty * $data->price),2,'.',''),
                     ];
                 });
 

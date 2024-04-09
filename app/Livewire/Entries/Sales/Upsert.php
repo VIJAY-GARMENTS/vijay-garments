@@ -707,7 +707,7 @@ class Upsert extends Component
         $this->size_id = $items['size_id'];
         $this->qty = $items['qty'] + 0;
         $this->price = $items['price'] + 0;
-        $this->gst_percent = $items['gst_percent'];
+        $this->gst_percent1 = $items['gst_percent'];
         $this->calculateTotal();
     }
 

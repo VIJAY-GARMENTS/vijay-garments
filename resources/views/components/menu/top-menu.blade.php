@@ -1,8 +1,8 @@
-<header class="flex items-center px-4 py-3 text-semibold text-gray-800 bg-white border-b shadow-md print:hidden">
+<header class="flex items-center px-4 py-3 text-semibold text-gray-800  border-b shadow-md print:hidden">
 
     <div class="w-full px-2 flex justify-between items-center">
 
-        <div class="p-1 mr-4 "
+        <div class="p-1 cursor-pointer hover:bg-gray-200 "
              @click="sidebarOpen = !sidebarOpen">
 
             <svg class="h-8 w-8" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -19,7 +19,7 @@
         <div class="w-full flex justify-between items-center">
 
             <!-- Page Heading -->
-            <div class="font-semibold text-xl text-gray-800 leading-tight justify-start shrink-0 ">
+            <div class="ml-4 font-semibold text-xl text-gray-800 leading-tight justify-start shrink-0 ">
 
                 {{$slot}}
             </div>

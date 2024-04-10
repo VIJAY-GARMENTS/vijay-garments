@@ -33,6 +33,7 @@ class InvoiceController extends Controller
                 ->select(
                     'saleitems.*',
                     'products.vname as product_name',
+                    'products.units as product_unit',
                     'hsncodes.vname as hsncode',
                     'colours.vname as colour_name',
                     'sizes.vname as size_name',
@@ -48,6 +49,7 @@ class InvoiceController extends Controller
                         'saleitem_id' => $data->id,
                         'product_id' => $data->product_id,
                         'product_name' => $data->product_name,
+                        'product_unit' => \App\Enums\Units::tryFrom($data->product_unit)->getName(),
                         'hsncode' => $data->hsncode,
                         'colour_id' => $data->colour_id,
                         'colour_name' => $data->colour_name,
@@ -67,7 +69,7 @@ class InvoiceController extends Controller
 
             Pdf::setOption(['dpi' => 150, 'defaultPaperSize'=>'a4', 'defaultFont' => 'sans-serif']);
 
-            $pdf = PDF::loadView('pdf.entries.sales.invoice4',[
+            $pdf = PDF::loadView('pdf.entries.sales.vijay_garments',[
                 'obj' => $peout,
                 'rupees'=>ConvertTo::ruppesToWords($peout->grand_total),
                 'list' => $peoutItem,

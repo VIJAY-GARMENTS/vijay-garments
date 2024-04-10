@@ -21,36 +21,12 @@
         </button>
     </div>
 
-    <!-- menu overflow-y-scroll overflow-x-hidden flex-grow h-full-->
     <div class=" bg-gray-900 text-white h-full overflow-y-scroll">
         <ul class="flex flex-col py-6 space-y-1"
             x-data="{selected:null}">
 
-
-            {{--            @if(session()->get('software_id')==1)--}}
-            {{--                <x-menu.sub.entries/>--}}
-            {{--                <x-menu.sub.erp.production/>--}}
-            {{--            @endif--}}
-            {{--            @if(session()->get('software_id')==2)--}}
-            {{--                <x-menu.sub.offset/>--}}
-            {{--            @endif--}}
-            {{--            @if(session()->get('software_id')==3)--}}
-            {{--                <x-menu.sub.entries/>--}}
-            {{--                <x-menu.sub.offset/>--}}
-            {{--                <x-menu.sub.erp.production/>--}}
-            {{--                <x-menu.sub.accounts/>--}}
-            {{--                <x-menu.sub.audit/>--}}
-            {{--                <x-menu.sub.task/>--}}
-{{--                            <x-menu.sub.utilities/>--}}
-                            <x-menu.sub.admin/>
-            {{--                @magalir--}}
-            {{--                <x-menu.sub.magalir/>--}}
-            {{--                @endmagalir--}}
-            {{--            @endif--}}
-
             <x-menu.sub.offset/>
             <x-menu.sub.master/>
-            {{--            <x-menu.sub.order/>--}}
             <x-menu.sub.common/>
             <x-menu.sub.logout/>
 

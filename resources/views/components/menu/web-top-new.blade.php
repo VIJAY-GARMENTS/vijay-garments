@@ -20,7 +20,7 @@
                     </li>
                     <li>
                         <a class="text-2xl font-sans text-zinc-500 hover:bg-blue-100 hover:text-zinc-700 rounded-md px-2 hover:border-b-4 py-1 hover:border-blue-400 transition-all duration-500"
-                           href="{{route('service')}}">services</a>
+                           href="{{route('service')}}">Project</a>
                     </li>
                     <li>
                         <a class="text-2xl font-sans text-zinc-500 hover:bg-blue-100 hover:text-zinc-700 rounded-md px-2 hover:border-b-4 py-1 hover:border-blue-400 transition-all duration-500"

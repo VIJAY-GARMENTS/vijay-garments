@@ -9,6 +9,13 @@
                 <div
                     class="w-12 text-2xl bg-amber-200 rounded-full px-2 py-1 flex items-center justify-center">{{$bank->client_id}}</div>
                 <div class="w-full text-center text-3xl font-semibold tracking-widest">{{$bank->vname}}</div>
+                <div>
+                    <x-input.model-select :label="''">
+                        @foreach($banks as $i)
+                            <option wire:click.prevent="switch({{$i->id}})" value="{{$i->id}}">{{$i->vname}}</option>
+                        @endforeach
+                    </x-input.model-select>
+                </div>
             </div>
 
             <!-- Table -->

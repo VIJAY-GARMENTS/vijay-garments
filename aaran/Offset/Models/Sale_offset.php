@@ -28,7 +28,7 @@ class Sale_offset extends Model
 
     public static function nextNo()
     {
-        return static::where('company_id','=',session()->get('company_id'))->max('invoice_no') + 1;
+        return static::where('company_id','=',session()->get('company_id'))->whereYear('invoice_date',date('Y-04-01'))->max('invoice_no') + 1;
     }
 
     public function contact(): BelongsTo

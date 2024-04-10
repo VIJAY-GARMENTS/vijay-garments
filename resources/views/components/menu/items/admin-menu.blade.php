@@ -5,6 +5,10 @@
 <x-menu.base.li-menuitem :routes="'banks'" :label="'Client Banks'"/>
 @endeditor
 
+@admin
+<x-menu.base.li-menuitem :routes="'socials'" :label="'Social Ids'"/>
+
+@endadmin
 
 @supervisor
 <x-menu.base.li-menuitem :routes="'creditbooks'" :label="'Credit Book'"/>

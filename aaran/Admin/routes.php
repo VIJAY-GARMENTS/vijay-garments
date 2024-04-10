@@ -10,4 +10,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('interestBooks/{id}/show', App\Livewire\Admin\InterestBook\Index::class)->name('interestBooks.show');
 
+    Route::get('socials', App\Livewire\Admin\Social\Index::class)->name('socials');
+
+
 });

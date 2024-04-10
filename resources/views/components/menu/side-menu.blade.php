@@ -42,7 +42,7 @@
             {{--                <x-menu.sub.audit/>--}}
             {{--                <x-menu.sub.task/>--}}
 {{--                            <x-menu.sub.utilities/>--}}
-            {{--                <x-menu.sub.admin/>--}}
+                            <x-menu.sub.admin/>
             {{--                @magalir--}}
             {{--                <x-menu.sub.magalir/>--}}
             {{--                @endmagalir--}}

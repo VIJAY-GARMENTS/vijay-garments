@@ -8,7 +8,7 @@
     <title>Printing saleInvoice DC</title>
     <style type="text/css">
         * {
-            font-family: Verdana, Arial, sans-serif;
+            font-family: Verdana, Arial, sans-serif,Helvetica, Times;
         }
 
         .inr-sign::before {
@@ -45,8 +45,8 @@
         }
 
         .companyname {
-            position: fixed;
-            margin-top: 2px;
+            /*position: fixed;*/
+            /*margin-top: 2px;*/
             /*margin-left: 20px;*/
             font-weight: 300;
             /*font-size: 36px;*/
@@ -113,14 +113,15 @@
 <body>
 <table width="100%" class="print:*">
     <tr>
-        <td colspan="7" style="text-align: center; margin-top: 2px; font-weight: bold;">Tax Invoice</td>
+        <td colspan="4" style="text-align: center; margin-top: 2px; font-weight: bold; border-right: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tax&nbsp;Invoice&nbsp;</td>
+        <td colspan="3" style="text-align: center; margin-top: 2px; font-weight: bold; border-left: none">Original Copy</td>
     </tr>
     <tr>
         <td colspan="3" rowspan="4" style="padding-top: 2px;padding-bottom: 10px;">
             <div class="logoLeft">
                 <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 100px;width: auto;" src="{{ public_path('images/vijay_garments_logo.jpeg') }}"/>
             </div>
-            <div style="text-align: left; width: 50%; font-weight: bold; position: relative;padding-left: 120px;"
+            <div style="text-align: left; width: 50%; font-weight: bold; padding-left: 120px;"
                  class="companyname">{{$cmp->get('company_name')}}</div>
             <div style="text-align: left; width: 100%; position: absolute; margin-top: 10px;padding-left: 120px;"
                  class="address1">{{$cmp->get('address_1')}}</div>
@@ -259,8 +260,8 @@
     <tr>
 
         <td colspan="3" rowspan="2">
-            <div style="font-weight: bold; text-align: center;">
-                {{$rupees}}Only
+            <div style="font-weight: bold; text-align: left;">
+                &nbsp;&nbsp;&nbsp;&nbsp;{{$rupees}}Only
             </div>
         </td>
         <td colspan="2" style="text-align: center;">
@@ -293,12 +294,12 @@
 
         <td colspan="3" rowspan="3">
 
-            <div style="text-align: left;">
-                <div>ACCOUNT Name<span>&nbsp;:&nbsp;{{$cmp->get('company_name')}}</span></div>
-                <div>ACCOUNT NO<span>&nbsp;:&nbsp;{{$cmp->get('acc_no')}}</span></div>
-                <div>BANK NAME<span>&nbsp;:&nbsp;{{$cmp->get('bank')}}</span></div>
-                <div>BRANCH <span>&nbsp;:&nbsp;{{$cmp->get('branch')}}</span>&nbsp;/&nbsp;IFSC
-                    CODE<span>:{{$cmp->get('ifsc_code')}}</span></div>
+            <div style="text-align: left; font-family:Times,serif;">
+                <div style="font-family:Times,serif;">Acc.Name<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('company_name')}}</span></div>
+                <div style="font-family:Times,serif;">ACCOUNT NO<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('acc_no')}}</span></div>
+                <div style="font-family:Times,serif;">BANK NAME<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('bank')}}</span></div>
+                <div style="font-family:Times,serif;">BRANCH <span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('branch')}}</span>&nbsp;/&nbsp;IFSC
+                    CODE<span style="font-family:Times,serif; font-weight: bolder">:{{$cmp->get('ifsc_code')}}</span></div>
             </div>
         </td>
         <td colspan="2" style="text-align: center;">
@@ -410,26 +411,24 @@
 
     <tr>
         <td colspan="3" style="height: 40px; text-align: left; vertical-align: top; padding-top: 5px ">
-            <div>&nbsp;&nbsp;Terms&nbsp;:</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;*Subject to Chennai Jurisdiction</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;*Goods once sold will not be taken back</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;*Payment terms:&nbsp;Should Pay with in is</div>
+            <div style="font-family:Times,serif; font-weight: bolder">&nbsp;&nbsp;Terms&nbsp;:</div>
+            <div style="font-family:Times,serif">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Subject to Chennai Jurisdiction</div>
+            <div style="font-family:Times,serif">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Goods once sold will not be taken back</div>
+            <div style="font-family:Times,serif">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Payment terms:&nbsp;Should Pay with in is</div>
             <div>&nbsp;</div>
 
         </td>
         <td colspan="4" style="height: 40px; text-align: center; vertical-align: top; padding-top: 5px ">
-            &nbsp;for&nbsp;{{$cmp->get('company_name')}}
+            &nbsp;For&nbsp;{{$cmp->get('company_name')}}
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            <div style="padding-top: 20px;">Authorized signatory</div>
+            <div style="padding-top: 20px;">Authorised signatory</div>
 
         </td>
     </tr>
     <tr>
         <td colspan="7">
-            <div style="text-align: center;font-size:10px; padding-top: 5px;">Thank you for your Business and have a
-                grate day!
-            </div>
+            <div style="font-family:Times,serif; text-align: center;font-size:12px; padding-top: 5px;">Thank you for your Business and have a great day!</div>
         </td>
     </tr>
 </table>

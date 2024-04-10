@@ -189,7 +189,7 @@
         </div>
     </x-forms.m-panel>
 <section>
-    <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md shadow-lg w-full ">
+    <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md border border-gray-300 border-t-0 shadow-lg w-full ">
         <div class="flex flex-col md:flex-row justify-between gap-3 mt-5 mb-0">
             <div class="flex gap-3">
                 <x-button.save/>

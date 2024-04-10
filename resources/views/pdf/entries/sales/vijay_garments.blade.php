@@ -118,7 +118,7 @@
     <tr>
         <td colspan="3" rowspan="4" style="padding-top: 2px;padding-bottom: 10px;">
             <div class="logoLeft">
-{{--                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 70px;width: auto;" src="{{ public_path('/storage/'.$cmp->get('logo'))}}"/>--}}
+                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 100px;width: auto;" src="{{ public_path('images/vijay_garments_logo.jpeg') }}"/>
             </div>
             <div style="text-align: left; width: 50%; font-weight: bold; position: relative;padding-left: 120px;"
                  class="companyname">{{$cmp->get('company_name')}}</div>
@@ -292,15 +292,6 @@
     <tr>
 
         <td colspan="3" rowspan="3">
-{{--            <div>--}}
-{{--                <span class="inline-flex justify-center items-center">--}}
-{{--                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"--}}
-{{--                         class="text-black h-5 w-auto block">--}}
-{{--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--}}
-{{--                                     d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>--}}
-{{--                    </svg>--}}
-{{--                </span>--}}
-{{--            </div>--}}
 
             <div style="text-align: left;">
                 <div>ACCOUNT Name<span>&nbsp;:&nbsp;{{$cmp->get('company_name')}}</span></div>

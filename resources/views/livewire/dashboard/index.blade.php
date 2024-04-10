@@ -9,8 +9,6 @@
                         <livewire:taskmanager.todos.index/>
                     @endif
                 @endif
-
-                asdf
             </div>
             {{--            <livewire:attendance.attendance.index/>--}}
         </div>

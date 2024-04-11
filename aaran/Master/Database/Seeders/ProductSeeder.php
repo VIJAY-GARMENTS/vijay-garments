@@ -10,11 +10,11 @@ class ProductSeeder extends Seeder
     public static function run(): void
     {
         Product::create([
-            'vname' => 'T-Shirt',
+            'vname' => '-',
             'product_type' => '1',
             'hsncode_id' => '1',
             'units' => '1',
-            'gst_percent' => '18',
+            'gst_percent' => '0',
             'active_id' => '1',
             'company_id'=>'1',
             'user_id' => '1'

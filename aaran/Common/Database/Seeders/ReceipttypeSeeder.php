@@ -10,6 +10,12 @@ class ReceipttypeSeeder extends Seeder
     public static function run(): void
     {
         Receipttype::create([
+            'vname' => '-',
+            'active_id' => '1'
+        ]);
+
+
+        Receipttype::create([
             'vname' => 'Cash',
             'active_id' => '1'
         ]);

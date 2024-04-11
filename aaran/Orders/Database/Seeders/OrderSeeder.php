@@ -12,18 +12,11 @@ class OrderSeeder extends Seeder
     {
         Order::create([
 
-            'vname' => 'order-1',
-            'order_name' => '1',
+            'vname' => '-',
+            'order_name' => '-',
             'company_id' => '1',
             'active_id' => '1'
         ]);
 
-        Order::create([
-
-            'vname' => 'order-2',
-            'order_name' => '2',
-            'company_id' => '1',
-            'active_id' => '1'
-        ]);
     }
 }

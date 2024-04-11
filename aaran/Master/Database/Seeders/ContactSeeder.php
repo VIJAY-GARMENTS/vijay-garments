@@ -10,14 +10,14 @@ class ContactSeeder extends Seeder
     public static function  run(): void
     {
        Contact::create([
-           'vname' => 'AARAN SOFTWARE',
-           'contact_person' => 'SUNDAR',
-           'mobile' => '9655227738',
-           'whatsapp' => '9655227738',
-           'gstin' => '33AABBCCDDEE12x',
-           'email' => 'codexsun@gmail.com',
-           'address_1' => '44-1 Venkatappa Gounder Layout Main Road',
-           'address_2' => 'Postal Colony',
+           'vname' => '-',
+           'contact_person' => '-',
+           'mobile' => '-',
+           'whatsapp' => '-',
+           'gstin' => '-',
+           'email' => '-',
+           'address_1' => '-',
+           'address_2' => '-',
            'city_id' => '1',
            'state_id' => '1',
            'pincode_id' => '1',

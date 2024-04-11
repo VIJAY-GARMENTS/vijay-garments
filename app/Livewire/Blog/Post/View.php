@@ -27,7 +27,7 @@ class View extends Component
     {
         $this->like++;
         if ($this->post!=''){
-            if($this->id!='') {
+            if($this->id !='') {
                 Like::create([
                     'post_id' => $this->post_id,
                     'like' => $this->like,
@@ -42,6 +42,7 @@ class View extends Component
         if ($id) {
             $this->post = Post::find($id);
             $this->post_id= $id;
+            $this->likes = Like::find($this->post_id);
         }
     }
 
@@ -72,8 +73,6 @@ class View extends Component
             'list'=>Comment::where('post_id','=',$this->post_id)->orderBy('created_at','desc')
                 ->paginate(5),
             'likes'=>Like::where('post_id','=',$this->post_id)
-
-
 
         ]);
 

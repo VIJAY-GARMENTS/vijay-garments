@@ -14,7 +14,9 @@ return new class extends Migration
             $table->string('vdate')->nullable();
             $table->string('vname')->nullable();
             $table->string('completed')->nullable();
+            $table->string('subjective')->nullable();
             $table->foreignId('company_id')->references('id')->on('companies');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->string('active_id', 3)->nullable();
             $table->timestamps();
         });

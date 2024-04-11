@@ -40,9 +40,27 @@
                                 </label>
                             @endif
 
+
+
+                        </div>
+
+                        <div class="flex-shrink-0 text-[0.5rem] pt-1 text-zinc-400">
+                                {{ \Illuminate\Support\Carbon::parse($row->vdate)->diffForHumans()}}
                         </div>
 
                         <div class="flex justify-center gap-2">
+
+                            <button wire:click.prevent="markAsPublic('{{$row->id}}')">
+
+                                @if($row->subjective)
+                                    <x-icons.icon :icon="'eye'"
+                                                  class="text-blue-500 hover:text-gray-500 h-5 w-auto block"/>
+                                @else
+                                    <x-icons.icon :icon="'eye-slash'"
+                                                  class="text-gray-300 hover:text-blue-500 h-5 w-auto block"/>
+                                @endif
+                            </button>
+
                             <button wire:click.prevent="edit('{{$row->vname}}')">
 
                                 <x-icons.icon :icon="'pencil'"

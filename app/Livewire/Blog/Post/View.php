@@ -26,7 +26,7 @@ class View extends Component
     public function incrementLike()
     {
         $this->like++;
-        if ($this->post!=''){
+        if ($this->post_id!=''){
             if($this->id!='') {
                 Like::create([
                     'post_id' => $this->post_id,

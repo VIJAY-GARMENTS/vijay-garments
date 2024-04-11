@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
 
         CompanySeeder::run();
         DefaultCompanySeeder::run();
-        ContactSeeder::run();
+//        ContactSeeder::run();
         ProductSeeder::run();
 
         OrderSeeder::run();

@@ -28,10 +28,6 @@ class Contact extends Model
 
         return collect([
             'contact_name' => $obj->vname,
-            'address_1' => $obj->address_1 . ', ' . $obj->address_area,
-            'address_2' => $obj->address_2,
-            'address_3' => $obj->city->vname . ' - ' . $obj->pincode->vname . '.  ' . $obj->state->vname . ' - ' . $obj->state->state_code,
-            'gstCell' =>  'GSTin - '.$obj->gstin. ', Mobile - ' . $obj->mobile,
             'msme_no'=>$obj->msme_no,
             'msme_type'=>$obj->msme_type,
         ]);

@@ -18,7 +18,6 @@ class View extends Component
     public $post_id;
     public string $vid='';
     public $body;
-    public $user_name;
     public Post $post;
     public $id;
     public $like = 0;
@@ -47,22 +46,21 @@ class View extends Component
     }
 
     public function save(){
-        $this->validate(['user_name'=>'required']);
-        if ($this->post_id !=''){
-            if ($this->vid ==''){
+        if ($this->post_id !='') {
+            if ($this->vid == '') {
                 Comment::create([
-                    'user_name'=>$this->user_name,
-                    'body'=> $this->body,
-                    'post_id'=> $this->post_id,
+                    'body' => $this->body,
+                    'post_id' => $this->post_id,
                 ]);
+            } else {
+                $comment = Comment::find($this->vid);
+                $comment->body = $this->body;
             }
-            $this->clearFields();
         }
     }
 
     public function clearFields()
     {
-        $this->user_name='';
         $this->body='';
     }
 

@@ -55,8 +55,8 @@
                     <div
                         class="space-y-4 lg:text-lg leading-loose text-left overflow-hidden text-wrap">{!! $post->body !!}</div>
                     <div class="mt-4">
-                        {{$likes->like}}
-                        <x-icons.icon :icon="'heart'" wire:model="like" wire:click="incrementLike({{$likes->id}})" class="h-4 w-4 justify-end"/>
+                        {{$likes->count()}}
+                        <x-icons.icon :icon="'heart'" wire:model="like" wire:click="incrementLike" class="h-4 w-4 justify-end"/>
                     </div>
                 </div>
 

@@ -22,24 +22,16 @@ class View extends Component
     public Post $post;
     public $id;
     public $like = 0;
-    public $test;
-    public $likes;
 
-    public function incrementLike($test)
+    public function incrementLike()
     {
         $this->like++;
         if ($this->post!=''){
-            if($test =='') {
+            if($this->id !='') {
                 Like::create([
                     'post_id' => $this->post_id,
                     'like' => $this->like,
                 ]);
-            }else{
-                $obj = Like::find($test);
-                $obj ->post_id=$this->post_id;
-                $obj ->like=$this->like=$obj->like+1;
-                $obj->save();
-
             }
         }
     }
@@ -80,7 +72,7 @@ class View extends Component
         return view('livewire.blog.post.view')->layout('layouts.web')->with([
             'list'=>Comment::where('post_id','=',$this->post_id)->orderBy('created_at','desc')
                 ->paginate(5),
-            'likes1'=>Like::where('post_id','=',$this->post_id)
+            'likes'=>Like::where('post_id','=',$this->post_id)
 
         ]);
 

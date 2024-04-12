@@ -17,7 +17,6 @@ class Transport extends Model
         return empty($searches) ? static::query()
            : static::where('vname', 'like', '%' . $searches . '%');
     }
-
     protected static function newFactory():TransportFactory
     {
         return new TransportFactory();

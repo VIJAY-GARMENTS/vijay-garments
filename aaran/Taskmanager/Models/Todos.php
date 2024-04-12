@@ -12,7 +12,7 @@ class Todos extends Model
 
     protected $guarded = [];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     public static function search(string $searches)
     {

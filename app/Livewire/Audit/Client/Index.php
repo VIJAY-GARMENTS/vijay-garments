@@ -100,6 +100,8 @@ class Index extends Component
     {
         $this->sortField = 'id';
 
+        $this->perPage = '100';
+
         return Client::search($this->searches)
             ->where('active_id','=',$this->activeRecord)
             ->where('company_id', '=', session()->get('company_id'))

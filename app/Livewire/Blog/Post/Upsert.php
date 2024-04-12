@@ -16,7 +16,8 @@ class Upsert extends Component
     public $image;
     public $isUploaded=false;
     public $id;
-    public string $user_id;
+    public $user_id;
+    public $company_id;
 
     public function mount($id)
     {
@@ -48,6 +49,7 @@ class Upsert extends Component
                     'title' => $this->title,
                     'body' => $this->body,
                     'user_id' => \Auth::id(),
+                    'company_id' => session()->get('company_id'),
                     'image' => $this->save_image(),
                 ]);
                 $this->getRoute();
@@ -55,6 +57,7 @@ class Upsert extends Component
                 $post = Post::find($this->vid);
                 $post->title = $this->title;
                 $post->body = $this->body;
+                $post->company_id = session()->get('company_id');
                 if ($post->image != $this->image) {
                     $post->image = $this->save_image();
                 } else {

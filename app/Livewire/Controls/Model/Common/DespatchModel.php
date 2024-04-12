@@ -2,16 +2,17 @@
 
 namespace App\Livewire\Controls\Model\Common;
 
-use Aaran\Common\Models\Bank;
-use Aaran\Master\Models\Contact_detail;
+use Aaran\Common\Models\Despatch;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
-class BankModel extends Component
+class DespatchModel extends Component
 {
+
     public bool $showModel = false;
 
-    public $vname = "";
+    public $vname ='';
+    public $date='';
 
     public function mount($name): void
     {
@@ -21,11 +22,12 @@ class BankModel extends Component
     public function save(): void
     {
         if ($this->vname != '') {
-            $obj = Bank::create([
+            $obj = Despatch::create([
                 'vname' => Str::upper($this->vname),
+                'date'=>$this->date,
                 'active_id' => '1'
             ]);
-            $this->dispatch('refresh-bank', ['name' => $this->vname, 'id' => $obj->id]);
+            $this->dispatch('refresh-despatch', ['name' => $this->vname,'date'=>$this->date, 'id' => $obj->id]);
             $this->clearAll();
         }
     }
@@ -33,14 +35,11 @@ class BankModel extends Component
     public function clearAll(): void
     {
         $this->showModel = false;
-        $this->vname = "";
+        $this->vname = '';
+        $this->date='';
     }
     public function render()
     {
-        return view('livewire.controls.model.common.bank-model');
+        return view('livewire.controls.model.common.despatch-model');
     }
-
-
-
-
 }

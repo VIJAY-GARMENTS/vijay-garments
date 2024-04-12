@@ -400,8 +400,8 @@ class Upsert extends Component
     public function addItems(): void
     {
         if ($this->itemIndex == "") {
-            if (!(empty($this->address_1)) &&
-                !(empty($this->address_2)) &&
+            if (!(empty($this->city_name)) &&
+                !(empty($this->state_name)) &&
                 !(empty($this->gstin))
             ) {
                 $this->itemList[] = [
@@ -419,6 +419,7 @@ class Upsert extends Component
                     'email' => $this->email,
 
                 ];
+//                dd($this->itemList);
             }
         } else {
             $this->itemList[$this->itemIndex] = [

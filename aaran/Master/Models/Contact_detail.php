@@ -15,6 +15,11 @@ class Contact_detail extends Model
     use HasFactory;
 
     protected $guarded = [];
+    public static function search(string $searches): Builder|_IH_Contact_QB|Contact
+    {
+        return empty($searches) ? static::query()
+            : static::where('address_1', 'like', '%' . $searches . '%');
+    }
 
     public static function printDetails($ids): Collection
     {

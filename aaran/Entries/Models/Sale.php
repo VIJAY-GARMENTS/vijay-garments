@@ -40,7 +40,7 @@ class Sale extends Model
         return $this->belongsTo(Despatch::class);
     }
 
-    public function details():BelongsTo
+    public function contact_detail():BelongsTo
     {
         return $this->belongsTo(Contact_detail::class);
     }

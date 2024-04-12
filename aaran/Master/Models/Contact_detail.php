@@ -3,17 +3,15 @@
 namespace Aaran\Master\Models;
 
 use Aaran\Common\Models\{City, Pincode, State};
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
-use LaravelIdea\Helper\Aaran\Master\Models\_IH_Contact_QB;
 
 class Contact_detail extends Model
 {
 
     protected $guarded = [];
-    public static function search(string $searches): Builder|_IH_Contact_QB|Contact
+    public static function search(string $searches)
     {
         return empty($searches) ? static::query()
             : static::where('address_1', 'like', '%' . $searches . '%');
@@ -29,8 +27,12 @@ class Contact_detail extends Model
             'address_3' => $obj->city->vname . ' - ' . $obj->pincode->vname . '.  ' . $obj->state->vname . ' - ' . $obj->state->state_code,
             'gstcell' =>  'GSTin : '.$obj->gstin,
             'email'=>$obj->email,
-
         ]);
+    }
+
+    public function contact(): BelongsTo
+    {
+        return $this->belongsTo(Contact::class);
     }
 
     public function city(): BelongsTo

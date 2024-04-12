@@ -543,7 +543,7 @@ class Upsert extends Component
 
     public $product_id = '';
     public $product_name = '';
-    public int $gst_percent1;
+    public mixed $gst_percent1 = '';
     public Collection $productCollection;
     public $highlightProduct = 0;
     public $productTyped = false;
@@ -820,9 +820,9 @@ class Upsert extends Component
             $this->order_id = $obj->order_id;
             $this->order_name = $obj->order->vname;
             $this->contact_detail_id_buyer_address=$obj->contact_detail_id_buyer_address;
-            $this->contact_detail_address=$obj->details->address_1;
+            $this->contact_detail_address=Contact_detail::printDetails($obj->contact_detail_id_buyer_address)->get('address_1');
             $this->contact_detail_id_delivery_address=$obj->contact_detail_id_delivery_address;
-            $this->contact_detail_address_1=$obj->details->address_1;
+            $this->contact_detail_address_1=Contact_detail::printDetails($obj->contact_detail_id_delivery_address)->get('address_1');
             $this->style_id = $obj->style_id;
             $this->style_name = $obj->style->vname;
             $this->despatch_id = $obj->despatch_id;

@@ -29,6 +29,7 @@ return new class extends Migration {
         Schema::create('contact_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contact_id')->references('id')->on('contacts');
+            $table->string('address_type')->nullable();
             $table->string('address_1')->nullable();
             $table->string('address_2')->nullable();
             $table->foreignId('city_id')->references('id')->on('cities');

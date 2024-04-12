@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="xl:flex gap-2 w-full pt-6">
-                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Party Address</label>
+                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Billing Address</label>
                     <div x-data="{isTyped: @entangle('contact_detailTyped')}" @click.away="isTyped = false"
                          class="w-full">
                         <div class="relative ">
@@ -155,7 +155,11 @@
                                                         {{ $highlightContact_detail === $i ? 'bg-yellow-100' : '' }}"
                                                         wire:click.prevent="setContact_detail('{{$contact_detail->address_1}}','{{$contact_detail->id}}')"
                                                         x-on:click="isTyped = false">
-                                                        {{ $contact_detail->address_1 }}
+
+                                                        {{ $contact_detail->contact->vname }}&nbsp;-&nbsp;
+                                                        {{ $contact_detail->address_1 }}&nbsp;-&nbsp;
+                                                        {{ $contact_detail->address_2 }}&nbsp;-&nbsp;
+                                                        {{ $contact_detail->gstin }}
                                                     </li>
 
                                                 @empty

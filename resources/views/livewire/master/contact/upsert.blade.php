@@ -25,6 +25,15 @@
                 {{--                <input id="address_1" wire:model.live="address_1" class="block w-full purple-textbox-no-rounded" autocomplete="false"--}}
                 {{--                       placeholder="Address">--}}
                 {{--            </div>--}}
+
+
+                <x-input.model-select wire:model="address_type" :label="'Address Type'">
+                    <option class="text-gray-400"> choose ..</option>
+                        <option value="Primary">Primary</option>
+                        <option value="Secondary">Second</option>
+                        <option value="Third">Third</option>
+                </x-input.model-select>
+
                 <x-input.model-text wire:model="address_1" :label="'Address'"/>
                 <x-input.model-text wire:model="address_2" :label="'Area-Road'"/>
                 <div class="flex flex-row  gap-3">
@@ -256,6 +265,11 @@
                     <div class="md:flex">
                 @foreach($itemList as $index => $row)
                         <div class="pl-5">
+
+                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
+                                <label class="px-3 pb-2 text-left text-gray-600 text-md">Address Type</label>
+                                <label class="px-3 pb-2  text-gray-800 text-lg font-bold">{{  $row['address_type'] }}</label>
+                            </div>
 
                             <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
                                 <label class="px-3 pb-2 text-left text-gray-600 text-md">Address</label>

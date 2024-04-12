@@ -24,10 +24,11 @@ class Upsert extends Component
 
     public string $mobile = '';
     public string $whatsapp = '';
-    public  $email = '';
-    public  $gstin = '';
-    public  $address_1 = '';
-    public  $address_2 = '';
+    public $email = '';
+    public $gstin = '';
+    public $address_1 = '';
+    public $address_2 = '';
+    public $address_type = '';
     public $company_id;
     public $contact_person;
     public $contact_type;
@@ -336,6 +337,7 @@ class Upsert extends Component
         foreach ($this->itemList as $sub) {
             Contact_detail::create([
                 'contact_id' => $id,
+                'contact_type' => $sub['address_type'],
                 'address_1' => $sub['address_1'],
                 'address_2' => $sub['address_2'],
                 'city_id' => $sub['city_id'],
@@ -376,6 +378,7 @@ class Upsert extends Component
                 ->where('contact_id', '=', $id)->get()->transform(function ($data) {
                     return [
                         'contact_detail_id' => $data->id,
+                        'address_type' => $data->address_type,
                         'city_name' => $data->city_name,
                         'city_id' => $data->city_id,
                         'state_name' => $data->state_name,
@@ -401,18 +404,20 @@ class Upsert extends Component
     {
         if ($this->itemIndex == "") {
             if (!(empty($this->city_name)) &&
+                !(empty($this->address_type)) &&
                 !(empty($this->state_name)) &&
                 !(empty($this->gstin))
             ) {
                 $this->itemList[] = [
+                    'address_type' => $this->address_type,
                     'city_name' => $this->city_name,
                     'city_id' => $this->city_id,
                     'state_name' => $this->state_name,
                     'state_id' => $this->state_id,
                     'pincode_name' => $this->pincode_name,
-                    'pincode_id' => $this->pincode_id,
+                    'pincode_id' => $this->pincode_id ?: '1',
                     'country_name' => $this->country_name,
-                    'country_id' => $this->country_id,
+                    'country_id' => $this->country_id ?: '1',
                     'address_1' => $this->address_1,
                     'address_2' => $this->address_2,
                     'gstin' => $this->gstin,
@@ -423,6 +428,7 @@ class Upsert extends Component
             }
         } else {
             $this->itemList[$this->itemIndex] = [
+                'address_type' => $this->address_type,
                 'city_name' => $this->city_name,
                 'city_id' => $this->city_id,
                 'state_name' => $this->state_name,
@@ -446,6 +452,7 @@ class Upsert extends Component
     public function resetsItems(): void
     {
         $this->itemIndex = '';
+        $this->address_type = '';
         $this->city_name = '';
         $this->city_id = '';
         $this->state_name = '';
@@ -465,6 +472,7 @@ class Upsert extends Component
         $this->itemIndex = $index;
 
         $items = $this->itemList[$index];
+        $this->address_type = $items['address_type'];
         $this->city_name = $items['city_name'];
         $this->city_id = $items['city_id'];
         $this->state_name = $items['state_name'];

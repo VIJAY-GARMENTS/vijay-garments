@@ -3,7 +3,7 @@
     <x-forms.m-panel>
         <section class="grid grid-cols-2">
 
-            <div class="mt-3">
+            <div class="mt-3 ">
 
                 <div class="xl:flex w-full gap-2">
                     <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Party Name</label>
@@ -50,7 +50,10 @@
                                                     </li>
 
                                                 @empty
-                                                    @livewire('controls.model.master.contact-model',[$contact_name])
+                                                    <a href="{{route('contacts.upsert',['0'])}}" role="button"
+                                                       class="flex items-center justify-center bg-green-500 w-full h-8 text-white text-center">
+                                                        Not found , Want to create new
+                                                    </a>
                                                 @endforelse
                                             @endif
                                         </ul>
@@ -60,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col gap-2 pt-6">
+                <div class="xl:flex flex-col gap-2 pt-6">
                     <div class="xl:flex w-full gap-2">
                         <label for="order_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Order NO</label>
                         <div x-data="{isTyped: @entangle('orderTyped')}" @click.away="isTyped = false" class="w-full">
@@ -115,9 +118,118 @@
                         </div>
                     </div>
                 </div>
+                <div class="xl:flex gap-2 w-full pt-6">
+                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Party Address</label>
+                    <div x-data="{isTyped: @entangle('contact_detailTyped')}" @click.away="isTyped = false"
+                         class="w-full">
+                        <div class="relative ">
+                            <input
+                                id="contact_name"
+                                type="search"
+                                wire:model.live="contact_detail_address"
+                                autocomplete="off"
+                                placeholder="Party Address.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementContact_detail"
+                                wire:keydown.arrow-down="incrementContact_detail"
+                                wire:keydown.enter="enterContact_detail"
+                                class="block w-full purple-textbox "
+                            />
+                            <div x-show="isTyped"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 x-cloak
+                            >
+                                <div class="absolute z-20 w-full mt-2">
+                                    <div class="block py-1 shadow-md w-full
+                rounded-lg border-transparent flex-1 appearance-none border
+                                 bg-white text-gray-800 ring-1 ring-purple-600">
+                                        <ul class="overflow-y-scroll h-96">
+                                            @if($contact_detailCollection)
+                                                @forelse ($contact_detailCollection as $i => $contact_detail)
+                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                        {{ $highlightContact_detail === $i ? 'bg-yellow-100' : '' }}"
+                                                        wire:click.prevent="setContact_detail('{{$contact_detail->address_1}}','{{$contact_detail->id}}')"
+                                                        x-on:click="isTyped = false">
+                                                        {{ $contact_detail->address_1 }}
+                                                    </li>
+
+                                                @empty
+                                                    <a href="{{route('contacts.upsert',[$contact_id])}}" role="button"
+                                                       class="flex items-center justify-center bg-green-500 w-full h-8 text-white text-center">
+                                                        Not found , Want to create new
+                                                    </a>
+                                                @endforelse
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl:flex gap-2 w-full pt-6">
+                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Delivery Address</label>
+                    <div x-data="{isTyped: @entangle('contact_detailTyped_1')}" @click.away="isTyped = false"
+                         class="w-full">
+                        <div class="relative ">
+                            <input
+                                id="contact_name"
+                                type="search"
+                                wire:model.live="contact_detail_address_1"
+                                autocomplete="off"
+                                placeholder="Delivery Address.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementContact_detail_1"
+                                wire:keydown.arrow-down="incrementContact_detail_1"
+                                wire:keydown.enter="enterContact_detail_1"
+                                class="block w-full purple-textbox "
+                            />
+                            <div x-show="isTyped"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 x-cloak
+                            >
+                                <div class="absolute z-20 w-full mt-2">
+                                    <div class="block py-1 shadow-md w-full
+                                rounded-lg border-transparent flex-1 appearance-none border
+                                                 bg-white text-gray-800 ring-1 ring-purple-600">
+                                        <ul class="overflow-y-scroll h-96">
+                                            @if($contact_detailCollection_1)
+                                                @forelse ($contact_detailCollection_1 as $i => $contact_detail_1)
+
+                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                                        {{ $highlightContact_detail_1 === $i ? 'bg-yellow-100' : '' }}"
+                                                        wire:click.prevent="setContact_detail_1('{{$contact_detail_1->address_1}}','{{$contact_detail_1->id}}')"
+                                                        x-on:click="isTyped = false">
+                                                        {{ $contact_detail_1->address_1 }}
+                                                    </li>
+
+                                                @empty
+                                                    <a href="{{route('contacts.upsert',[$contact_id])}}" role="button"
+                                                       class="flex items-center justify-center bg-green-500 w-full h-8 text-white text-center">
+                                                        Not found , Want to create new
+                                                    </a>
+                                                @endforelse
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class=" w-1/2 ml-auto">
+            <div class="ml-5">
 
                 <x-input.model-text wire:model="invoice_no" :label="'Invoice No'"/>
                 <x-input.model-text wire:model="invoice_date" :label="'Invoice Date'" type="date"/>
@@ -128,6 +240,108 @@
                         <option value="{{$sales_type->value}}">{{$sales_type->getName()}}</option>
                     @endforeach
                 </x-input.model-select>
+                <div class="xl:flex gap-2 w-full pt-4">
+                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Style</label>
+                    <div x-data="{isTyped: @entangle('styleTyped')}" @click.away="isTyped = false"
+                         class="w-full">
+                        <div class="relative ">
+                            <input
+                                id="style_name"
+                                type="search"
+                                wire:model.live="style_name"
+                                autocomplete="off"
+                                placeholder="Style Name.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementStyle"
+                                wire:keydown.arrow-down="incrementStyle"
+                                wire:keydown.enter="enterStyle"
+                                class="block w-full purple-textbox"
+                            />
+
+                            <div x-show="isTyped"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 x-cloak
+                            >
+                                <div class="absolute z-20 w-full mt-2">
+                                    <div class="block py-1 shadow-md w-full
+                rounded-lg border-transparent flex-1 appearance-none border
+                                 bg-white text-gray-800 ring-1 ring-purple-600">
+                                        <ul class="overflow-y-scroll h-96">
+                                            @if($styleCollection)
+                                                @forelse ($styleCollection as $i => $style)
+                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                        {{ $highlightStyle === $i ? 'bg-yellow-100' : '' }}"
+                                                        wire:click.prevent="setStyle('{{$style->vname}}','{{$style->id}}')"
+                                                        x-on:click="isTyped = false">
+                                                        {{ $style->vname }}
+                                                    </li>
+                                                @empty
+                                                    @livewire('controls.model.order.style-model',[$style_name])
+                                                @endforelse
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl:flex gap-2 w-full pt-4">
+                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Despatch No</label>
+                    <div x-data="{isTyped: @entangle('despatchTyped')}" @click.away="isTyped = false"
+                         class="w-full">
+                        <div class="relative ">
+                            <input
+                                id="style_name"
+                                type="search"
+                                wire:model.live="despatch_name"
+                                autocomplete="off"
+                                placeholder="Despatch No.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementDespatch"
+                                wire:keydown.arrow-down="incrementDespatch"
+                                wire:keydown.enter="enterDespatch"
+                                class="block w-full purple-textbox"
+                            />
+
+                            <div x-show="isTyped"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 x-cloak
+                            >
+                                <div class="absolute z-20 w-full mt-2">
+                                    <div class="block py-1 shadow-md w-full
+                rounded-lg border-transparent flex-1 appearance-none border
+                                 bg-white text-gray-800 ring-1 ring-purple-600">
+                                        <ul class="overflow-y-scroll h-96">
+                                            @if($despatchCollection)
+                                                @forelse ($despatchCollection as $i => $despatch)
+                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                        {{ $highlightDespatch === $i ? 'bg-yellow-100' : '' }}"
+                                                        wire:click.prevent="setDespatch('{{$despatch->vname}}','{{$despatch->id}}')"
+                                                        x-on:click="isTyped = false">
+                                                        {{ $despatch->vname }}
+                                                    </li>
+                                                @empty
+                                                    @livewire('controls.model.common.despatch-model',[$despatch_name])
+                                                @endforelse
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </section>
@@ -190,6 +404,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="w-full">
+                <label for="qty"></label>
+                <input id="qty" wire:model.live="description" class="block w-full purple-textbox-no-rounded"
+                       autocomplete="false"
+                       placeholder="description">
             </div>
             <div class="w-full">
                 <label for="colour_name"></label>
@@ -297,12 +517,14 @@
             </div>
             <div class="w-full">
                 <label for="qty"></label>
-                <input id="qty" wire:model.live="qty" class="block w-full purple-textbox-no-rounded" autocomplete="false"
+                <input id="qty" wire:model.live="qty" class="block w-full purple-textbox-no-rounded"
+                       autocomplete="false"
                        placeholder="Qty">
             </div>
             <div class="w-full">
                 <label for="price"></label>
-                <input id="price" wire:model.live="price" class="block w-full purple-textbox-no-rounded" autocomplete="false"
+                <input id="price" wire:model.live="price" class="block w-full purple-textbox-no-rounded"
+                       autocomplete="false"
                        placeholder="price">
             </div>
             <button wire:click="addItems" class="px-3 bg-green-500 text-white font-semibold tracking-wider ">Add
@@ -344,7 +566,7 @@
                                     </button>
                                 </td>
                                 <td class="px-2 text-left border border-gray-300 cursor-pointer"
-                                    wire:click.prevent="changeItems({{$index}})">{{$row['product_name']}}</td>
+                                    wire:click.prevent="changeItems({{$index}})"><div>{{$row['product_name']}}</div><div>{{ $row['description']}}</div></td>
                                 <td class="px-2 text-left border border-gray-300 cursor-pointer"
                                     wire:click.prevent="changeItems({{$index}})">{{$row['colour_name']}}</td>
                                 <td class="px-2 text-left border border-gray-300 cursor-pointer"
@@ -554,11 +776,6 @@
 
         </section>
     </x-forms.m-panel>
-    <x-jet.modal wire:model="flash">
-        <div class="m-3 font-bold text-red-700">
-        This Invoice can not be edited
-        </div>
-    </x-jet.modal>
     <x-forms.m-panel-bottom-button/>
 </div>
 

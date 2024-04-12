@@ -36,45 +36,45 @@
             font-weight: bold;
         }
 
-        .logoLeft {
-            position: fixed;
-            margin-top: 10px;
-            margin-left: 20px;
-            height: 80px !important;
-            Width: auto !important;
-        }
+        /*.logoLeft {*/
+        /*    position: fixed;*/
+        /*    margin-top: 10px;*/
+        /*    margin-left: 20px;*/
+        /*    height: 80px !important;*/
+        /*    Width: auto !important;*/
+        /*}*/
 
-        .companyname {
-            /*position: fixed;*/
-            /*margin-top: 2px;*/
-            /*margin-left: 20px;*/
-            font-weight: 300;
-            /*font-size: 36px;*/
-            /*font-size: x-large;*/
-            font-size: 15px;
-            text-align: left;
-            text-transform: uppercase;
-            height: 35px;
-        }
+        /*.companyname {*/
+        /*    !*position: fixed;*!*/
+        /*    !*margin-top: 2px;*!*/
+        /*    !*margin-left: 20px;*!*/
+        /*    font-weight: 300;*/
+        /*    !*font-size: 36px;*!*/
+        /*    !*font-size: x-large;*!*/
+        /*    font-size: 15px;*/
+        /*    text-align: left;*/
+        /*    text-transform: uppercase;*/
+        /*    height: 35px;*/
+        /*}*/
 
-        .address1 {
-            position: fixed;
-            margin-top: 34px;
-            font-weight: 400;
-            font-size: 12px;
-            text-align: center;
-            font-family: sans-serif;
-        }
+        /*.address1 {*/
+        /*    position: fixed;*/
+        /*    margin-top: 34px;*/
+        /*    font-weight: 400;*/
+        /*    font-size: 12px;*/
+        /*    text-align: center;*/
+        /*    font-family: sans-serif;*/
+        /*}*/
 
-        .address2 {
-            position: fixed;
-            margin-top: 30px;
-            top: 20px !important;
-            font-weight: 400;
-            font-size: 12px;
-            text-align: center;
-            font-family: sans-serif;
-        }
+        /*.address2 {*/
+        /*    position: fixed;*/
+        /*    margin-top: 30px;*/
+        /*    top: 20px !important;*/
+        /*    font-weight: 400;*/
+        /*    font-size: 12px;*/
+        /*    text-align: center;*/
+        /*    font-family: sans-serif;*/
+        /*}*/
 
         .gst {
             position: fixed;
@@ -117,15 +117,20 @@
         <td colspan="3" style="text-align: center; margin-top: 2px; font-weight: bold; border-left: none">Original Copy</td>
     </tr>
     <tr>
-        <td colspan="3" rowspan="4" style="padding-top: 2px;padding-bottom: 10px;">
-            <div class="logoLeft">
-                <img style="position: fixed;margin-left: 20px;padding-top: 5px;height: 100px;width: auto;" src="{{ public_path('images/vijay_garments_logo.jpeg') }}"/>
+
+        <td colspan="1" rowspan="4" style="border-right: none;width: fit-content">
+            <div>
+                <img style="margin-left: 2px;height: 100px;width: auto;position: relative;" src="{{ public_path('images/vijay_garments_logo.jpeg') }}"/>
             </div>
-            <div style="text-align: left; width: 50%; font-weight: bold; padding-left: 120px;"
+        </td>
+        <td colspan="2" rowspan="4" style="padding-bottom: 15px;border-left: none;">
+            <div style="text-align: left;font-weight: bold;"
                  class="companyname">{{$cmp->get('company_name')}}</div>
-            <div style="text-align: left; width: 100%; position: absolute; margin-top: 10px;padding-left: 120px;"
+
+            <div style="text-align: left; width: 100%; margin-top: 3px;"
                  class="address1">{{$cmp->get('address_1')}}</div>
-            <div style="text-align: left; width: 100%; position: relative; margin-top: 3px;padding-left: 120px;"
+
+            <div style="text-align: left; width: 100%; margin-top: 3px;"
                  class="address2">{{$cmp->get('address_2')}}</div>
         </td>
         <td colspan="2" style="text-align: center;">
@@ -221,8 +226,16 @@
     </tr>
     </thead>
     <tbody>
+    <tr>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+    </tr>
     @foreach($list as $index => $row)
-
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
             <td align="left" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_name']}}</td>

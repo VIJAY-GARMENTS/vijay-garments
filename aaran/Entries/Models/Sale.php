@@ -2,12 +2,15 @@
 
 namespace Aaran\Entries\Models;
 
+use Aaran\Common\Models\Despatch;
 use Aaran\Common\Models\Ledger;
 use Aaran\Common\Models\Transport;
 use Aaran\Entries\Database\Factories\SaleFactory;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
+use Aaran\Master\Models\Contact_detail;
 use Aaran\Orders\Models\Order;
+use Aaran\Orders\Models\Style;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,6 +35,16 @@ class Sale extends Model
         return static::where('company_id','=',session()->get('company_id'))->max('invoice_no') + 1;
     }
 
+    public function despatch():BelongsTo
+    {
+        return $this->belongsTo(Despatch::class);
+    }
+
+    public function details():BelongsTo
+    {
+        return $this->belongsTo(Contact_detail::class);
+    }
+
     public function contact(): BelongsTo
     {
         return $this->belongsTo(Contact::class);
@@ -44,6 +57,11 @@ class Sale extends Model
     {
         return $this->belongsTo(Order::class);
     }
+    public function style(): BelongsTo
+    {
+        return $this->belongsTo(Style::class);
+    }
+
     public function transport(): BelongsTo
     {
         return $this->belongsTo(Transport::class);

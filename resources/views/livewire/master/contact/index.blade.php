@@ -10,11 +10,6 @@
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Contact Name</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Mobile</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Whatsapp</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">Email</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">Gst</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">City</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">State</x-table.ths-center>
-                <x-table.ths-center wire:click.prevent="sortBy('vname')">Pin-Code</x-table.ths-center>
                 <x-table.heading class="w-[12rem]">Action</x-table.heading>
             </x-slot>
 
@@ -47,41 +42,6 @@
                             <a href="{{route('contacts.upsert',[$row->id])}}"
                              class="flex px-3 text-gray-600 truncate text-xl text-center">
                                 {{ $row->whatsapp}}
-                            </a>
-                        </x-table.cell>
-
-                        <x-table.cell>
-                             <a href="{{route('contacts.upsert',[$row->id])}}"
-                                class="flex px-3 text-gray-600 truncate text-xl text-left">
-                                {{ $row->email}}
-                            </a>
-                        </x-table.cell>
-
-                        <x-table.cell>
-                            <a href="{{route('contacts.upsert',[$row->id])}}"
-                             class="flex px-3 text-gray-600 truncate text-xl text-left">
-                                {{ $row->gstin}}
-                            </a>
-                        </x-table.cell>
-
-                        <x-table.cell>
-                            <a href="{{route('contacts.upsert',[$row->id])}}"
-                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                {{ $row->city->vname }}
-                            </a>
-                        </x-table.cell>
-
-                        <x-table.cell>
-                            <a href="{{route('contacts.upsert',[$row->id])}}"
-                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                               {{ $row->state->vname }}
-                            </a>
-                        </x-table.cell>
-
-                        <x-table.cell>
-                            <a href="{{route('contacts.upsert',[$row->id])}}"
-                               class="flex flex-col px-3 text-gray-600 truncate text-xl text-center">
-                                {{ $row->pincode->vname }}
                             </a>
                         </x-table.cell>
                         <x-table.cell>

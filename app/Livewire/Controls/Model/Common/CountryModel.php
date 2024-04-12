@@ -2,13 +2,13 @@
 
 namespace App\Livewire\Controls\Model\Common;
 
-use Aaran\Common\Models\Bank;
-use Aaran\Master\Models\Contact_detail;
+use Aaran\Common\Models\Country;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
-class BankModel extends Component
+class CountryModel extends Component
 {
+
     public bool $showModel = false;
 
     public $vname = "";
@@ -21,11 +21,11 @@ class BankModel extends Component
     public function save(): void
     {
         if ($this->vname != '') {
-            $obj = Bank::create([
+            $obj = Country::create([
                 'vname' => Str::upper($this->vname),
                 'active_id' => '1'
             ]);
-            $this->dispatch('refresh-bank', ['name' => $this->vname, 'id' => $obj->id]);
+            $this->dispatch('refresh-country', ['name' => $this->vname, 'id' => $obj->id]);
             $this->clearAll();
         }
     }
@@ -35,12 +35,9 @@ class BankModel extends Component
         $this->showModel = false;
         $this->vname = "";
     }
+
     public function render()
     {
-        return view('livewire.controls.model.common.bank-model');
+        return view('livewire.controls.model.common.country-model');
     }
-
-
-
-
 }

@@ -14,7 +14,7 @@ class SoftwareScope implements Scope
     {
         if (session()->has('software_id')){
 
-            $builder->where('software_id',session()->get('software_id'));
+//            $builder->where('software_id',session()->get('software_id'));
         }
     }
 }

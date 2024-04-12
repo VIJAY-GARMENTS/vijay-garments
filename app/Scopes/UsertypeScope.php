@@ -14,7 +14,7 @@ class UsertypeScope implements Scope
     {
         if (session()->has('usertype_id')){
 
-            $builder->where('usertype_id',session()->get('usertype_id'));
+//            $builder->where('usertype_id',session()->get('usertype_id'));
         }
     }
 }

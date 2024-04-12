@@ -9,8 +9,7 @@ use Aaran\Common\Models\Size;
 use Aaran\Common\Models\Transport;
 use Aaran\Entries\Models\Sale;
 use Aaran\Entries\Models\Saleitem;
-use Aaran\Master\Models\Company;
-use Aaran\Master\Models\Contact;
+ use Aaran\Master\Models\Contact;
 use Aaran\Master\Models\Contact_detail;
 use Aaran\Master\Models\Product;
 use Aaran\Orders\Models\Order;
@@ -180,6 +179,68 @@ class Upsert extends Component
     {
 
         $this->contact_detailCollection = $this->contact_detail_address ? Contact_detail::search(trim($this->contact_detail_address))
+            ->where('contact_id', '=', $this->contact_id)
+            ->get() : contact_detail::all()->where('contact_id', '=', $this->contact_id);
+
+    }
+
+    public $contact_detail_id_1 = '';
+
+    public $contact_detail_address_1 = '';
+    public Collection $contact_detailCollection_1;
+    public $highlightContact_detail_1 = 0;
+    public $contact_detailTyped_1 = false;
+
+    public function decrementContact_detail_1(): void
+    {
+        if ($this->highlightContact_detail_1 === 0) {
+            $this->highlightContact_detail_1 = count($this->contact_detailCollection_1) - 1;
+            return;
+        }
+        $this->highlightContact_detail_1--;
+    }
+
+    public function incrementContact_detail_1(): void
+    {
+        if ($this->highlightContact_detail_1 === count($this->contact_detailCollection_1) - 1) {
+            $this->highlightContact_detail_1 = 0;
+            return;
+        }
+        $this->highlightContact_detail_1++;
+    }
+
+    public function setContact_detail_1($name, $id): void
+    {
+        $this->contact_detail_address_1 = $name;
+        $this->contact_detail_id_1 = $id;
+        $this->getcontact_detailList_1();
+    }
+
+    public function enterContact_detail_1(): void
+    {
+        $obj = $this->contact_detailCollection_1[$this->highlightContact_detail_1] ?? null;
+
+        $this->contact_detail_address_1 = '';
+        $this->contact_detailCollection_1 = Collection::empty();
+        $this->highlightContact_detail_1 = 0;
+
+        $this->contact_detail_address_1 = $obj['address_1'] ?? '';
+        $this->contact_detail_id_1 = $obj['id'] ?? '';
+    }
+
+    #[On('refresh-contact_detail')]
+    public function refreshContact_detail_1($v): void
+    {
+        $this->contact_detail_id_1 = $v['id'];
+        $this->contact_detail_address_1 = $v['name'];
+        $this->contact_detailTyped_1 = false;
+
+    }
+
+    public function getContact_detailList_1(): void
+    {
+
+        $this->contact_detailCollection_1 = $this->contact_detail_address_1 ? Contact_detail::search(trim($this->contact_detail_address_1))
             ->where('contact_id', '=', $this->contact_id)
             ->get() : contact_detail::all()->where('contact_id', '=', $this->contact_id);
 
@@ -671,7 +732,7 @@ class Upsert extends Component
                     'invoice_date' => $this->invoice_date,
                     'order_id' => $this->order_id,
                     'contact_detail_id_buyer_address'=>$this->contact_detail_id,
-                    'contact_detail_id_delivery_address'=>$this->contact_detail_id,
+                    'contact_detail_id_delivery_address'=>$this->contact_detail_id_1,
                     'style_id'=>$this->style_id?: 1,
                     'despatch_id'=>$this->despatch_id?: 1,
                     'sales_type' => $this->sales_type,
@@ -701,7 +762,7 @@ class Upsert extends Component
                 $obj->invoice_date = $this->invoice_date;
                 $obj->order_id = $this->order_id;
                 $obj->contact_detail_id_buyer_address=$this->contact_detail_id;
-                $obj->contact_detail_id_delivery_address=$this->contact_detail_id;
+                $obj->contact_detail_id_delivery_address=$this->contact_detail_id_1;
                 $obj->style_id=$this->style_id;
                 $obj->despatch_id=$this->despatch_id;
                 $obj->sales_type = $this->sales_type;
@@ -758,9 +819,10 @@ class Upsert extends Component
             $this->invoice_date = $obj->invoice_date;
             $this->order_id = $obj->order_id;
             $this->order_name = $obj->order->vname;
-            $this->contact_detail_id_buyer_address=$obj->contact_detail_id;
-            $this->contact_detail_id_delivery_address=$obj->contact_detail_id;
-            $this->contact_detail_address=$obj->contact_detail->address_1;
+            $this->contact_detail_id_buyer_address=$obj->contact_detail_id_buyer_address;
+            $this->contact_detail_address=$obj->details->address_1;
+            $this->contact_detail_id_delivery_address=$obj->contact_detail_id_delivery_address;
+            $this->contact_detail_address_1=$obj->details->address_1;
             $this->style_id = $obj->style_id;
             $this->style_name = $obj->style->vname;
             $this->despatch_id = $obj->despatch_id;
@@ -951,8 +1013,9 @@ class Upsert extends Component
             $this->order_id = $obj->order_id;
             $this->order_name = $obj->order->vname;
             $this->contact_detail_id_buyer_address=$obj->contact_detail_id;
-            $this->contact_detail_id_delivery_address=$obj->contact_detail_id;
             $this->contact_detail_address=$obj->contact_detail->address;
+            $this->contact_detail_id_delivery_address=$obj->contact_detail_id_1;
+            $this->contact_detail_address_1=$obj->contact_detail->address;
             $this->style_id = $obj->style_id;
             $this->style_name = $obj->style->vname;
             $this->despatch_id = $obj->despatch_id;
@@ -998,6 +1061,7 @@ class Upsert extends Component
         $this->getProductList();
         $this->getSizeList();
         $this->getContact_detailList();
+        $this->getContact_detailList_1();
         $this->getStyleList();
         $this->getDespatchList();
         return view('livewire.entries.sales.upsert');

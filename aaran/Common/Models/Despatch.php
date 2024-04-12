@@ -3,6 +3,7 @@
 namespace Aaran\Common\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class Despatch extends Model
 {
@@ -14,5 +15,14 @@ class Despatch extends Model
     {
         return empty($searches) ? static::query()
             : static::where('vname', 'like', '%' . $searches . '%');
+    }
+
+    public static function printDetails($ids): Collection
+    {
+        $obj = self::find($ids);
+
+        return collect([
+            'date' => $obj->date,]);
+
     }
 }

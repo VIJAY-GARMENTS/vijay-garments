@@ -50,7 +50,10 @@
                                                     </li>
 
                                                 @empty
-                                                    @livewire('controls.model.master.contact-model',[$contact_name])
+                                                    <a href="{{route('contacts.upsert',['0'])}}" role="button"
+                                                       class="flex items-center justify-center bg-green-500 w-full h-8 text-white text-center">
+                                                        Not found , Want to create new
+                                                    </a>
                                                 @endforelse
                                             @endif
                                         </ul>
@@ -156,7 +159,10 @@
                                                     </li>
 
                                                 @empty
-                                                    {{--                                                    @livewire('controls.model.master.contact-model',[$contact_name])--}}
+                                                    <a href="{{route('contacts.upsert',[$contact_id])}}" role="button"
+                                                       class="flex items-center justify-center bg-green-500 w-full h-8 text-white text-center">
+                                                        Not found , Want to create new
+                                                    </a>
                                                 @endforelse
                                             @endif
                                         </ul>
@@ -166,58 +172,61 @@
                         </div>
                     </div>
                 </div>
-{{--                <div class="xl:flex gap-2 w-full pt-6">--}}
-{{--                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Party Name</label>--}}
-{{--                    <div x-data="{isTyped: @entangle('contact_detailTyped')}" @click.away="isTyped = false"--}}
-{{--                         class="w-full">--}}
-{{--                        <div class="relative ">--}}
-{{--                            <input--}}
-{{--                                id="contact_name"--}}
-{{--                                type="search"--}}
-{{--                                wire:model.live="contact_detail_address"--}}
-{{--                                autocomplete="off"--}}
-{{--                                placeholder="Party Address.."--}}
-{{--                                @focus="isTyped = true"--}}
-{{--                                @keydown.escape.window="isTyped = false"--}}
-{{--                                @keydown.tab.window="isTyped = false"--}}
-{{--                                @keydown.enter.prevent="isTyped = false"--}}
-{{--                                wire:keydown.arrow-up="decrementContact_detail"--}}
-{{--                                wire:keydown.arrow-down="incrementContact_detail"--}}
-{{--                                wire:keydown.enter="enterContact_detail"--}}
-{{--                                class="block w-full purple-textbox "--}}
-{{--                            />--}}
-{{--                            <div x-show="isTyped"--}}
-{{--                                 x-transition:leave="transition ease-in duration-100"--}}
-{{--                                 x-transition:leave-start="opacity-100"--}}
-{{--                                 x-transition:leave-end="opacity-0"--}}
-{{--                                 x-cloak--}}
-{{--                            >--}}
-{{--                                <div class="absolute z-20 w-full mt-2">--}}
-{{--                                    <div class="block py-1 shadow-md w-full--}}
-{{--                                rounded-lg border-transparent flex-1 appearance-none border--}}
-{{--                                                 bg-white text-gray-800 ring-1 ring-purple-600">--}}
-{{--                                        <ul class="overflow-y-scroll h-96">--}}
-{{--                                            @if($contact_detailCollection)--}}
-{{--                                                @forelse ($contact_detailCollection as $i => $contact_detail)--}}
+                <div class="xl:flex gap-2 w-full pt-6">
+                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Delivery Address</label>
+                    <div x-data="{isTyped: @entangle('contact_detailTyped_1')}" @click.away="isTyped = false"
+                         class="w-full">
+                        <div class="relative ">
+                            <input
+                                id="contact_name"
+                                type="search"
+                                wire:model.live="contact_detail_address_1"
+                                autocomplete="off"
+                                placeholder="Delivery Address.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementContact_detail_1"
+                                wire:keydown.arrow-down="incrementContact_detail_1"
+                                wire:keydown.enter="enterContact_detail_1"
+                                class="block w-full purple-textbox "
+                            />
+                            <div x-show="isTyped"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 x-cloak
+                            >
+                                <div class="absolute z-20 w-full mt-2">
+                                    <div class="block py-1 shadow-md w-full
+                                rounded-lg border-transparent flex-1 appearance-none border
+                                                 bg-white text-gray-800 ring-1 ring-purple-600">
+                                        <ul class="overflow-y-scroll h-96">
+                                            @if($contact_detailCollection_1)
+                                                @forelse ($contact_detailCollection_1 as $i => $contact_detail_1)
 
-{{--                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8--}}
-{{--                                                                        {{ $highlightContact_detail === $i ? 'bg-yellow-100' : '' }}"--}}
-{{--                                                        wire:click.prevent="setContact_detail('{{$contact_detail->address}}','{{$contact_detail->id}}')"--}}
-{{--                                                        x-on:click="isTyped = false">--}}
-{{--                                                        {{ $contact_detail->address }}--}}
-{{--                                                    </li>--}}
+                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                                        {{ $highlightContact_detail_1 === $i ? 'bg-yellow-100' : '' }}"
+                                                        wire:click.prevent="setContact_detail_1('{{$contact_detail_1->address_1}}','{{$contact_detail_1->id}}')"
+                                                        x-on:click="isTyped = false">
+                                                        {{ $contact_detail_1->address_1 }}
+                                                    </li>
 
-{{--                                                @empty--}}
-{{--                                                    @livewire('controls.model.master.contact-model',[$contact_name])--}}
-{{--                                                @endforelse--}}
-{{--                                            @endif--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                                                @empty
+                                                    <a href="{{route('contacts.upsert',[$contact_id])}}" role="button"
+                                                       class="flex items-center justify-center bg-green-500 w-full h-8 text-white text-center">
+                                                        Not found , Want to create new
+                                                    </a>
+                                                @endforelse
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="ml-5">

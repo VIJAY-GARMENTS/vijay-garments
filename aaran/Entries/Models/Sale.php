@@ -35,6 +35,16 @@ class Sale extends Model
         return static::where('company_id','=',session()->get('company_id'))->max('invoice_no') + 1;
     }
 
+    public function despatch():BelongsTo
+    {
+        return $this->belongsTo(Despatch::class);
+    }
+
+    public function details():BelongsTo
+    {
+        return $this->belongsTo(Contact_detail::class);
+    }
+
     public function contact(): BelongsTo
     {
         return $this->belongsTo(Contact::class);
@@ -51,14 +61,7 @@ class Sale extends Model
     {
         return $this->belongsTo(Style::class);
     }
-    public function despatch(): BelongsTo
-    {
-        return $this->belongsTo(Despatch::class);
-    }
-    public function contact_detail(): BelongsTo
-    {
-        return $this->belongsTo(Contact_detail::class);
-    }
+
     public function transport(): BelongsTo
     {
         return $this->belongsTo(Transport::class);

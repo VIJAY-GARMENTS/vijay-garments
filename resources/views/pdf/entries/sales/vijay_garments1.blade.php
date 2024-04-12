@@ -87,10 +87,10 @@
             <div style="text-align: left;padding-top: 5px;">{{$cmp->get('gstin')}}</div>
         </td>
         <td colspan="2" style="text-align: center;">
-            <div>Style No</div>
+            <div>Style</div>
         </td>
         <td colspan="2" style="text-align: center;">
-            <div>Date</div>
+            <div>Style No</div>
         </td>
     </tr>
     <tr>
@@ -98,10 +98,10 @@
             &nbsp;
         </td>
         <td colspan="2" style="text-align: center;">
-            <div></div>
+            <div>{{ $obj->style_name }}</div>
         </td>
         <td colspan="2" style="text-align: center;">
-            <div></div>
+            <div>{{$style->get('description')}}</div>
         </td>
     </tr>
 
@@ -129,29 +129,29 @@
 
         <td colspan="2" style="border-bottom: none; border-top: none;">
             <div style="text-align: left;padding-left: 20px;">{{$contact->get('contact_name')}}</div>
-            <div style="text-align: left;padding-left: 20px;">{{$contact->get('address_1')}}</div>
+            <div style="text-align: left;padding-left: 20px;">{{$contact_detail->get('address_1')}}</div>
         </td>
         <td colspan="2" style="border-bottom: none; border-top: none;">
             <div style="text-align: left;padding-left: 20px;">{{$contact->get('contact_name')}}</div>
-            <div style="text-align: left;padding-left: 20px;">{{$contact->get('address_1')}}</div>
+            <div style="text-align: left;padding-left: 20px;">{{$delivery->get('address_1')}}</div>
         </td>
         <td colspan="2" style="text-align: center;" width="100px">
-            <div><span>&nbsp;&nbsp;&nbsp;</span></div>
+            <div><span>&nbsp;&nbsp;&nbsp;{{$obj->despatch_name}}</span></div>
         </td>
         <td colspan="2" style="text-align: center;">
-            <div><span>&nbsp;&nbsp;&nbsp;</span></span>
+            <div><span>&nbsp;&nbsp;&nbsp;{{$despatch->get('date')}}</span>
             </div>
         </td>
     </tr>
     <tr>
 
         <td colspan="2" style="border-bottom: none; border-top: none;">
-            <div style="text-align: left;padding-left: 20px;">{{$contact->get('address_2')}}</div>
-            <div style="text-align: left;padding-left: 20px;">{{$contact->get('address_3')}}</div>
+            <div style="text-align: left;padding-left: 20px;">{{$contact_detail->get('address_2')}}</div>
+            <div style="text-align: left;padding-left: 20px;">{{$contact_detail->get('address_3')}}</div>
         </td>
         <td colspan="2" style="border-bottom: none; border-top: none;">
-            <div style="text-align: left;padding-left: 20px;">{{$contact->get('address_2')}}</div>
-            <div style="text-align: left;padding-left: 20px;">{{$contact->get('address_3')}}</div>
+            <div style="text-align: left;padding-left: 20px;">{{$delivery->get('address_2')}}</div>
+            <div style="text-align: left;padding-left: 20px;">{{$delivery->get('address_3')}}</div>
         </td>
         <td colspan="2" style="text-align: center;" width="100px">
             <div><span>&nbsp;&nbsp;Dispatch Through&nbsp;</span></div>
@@ -164,19 +164,19 @@
     <tr>
 
         <td colspan="2" style="border-top: none;">
-            <div style="text-align: left;padding-left: 20px;">{{$contact->get('gstcell')}}</div>
+            <div style="text-align: left;padding-left: 20px;">{{$contact_detail->get('gstcell')}}</div>
 
             <div><span>&nbsp;&nbsp;&nbsp;</span></div>
         </td>
         <td colspan="2" style="border-top: none;">
-            <div style="text-align: left;padding-left: 20px;">{{$contact->get('gstcell')}}</div>
+            <div style="text-align: left;padding-left: 20px;">{{$delivery->get('gstcell')}}</div>
             <div><span>&nbsp;&nbsp;&nbsp;</span></div>
         </td>
         <td colspan="2" style="text-align: center;" width="100px">
-            <div><span>&nbsp;&nbsp;&nbsp;</span></div>
+            <div><span>&nbsp;&nbsp;&nbsp;{{ $obj->transport_name }}</span></div>
         </td>
         <td colspan="2" style="text-align: center;">
-            <div><span>&nbsp;&nbsp;&nbsp;</span></span>
+            <div><span>&nbsp;&nbsp;&nbsp;{{ $obj->transport_date }}</span></span>
             </div>
         </td>
     </tr>
@@ -207,7 +207,9 @@
     @foreach($list as $index => $row)
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
-            <td align="left" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_name']}}</td>
+            <td align="left" style="border-bottom: none;border-top: none;">&nbsp;<div>{{$row['product_name']}}</div>
+            <div>{{$row['description']}}&nbsp;-&nbsp;{{$row['colour_name']}}&nbsp;-&nbsp;{{$row['size_name']}}</div>
+            </td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['hsncode']}}</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']+0}}</td>
             <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{number_format($row['price'],2,'.','')}}</td>
@@ -217,7 +219,7 @@
 
     @endforeach
 
-    @for($i = 0; $i < 16-$list->count(); $i++)
+    @for($i = 0; $i < 15-$list->count(); $i++)
 
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>

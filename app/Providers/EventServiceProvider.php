@@ -22,8 +22,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [ Login::class=>[
         SetTenantIdInSession::class,
-        SetSoftwareIdInSession::class,
-        SetUsertypeIdInSession::class,
+//        SetSoftwareIdInSession::class,
+//        SetUsertypeIdInSession::class,
     ]];
 
     /**

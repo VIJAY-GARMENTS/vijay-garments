@@ -6,10 +6,11 @@
 
             <div class="text-right ">
                 @editor
+                @if(session()->get('company_id')!='')
                 <x-button.new>
                     <div class="'bg-blue-500 hover:bg-amber-950'">
                     </div>
-                </x-button.new>
+                </x-button.new>@endif
                 @endeditor
             </div>
 

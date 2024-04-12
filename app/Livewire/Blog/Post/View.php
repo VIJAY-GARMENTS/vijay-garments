@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Blog\Post;
 
+use Aaran\Master\Models\Contact;
+use Aaran\Taskmanager\Models\Reply;
 use App\Livewire\Trait\CommonTrait;
 use App\Models\Blog\Comment;
 use App\Models\Blog\Like;
@@ -21,6 +23,9 @@ class View extends Component
     public Post $post;
     public $id;
     public $like = 0;
+    public $user_id;
+    public $comment_id;
+    public $showEditModel = false;
 
     public function incrementLike()
     {
@@ -42,19 +47,41 @@ class View extends Component
             $this->post = Post::find($id);
             $this->post_id= $id;
             $this->likes = Like::find($this->post_id);
+            $this->user_id= Auth::id();
         }
     }
 
     public function save(){
+        $this->validate([
+            'user_id'=>'required',
+                'body'=>'required|min:3',
+            ]
+        );
         if ($this->post_id !='') {
             if ($this->vid == '') {
                 Comment::create([
                     'body' => $this->body,
+                    'user_id' => \Auth::id(),
                     'post_id' => $this->post_id,
                 ]);
-            } else {
-                $comment = Comment::find($this->vid);
-                $comment->body = $this->body;
+//            } else {
+//                $comment = Comment::find($this->vid);
+//                $comment->body = $this->body;
+
+            }
+            $this->clearFields();
+        }
+    }
+
+    public function reply()
+    {
+        if($this->user_id !=''){
+            if ($this->id !='') {
+                Reply::create([
+                    'reply' => $this->reply,
+                    'user_id' => Auth::id(),
+                    'comment_id' => $this->comment_id,
+                ]);
             }
         }
     }
@@ -62,6 +89,21 @@ class View extends Component
     public function clearFields()
     {
         $this->body='';
+
+    }
+
+
+    public function show($comments_id)
+    {
+        $this -> showEditModel =! $this->showEditModel;
+        $this -> comments_id = $comments_id;
+    }
+
+
+    public function getContact()
+    {
+        $this->contacts=Contact::where('company_id','=',session()->get('company_id'))->get();
+
     }
 
 

@@ -1,6 +1,6 @@
 <div class="bg-gray-50">
     <main class="max-w-6xl p-2 mx-auto space-y-6 ">
-        <article class="max-w-6xl bg-white rounded-xl shadow-2xl p-5 pl-8 mx-auto">
+        <article class="max-w-6xl bg-white p-5 pl-8 mx-auto">
             <div class="my-2 text-end">@editor
                 <a href="{{route('posts.upsert',[$post->id])}}">
                     <button type="button" class="items-end text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center
@@ -15,22 +15,22 @@
             <div class="lg:pt-2.5">
                 <div>
                     <div>
-                        <div class=" h-96 w-3/4 mx-auto">
+                        <div class=" h-96 max-w-6xl mx-auto">
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($post->image) }}" alt=""
                                  class=" rounded-xl shadow-2xl h-96 w-full">
                         </div>
                     </div>
 
-                    <div class="mt-4 block text-left mr-5 text-gray-400 text-sm">
+                    <div class="flex mt-4 text-left mr-5 text-gray-600 text-m">
                         Published
-                        <time>{{ $post->created_at->diffForHumans() }}</time>
-                    </div>
+                        <time>{{ $post->created_at->diffForHumans() }}</time>&nbsp;
 
-                    <div class="flex text-left text-2xl mr-5 mt-4">
-                        <div class="">
-                            <h5 class="font-bold capitalize">
-                                {{ $post->user->name }}
-                            </h5>
+                        <div class="text-left text-m text-gray-600">
+                            <div class="border-s-2 border-s-amber-500 px-1">
+                                <h5 class="font-bold capitalize">Author
+                                    {{ $post->user->name }}
+                                </h5>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,20 +56,23 @@
                         class="space-y-4 lg:text-lg leading-loose text-left overflow-hidden text-wrap">{!! $post->body !!}</div>
                     <div class="mt-4">
                         {{$likes->count()}}
-                        <x-icons.icon :icon="'heart'" wire:model="like" wire:click="incrementLike" class="h-4 w-4 justify-end"/>
+                        <x-icons.icon :icon="'heart'" wire:model="like" wire:click="incrementLike"
+                                      class="h-4 w-4 justify-end"/>
                     </div>
                 </div>
-
             </div>
-            <div class="border-t-2 border-gray-300 my-2"/>
 
+            <div class="border-t-2 border-gray-300 my-2"/>
             <div class="gap-5 capitalize my-5">
                 <label for="comments" class="font-extrabold text-3xl">Comments</label>
                 <div class="w-3/5">
-                    <x-input.model-text wire:model="user_name" :label="'user name'"/>
-                    @error('user_name')
-                    <div class="text-red-500">{{$message}}</div> @enderror
-                    <x-input.rich-text wire:model="body" :height="'h-44'" :placeholder="'write your thoughts....!'"/>
+                        <textarea rows="5" id="vname" wire:model="body" autocomplete="off" autofocus
+                                  class="rounded-lg appearance-none border
+                                                 border-gray-300 py-2 px-2 bg-white text-gray-800 w-full h-44
+                                                 placeholder-gray-400 shadow-md text-base focus:outline-none
+                                                 focus:ring-2 focus:ring-purple-500 focus:border-transparent
+                                                 form-textarea block transition duration-150 ease-in-out sm:text-sm
+                                                 sm:leading-5 " placeholder="Write your thoughts....!"></textarea>
 
                     <button type="submit" wire:click.prevent="save" class="mt-5">
                         <div
@@ -85,25 +88,22 @@
                                                                                stroke-linejoin="round"
                                                                                stroke-width="2"
                                                                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </span>
-                            <span class="relative">Post </span>
+                         </span>
+                            <span class="relative">Comment </span>
                         </div>
                     </button>
-
-
                 </div>
 
                 @foreach($list as $row)
                     <div class="bg-gray-100 rounded-lg p-2 my-2 text-lg mt-3 text-ellipsis overflow-hidden space-y-4">
                         <div class="flex w-full">
                             <span class="w-full">{!!($row->body)!!}</span>&nbsp;<span
-                                class="opacity-65 text-right capitalize w-full"> Command By:&nbsp;{{$row->user_name}}</span>
+                                class="opacity-65 text-right capitalize w-full"> &nbsp;{{$row->user_name}}</span>
                         </div>
                     </div>
                 @endforeach
                 {{ $list->links() }}
             </div>
-
         </article>
     </main>
 

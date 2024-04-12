@@ -5,9 +5,7 @@ namespace App\Livewire\Taskmanager\Todos;
 use Aaran\Taskmanager\Models\Todos;
 use Carbon\Carbon;
 use Livewire\Component;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
-use Livewire\Attributes\Computed;
 
 #[Title('My Todo List')]
 class Index extends Component
@@ -19,6 +17,7 @@ class Index extends Component
     public string $ename = '';
     public bool $completed = false;
     public bool $editmode = false;
+    public mixed $subjective = false;
     public mixed $active_id = '1';
 
 
@@ -46,7 +45,9 @@ class Index extends Component
             'vdate' => $this->vdate,
             'vname' => $this->vname,
             'completed' => $this->completed,
+            'subjective' => $this->subjective,
             'company_id' => session()->get('company_id'),
+            'user_id' => auth()->id(),
             'active_id' => '1'
         ]);
 
@@ -82,6 +83,15 @@ class Index extends Component
         $this->ename = '';
     }
 
+    public function markAsPublic($id): void
+    {
+        $todo = Todos::find($id);
+        $todo->subjective = !$todo->subjective;
+        $todo->save();
+        $this->clearFields();
+        $this->refreshComponent();
+    }
+
     public function getDelete($id)
     {
         $todo = Todos::find($id);
@@ -92,7 +102,10 @@ class Index extends Component
 
     public function getList()
     {
-        return Todos::all()->where('company_id','=',session()->get('company_id'));
+        return Todos::where('company_id','=',session()->get('company_id'))
+            ->Where('user_id','=', auth()->id())
+            ->orwhere('subjective','=', true)
+            ->get();
 
     }
 

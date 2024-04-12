@@ -10,7 +10,7 @@ class DefaultCompanySeeder extends Seeder
     public static function run(): void
     {
         DefaultCompany::create([
-            'company_id' => '0',
+            'company_id' => '1',
             'acyear' => '1'
         ]);
     }

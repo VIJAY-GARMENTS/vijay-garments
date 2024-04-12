@@ -36,7 +36,7 @@ use App\Models\Group;
 use App\Models\Software;
 use App\Models\Tenant;
 use App\Models\User;
-use App\Models\Usertype;
+use App\Models\Role;
 use Database\Factories\Blog\PostFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -45,54 +45,24 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        Tenant::create(['t_name'=>'Aaran']);
-        Tenant::create(['t_name'=>'test']);
-        Software::create(['s_name'=>'Garments']);
-        Software::create(['s_name'=>'Printing']);
-        Usertype::create(['usertype'=>'Admin']);
-        Usertype::create(['usertype'=>'member']);
+        Tenant::create([
+            't_name' => 'CODEXSUN',
+            'active_id' => '1'
+        ]);
+
+        Role::create([
+            'vname' => '-',
+            'active_id' => '1'
+        ]);
+
         User::create([
             'name' => 'sundar',
             'email' => 'sundar@sundar.com',
             'password' => bcrypt('kalarani'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'tenant_id'=> '1',
-            'software_id'=> '1',
-            'usertype_id'=>'1'
-        ]);
-
-        User::create([
-            'name' => 'divya',
-            'email' => 'divya@aaran.org',
-            'password' => bcrypt('123456789'),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-            'tenant_id'=> '1',
-            'software_id'=> '1',
-            'usertype_id'=>'2'
-        ]);
-
-        User::create([
-            'name' => 'Jagadeesh',
-            'email' => 'jagadeesh@aaran.org',
-            'password' => bcrypt('123456789'),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-            'tenant_id'=> '2',
-            'software_id'=> '2',
-            'usertype_id'=>'2'
-        ]);
-
-        User::create([
-            'name' => 'kalaiyarasan',
-            'email' => 'kalaiyarasan@aaran.org',
-            'password' => bcrypt('987654321'),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-            'tenant_id'=> '1',
-            'software_id'=> '1',
-            'usertype_id'=>'2'
+            'tenant_id' => '1',
+            'role_id' => '1'
         ]);
 
         CitySeeder::run();
@@ -117,21 +87,5 @@ class DatabaseSeeder extends Seeder
         OrderSeeder::run();
         StyleSeeder::run();
         FabricLotSeeder::run();
-
-
-//        JobcardSeeder::run();
-//        CuttingSeeder::run();
-//        PeOutwardSeeder::run();
-//        PeInwardSeeder::run();
-//        SectionOutwardSeeder::run();
-//        SectionInwardSeeder::run();
-//        IroningSeeder::run();
-//
-//        SaleSeeder::run();
-//        ClientSeeder::run();
-//
-//        Post::factory(10)->create();
-
-
     }
 }

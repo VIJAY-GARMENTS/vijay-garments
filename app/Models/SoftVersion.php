@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Software extends Model
+class SoftVersion extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

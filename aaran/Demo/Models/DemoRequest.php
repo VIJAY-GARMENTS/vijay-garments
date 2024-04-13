@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Aaran\Demo\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,6 +9,6 @@ class DemoRequest extends Model
 {
     use HasFactory;
 
-    protected $fillable=['company_name','contact_person','email','mobile'];
+    protected $guarded = [];
 
 }

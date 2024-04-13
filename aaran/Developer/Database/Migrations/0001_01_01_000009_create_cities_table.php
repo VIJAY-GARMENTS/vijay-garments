@@ -7,16 +7,15 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('default_companies', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->nullable();
-            $table->unsignedBigInteger('tenant_id')->nullable();
-            $table->integer('acyear');
+            $table->string('vname')->unique();
+            $table->smallInteger('active_id')->nullable();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('default_companies');
+        Schema::dropIfExists('cities');
     }
 };

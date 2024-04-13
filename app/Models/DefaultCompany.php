@@ -10,15 +10,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class DefaultCompany extends Model
 {
     use HasFactory;
+
     public $timestamps = false;
-    /**
-     * @var \Closure|\Illuminate\Support\HigherOrderCollectionProxy|mixed|object|null
-     */
-//    public  $tenant_id;
 
     protected $guarded = [];
 
-    public static function search(string $searches): Builder
+    public static function search(string $searches)
     {
         return empty($searches) ? static::query()
             : static::where('vname', 'like', '%' . $searches . '%');

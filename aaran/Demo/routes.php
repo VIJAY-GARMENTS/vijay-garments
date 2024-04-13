@@ -3,8 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 //Demo
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-
-    Route::get('/demo-requests', App\Livewire\Webs\DemoRequest\Index::class)->name('demo-requests');
-    Route::get('/demo-requests/upsert', App\Livewire\Webs\DemoRequest\Upsert::class)->name('demo-requests.upsert');
-});
+Route::get('/demo-requests', App\Livewire\Webs\DemoRequest\Index::class)->name('demo-requests');
+Route::get('/demo-requests/upsert', App\Livewire\Webs\DemoRequest\Upsert::class)->name('demo-requests.upsert');

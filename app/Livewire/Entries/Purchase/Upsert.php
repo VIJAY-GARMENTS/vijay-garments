@@ -4,12 +4,12 @@ namespace App\Livewire\Entries\Purchase;
 
 use Aaran\Common\Models\Colour;
 use Aaran\Common\Models\Ledger;
-use Aaran\Common\Models\Order;
 use Aaran\Common\Models\Size;
 use Aaran\Common\Models\Transport;
 use Aaran\Entries\Models\Purchase;
 use Aaran\Entries\Models\Purchaseitem;
 use Aaran\Master\Models\Contact;
+use Aaran\Master\Models\Order;
 use Aaran\Master\Models\Product;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Database\Eloquent\Collection;

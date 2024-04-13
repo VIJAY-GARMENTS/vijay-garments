@@ -2,8 +2,8 @@
 
 namespace Aaran\Erp\Models\Production;
 
-use Aaran\Common\Models\Order;
 use Aaran\Erp\Database\Factories\Erp\Production\CuttingFactory;
+use Aaran\Master\Models\Order;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

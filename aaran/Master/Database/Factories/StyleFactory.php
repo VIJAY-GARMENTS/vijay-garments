@@ -1,8 +1,8 @@
 <?php
 
-namespace Aaran\Common\Database\Factories;
+namespace Aaran\Master\Database\Factories;
 
-use Aaran\Common\Models\Style;
+use Aaran\Master\Models\Style;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StyleFactory extends Factory

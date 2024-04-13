@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Controls\Model\Order;
 
-use Aaran\Common\Models\Order;
+use Aaran\Master\Models\Order;
 use Livewire\Component;
 
 class OrderModel extends Component

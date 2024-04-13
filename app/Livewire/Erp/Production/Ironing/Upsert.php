@@ -2,13 +2,13 @@
 
 namespace App\Livewire\Erp\Production\Ironing;
 
-use Aaran\Common\Models\Order;
-use Aaran\Common\Models\Style;
 use Aaran\Erp\Models\Production\Ironing;
 use Aaran\Erp\Models\Production\IroningItem;
 use Aaran\Erp\Models\Production\Jobcard;
 use Aaran\Erp\Models\Production\JobcardItem;
 use Aaran\Erp\Models\Production\SectionInwardItem;
+use Aaran\Master\Models\Order;
+use Aaran\Master\Models\Style;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;

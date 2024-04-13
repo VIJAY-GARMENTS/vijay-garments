@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Offset\Sales;
 
-use Aaran\Common\Models\Order;
 use Aaran\Master\Models\Contact;
+use Aaran\Master\Models\Order;
 use Aaran\Offset\Models\Sale_offset;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Database\Eloquent\Collection;

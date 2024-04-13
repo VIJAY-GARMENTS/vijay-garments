@@ -1,11 +1,11 @@
 <?php
 
-namespace Aaran\Common\Database\Seeders;
+namespace Aaran\Master\Database\Seeders;
 
-use Aaran\Common\Models\Order;
+use Aaran\Master\Models\Order;
 use Illuminate\Database\Seeder;
 
-class S116_OrderSeeder extends Seeder
+class S204_OrderSeeder extends Seeder
 {
     public static function run(): void
     {

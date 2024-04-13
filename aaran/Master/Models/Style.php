@@ -1,8 +1,8 @@
 <?php
 
-namespace Aaran\Common\Models;
+namespace Aaran\Master\Models;
 
-use Aaran\Common\Database\Factories\StyleFactory;
+use Aaran\Master\Database\Factories\StyleFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;

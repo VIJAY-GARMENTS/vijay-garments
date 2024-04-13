@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire\Common;
+namespace App\Livewire\Master\Style;
 
-use Aaran\Common\Models\Style;
+use Aaran\Master\Models\Style;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
-class StyleList extends Component
+class Index extends Component
 {
     use CommonTrait;
 
@@ -73,7 +73,7 @@ class StyleList extends Component
 
     public function render()
     {
-        return view('livewire.common.style-list')->with([
+        return view('livewire.master.style.index')->with([
             'list' => $this->getList()
         ]);
     }

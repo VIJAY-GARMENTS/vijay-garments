@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Entries\Sales;
 
 use Aaran\Common\Models\Despatch;
-use Aaran\Common\Models\Style;
 use Aaran\Entries\Models\Sale;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
 use Aaran\Master\Models\Contact_detail;
+use Aaran\Master\Models\Style;
 use App\Helper\ConvertTo;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\Pdf;

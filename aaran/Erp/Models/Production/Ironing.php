@@ -2,8 +2,8 @@
 
 namespace Aaran\Erp\Models\Production;
 
-use Aaran\Common\Models\Order;
-use Aaran\Common\Models\Style;
+use Aaran\Master\Models\Order;
+use Aaran\Master\Models\Style;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

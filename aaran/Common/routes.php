@@ -19,6 +19,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/despatches', App\Livewire\Common\DespatchList::class)->name('despatches');
     Route::get('/banks', App\Livewire\Common\BankList::class)->name('banks');
     Route::get('/receipttypes', App\Livewire\Common\ReceipttypeList::class)->name('receipttypes');
-    Route::get('/orders', \App\Livewire\Common\OrderList::class)->name('orders');
-    Route::get('/styles', \App\Livewire\Common\StyleList::class)->name('styles');
+
 });

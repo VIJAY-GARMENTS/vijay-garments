@@ -4,10 +4,10 @@ namespace App\Livewire\Offset\Purchase;
 
 use Aaran\Common\Models\Colour;
 use Aaran\Common\Models\Ledger;
-use Aaran\Common\Models\Order;
 use Aaran\Common\Models\Size;
 use Aaran\Entries\Models\Purchase;
 use Aaran\Master\Models\Contact;
+use Aaran\Master\Models\Order;
 use Aaran\Master\Models\Product;
 use Aaran\Offset\Models\Purchase_offset;
 use Aaran\Offset\Models\Purchaseitem_offset;

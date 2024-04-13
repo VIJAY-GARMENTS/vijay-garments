@@ -34,7 +34,7 @@
 - Staff
 
 
-## Entries - 401
+## Entries - 301
 
 - Sales
 - Purchase

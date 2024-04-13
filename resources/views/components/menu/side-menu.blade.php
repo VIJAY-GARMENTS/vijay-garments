@@ -25,15 +25,15 @@
         <ul class="flex flex-col py-6 space-y-1"
             x-data="{selected:null}">
 
-            <x-menu.sub.entries/>
-            <x-menu.sub.offset/>
-            <x-menu.sub.erp.production/>
-            <x-menu.sub.accounts/>
-            <x-menu.sub.audit/>
-            <x-menu.sub.task/>
-            <x-menu.sub.utilities/>
-            <x-menu.sub.admin/>
-            <x-menu.sub.magalir/>
+{{--            <x-menu.sub.entries/>--}}
+{{--            <x-menu.sub.offset/>--}}
+{{--            <x-menu.sub.erp.production/>--}}
+{{--            <x-menu.sub.accounts/>--}}
+{{--            <x-menu.sub.audit/>--}}
+{{--            <x-menu.sub.task/>--}}
+{{--            <x-menu.sub.utilities/>--}}
+{{--            <x-menu.sub.admin/>--}}
+{{--            <x-menu.sub.magalir/>--}}
 
             <x-menu.sub.master/>
             <x-menu.sub.common/>

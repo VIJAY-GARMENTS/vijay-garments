@@ -5,6 +5,7 @@ return [
     App\Providers\EventServiceProvider::class,
     App\Providers\FortifyServiceProvider::class,
     App\Providers\JetstreamServiceProvider::class,
+    Aaran\Aaconfig\Providers\AaconfigServiceProvider::class,
     Aaran\Common\Providers\CommonServiceProvider::class,
     Aaran\Master\Providers\MasterServiceProvider::class,
 
@@ -18,6 +19,5 @@ return [
 //    Aaran\Magalir\Providers\MagalirServiceProvider::class,
 //    Aaran\Accounts\Providers\AccountsServiceProvider::class,
 //    Aaran\Offset\Providers\OffsetServiceProvider::class,
-//    Aaran\Aaconfig\Providers\AaconfigServiceProvider::class,
 
 ];

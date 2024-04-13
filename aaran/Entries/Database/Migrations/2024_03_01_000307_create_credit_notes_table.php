@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('sales', function (Blueprint $table) {
+        Schema::create('credit_notes', function (Blueprint $table) {
             $table->id();
             $table->string('uniqueno')->unique();
             $table->string('acyear')->nullable();
@@ -35,25 +35,10 @@ return new class extends Migration
             $table->string('active_id',10)->nullable();
             $table->timestamps();
         });
-
-        Schema::create('saleitems', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('sale_id')->references('id')->on('sales');
-            $table->foreignId('product_id')->references('id')->on('products');
-            $table->foreignId('colour_id')->references('id')->on('colours');
-            $table->foreignId('size_id')->references('id')->on('sizes');
-            $table->decimal('qty');
-            $table->decimal('price');
-            $table->string('gst_percent')->nullable();
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });
     }
 
     public function down()
     {
-        Schema::dropIfExists('saleitems');
-
-        Schema::dropIfExists('sales');
+        Schema::dropIfExists('credit_notes');
     }
 };

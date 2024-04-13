@@ -21,6 +21,8 @@ use Aaran\Erp\Database\Seeders\FabricLotSeeder;
 use Aaran\Master\Database\Seeders\S201_CompanySeeder;
 use Aaran\Master\Database\Seeders\S202_ContactSeeder;
 use Aaran\Master\Database\Seeders\S203_ProductSeeder;
+use Aaran\Master\Database\Seeders\S204_OrderSeeder;
+use Aaran\Master\Database\Seeders\S205_StyleSeeder;
 use Aaran\Orders\Database\Seeders\OrderSeeder;
 use Aaran\Orders\Database\Seeders\StyleSeeder;
 use Illuminate\Database\Seeder;
@@ -56,11 +58,8 @@ class DatabaseSeeder extends Seeder
         S201_CompanySeeder::run();
         S202_ContactSeeder::run();
         S203_ProductSeeder::run();
-
-//order
-        OrderSeeder::run();
-        StyleSeeder::run();
-        FabricLotSeeder::run();
+        S204_OrderSeeder::run();
+        S205_StyleSeeder::run();
 
     }
 }

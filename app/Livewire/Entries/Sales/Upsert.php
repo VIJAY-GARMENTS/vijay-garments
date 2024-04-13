@@ -8,12 +8,15 @@ use Aaran\Common\Models\Ledger;
 use Aaran\Common\Models\Size;
 use Aaran\Common\Models\Transport;
 use Aaran\Entries\Models\Sale;
+use Aaran\Entries\Models\Sale_garment;
 use Aaran\Entries\Models\Saleitem;
+use Aaran\Entries\Models\Saleitem_garment;
 use Aaran\Master\Models\Contact;
 use Aaran\Master\Models\Contact_detail;
 use Aaran\Master\Models\Order;
 use Aaran\Master\Models\Product;
 use Aaran\Master\Models\Style;
+use Aaran\Offset\Models\Sale_offset;
 use App\Livewire\Trait\CommonTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -44,8 +47,8 @@ class Upsert extends Component
     public string $gst_percent = '';
     public string $itemIndex = "";
     public $itemList = [];
-    public $contact_detail_id_buyer_address;
-    public $contact_detail_id_delivery_address;
+    public $billing_id;
+    public $shipping_id;
     public $description;
 
     public string $company;
@@ -57,9 +60,11 @@ class Upsert extends Component
     public string $product;
     public string $colour;
     public string $size;
+    public $po_no;
+    public $dc_no;
+
 
     public $contact_id = '';
-
     public $contact_name = '';
     public Collection $contactCollection;
     public $highlightContact = 0;
@@ -730,15 +735,7 @@ class Upsert extends Component
                     'contact_id' => $this->contact_id,
                     'invoice_no' => $this->invoice_no,
                     'invoice_date' => $this->invoice_date,
-                    'order_id' => $this->order_id,
-                    'contact_detail_id_buyer_address'=>$this->contact_detail_id,
-                    'contact_detail_id_delivery_address'=>$this->contact_detail_id_1,
-                    'style_id'=>$this->style_id?: 1,
-                    'despatch_id'=>$this->despatch_id?: 1,
                     'sales_type' => $this->sales_type,
-                    'transport_id' => $this->transport_id ?: 1,
-                    'destination' => $this->destination,
-                    'bundle' => $this->bundle,
                     'total_qty' => $this->total_qty,
                     'total_taxable' => $this->total_taxable,
                     'total_gst' => $this->total_gst,
@@ -749,6 +746,14 @@ class Upsert extends Component
                     'active_id' => $this->active_id,
                 ]);
                 $this->saveItem($obj->id);
+                if (config('aaconfig.app_type') == 'garments') {
+                    $this->save_garments($obj->id);
+                    $this->save_garmentitems($obj->id);
+
+                }elseif (config('aaconfig.app_type') == 'offset'){
+                    $this->save_offset($obj->id);
+                    $this->save_offsetitems($obj->id);
+                }
                 $message = "Saved";
                 $this->getRoute();
 
@@ -760,15 +765,7 @@ class Upsert extends Component
                 $obj->contact_id = $this->contact_id;
                 $obj->invoice_no = $this->invoice_no;
                 $obj->invoice_date = $this->invoice_date;
-                $obj->order_id = $this->order_id;
-                $obj->contact_detail_id_buyer_address=$this->contact_detail_id;
-                $obj->contact_detail_id_delivery_address=$this->contact_detail_id_1;
-                $obj->style_id=$this->style_id;
-                $obj->despatch_id=$this->despatch_id;
                 $obj->sales_type = $this->sales_type;
-                $obj->transport_id = $this->transport_id;
-                $obj->destination = $this->destination;
-                $obj->bundle = $this->bundle;
                 $obj->total_qty = $this->total_qty;
                 $obj->total_taxable = $this->total_taxable;
                 $obj->total_gst = $this->total_gst;
@@ -780,6 +777,17 @@ class Upsert extends Component
                 $obj->save();
                 DB::table('saleitems')->where('sale_id', '=', $obj->id)->delete();
                 $this->saveItem($obj->id);
+                if (config('aaconfig.app_type') == 'garments') {
+                    DB::table('sale_garments')->where('sale_id', '=', $obj->id)->delete();
+                    $this->save_garments($obj->id);
+                    DB::table('saleitem_garments')->where('sale_id', '=', $obj->id)->delete();
+                    $this->save_garmentitems($obj->id);
+                }elseif (config('aaconfig.app_type') == 'offset'){
+                    DB::table('sale_offset')->where('sale_id', '=', $obj->id)->delete();
+                    $this->save_offset($obj->id);
+                    DB::table('saleitem_offsets')->where('sale_id', '=', $obj->id)->delete();
+                    $this->save_offsetitems($obj->id);
+                }
                 $message = "Updated";
             }
             $this->getRoute();
@@ -788,23 +796,79 @@ class Upsert extends Component
         return '';
     }
 
+
+    public function save_garments($id)
+    {
+        foreach ($this->itemList_garment as $sub) {
+            Sale_garment::create([
+                'sale_id' => $id,
+                'billing_id' => $sub['contact_detail_id'],
+                'shipping_id' => $sub['contact_detail_id_1'],
+                'order_id' => $sub['order_id'],
+                'style_id' => $sub['style_id '],
+                'despatch_id' => $sub['despatch_id '],
+                'transport_id' => $sub['transport_id '],
+                'destination' => $sub['destination'],
+                'bundle' => $sub['bundle'],
+
+            ]);
+        }
+    }
+
+    public function save_offset($id)
+    {
+        foreach ($this->itemList_offset as $sub) {
+            Sale_offset::create([
+                'sale_id' => $id,
+                'billing_id' => $sub['contact_detail_id'],
+                'shipping_id' => $sub['contact_detail_id_1'],
+                'order_id' => $sub['order_id'],
+
+            ]);
+        }
+    }
+
+    public function save_garmentitems($id)
+    {
+        foreach ($this->itemList_garmentitem as $sub) {
+            Saleitem_garment::create([
+                'sale_id' => $id,
+                'colour_id' => $sub['colour_id'],
+                'size_id' => $sub['size_id'],
+                'description' => $sub['description'],
+            ]);
+        }
+    }
+
+    public function save_offsetitems($id)
+    {
+        foreach ($this->itemList_offsetitem as $sub) {
+            Saleitem_garment::create([
+                'sale_id' => $id,
+                'po_no' => $sub['po_no'],
+                'dc_no' => $sub['dc_no'],
+                'description' => $sub['description'],
+            ]);
+        }
+    }
+
     public function saveItem($id): void
     {
         foreach ($this->itemList as $sub) {
             Saleitem::create([
                 'sale_id' => $id,
                 'product_id' => $sub['product_id'],
-                'colour_id' => $sub['colour_id'],
-                'size_id' => $sub['size_id'],
                 'qty' => $sub['qty'],
                 'price' => $sub['price'],
                 'gst_percent' => $sub['gst_percent'],
-                'description'=>$sub['description'],
             ]);
         }
     }
 
-
+public $itemList_garmentitem=[];
+public $itemList_garment=[];
+public $itemList_offsetitem=[];
+public $itemList_offset=[];
     public function mount($id): void
     {
         $this->invoice_no = Sale::nextNo();
@@ -817,21 +881,7 @@ class Upsert extends Component
             $this->contact_name = $obj->contact->vname;
             $this->invoice_no = $obj->invoice_no;
             $this->invoice_date = $obj->invoice_date;
-            $this->order_id = $obj->order_id;
-            $this->order_name = $obj->order->vname;
-            $this->contact_detail_id_buyer_address=$obj->contact_detail_id_buyer_address;
-            $this->contact_detail_address=Contact_detail::printDetails($obj->contact_detail_id_buyer_address)->get('address_1');
-            $this->contact_detail_id_delivery_address=$obj->contact_detail_id_delivery_address;
-            $this->contact_detail_address_1=Contact_detail::printDetails($obj->contact_detail_id_delivery_address)->get('address_1');
-            $this->style_id = $obj->style_id;
-            $this->style_name = $obj->style->vname;
-            $this->despatch_id = $obj->despatch_id;
-            $this->despatch_name = $obj->despatch->vname;
             $this->sales_type = $obj->sales_type;
-            $this->transport_id = $obj->transport_id;
-            $this->transport_name = $obj->transport->vname;
-            $this->destination = $obj->destination;
-            $this->bundle = $obj->bundle;
             $this->total_qty = $obj->total_qty;
             $this->total_taxable = $obj->total_taxable;
             $this->total_gst = $obj->total_gst;
@@ -843,28 +893,105 @@ class Upsert extends Component
             $this->active_id = $obj->active_id;
             $data = DB::table('saleitems')->select('saleitems.*',
                 'products.vname as product_name',
-                'colours.vname as colour_name',
-                'sizes.vname as size_name',)->join('products', 'products.id', '=', 'saleitems.product_id')
-                ->join('colours', 'colours.id', '=', 'saleitems.colour_id')
-                ->join('sizes', 'sizes.id', '=', 'saleitems.size_id')->where('sale_id', '=', $id)->get()->transform(function ($data) {
+            )
+                ->join('products', 'products.id', '=', 'saleitems.product_id')
+                ->where('sale_id', '=', $id)->get()->transform(function ($data) {
                     return [
                         'saleitem_id' => $data->id,
                         'product_name' => $data->product_name,
                         'product_id' => $data->product_id,
-                        'colour_name' => $data->colour_name,
-                        'colour_id' => $data->colour_id,
-                        'size_name' => $data->size_name,
-                        'size_id' => $data->size_id,
                         'qty' => $data->qty,
                         'price' => $data->price,
-                        'description' => $data->description,
                         'gst_percent' => $data->gst_percent,
                         'taxable' => $data->qty * $data->price,
                         'gst_amount' => ($data->qty * $data->price) * ($data->gst_percent) / 100,
                         'subtotal' => $data->qty * $data->price + (($data->qty * $data->price) * $data->gst_percent / 100),
                     ];
                 });
+
+            $garmentdata=DB::table('saleitem_garments')->select('saleitem_garments.*',
+                'colours.vname as colour_name',
+                'sizes.vname as size_name',
+            ) ->join('colours', 'colours.id', '=', 'saleitem_garments.colour_id')
+                ->join('sizes', 'sizes.id', '=', 'saleitem_garments.size_id')
+                ->where('sale_id', '=', $id)->get()->transform(function ($garmentdata) {
+                    return [
+                        'saleitem_garment_id' => $garmentdata->id,
+                        'colour_name' => $garmentdata->colour_name,
+                        'colour_id' => $garmentdata->colour_id,
+                        'size_name' => $garmentdata->size_name,
+                        'size_id' => $garmentdata->size_id,
+                        'description' => $garmentdata->description,
+                    ];});
+
+            $offset_data=DB::table('saleitem_offsets')->select('saleitem_offsets.*',)
+                ->where('sale_id', '=', $id)->get()->transform(function ($offset_data) {
+                    return [
+                        'saleitem_offset_id' => $offset_data->id,
+                        'description' => $offset_data->description,
+                        'po_no' => $offset_data->po_no,
+                        'dc_no' => $offset_data->dc_no,
+                    ];});
+
+            $garment=DB::table('sale_garments')->select('sale_garments.*',
+                'contact_details.address_1 as contact_detail_address',
+                'contact_details.address_1 as contact_detail_address_1',
+                'orders.vname as order_name',
+                'styles.vname as style_name',
+                'despatches as despatch_name',
+                'transports as transport_name'
+            )
+                ->join('contact_details','contact_details.id','=','sale_garments.billing_id')
+                ->join('contact_details','contact_details.id','=','sale_garments.shipping_id')
+                ->join('orders','orders.id','=','sale_garments.order_id')
+                ->join('styles','styles.id','=','sale_garments.style_id')
+                ->join('despatches','despatches.id','=','sale_garments.despatch_id')
+                ->join('transports','transports.id','=','sale_garments.transports_id')
+                ->where('sale_id', '=', $id)->get()->transform(function ($garment) {
+                    return [
+                        'sale_garment_id' => $garment->id,
+                        'order_id' => $garment->order_id,
+                        'order_name' => $garment->order_name,
+                        'style_id' => $garment->style_id,
+                        'style_name' => $garment->style_name,
+                        'despatch_id' => $garment->despatch_id,
+                        'despatch_name' => $garment->despatch_name,
+                        'transports_id' => $garment->transports_id,
+                        'transport_name' => $garment->transport_name,
+                        'destination' => $garment->destination,
+                        'bundle' => $garment->bundle,
+                        'contact_detail_id' => $garment->billing_id,
+                        'contact_detail_address' => $garment->contact_detail_address,
+                        'contact_detail_id_1' => $garment->shipping_id,
+                        'contact_detail_address_1' => $garment->contact_detail_address_1,
+
+                    ];});
+
+            $offset=DB::table('sale_offset')->select('sale_offsets.*',
+                'contact_details.address_1 as contact_detail_address',
+                'contact_details.address_1 as contact_detail_address_1',
+                'orders.vname as order_name',
+            )->join('contact_details','contact_details.id','=','sale_garments.billing_id')
+                ->join('contact_details','contact_details.id','=','sale_garments.shipping_id')
+                ->join('orders','orders.id','=','sale_garments.order_id')
+                ->where('sale_id', '=', $id)->get()->transform(function ($offset) {
+                    return [
+                        'sale_offset_id' => $offset->id,
+                        'contact_detail_id' => $offset->billing_id,
+                        'contact_detail_address' => $offset->contact_detail_address,
+                        'contact_detail_id_1' => $offset->shipping_id,
+                        'contact_detail_address_1' => $offset->contact_detail_address_1,
+                        'order_id' => $offset->order_id,
+                        'order_name' => $offset->order_name,
+
+                    ];});
+
+
             $this->itemList = $data;
+            $this->itemList_garmentitem = $garmentdata;
+            $this->itemList_garment = $garment;
+            $this->itemList_offsetitem = $offset_data;
+            $this->itemList_offset = $offset;
         } else {
             $this->uniqueno = "{$this->contact_id}~{$this->invoice_no}~{$this->invoice_date}";
             $this->active_id = true;
@@ -884,8 +1011,8 @@ class Upsert extends Component
     public function addItems(): void
     {
         if ($this->itemIndex == "") {
-            if (!(empty($this->colour_name)) &&
-                !(empty($this->size_name)) &&
+            if (!(empty($this->product_name)) &&
+                !(empty($this->price)) &&
                 !(empty($this->qty))
             ) {
                 $this->itemList[] = [
@@ -895,6 +1022,8 @@ class Upsert extends Component
                     'colour_name' => $this->colour_name,
                     'size_id' => $this->size_id,
                     'size_name' => $this->size_name,
+                    'po_no' => $this->po_no,
+                    'dc_no' => $this->dc_no,
                     'qty' => $this->qty,
                     'price' => $this->price,
                     'gst_percent' => $this->gst_percent1,
@@ -912,6 +1041,8 @@ class Upsert extends Component
                 'colour_name' => $this->colour_name,
                 'size_id' => $this->size_id,
                 'size_name' => $this->size_name,
+                'po_no' => $this->po_no,
+                'dc_no' => $this->dc_no,
                 'qty' => $this->qty,
                 'price' => $this->price,
                 'gst_percent' => $this->gst_percent1,
@@ -937,6 +1068,8 @@ class Upsert extends Component
         $this->colour_id = '';
         $this->size_name = '';
         $this->size_id = '';
+        $this->dc_no = '';
+        $this->po_no = '';
         $this->qty = '';
         $this->price = '';
         $this->description = '';
@@ -955,6 +1088,8 @@ class Upsert extends Component
         $this->colour_id = $items['colour_id'];
         $this->size_name = $items['size_name'];
         $this->size_id = $items['size_id'];
+        $this->po_no = $items['po_no'];
+        $this->dc_no = $items['dc_no'];
         $this->qty = $items['qty'] + 0;
         $this->price = $items['price'] + 0;
         $this->gst_percent1 = $items['gst_percent'];
@@ -1012,9 +1147,9 @@ class Upsert extends Component
             $this->invoice_date = $obj->invoice_date;
             $this->order_id = $obj->order_id;
             $this->order_name = $obj->order->vname;
-            $this->contact_detail_id_buyer_address=$obj->contact_detail_id;
+            $this->billing_id=$obj->contact_detail_id;
             $this->contact_detail_address=$obj->contact_detail->address;
-            $this->contact_detail_id_delivery_address=$obj->contact_detail_id_1;
+            $this->shipping_id=$obj->contact_detail_id_1;
             $this->contact_detail_address_1=$obj->contact_detail->address;
             $this->style_id = $obj->style_id;
             $this->style_name = $obj->style->vname;

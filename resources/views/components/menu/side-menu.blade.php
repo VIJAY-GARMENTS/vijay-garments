@@ -25,7 +25,7 @@
         <ul class="flex flex-col py-6 space-y-1"
             x-data="{selected:null}">
 
-{{--            <x-menu.sub.entries/>--}}
+            <x-menu.sub.entries/>
 {{--            <x-menu.sub.offset/>--}}
 {{--            <x-menu.sub.erp.production/>--}}
 {{--            <x-menu.sub.accounts/>--}}

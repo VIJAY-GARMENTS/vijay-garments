@@ -177,7 +177,8 @@
                     </div>
                 </div>
                 <div class="xl:flex gap-2 w-full pt-6">
-                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Delivery Address</label>
+                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Delivery
+                        Address</label>
                     <div x-data="{isTyped: @entangle('contact_detailTyped_1')}" @click.away="isTyped = false"
                          class="w-full">
                         <div class="relative ">
@@ -244,108 +245,110 @@
                         <option value="{{$sales_type->value}}">{{$sales_type->getName()}}</option>
                     @endforeach
                 </x-input.model-select>
-                <div class="xl:flex gap-2 w-full pt-4">
-                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Style</label>
-                    <div x-data="{isTyped: @entangle('styleTyped')}" @click.away="isTyped = false"
-                         class="w-full">
-                        <div class="relative ">
-                            <input
-                                id="style_name"
-                                type="search"
-                                wire:model.live="style_name"
-                                autocomplete="off"
-                                placeholder="Style Name.."
-                                @focus="isTyped = true"
-                                @keydown.escape.window="isTyped = false"
-                                @keydown.tab.window="isTyped = false"
-                                @keydown.enter.prevent="isTyped = false"
-                                wire:keydown.arrow-up="decrementStyle"
-                                wire:keydown.arrow-down="incrementStyle"
-                                wire:keydown.enter="enterStyle"
-                                class="block w-full purple-textbox"
-                            />
+                @if(config('aaconfig.app_type') == 'garments')
+                    <div class="xl:flex gap-2 w-full pt-4">
+                        <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Style</label>
+                        <div x-data="{isTyped: @entangle('styleTyped')}" @click.away="isTyped = false"
+                             class="w-full">
+                            <div class="relative ">
+                                <input
+                                    id="style_name"
+                                    type="search"
+                                    wire:model.live="style_name"
+                                    autocomplete="off"
+                                    placeholder="Style Name.."
+                                    @focus="isTyped = true"
+                                    @keydown.escape.window="isTyped = false"
+                                    @keydown.tab.window="isTyped = false"
+                                    @keydown.enter.prevent="isTyped = false"
+                                    wire:keydown.arrow-up="decrementStyle"
+                                    wire:keydown.arrow-down="incrementStyle"
+                                    wire:keydown.enter="enterStyle"
+                                    class="block w-full purple-textbox"
+                                />
 
-                            <div x-show="isTyped"
-                                 x-transition:leave="transition ease-in duration-100"
-                                 x-transition:leave-start="opacity-100"
-                                 x-transition:leave-end="opacity-0"
-                                 x-cloak
-                            >
-                                <div class="absolute z-20 w-full mt-2">
-                                    <div class="block py-1 shadow-md w-full
+                                <div x-show="isTyped"
+                                     x-transition:leave="transition ease-in duration-100"
+                                     x-transition:leave-start="opacity-100"
+                                     x-transition:leave-end="opacity-0"
+                                     x-cloak
+                                >
+                                    <div class="absolute z-20 w-full mt-2">
+                                        <div class="block py-1 shadow-md w-full
                 rounded-lg border-transparent flex-1 appearance-none border
                                  bg-white text-gray-800 ring-1 ring-purple-600">
-                                        <ul class="overflow-y-scroll h-96">
-                                            @if($styleCollection)
-                                                @forelse ($styleCollection as $i => $style)
-                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                            <ul class="overflow-y-scroll h-96">
+                                                @if($styleCollection)
+                                                    @forelse ($styleCollection as $i => $style)
+                                                        <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
                                                         {{ $highlightStyle === $i ? 'bg-yellow-100' : '' }}"
-                                                        wire:click.prevent="setStyle('{{$style->vname}}','{{$style->id}}')"
-                                                        x-on:click="isTyped = false">
-                                                        {{ $style->vname }}
-                                                    </li>
-                                                @empty
-                                                    @livewire('controls.model.order.style-model',[$style_name])
-                                                @endforelse
-                                            @endif
-                                        </ul>
+                                                            wire:click.prevent="setStyle('{{$style->vname}}','{{$style->id}}')"
+                                                            x-on:click="isTyped = false">
+                                                            {{ $style->vname }}
+                                                        </li>
+                                                    @empty
+                                                        @livewire('controls.model.order.style-model',[$style_name])
+                                                    @endforelse
+                                                @endif
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="xl:flex gap-2 w-full pt-4">
-                    <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Despatch No</label>
-                    <div x-data="{isTyped: @entangle('despatchTyped')}" @click.away="isTyped = false"
-                         class="w-full">
-                        <div class="relative ">
-                            <input
-                                id="style_name"
-                                type="search"
-                                wire:model.live="despatch_name"
-                                autocomplete="off"
-                                placeholder="Despatch No.."
-                                @focus="isTyped = true"
-                                @keydown.escape.window="isTyped = false"
-                                @keydown.tab.window="isTyped = false"
-                                @keydown.enter.prevent="isTyped = false"
-                                wire:keydown.arrow-up="decrementDespatch"
-                                wire:keydown.arrow-down="incrementDespatch"
-                                wire:keydown.enter="enterDespatch"
-                                class="block w-full purple-textbox"
-                            />
+                    <div class="xl:flex gap-2 w-full pt-4">
+                        <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Despatch No</label>
+                        <div x-data="{isTyped: @entangle('despatchTyped')}" @click.away="isTyped = false"
+                             class="w-full">
+                            <div class="relative ">
+                                <input
+                                    id="style_name"
+                                    type="search"
+                                    wire:model.live="despatch_name"
+                                    autocomplete="off"
+                                    placeholder="Despatch No.."
+                                    @focus="isTyped = true"
+                                    @keydown.escape.window="isTyped = false"
+                                    @keydown.tab.window="isTyped = false"
+                                    @keydown.enter.prevent="isTyped = false"
+                                    wire:keydown.arrow-up="decrementDespatch"
+                                    wire:keydown.arrow-down="incrementDespatch"
+                                    wire:keydown.enter="enterDespatch"
+                                    class="block w-full purple-textbox"
+                                />
 
-                            <div x-show="isTyped"
-                                 x-transition:leave="transition ease-in duration-100"
-                                 x-transition:leave-start="opacity-100"
-                                 x-transition:leave-end="opacity-0"
-                                 x-cloak
-                            >
-                                <div class="absolute z-20 w-full mt-2">
-                                    <div class="block py-1 shadow-md w-full
+                                <div x-show="isTyped"
+                                     x-transition:leave="transition ease-in duration-100"
+                                     x-transition:leave-start="opacity-100"
+                                     x-transition:leave-end="opacity-0"
+                                     x-cloak
+                                >
+                                    <div class="absolute z-20 w-full mt-2">
+                                        <div class="block py-1 shadow-md w-full
                 rounded-lg border-transparent flex-1 appearance-none border
                                  bg-white text-gray-800 ring-1 ring-purple-600">
-                                        <ul class="overflow-y-scroll h-96">
-                                            @if($despatchCollection)
-                                                @forelse ($despatchCollection as $i => $despatch)
-                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                            <ul class="overflow-y-scroll h-96">
+                                                @if($despatchCollection)
+                                                    @forelse ($despatchCollection as $i => $despatch)
+                                                        <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
                                                         {{ $highlightDespatch === $i ? 'bg-yellow-100' : '' }}"
-                                                        wire:click.prevent="setDespatch('{{$despatch->vname}}','{{$despatch->id}}')"
-                                                        x-on:click="isTyped = false">
-                                                        {{ $despatch->vname }}
-                                                    </li>
-                                                @empty
-                                                    @livewire('controls.model.common.despatch-model',[$despatch_name])
-                                                @endforelse
-                                            @endif
-                                        </ul>
+                                                            wire:click.prevent="setDespatch('{{$despatch->vname}}','{{$despatch->id}}')"
+                                                            x-on:click="isTyped = false">
+                                                            {{ $despatch->vname }}
+                                                        </li>
+                                                    @empty
+                                                        @livewire('controls.model.common.despatch-model',[$despatch_name])
+                                                    @endforelse
+                                                @endif
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
 
         </section>
@@ -356,6 +359,20 @@
             Sales Item
         </section>
         <section class="flex flex-row w-full gap-0.5">
+            @if(config('aaconfig.app_type') == 'offset')
+                <div class="w-full">
+                    <label for="qty"></label>
+                    <input id="qty" wire:model.live="po_no" class="block w-full purple-textbox-no-rounded"
+                           autocomplete="false"
+                           placeholder="PO No..">
+                </div>
+                <div class="w-full">
+                    <label for="qty"></label>
+                    <input id="qty" wire:model.live="dc_no" class="block w-full purple-textbox-no-rounded"
+                           autocomplete="false"
+                           placeholder="DC No..">
+                </div>
+            @endif
             <div class="w-full">
                 <label for="product_name"></label>
                 <div x-data="{isTyped: @entangle('productTyped')}" @click.away="isTyped = false">
@@ -415,110 +432,112 @@
                        autocomplete="false"
                        placeholder="description">
             </div>
-            <div class="w-full">
-                <label for="colour_name"></label>
-                <div x-data="{isTyped: @entangle('colourTyped')}" @click.away="isTyped = false">
-                    <div class="relative">
-                        <input
-                            id="colour_name"
-                            type="search"
-                            wire:model.live="colour_name"
-                            autocomplete="off"
-                            placeholder="Colour Name.."
-                            @focus="isTyped = true"
-                            @keydown.escape.window="isTyped = false"
-                            @keydown.tab.window="isTyped = false"
-                            @keydown.enter.prevent="isTyped = false"
-                            wire:keydown.arrow-up="decrementColour"
-                            wire:keydown.arrow-down="incrementColour"
-                            wire:keydown.enter="enterColour"
-                            class="block w-full purple-textbox-no-rounded"
-                        />
+            @if(config('aaconfig.app_type') == 'garments')
+                <div class="w-full">
+                    <label for="colour_name"></label>
+                    <div x-data="{isTyped: @entangle('colourTyped')}" @click.away="isTyped = false">
+                        <div class="relative">
+                            <input
+                                id="colour_name"
+                                type="search"
+                                wire:model.live="colour_name"
+                                autocomplete="off"
+                                placeholder="Colour Name.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementColour"
+                                wire:keydown.arrow-down="incrementColour"
+                                wire:keydown.enter="enterColour"
+                                class="block w-full purple-textbox-no-rounded"
+                            />
 
-                        <div x-show="isTyped"
-                             x-transition:leave="transition ease-in duration-100"
-                             x-transition:leave-start="opacity-100"
-                             x-transition:leave-end="opacity-0"
-                             x-cloak
-                        >
-                            <div class="absolute z-20 w-full mt-2">
-                                <div class="block py-1 shadow-md w-full
+                            <div x-show="isTyped"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 x-cloak
+                            >
+                                <div class="absolute z-20 w-full mt-2">
+                                    <div class="block py-1 shadow-md w-full
                 rounded-lg border-transparent flex-1 appearance-none border
                                  bg-white text-gray-800 ring-1 ring-purple-600">
-                                    <ul class="overflow-y-scroll h-96">
-                                        @if($colourCollection)
-                                            @forelse ($colourCollection as $i => $colour)
+                                        <ul class="overflow-y-scroll h-96">
+                                            @if($colourCollection)
+                                                @forelse ($colourCollection as $i => $colour)
 
-                                                <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
                                                         {{ $highlightColour === $i ? 'bg-yellow-100' : '' }}"
-                                                    wire:click.prevent="setColour('{{$colour->vname}}','{{$colour->id}}')"
-                                                    x-on:click="isTyped = false">
-                                                    {{ $colour->vname }}
-                                                </li>
+                                                        wire:click.prevent="setColour('{{$colour->vname}}','{{$colour->id}}')"
+                                                        x-on:click="isTyped = false">
+                                                        {{ $colour->vname }}
+                                                    </li>
 
-                                            @empty
-                                                @livewire('controls.model.common.colour-model',[$colour_name])
-                                            @endforelse
-                                        @endif
-                                    </ul>
+                                                @empty
+                                                    @livewire('controls.model.common.colour-model',[$colour_name])
+                                                @endforelse
+                                            @endif
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="w-full">
-                <label for="size_name"></label>
-                <div x-data="{isTyped: @entangle('sizeTyped')}" @click.away="isTyped = false">
-                    <div class="relative">
-                        <input
-                            id="size_name"
-                            type="search"
-                            wire:model.live="size_name"
-                            autocomplete="off"
-                            placeholder="Size.."
-                            @focus="isTyped = true"
-                            @keydown.escape.window="isTyped = false"
-                            @keydown.tab.window="isTyped = false"
-                            @keydown.enter.prevent="isTyped = false"
-                            wire:keydown.arrow-up="decrementSize"
-                            wire:keydown.arrow-down="incrementSize"
-                            wire:keydown.enter="enterSize"
-                            class="block w-full purple-textbox-no-rounded"
-                        />
+                <div class="w-full">
+                    <label for="size_name"></label>
+                    <div x-data="{isTyped: @entangle('sizeTyped')}" @click.away="isTyped = false">
+                        <div class="relative">
+                            <input
+                                id="size_name"
+                                type="search"
+                                wire:model.live="size_name"
+                                autocomplete="off"
+                                placeholder="Size.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementSize"
+                                wire:keydown.arrow-down="incrementSize"
+                                wire:keydown.enter="enterSize"
+                                class="block w-full purple-textbox-no-rounded"
+                            />
 
-                        <div x-show="isTyped"
-                             x-transition:leave="transition ease-in duration-100"
-                             x-transition:leave-start="opacity-100"
-                             x-transition:leave-end="opacity-0"
-                             x-cloak
-                        >
-                            <div class="absolute z-20 w-full mt-2">
-                                <div class="block py-1 shadow-md w-full
+                            <div x-show="isTyped"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 x-cloak
+                            >
+                                <div class="absolute z-20 w-full mt-2">
+                                    <div class="block py-1 shadow-md w-full
                 rounded-lg border-transparent flex-1 appearance-none border
                                  bg-white text-gray-800 ring-1 ring-purple-600">
-                                    <ul class="overflow-y-scroll h-96">
-                                        @if($sizeCollection)
-                                            @forelse ($sizeCollection as $i => $size)
+                                        <ul class="overflow-y-scroll h-96">
+                                            @if($sizeCollection)
+                                                @forelse ($sizeCollection as $i => $size)
 
-                                                <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                    <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
                                                         {{ $highlightSize === $i ? 'bg-yellow-100' : '' }}"
-                                                    wire:click.prevent="setSize('{{$size->vname}}','{{$size->id}}')"
-                                                    x-on:click="isTyped = false">
-                                                    {{ $size->vname }}
-                                                </li>
+                                                        wire:click.prevent="setSize('{{$size->vname}}','{{$size->id}}')"
+                                                        x-on:click="isTyped = false">
+                                                        {{ $size->vname }}
+                                                    </li>
 
-                                            @empty
-                                                @livewire('controls.model.common.size-model',[$size_name])
-                                            @endforelse
-                                        @endif
-                                    </ul>
+                                                @empty
+                                                    @livewire('controls.model.common.size-model',[$size_name])
+                                                @endforelse
+                                            @endif
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
             <div class="w-full">
                 <label for="qty"></label>
                 <input id="qty" wire:model.live="qty" class="block w-full purple-textbox-no-rounded"
@@ -570,7 +589,10 @@
                                     </button>
                                 </td>
                                 <td class="px-2 text-left border border-gray-300 cursor-pointer"
-                                    wire:click.prevent="changeItems({{$index}})"><div>{{$row['product_name']}}</div><div>{{ $row['description']}}</div></td>
+                                    wire:click.prevent="changeItems({{$index}})">
+                                    <div>{{$row['product_name']}}</div>
+                                    <div>{{ $row['description']}}</div>
+                                </td>
                                 <td class="px-2 text-left border border-gray-300 cursor-pointer"
                                     wire:click.prevent="changeItems({{$index}})">{{$row['colour_name']}}</td>
                                 <td class="px-2 text-left border border-gray-300 cursor-pointer"
@@ -676,68 +698,69 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-2 pt-5">
-                        <div class="xl:flex w-full gap-2">
-                            <label for="transport_name"
-                                   class="w-[10rem] text-zinc-500 tracking-wide py-2">Transport</label>
-                            <div x-data="{isTyped: @entangle('transportTyped')}" @click.away="isTyped = false"
-                                 class="w-full">
-                                <div class="relative">
-                                    <input
-                                        id="transport_name"
-                                        type="search"
-                                        wire:model.live="transport_name"
-                                        autocomplete="off"
-                                        placeholder="Transport.."
-                                        @focus="isTyped = true"
-                                        @keydown.escape.window="isTyped = false"
-                                        @keydown.tab.window="isTyped = false"
-                                        @keydown.enter.prevent="isTyped = false"
-                                        wire:keydown.arrow-up="decrementTransport"
-                                        wire:keydown.arrow-down="incrementTransport"
-                                        wire:keydown.enter="enterTransport"
-                                        class="block w-full purple-textbox"
-                                    />
-                                    @error('transport_id')
-                                    <span class="text-red-500">{{'The Transport is Required.'}}</span>
-                                    @enderror
+                    @if(config('aaconfig.app_type') == 'garments')
+                        <div class="flex flex-col gap-2 pt-5">
+                            <div class="xl:flex w-full gap-2">
+                                <label for="transport_name"
+                                       class="w-[10rem] text-zinc-500 tracking-wide py-2">Transport</label>
+                                <div x-data="{isTyped: @entangle('transportTyped')}" @click.away="isTyped = false"
+                                     class="w-full">
+                                    <div class="relative">
+                                        <input
+                                            id="transport_name"
+                                            type="search"
+                                            wire:model.live="transport_name"
+                                            autocomplete="off"
+                                            placeholder="Transport.."
+                                            @focus="isTyped = true"
+                                            @keydown.escape.window="isTyped = false"
+                                            @keydown.tab.window="isTyped = false"
+                                            @keydown.enter.prevent="isTyped = false"
+                                            wire:keydown.arrow-up="decrementTransport"
+                                            wire:keydown.arrow-down="incrementTransport"
+                                            wire:keydown.enter="enterTransport"
+                                            class="block w-full purple-textbox"
+                                        />
+                                        @error('transport_id')
+                                        <span class="text-red-500">{{'The Transport is Required.'}}</span>
+                                        @enderror
 
-                                    <div x-show="isTyped"
-                                         x-transition:leave="transition ease-in duration-100"
-                                         x-transition:leave-start="opacity-100"
-                                         x-transition:leave-end="opacity-0"
-                                         x-cloak
-                                    >
-                                        <div class="absolute z-20 w-full mt-2">
-                                            <div class="block py-1 shadow-md w-full
+                                        <div x-show="isTyped"
+                                             x-transition:leave="transition ease-in duration-100"
+                                             x-transition:leave-start="opacity-100"
+                                             x-transition:leave-end="opacity-0"
+                                             x-cloak
+                                        >
+                                            <div class="absolute z-20 w-full mt-2">
+                                                <div class="block py-1 shadow-md w-full
                 rounded-lg border-transparent flex-1 appearance-none border
                                  bg-white text-gray-800 ring-1 ring-purple-600">
-                                                <ul class="overflow-y-scroll h-96">
-                                                    @if($transportCollection)
-                                                        @forelse ($transportCollection as $i => $transport)
-                                                            <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
+                                                    <ul class="overflow-y-scroll h-96">
+                                                        @if($transportCollection)
+                                                            @forelse ($transportCollection as $i => $transport)
+                                                                <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
                                                         {{ $highlightTransport === $i ? 'bg-yellow-100' : '' }}"
-                                                                wire:click.prevent="setTransport('{{$transport->vname}}','{{$transport->id}}')"
-                                                                x-on:click="isTyped = false">
-                                                                {{ $transport->vname }}
-                                                            </li>
-                                                        @empty
-                                                            @livewire('controls.model.common.transport-mode',[$transport_name])
-                                                        @endforelse
-                                                    @endif
-                                                </ul>
+                                                                    wire:click.prevent="setTransport('{{$transport->vname}}','{{$transport->id}}')"
+                                                                    x-on:click="isTyped = false">
+                                                                    {{ $transport->vname }}
+                                                                </li>
+                                                            @empty
+                                                                @livewire('controls.model.common.transport-mode',[$transport_name])
+                                                            @endforelse
+                                                        @endif
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <x-input.model-text wire:model="destination" :label="'Destination'"/>
+                        <x-input.model-text wire:model="destination" :label="'Destination'"/>
 
-                    <x-input.model-text wire:model="bundle" :label="'Bundle'"/>
-
+                        <x-input.model-text wire:model="bundle" :label="'Bundle'"/>
+                    @endif
                 </div>
             </section>
 

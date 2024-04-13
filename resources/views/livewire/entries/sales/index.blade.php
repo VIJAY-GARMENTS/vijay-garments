@@ -7,7 +7,6 @@
         <x-forms.table>
             <x-slot name="table_header">
                 <x-table.ths-slno wire:click.prevent="sortBy('invoice_no')">Sl.no</x-table.ths-slno>
-                <x-table.ths-center wire:click.prevent="sortBy('invoice_no')">Order No</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('invoice_no')">Invoice NO</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('invoice_no')">Invoice Date</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('invoice_no')">Party Name</x-table.ths-center>
@@ -28,14 +27,6 @@
                                 {{ $index + 1 }}
                             </a>
                         </x-table.cell>
-
-                        <x-table.cell>
-                            <a href="{{route('sales.upsert',[$row->id])}}"
-                               class="flex px-3 text-gray-600 truncate text-xl text-left">
-                                {{ $row->order->vname}}
-                            </a>
-                        </x-table.cell>
-
 
                         <x-table.cell>
                             <a href="{{route('sales.upsert',[$row->id])}}"

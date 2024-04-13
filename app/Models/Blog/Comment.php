@@ -10,6 +10,6 @@ class Comment extends Model
 
 
 {
-    protected $fillable=['user_name','body','post_id','is_dislike'];
+    protected $fillable=['body','post_id','user_id'];
 
 }

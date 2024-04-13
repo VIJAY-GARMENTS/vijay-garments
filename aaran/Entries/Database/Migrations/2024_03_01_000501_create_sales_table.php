@@ -14,7 +14,11 @@ return new class extends Migration
             $table->string('acyear')->nullable();
             $table->foreignId('company_id')->references('id')->on('companies');
             $table->foreignId('contact_id')->references('id')->on('contacts');
+            $table->foreignId('contact_detail_id_buyer_address');
+            $table->foreignId('contact_detail_id_delivery_address');
             $table->foreignId('order_id')->references('id')->on('orders');
+            $table->foreignId('style_id')->references('id')->on('styles');
+            $table->foreignId('despatch_id')->references('id')->on('despatches');
             $table->integer('invoice_no');
             $table->date('invoice_date');
             $table->string('sales_type')->nullable();
@@ -41,6 +45,7 @@ return new class extends Migration
             $table->decimal('qty');
             $table->decimal('price');
             $table->string('gst_percent')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

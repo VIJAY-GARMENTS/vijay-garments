@@ -6,6 +6,7 @@ use Aaran\Orders\Database\Factories\StyleFactory;
 use Aaran\Style\Models\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 //use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -28,6 +29,15 @@ class Style extends Model
 
     public function order(): BelongsTo
     {
-        return $this->belongsTo(Style::class);
+        return $this->belongsTo(Order::class);
+    }
+
+    public static function printDetails($ids): Collection
+    {
+        $obj = self::find($ids);
+
+        return collect([
+            'description' => $obj->desc,]);
+
     }
 }

@@ -16,6 +16,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/ledgers', App\Livewire\Common\LedgerList::class)->name('ledgers');
     Route::get('/sizes', App\Livewire\Common\SizeList::class)->name('sizes');
     Route::get('/colours', App\Livewire\Common\ColourList::class)->name('colours');
+    Route::get('/despatches', App\Livewire\Common\DespatchList::class)->name('despatches');
     Route::get('/banks', App\Livewire\Common\BankList::class)->name('banks');
     Route::get('/receipttypes', App\Livewire\Common\ReceipttypeList::class)->name('receipttypes');
 });

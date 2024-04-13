@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Entries\Sales;
 
+use Aaran\Common\Models\Despatch;
 use Aaran\Entries\Models\Sale;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
+use Aaran\Master\Models\Contact_detail;
+use Aaran\Orders\Models\Style;
 use App\Helper\ConvertTo;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -18,15 +21,26 @@ class InvoiceController extends Controller
             $peout = Sale::select(
                 'sales.*',
                 'contacts.vname as contact_name',
-                'orders.vname as order_name'
+                'contact_details.address_1 as contact_detail_address_1',
+                'orders.vname as order_name',
+                'styles.vname as style_name',
+                'despatches.vname as despatch_name',
+                'transports.vname as transport_name',
             )
                 ->join('contacts', 'contacts.id', '=', 'sales.contact_id')
+                ->join('contact_details', 'contact_details.id', '=', 'sales.contact_detail_id_buyer_address')
                 ->join('orders', 'orders.id', '=', 'sales.order_id')
+                ->join('styles', 'styles.id', '=', 'sales.style_id')
+                ->join('despatches', 'despatches.id', '=', 'sales.despatch_id')
+                ->join('transports', 'transports.id', '=', 'sales.transport_id')
                 ->where('sales.id', '=', $vid)
                 ->get()->firstOrFail();
 
-
             $contact = Contact::printDetails($peout->contact_id);
+            $contact_detail = Contact_detail::printDetails($peout->contact_detail_id_buyer_address);
+            $delivery=Contact_detail::printDetails($peout->contact_detail_id_delivery_address);
+            $despatch = Despatch::printDetails($peout->despatch_id);
+            $style = Style::printDetails($peout->style_id);
             $tenant = Company::printDetails(session()->get('company_id'));
 
             $data = DB::table('saleitems')
@@ -55,6 +69,7 @@ class InvoiceController extends Controller
                         'colour_name' => $data->colour_name,
                         'size_id' => $data->size_id,
                         'size_name' => $data->size_name,
+                        'description'=>$data->description,
                         'qty' => $data->qty,
                         'price' => $data->price,
                         'total_taxable' => number_format($data->qty * $data->price,2,'.',''),
@@ -69,12 +84,16 @@ class InvoiceController extends Controller
 
             Pdf::setOption(['dpi' => 150, 'defaultPaperSize'=>'a4', 'defaultFont' => 'sans-serif']);
 
-            $pdf = PDF::loadView('pdf.entries.sales.vijay_garments',[
+            $pdf = PDF::loadView('pdf.entries.sales.vijay_garments1',[
                 'obj' => $peout,
                 'rupees'=>ConvertTo::ruppesToWords($peout->grand_total),
                 'list' => $peoutItem,
                 'cmp' => $tenant,
-                'contact' => $contact
+                'contact' => $contact,
+                'despatch'=>$despatch,
+                'style'=>$style,
+                'contact_detail'=>$contact_detail,
+                'delivery'=>$delivery,
             ]);
 
 

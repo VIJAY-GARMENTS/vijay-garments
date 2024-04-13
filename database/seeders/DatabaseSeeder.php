@@ -3,19 +3,11 @@
 namespace Database\Seeders;
 
 use Aaran\Common\Database\Seeders\BankSeeder;
-use Aaran\Common\Database\Seeders\CitySeeder;
-use Aaran\Common\Database\Seeders\ColourSeeder;
-use Aaran\Common\Database\Seeders\CountrySeeder;
-use Aaran\Common\Database\Seeders\DepartmentSeeder;
 use Aaran\Common\Database\Seeders\S101_CitySeeder;
 use Aaran\Common\Database\Seeders\S102_StateSeeder;
 use Aaran\Common\Database\Seeders\S103_PincodeSeeder;
 use Aaran\Common\Database\Seeders\S104_CountrySeeder;
 use Aaran\Common\Database\Seeders\S105_HsncodeSeeder;
-use Aaran\Common\Database\Seeders\S105HsncodeSeeder;
-use Aaran\Common\Database\Seeders\LedgerSeeder;
-use Aaran\Common\Database\Seeders\PincodeSeeder;
-use Aaran\Common\Database\Seeders\ReceipttypeSeeder;
 use Aaran\Common\Database\Seeders\S106_ColourSeeder;
 use Aaran\Common\Database\Seeders\S107_SizeSeeder;
 use Aaran\Common\Database\Seeders\S108_TransportSeeder;
@@ -25,12 +17,10 @@ use Aaran\Common\Database\Seeders\S111_ReceipttypeSeeder;
 use Aaran\Common\Database\Seeders\S112_DepartmentSeeder;
 use Aaran\Common\Database\Seeders\S113_CategorySeeder;
 use Aaran\Common\Database\Seeders\S114_DespatcheSeeder;
-use Aaran\Common\Database\Seeders\SizeSeeder;
-use Aaran\Common\Database\Seeders\S102StateSeeder;
-use Aaran\Common\Database\Seeders\TransportSeeder;
 use Aaran\Erp\Database\Seeders\FabricLotSeeder;
-use Aaran\Master\Database\Seeders\CompanySeeder;
-use Aaran\Master\Database\Seeders\ProductSeeder;
+use Aaran\Master\Database\Seeders\S201_CompanySeeder;
+use Aaran\Master\Database\Seeders\S202_ContactSeeder;
+use Aaran\Master\Database\Seeders\S203_ProductSeeder;
 use Aaran\Orders\Database\Seeders\OrderSeeder;
 use Aaran\Orders\Database\Seeders\StyleSeeder;
 use Illuminate\Database\Seeder;
@@ -62,13 +52,15 @@ class DatabaseSeeder extends Seeder
         S113_CategorySeeder::run();
         S114_DespatcheSeeder::run();
 
+//master
+        S201_CompanySeeder::run();
+        S202_ContactSeeder::run();
+        S203_ProductSeeder::run();
 
-        CompanySeeder::run();
-//        ContactSeeder::run();
-        ProductSeeder::run();
-
+//order
         OrderSeeder::run();
         StyleSeeder::run();
         FabricLotSeeder::run();
+
     }
 }

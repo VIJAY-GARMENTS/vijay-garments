@@ -49,17 +49,3 @@ return new class extends Migration {
         Schema::dropIfExists('contact_details');
     }
 };
-
-//'contact_detail_id' => $data->id,
-//                        'city_name' => $data->city_name,
-//                        'city_id' => $data->city_id,
-//                        'state_name' => $data->state_name,
-//                        'state_id' => $data->state_id,
-//                        'pincode_name' => $data->pincode_name,
-//                        'pincode_id' => $data->pincode_id,
-//                        'country_name' => $data->country_name,
-//                        'country_id' => $data->country_id,
-//                        'address_1' => $data->address_1,
-//                        'address_2' => $data->address_2,
-//                        'gstin' => $data->gstin,
-//                        'email' => $data->email,

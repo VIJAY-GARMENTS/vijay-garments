@@ -6,7 +6,7 @@ use Aaran\Orders\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class OrderSeeder extends Seeder
+class S301_OrderSeeder extends Seeder
 {
     public static function run(): void
     {

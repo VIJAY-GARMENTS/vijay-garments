@@ -5,7 +5,7 @@ namespace Aaran\Orders\Database\Seeders;
 use Aaran\Orders\Models\Style;
 use Illuminate\Database\Seeder;
 
-class StyleSeeder extends Seeder
+class S302_StyleSeeder extends Seeder
 {
     public static function run(): void
     {

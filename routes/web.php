@@ -6,9 +6,7 @@ Route::get('/', App\Livewire\Webs\Home\Index::class)->name('home');
 Route::get('/service', App\Livewire\Webs\Home\Service::class)->name('service');
 Route::get('/about', App\Livewire\Webs\Home\About::class)->name('about');
 Route::get('/contact', App\Livewire\Webs\Home\Contact::class)->name('contact');
-Route::get('/posts', App\Livewire\Blog\Post\Index::class)->name('posts');
-Route::get('/posts/{id}/upsert', App\Livewire\Blog\Post\Upsert::class)->name('posts.upsert');
-Route::get('/posts/{id}/views', App\Livewire\Blog\Post\View::class)->name('posts.views');
+
 
 
 

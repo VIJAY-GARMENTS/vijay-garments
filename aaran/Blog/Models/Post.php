@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Models\Blog;
+namespace Aaran\Blog\Models;
 
 use App\Models\User;
-use FontLib\Table\Type\name;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
-    use HasFactory;
 
-    protected $fillable= ['title','body','image','user_id','company_id'];
+    protected $guarded = [];
 
     public function user(): BelongsTo
     {

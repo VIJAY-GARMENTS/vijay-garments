@@ -2,9 +2,7 @@
 
 namespace App\Livewire\Blog\Post;
 
-use App\Models\Blog\Post;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
+use Aaran\Blog\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 

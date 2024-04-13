@@ -11,6 +11,13 @@ return [
 
     Aaran\Entries\Providers\EntriesServiceProvider::class,
 
+    Aaran\Blog\Providers\BlogServiceProvider::class,
+
+    Aaran\Demo\Providers\DemoServiceProvider::class,
+
+//    Aaran\Entries\Providers\EntriesServiceProvider::class,
+
+
 //    Aaran\Erp\Providers\ErpServiceProvider::class,
 //    Aaran\Attendance\Providers\AttendanceServiceProvider::class,
 //    Aaran\Taskmanager\Providers\TaskmanagerServiceProvider::class,

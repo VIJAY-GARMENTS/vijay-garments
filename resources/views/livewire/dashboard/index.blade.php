@@ -8,16 +8,15 @@
                 {{--                        <livewire:taskmanager.todos.index/>--}}
                 {{--                @endif--}}
 
-
             </div>
 
+            {{--<livewire:attendance.attendance.index/>--}}
 
 
-            {{--            <livewire:attendance.attendance.index/>--}}
 
         </div>
-<div class="fixed right-0 px-2 py-2 text-gray-400 bottom-0">
-        v-{{config('aaconfig.soft_version')}}-{{\Livewire\str()->ucfirst(config('aaconfig.app_type'))}}
-</div>
+        <div class="fixed right-0 px-2 py-2 text-gray-400 bottom-0">
+            v-{{config('aaconfig.soft_version')}}-{{\Livewire\str()->ucfirst(config('aaconfig.app_type'))}}
+        </div>
     </div>
 </div>

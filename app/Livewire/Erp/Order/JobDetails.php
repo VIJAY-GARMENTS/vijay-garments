@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Erp\Order;
 
+use Aaran\Common\Models\Order;
 use Aaran\Erp\Models\Production\CuttingItem;
 use Aaran\Erp\Models\Production\Jobcard;
 use Aaran\Erp\Models\Production\JobcardItem;
@@ -9,7 +10,6 @@ use Aaran\Erp\Models\Production\PeInwardItem;
 use Aaran\Erp\Models\Production\PeOutwardItem;
 use Aaran\Erp\Models\Production\SectionInwardItem;
 use Aaran\Erp\Models\Production\SectionOutwardItem;
-use Aaran\Orders\Models\Order;
 use Livewire\Component;
 
 class JobDetails extends Component

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Livewire\Orders\Order;
+namespace App\Livewire\Common;
 
-use Aaran\Orders\Models\Order;
+use Aaran\Common\Models\Order;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Index extends Component
+class OrderList extends Component
 {
     use CommonTrait;
     use WithPagination;
@@ -70,7 +70,7 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.orders.order.index')->with([
+        return view('livewire.common.order-list')->with([
             'list' => $this->getList()
         ]);
     }

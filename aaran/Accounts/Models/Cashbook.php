@@ -3,7 +3,7 @@
 namespace Aaran\Accounts\Models;
 
 use Aaran\Common\Models\Ledger;
-use Aaran\Orders\Models\Order;
+use Aaran\Common\Models\Order;
 use App\Enums\Status;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

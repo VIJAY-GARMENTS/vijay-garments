@@ -1,8 +1,8 @@
 <?php
 
-namespace Aaran\Orders\Database\Factories;
+namespace Aaran\Common\Database\Factories;
 
-use Aaran\Orders\Models\Order;
+use Aaran\Common\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 

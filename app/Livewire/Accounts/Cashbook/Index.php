@@ -3,7 +3,7 @@
 namespace App\Livewire\Accounts\Cashbook;
 
 use Aaran\Accounts\Models\Cashbook;
-use Aaran\Orders\Models\Order;
+use Aaran\Common\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\On;

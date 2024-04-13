@@ -1,6 +1,6 @@
 <?php
 
-namespace Aaran\Orders\Tests;
+namespace Aaran\Common\Tests;
 
 use Aaran\Common\Models\Bank;
 use App\Livewire\Common\CountryList;

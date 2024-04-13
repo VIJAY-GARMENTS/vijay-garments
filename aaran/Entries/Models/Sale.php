@@ -4,13 +4,13 @@ namespace Aaran\Entries\Models;
 
 use Aaran\Common\Models\Despatch;
 use Aaran\Common\Models\Ledger;
+use Aaran\Common\Models\Order;
+use Aaran\Common\Models\Style;
 use Aaran\Common\Models\Transport;
 use Aaran\Entries\Database\Factories\SaleFactory;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
 use Aaran\Master\Models\Contact_detail;
-use Aaran\Orders\Models\Order;
-use Aaran\Orders\Models\Style;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Offset\Sales;
 
+use Aaran\Common\Models\Order;
 use Aaran\Master\Models\Contact;
 use Aaran\Offset\Models\Sale_offset;
-use Aaran\Orders\Models\Order;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;

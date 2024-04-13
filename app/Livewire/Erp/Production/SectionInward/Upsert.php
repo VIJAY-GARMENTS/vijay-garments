@@ -2,13 +2,13 @@
 
 namespace App\Livewire\Erp\Production\SectionInward;
 
+use Aaran\Common\Models\Order;
 use Aaran\Erp\Models\Production\Jobcard;
 use Aaran\Erp\Models\Production\JobcardItem;
 use Aaran\Erp\Models\Production\SectionInward;
 use Aaran\Erp\Models\Production\SectionInwardItem;
 use Aaran\Erp\Models\Production\SectionOutwardItem;
 use Aaran\Master\Models\Contact;
-use Aaran\Orders\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;

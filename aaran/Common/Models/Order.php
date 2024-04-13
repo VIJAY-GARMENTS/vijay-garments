@@ -1,15 +1,17 @@
 <?php
 
-namespace Aaran\Orders\Models;
+namespace Aaran\Common\Models;
 
-use Aaran\Orders\Database\Factories\OrderFactory;
+use Aaran\Common\Database\Factories\OrderFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
+
     public $timestamps = false;
 
     public static function search(string $searches)

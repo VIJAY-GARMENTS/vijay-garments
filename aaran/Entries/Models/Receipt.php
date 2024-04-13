@@ -3,11 +3,11 @@
 namespace Aaran\Entries\Models;
 
 use Aaran\Common\Models\Bank;
+use Aaran\Common\Models\Order;
 use Aaran\Common\Models\Receipttype;
 use Aaran\Entries\Database\Factories\ReceiptFactory;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
-use Aaran\Orders\Models\Order;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

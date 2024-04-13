@@ -3,12 +3,12 @@
 namespace App\Livewire\Erp\Production\Jobcard;
 
 use Aaran\Common\Models\Colour;
+use Aaran\Common\Models\Order;
 use Aaran\Common\Models\Size;
+use Aaran\Common\Models\Style;
 use Aaran\Erp\Models\Fabrication\FabricLot;
 use Aaran\Erp\Models\Production\Jobcard;
 use Aaran\Erp\Models\Production\JobcardItem;
-use Aaran\Orders\Models\Order;
-use Aaran\Orders\Models\Style;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;

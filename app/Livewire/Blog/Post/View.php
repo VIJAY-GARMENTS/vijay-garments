@@ -8,6 +8,7 @@ use Aaran\Blog\Models\Post;
 use Aaran\Master\Models\Contact;
 use Aaran\Taskmanager\Models\Reply;
 use App\Livewire\Trait\CommonTrait;
+use http\Env\Response;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -25,6 +26,7 @@ class View extends Component
     public $like = 0;
     public $user_id;
     public $comment_id;
+    public $reply;
     public $showEditModel = false;
 
     public function incrementLike()
@@ -74,18 +76,6 @@ class View extends Component
         }
     }
 
-    public function reply()
-    {
-        if($this->user_id !=''){
-            if ($this->id !='') {
-                Reply::create([
-                    'reply' => $this->reply,
-                    'user_id' => Auth::id(),
-                    'comment_id' => $this->comment_id,
-                ]);
-            }
-        }
-    }
 
     public function clearFields()
     {

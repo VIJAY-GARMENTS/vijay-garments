@@ -1,13 +1,13 @@
 <div class="bg-gray-50">
     <main class="max-w-6xl p-2 mx-auto space-y-6 ">
         <article class="max-w-6xl bg-white p-5 pl-8 mx-auto">
-            <div class="my-2 text-end">@editor
+            <div class="my-2 text-end">
                 @if(session()->get('company_id')!='')
                     <a href="{{route('posts.upsert',[$post->id])}}">
                         <button type="button" class="items-end text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center
             dark:text-purple-400 dark:focus:ring-purple-900">Edit
                         </button>@endif
-                    </a>@endeditor</div>
+                    </a></div>
 
             <h1 class="font-bold capitalize text-3xl text-left lg:text-4xl mb-10">
                 {{ $post->title }}
@@ -63,39 +63,21 @@
                 </div>
             </div>
 
+
             @foreach($list as $row)
-                <div class="mt-4 rounded-lg p-2 my-3 text-lg border-b-2 text-ellipsis overflow-hidden pl-10 space-y-4">
+                <div class="mt-4 rounded-lg my-2 w-full text-lg text-ellipsis space-y-4">
                     <div class="flex w-full">
                         <span class="w-full">{!!($row->body)!!}</span>&nbsp;
                         <span class="opacity-65 text-right capitalize w-full">&nbsp;{{$row->user_id}}</span>
-                </div>
-            @endforeach   {{ $list->links() }}
-                    <div>
-                        @if($showEditModel=='')
-                            <button type="submit" wire:click="show({{$row->id}})" class="mt-5">
-                                <div class=" text-gray-400 py-2 px-4 hover:underline rounded-full">
-                                    reply</div>
-                            </button>
                     </div>
-                    @else
-                        <div class="gap-2 ">
-                            <label for="reply">Reply</label>
-                            <input wire:model="title" id="title" class="w-full purple-textbox">
-                            <button type="submit" wire:click.prevent="save" class="mt-5">
-                                <a href="#_" class="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-purple-600 to-purple-500 border-purple-700 text-white">
-                                    <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-10"></span>
-                                    <span class="relative">reply</span>
-                                </a>
-                            </button>
-                        </div>
-                    @endif
-                </div>
+                     {{ $list->links() }}
+                @endforeach
 
 
-            <div class="border-t-2 border-gray-300 my-2"/>
-            <div class="gap-5 capitalize my-5">
-                <label for="comments" class="font-extrabold text-3xl">Comments</label>
-                <div class="w-3/5">
+                <div class="border-t-2 border-gray-300 my-2"/>
+                <div class="gap-5 capitalize my-5">
+                    <label for="comments" class="font-extrabold text-3xl">Comments</label>
+                    <div class="w-3/5">
                         <textarea rows="5" id="vname" wire:model="body" autocomplete="off" autofocus
                                   class="rounded-lg appearance-none border
                                                  border-gray-300 py-2 px-2 bg-white text-gray-800 w-full h-44
@@ -103,34 +85,34 @@
                                                  focus:ring-2 focus:ring-purple-500 focus:border-transparent
                                                  form-textarea block transition duration-150 ease-in-out sm:text-sm
                                                  sm:leading-5 " placeholder="Write your thoughts....!"></textarea>
-                    @error('user_id')
-                    <div>
-                        {{ 'Login to comment' }}
-                    </div>
-                    @enderror
+                        @error('user_id')
+                        <div>
+                            {{ 'Login to comment' }}
+                        </div>
+                        @enderror
 
-                    <button type="submit" wire:click.prevent="save" class="mt-5">
-                        <div
-                            class="w-full relative inline-flex items-center px-10 py-1.5 overflow-hidden text-md font-medium text-indigo-600
+                        <button type="submit" wire:click.prevent="save" class="mt-5">
+                            <div
+                                class="w-full relative inline-flex items-center px-10 py-1.5 overflow-hidden text-md font-medium text-indigo-600
                                 border-2 border-indigo-600 rounded-full hover:text-white group ">
                     <span
                         class="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100
                         group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                            <span
-                                class="absolute right-0 flex items-center justify-start w-8 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                                <span
+                                    class="absolute right-0 flex items-center justify-start w-8 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                       xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round"
                                                                                stroke-linejoin="round"
                                                                                stroke-width="2"
                                                                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                          </span>
-                            <span class="relative">Comment </span>
-                        </div>
-                    </button>
+                                <span class="relative">Comment </span>
+                            </div>
+                        </button>
+                    </div>
+
+
                 </div>
-
-
-            </div>
         </article>
     </main>
 

@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Blog\Post;
 
-use App\Models\Blog\Post;
+use Aaran\Blog\Models\Post;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 

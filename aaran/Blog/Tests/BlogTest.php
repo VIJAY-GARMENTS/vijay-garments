@@ -1,11 +1,11 @@
 <?php
 
-namespace Aaran\Demo\Tests;
+namespace Aaran\Blog\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-class DemoTest extends TestCase
+class BlogTest extends TestCase
 {
     use DatabaseMigrations;
 

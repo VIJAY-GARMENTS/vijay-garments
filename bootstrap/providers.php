@@ -8,6 +8,8 @@ return [
     Aaran\Aaconfig\Providers\AaconfigServiceProvider::class,
     Aaran\Common\Providers\CommonServiceProvider::class,
     Aaran\Master\Providers\MasterServiceProvider::class,
+    
+    Aaran\Blog\Providers\BlogServiceProvider::class,
 
 //    Aaran\Entries\Providers\EntriesServiceProvider::class,
 

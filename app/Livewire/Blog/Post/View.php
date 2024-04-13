@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Blog\Post;
 
+use Aaran\Blog\Models\Comment;
+use Aaran\Blog\Models\Like;
+use Aaran\Blog\Models\Post;
 use Aaran\Master\Models\Contact;
 use Aaran\Taskmanager\Models\Reply;
 use App\Livewire\Trait\CommonTrait;
-use App\Models\Blog\Comment;
-use App\Models\Blog\Like;
-use App\Models\Blog\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;

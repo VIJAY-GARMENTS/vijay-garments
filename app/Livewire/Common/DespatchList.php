@@ -11,14 +11,14 @@ class DespatchList extends Component
 {
     use CommonTrait;
 
-    public $date;
+    public $vdate;
     public function getSave(): string
     {
         if ($this->vname != '') {
             if ($this->vid == "") {
                 Despatch::create([
                     'vname' => Str::ucfirst($this->vname),
-                    'date' => $this->date,
+                    'vdate' => $this->vdate,
                     'active_id' => $this->active_id,
                 ]);
                 $message = "Saved";
@@ -26,7 +26,7 @@ class DespatchList extends Component
             } else {
                 $obj = Despatch::find($this->vid);
                 $obj->vname = Str::ucfirst($this->vname);
-                $obj->date = $this->date;
+                $obj->vdate = $this->vdate;
                 $obj->active_id = $this->active_id;
                 $obj->save();
                 $message = "Updated";
@@ -42,7 +42,7 @@ class DespatchList extends Component
             $obj = Despatch::find($id);
             $this->vid = $obj->id;
             $this->vname = $obj->vname;
-            $this->date = $obj->date;
+            $this->vdate = $obj->vdate;
             $this->active_id = $obj->active_id;
             return $obj;
         }

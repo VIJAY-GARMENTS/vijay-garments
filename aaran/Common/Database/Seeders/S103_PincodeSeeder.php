@@ -5,7 +5,7 @@ namespace Aaran\Common\Database\Seeders;
 use Aaran\Common\Models\Pincode;
 use Illuminate\Database\Seeder;
 
-class PincodeSeeder extends Seeder
+class S103_PincodeSeeder extends Seeder
 {
     public static function run(): void
     {

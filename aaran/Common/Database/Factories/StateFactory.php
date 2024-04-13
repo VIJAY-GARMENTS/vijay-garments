@@ -11,7 +11,7 @@ class StateFactory extends Factory
     public function definition(): array
     {
         return [
-            'vname' => 'State',
+            'vname' =>  $this->faker->name,
             'state_code' => 'code',
             'active_id' => 1
         ];

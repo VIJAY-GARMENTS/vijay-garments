@@ -2,18 +2,19 @@
 
 namespace Aaran\Common\Database\Factories;
 
-use Aaran\Common\Models\Department;
+use Aaran\Common\Models\Transport;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DepartmentFactory extends Factory
+class DespatchFactory extends Factory
 {
-    protected $model = Department::class;
+    protected $model = Transport::class;
 
     public function definition(): array
     {
         return [
             'vname' => $this->faker->name,
-            'active_id' => 1
+            'date' => $this->faker->date,
+            'active_id' => '1'
         ];
     }
 }

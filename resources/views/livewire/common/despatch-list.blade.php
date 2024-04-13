@@ -30,7 +30,7 @@
 
                         <x-table.cell>
                             <p class="flex px-3 text-gray-600 truncate text-xl text-left">
-                                {{ $row->date}}
+                                {{ $row->vdate}}
                             </p>
                         </x-table.cell>
 
@@ -49,7 +49,7 @@
 
         <x-forms.create :id="$vid">
             <x-input.model-text wire:model="vname" :label="'Despatch No'"/>
-            <x-input.model-date wire:model="date" :label="'Despatch date'"/>
+            <x-input.model-date wire:model="vdate" :label="'Despatch date'"/>
         </x-forms.create>
 
     </x-forms.m-panel>

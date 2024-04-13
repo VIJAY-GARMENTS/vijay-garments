@@ -2,21 +2,15 @@
 
 namespace Aaran\Common\Database\Seeders;
 
-use Aaran\Common\Models\Country;
+use Aaran\Common\Models\Bank;
 use Illuminate\Database\Seeder;
 
-class CountrySeeder extends Seeder
+class S110_BankSeeder extends Seeder
 {
-
     public static function run(): void
     {
-        Country::create([
+        Bank::create([
             'vname' => '-',
-            'active_id' => '1'
-        ]);
-
-        Country::create([
-            'vname' => 'India',
             'active_id' => '1'
         ]);
     }

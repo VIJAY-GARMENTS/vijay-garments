@@ -2,22 +2,21 @@
 
 namespace Aaran\Common\Database\Seeders;
 
-use Aaran\Common\Models\Department;
+use Aaran\Common\Models\Ledger;
 use Illuminate\Database\Seeder;
 
-class DepartmentSeeder extends Seeder
+class S109_LedgerSeeder extends Seeder
 {
     public static function run(): void
     {
-        Department::create([
+        Ledger::create([
             'vname' => '-',
             'active_id' => '1'
         ]);
 
-        Department::create([
-            'vname' => 'cs',
+        Ledger::create([
+            'vname' => 'Auto Charges',
             'active_id' => '1'
         ]);
     }
 }
-

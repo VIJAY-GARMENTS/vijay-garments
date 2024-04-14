@@ -163,7 +163,7 @@
                                                             wire:click.prevent="setContact_detail('{{$contact_detail->address_1}}','{{$contact_detail->id}}')"
                                                             x-on:click="isTyped = false">
 
-                                                            {{ $contact_detail->contact->vname }}&nbsp;-&nbsp;
+                                                            {{ $contact_detail->address_type }}&nbsp;-&nbsp;
                                                             {{ $contact_detail->address_1 }}&nbsp;-&nbsp;
                                                             {{ $contact_detail->address_2 }}&nbsp;-&nbsp;
                                                             {{ $contact_detail->gstin }}
@@ -226,7 +226,10 @@
                                                                         {{ $highlightContact_detail_1 === $i ? 'bg-yellow-100' : '' }}"
                                                             wire:click.prevent="setContact_detail_1('{{$contact_detail_1->address_1}}','{{$contact_detail_1->id}}')"
                                                             x-on:click="isTyped = false">
-                                                            {{ $contact_detail_1->address_1 }}
+                                                            {{ $contact_detail->address_type }}&nbsp;-&nbsp;
+                                                            {{ $contact_detail->address_1 }}&nbsp;-&nbsp;
+                                                            {{ $contact_detail->address_2 }}&nbsp;-&nbsp;
+                                                            {{ $contact_detail->gstin }}
                                                         </li>
 
                                                     @empty

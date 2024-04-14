@@ -306,7 +306,7 @@ class Upsert extends Component
                     'mobile' => $this->mobile,
                     'whatsapp' => $this->whatsapp,
                     'contact_person' => $this->contact_person,
-                    'contact_type' => $this->contact_type,
+                    'contact_type' => $this->contact_type ?:'1',
                     'msme_no' => $this->msme_no,
                     'msme_type' => $this->msme_type,
                     'opening_balance' => $this->opening_balance,
@@ -316,6 +316,7 @@ class Upsert extends Component
                     'company_id' => session()->get('company_id'),
                 ]);
                 $this->saveItem($obj->id);
+
                 $message = "Saved";
                 $this->getRoute();
 
@@ -325,7 +326,7 @@ class Upsert extends Component
                 $obj->mobile = $this->mobile;
                 $obj->whatsapp = $this->whatsapp;
                 $obj->contact_person = $this->contact_person;
-                $obj->contact_type = $this->contact_type;
+                $obj->contact_type = $this->contact_type ?:'1';
                 $obj->msme_no = $this->msme_no;
                 $obj->msme_type = $this->msme_type;
                 $obj->opening_balance = $this->opening_balance;
@@ -334,8 +335,10 @@ class Upsert extends Component
                 $obj->user_id = Auth::id();
                 $obj->company_id = session()->get('company_id');
                 $obj->save();
+
                 DB::table('contact_details')->where('contact_id', '=', $obj->id)->delete();
                 $this->saveItem($obj->id);
+
                 $message = "Updated";
                 $this->getRoute();
             }
@@ -360,7 +363,7 @@ class Upsert extends Component
         foreach ($this->itemList as $sub) {
             Contact_detail::create([
                 'contact_id' => $id,
-                'contact_type' => $sub['address_type'],
+                'address_type' => $sub['address_type'],
                 'address_1' => $sub['address_1'],
                 'address_2' => $sub['address_2'],
                 'city_id' => $sub['city_id'],
@@ -423,6 +426,14 @@ class Upsert extends Component
         } else {
             $this->effective_from = Carbon::now()->format('Y-m-d');
             $this->active_id = true;
+            $this->contact_type = '1';
+            $this->state_id = '2';
+            $this->state_name = 'Tamilnadu';
+            $this->city_id = 2;
+            $this->city_name = 'Tiruppur';
+            $this->country_id = 2;
+            $this->country_name = "India";
+            $this->address_type = "Primary";
         }
     }
 #endregion

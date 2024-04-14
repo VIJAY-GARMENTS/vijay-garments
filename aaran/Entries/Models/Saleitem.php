@@ -16,6 +16,8 @@ class Saleitem extends Model
 
     protected $guarded = [];
 
+    public $timestamps = false;
+
     public function sale(): BelongsTo
     {
         return $this->belongsTo(Sale::class);

@@ -14,13 +14,12 @@ return new class extends Migration
             $table->string('po_no')->nullable();
             $table->string('dc_no')->nullable();
             $table->foreignId('product_id')->references('id')->on('products');
+            $table->string('description')->nullable();
             $table->foreignId('colour_id')->references('id')->on('colours');
             $table->foreignId('size_id')->references('id')->on('sizes');
-            $table->string('description')->nullable();
             $table->decimal('qty');
             $table->decimal('price');
             $table->string('gst_percent')->nullable();
-            $table->timestamps();
         });
     }
 

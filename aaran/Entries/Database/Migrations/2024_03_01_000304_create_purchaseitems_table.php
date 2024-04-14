@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('purchase_id')->references('id')->on('purchases');
             $table->foreignId('product_id')->references('id')->on('products');
+            $table->string('description')->nullable();
             $table->foreignId('colour_id')->references('id')->on('colours');
             $table->foreignId('size_id')->references('id')->on('sizes');
             $table->decimal('qty');

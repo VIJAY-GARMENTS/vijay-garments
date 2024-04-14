@@ -113,14 +113,14 @@ class SaleEntry
      * Description
      * @return bool
      */
-    public static function hasDescription(): bool
+    public static function hasProductDescription(): bool
     {
-        return static::enabled(static::description());
+        return static::enabled(static::productDescription());
     }
 
-    public static function description(): string
+    public static function productDescription(): string
     {
-        return 'description';
+        return 'productDescription';
     }
 
     /**

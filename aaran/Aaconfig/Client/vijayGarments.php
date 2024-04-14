@@ -15,8 +15,14 @@ return [
         SaleEntry::order(),
         SaleEntry::billingAddress(),
         SaleEntry::deliveryAddress(),
-        SaleEntry::despatch(),
         SaleEntry::style(),
+        SaleEntry::despatch(),
+        SaleEntry::transport(),
+        SaleEntry::destination(),
+        SaleEntry::bundle(),
 
+        SaleEntry::productDescription(),
+        SaleEntry::colour(),
+        SaleEntry::size(),
     ],
 ];

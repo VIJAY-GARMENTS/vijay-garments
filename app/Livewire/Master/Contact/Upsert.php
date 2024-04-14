@@ -22,20 +22,28 @@ class Upsert extends Component
 {
     use CommonTrait;
 
+    #region[Contact properties]
     public string $mobile = '';
     public string $whatsapp = '';
-    public $email = '';
-    public $gstin = '';
+    public string $contact_person = '';
+    public string $contact_type = '';
+    public string $msme_no = '';
+    public string $msme_type = '';
+    public mixed $opening_balance = 0;
+    public string $effective_from = '';
+
+    #endregion
+
+    #region[Address Properties]
+    public $address_type = '';
     public $address_1 = '';
     public $address_2 = '';
-    public $address_type = '';
+    public $gstin = '';
+    public $email = '';
+
+    #endregion
+
     public $company_id;
-    public $contact_person;
-    public $contact_type;
-    public $msme_no;
-    public $msme_type;
-    public $opening_balance;
-    public $effective_from;
 
     public string $cities;
     public string $states;
@@ -43,6 +51,7 @@ class Upsert extends Component
     public $itemList = [];
     public string $itemIndex = "";
 
+    #region[City]
 
     public $city_id = '';
     public $city_name = '';
@@ -101,6 +110,11 @@ class Upsert extends Component
         $this->cityCollection = $this->city_name ? City::search(trim($this->city_name))->get() : City::all();
     }
 
+    #endregion
+
+    #region[State]
+
+
     public $state_id = '';
     public $state_name = '';
     public Collection $stateCollection;
@@ -158,7 +172,9 @@ class Upsert extends Component
         $this->stateCollection = $this->state_name ? State::search(trim($this->state_name))
             ->get() : State::all();
     }
+#endregion
 
+    #region[Pincode]
 
     public $pincode_id = '';
     public $pincode_name = '';
@@ -217,6 +233,10 @@ class Upsert extends Component
             ->get() : Pincode::all();
     }
 
+    #endregion
+
+    #region[Country]
+
     public $country_id = '';
     public $country_name = '';
     public Collection $countryCollection;
@@ -274,7 +294,9 @@ class Upsert extends Component
             ->get() : country::all();
     }
 
+    #endregion
 
+    #region[Save]
     public function save(): string
     {
         if ($this->vname != '') {
@@ -332,6 +354,7 @@ class Upsert extends Component
         return '';
     }
 
+
     public function saveItem($id): void
     {
         foreach ($this->itemList as $sub) {
@@ -350,6 +373,9 @@ class Upsert extends Component
         }
     }
 
+    #endregion
+
+    #region[Mount]
     public function mount($id): void
     {
         if ($id != 0) {
@@ -399,7 +425,9 @@ class Upsert extends Component
             $this->active_id = true;
         }
     }
+#endregion
 
+    #region[Add Item]
     public function addItems(): void
     {
         if ($this->itemIndex == "") {
@@ -493,6 +521,9 @@ class Upsert extends Component
         $this->itemList = collect($this->itemList);
     }
 
+    #endregion
+
+    #region[Get Obj]
     public function getObj($id)
     {
         if ($id) {
@@ -512,6 +543,8 @@ class Upsert extends Component
         }
         return null;
     }
+
+    #endregion
 
     public function getRoute(): void
     {

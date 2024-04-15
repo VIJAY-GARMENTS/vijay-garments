@@ -869,6 +869,6 @@
 
         </section>
     </x-forms.m-panel>
-    <x-forms.m-panel-bottom-button/>
+    <x-forms.m-panel-bottom-button save back print/>
 </div>
 

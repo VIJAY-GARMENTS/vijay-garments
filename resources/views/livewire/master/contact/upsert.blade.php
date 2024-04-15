@@ -340,8 +340,8 @@
 
                                 <x-table.cell>
                                     <div class="flex justify-center gap-3">
-                                        <x-button.table-edit wire:click.prevent="changeItems({{$index}})"/>
-                                        <x-button.table-delete wire:click.prevent="removeItems({{$index}})"/>
+                                        <x-table.edit  wire:click.prevent="changeItems({{$index}})"/>
+                                        <x-table.delete wire:click.prevent="removeItems({{$index}})"/>
                                     </div>
                                 </x-table.cell>
 

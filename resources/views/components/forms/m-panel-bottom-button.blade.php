@@ -1,11 +1,25 @@
+@props([
+    'save'=>false,
+    'back'=>false,
+    'print'=>false
+
+])
 <div class="px-8 border border-gray-400 border-t-0 bg-gray-100 rounded-b-md shadow-lg w-full">
     <div class="flex flex-row justify-between py-4">
         <div class="flex gap-3">
-            <x-button.save/>
-            <x-button.back/>
+            @if($save)
+
+                <x-button.save/>
+            @endif
+            @if($back)
+
+                <x-button.back/>
+            @endif
         </div>
         <div>
-            <x-button.print/>
+            @if($print)
+                <x-button.print/>
+            @endif
         </div>
     </div>
 </div>

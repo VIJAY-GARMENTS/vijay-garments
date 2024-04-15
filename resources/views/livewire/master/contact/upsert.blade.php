@@ -277,6 +277,7 @@
             @if ($itemList)
                 <x-forms.table>
                     <x-slot name="table_header">
+                        <x-table.header-text center>id</x-table.header-text>
                         <x-table.header-text center>Address Type</x-table.header-text>
                         <x-table.header-text left>Address</x-table.header-text>
                         <x-table.header-text left>Area-Road</x-table.header-text>
@@ -292,6 +293,14 @@
                     <x-slot name="table_body">
                         @forelse ($itemList as $index =>  $row)
                             <x-table.row>
+
+                                <x-table.cell-text center>
+                                    @if(isset($row['contact_detail_id']))
+                                        {{  $row['contact_detail_id'] }}
+                                    @endif
+
+                                </x-table.cell-text>
+
 
                                 <x-table.cell-text wire:click.prevent="changeItems({{$index}})" center>
                                     {{  $row['address_type'] }}

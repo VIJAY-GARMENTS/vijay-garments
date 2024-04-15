@@ -35,6 +35,7 @@ class Upsert extends Component
     #endregion
 
     #region[Address Properties]
+    public $contact_detail_id = '';
     public $address_type = '';
     public $address_1 = '';
     public $address_2 = '';
@@ -43,16 +44,12 @@ class Upsert extends Component
 
     #endregion
 
-    public $company_id;
-
-    public string $cities;
-    public string $states;
-    public string $pincode;
+    #region[array]
     public $itemList = [];
-    public string $itemIndex = "";
+    public mixed $itemIndex = '';
+    #endregion
 
     #region[City]
-
     public $city_id = '';
     public $city_name = '';
     public Collection $cityCollection;
@@ -109,12 +106,9 @@ class Upsert extends Component
     {
         $this->cityCollection = $this->city_name ? City::search(trim($this->city_name))->get() : City::all();
     }
-
     #endregion
 
     #region[State]
-
-
     public $state_id = '';
     public $state_name = '';
     public Collection $stateCollection;
@@ -172,7 +166,7 @@ class Upsert extends Component
         $this->stateCollection = $this->state_name ? State::search(trim($this->state_name))
             ->get() : State::all();
     }
-#endregion
+    #endregion
 
     #region[Pincode]
 
@@ -306,7 +300,7 @@ class Upsert extends Component
                     'mobile' => $this->mobile,
                     'whatsapp' => $this->whatsapp,
                     'contact_person' => $this->contact_person,
-                    'contact_type' => $this->contact_type ?:'1',
+                    'contact_type' => $this->contact_type ?: '1',
                     'msme_no' => $this->msme_no,
                     'msme_type' => $this->msme_type,
                     'opening_balance' => $this->opening_balance,
@@ -326,7 +320,7 @@ class Upsert extends Component
                 $obj->mobile = $this->mobile;
                 $obj->whatsapp = $this->whatsapp;
                 $obj->contact_person = $this->contact_person;
-                $obj->contact_type = $this->contact_type ?:'1';
+                $obj->contact_type = $this->contact_type ?: '1';
                 $obj->msme_no = $this->msme_no;
                 $obj->msme_type = $this->msme_type;
                 $obj->opening_balance = $this->opening_balance;
@@ -336,7 +330,7 @@ class Upsert extends Component
                 $obj->company_id = session()->get('company_id');
                 $obj->save();
 
-                DB::table('contact_details')->where('contact_id', '=', $obj->id)->delete();
+//                DB::table('contact_details')->where('contact_id', '=', $obj->id)->delete();
                 $this->saveItem($obj->id);
 
                 $message = "Updated";
@@ -360,19 +354,35 @@ class Upsert extends Component
 
     public function saveItem($id): void
     {
+
         foreach ($this->itemList as $sub) {
-            Contact_detail::create([
-                'contact_id' => $id,
-                'address_type' => $sub['address_type'],
-                'address_1' => $sub['address_1'],
-                'address_2' => $sub['address_2'],
-                'city_id' => $sub['city_id'],
-                'state_id' => $sub['state_id'],
-                'pincode_id' => $sub['pincode_id'],
-                'country_id' => $sub['country_id'],
-                'gstin' => $sub['gstin'],
-                'email' => $sub['email'],
-            ]);
+
+            if ($sub['contact_detail_id'] === 0) {
+                Contact_detail::create([
+                    'contact_id' => $id,
+                    'address_type' => $sub['address_type'],
+                    'address_1' => $sub['address_1'],
+                    'address_2' => $sub['address_2'],
+                    'city_id' => $sub['city_id'],
+                    'state_id' => $sub['state_id'],
+                    'pincode_id' => $sub['pincode_id'],
+                    'country_id' => $sub['country_id'],
+                    'gstin' => $sub['gstin'],
+                    'email' => $sub['email'],
+                ]);
+            } else {
+                $detail = Contact_detail::find($sub['contact_detail_id']);
+                $detail->address_type = $sub['address_type'];
+                $detail->address_1 = $sub['address_type'];
+                $detail->address_2 = $sub['address_2'];
+                $detail->city_id = $sub['city_id'];
+                $detail->state_id = $sub['state_id'];
+                $detail->pincode_id = $sub['pincode_id'];
+                $detail->country_id = $sub['country_id'];
+                $detail->gstin = $sub['gstin'];
+                $detail->email = $sub['email'];
+                $detail->save();
+            }
         }
     }
 
@@ -395,6 +405,8 @@ class Upsert extends Component
             $this->opening_balance = $obj->opening_balance;
             $this->effective_from = $obj->effective_from;
             $this->active_id = $obj->active_id;
+
+
             $data = DB::table('contact_details')->select('contact_details.*',
                 'cities.vname as city_name',
                 'states.vname as state_name',
@@ -441,6 +453,7 @@ class Upsert extends Component
     #region[Add Item]
     public function addItems(): void
     {
+
         if ($this->itemIndex == "") {
             if (!(empty($this->city_name)) &&
                 !(empty($this->address_type)) &&
@@ -448,6 +461,7 @@ class Upsert extends Component
                 !(empty($this->gstin))
             ) {
                 $this->itemList[] = [
+                    'contact_detail_id' => $this->contact_detail_id ?: 0,
                     'address_type' => $this->address_type,
                     'city_name' => $this->city_name,
                     'city_id' => $this->city_id,
@@ -463,10 +477,10 @@ class Upsert extends Component
                     'email' => $this->email,
 
                 ];
-//                dd($this->itemList);
             }
         } else {
             $this->itemList[$this->itemIndex] = [
+                'contact_detail_id' => $this->contact_detail_id,
                 'address_type' => $this->address_type,
                 'city_name' => $this->city_name,
                 'city_id' => $this->city_id,
@@ -491,6 +505,7 @@ class Upsert extends Component
     public function resetsItems(): void
     {
         $this->itemIndex = '';
+        $this->contact_detail_id = '';
         $this->address_type = '';
         $this->city_name = '';
         $this->city_id = '';
@@ -511,6 +526,7 @@ class Upsert extends Component
         $this->itemIndex = $index;
 
         $items = $this->itemList[$index];
+        $this->contact_detail_id = $items['contact_detail_id'];
         $this->address_type = $items['address_type'];
         $this->city_name = $items['city_name'];
         $this->city_id = $items['city_id'];
@@ -557,6 +573,7 @@ class Upsert extends Component
 
     #endregion
 
+    #region[render]
     public function getRoute(): void
     {
         $this->redirect(route('contacts'));
@@ -570,4 +587,5 @@ class Upsert extends Component
         $this->getCountryList();
         return view('livewire.master.contact.upsert');
     }
+    #endregion
 }

@@ -29,7 +29,7 @@
 
             <div>
                 <input type="file" wire:model="image" class="">
-                <button wire:click.prevent="save_image">Save photo</button>
+                <button wire:click.prevent="save_image"></button>
             </div>
         </div>
 

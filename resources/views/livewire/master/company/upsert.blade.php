@@ -1,5 +1,5 @@
 <div>
-    <x-slot name="header">Company Entery</x-slot>
+    <x-slot name="header">Company Entry</x-slot>
     <x-forms.m-panel>
         <x-input.model-text wire:model="vname" :label="'Name'"/>
         <x-input.model-text wire:model="display_name" :label="'Display-name'"/>

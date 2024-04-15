@@ -359,10 +359,10 @@ class Upsert extends Component
         }
     }
 
-    public function updated_logo()
+    public function updatedlogo()
     {
         $this->validate([
-            'logo'=>'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'logo'=>'image|max:1024',
         ]);
         $this->isUploaded=true;
     }

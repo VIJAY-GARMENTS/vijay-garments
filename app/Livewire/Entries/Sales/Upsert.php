@@ -58,6 +58,7 @@ class Upsert extends Component
     public string $colour;
     public string $size;
     public $po_no;
+    public $grandtotalBeforeRound;
     public $dc_no;
 
     #endregion
@@ -65,13 +66,10 @@ class Upsert extends Component
     #region[Contact]
 
     public $contact_id = '';
-
     public $contact_name = '';
     public Collection $contactCollection;
     public $highlightContact = 0;
     public $contactTyped = false;
-    public $grandtotalBeforeRound;
-
     public function decrementContact(): void
     {
         if ($this->highlightContact === 0) {

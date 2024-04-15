@@ -199,7 +199,7 @@
             <div class="flex-shrink-0 h-20 w-20 mr-4">
                 @if($logo)
                     <div class="flex-shrink-0 h-20 w-20 mr-4">
-                        <img src="{{$isUploaded? $logo->temporaryUrl() : url(\Illuminate\Support\Facades\Storage::url($logo)) }}" alt="{{$logo}}">
+                        <img src="{{$isUploaded? $logo->temporaryUrl() : url(\Illuminate\Support\Facades\Storage::url($logo)) }}">
                     </div>
                 @else
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

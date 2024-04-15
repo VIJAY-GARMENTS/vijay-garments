@@ -35,6 +35,7 @@ class Upsert extends Component
     public $acc_no;
     public $ifsc_code;
     public $branch;
+    public $isUploaded=false;
 
 
     public string $cities;
@@ -270,7 +271,7 @@ class Upsert extends Component
                 $obj->active_id = $this->active_id;
                 $obj->tenant_id = $this->tenant_id?:'1';
                 $obj->user_id = Auth::id();
-                if ($obj->logo != $obj->logo) {
+                if ($obj->logo != $this->logo) {
                     $obj->logo = $this->save_logo();
                 } else {
                     $obj->logo = $this->logo;
@@ -356,6 +357,14 @@ class Upsert extends Component
         } else {
             return $this->logo->store('logo', 'public');
         }
+    }
+
+    public function updated_logo()
+    {
+        $this->validate([
+            'logo'=>'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ]);
+        $this->isUploaded=true;
     }
 
 

@@ -22,7 +22,7 @@ class SizeModel extends Component
     {
         if ($this->vname != '') {
             $obj = Size::create([
-                'vname' => Str::upper($this->vname),
+                'vname' => Str::ucfirst($this->vname),
                 'active_id' => '1'
             ]);
             $this->dispatch('refresh-size', ['name' => $this->vname, 'id' => $obj->id]);

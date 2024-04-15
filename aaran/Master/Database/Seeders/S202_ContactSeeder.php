@@ -18,7 +18,7 @@ class S202_ContactSeeder extends Seeder
             'contact_type' => '1',
             'msme_no' => '-',
             'msme_type' => '-',
-            'opening_balance' => '-',
+            'opening_balance' => '0',
             'effective_from' => '-',
             'active_id' => '1',
             'user_id' => '1',

@@ -58,7 +58,7 @@ class Index extends Component
     }
     public function set_delete($id): void
     {
-        $obj=$this->getObj($id);
+        $obj=Sale::find($id);
         DB::table('saleitems')->where('sale_id', '=', $this->vid)->delete();
         $obj->delete();
     }
@@ -66,7 +66,7 @@ class Index extends Component
     public function print($id)
     {
 
-        $this->redirect(route('sales.print', [$this->getObj($id)]));
+        $this->redirect(route('sales.print', [Sale::find($id)]));
     }
 
     public function getContact()

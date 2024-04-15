@@ -624,6 +624,7 @@ class Upsert extends Component
     {
         $this->product_id = $v['id'];
         $this->product_name = $v['name'];
+        $this->gst_percent1 = $v['gst_percent'];
         $this->productTyped = false;
 
     }
@@ -772,7 +773,7 @@ class Upsert extends Component
                     'contact_id' => $this->contact_id,
                     'invoice_no' => $this->invoice_no,
                     'invoice_date' => $this->invoice_date,
-                    'order_id' => $this->order_id,
+                    'order_id' => $this->order_id?:1,
                     'billing_id' => $this->billing_id,
                     'shipping_id' => $this->shipping_id,
                     'style_id' => $this->style_id ?: 1,

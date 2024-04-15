@@ -12,7 +12,6 @@ class BankList extends Component
     use CommonTrait;
 
     #region[save]
-
     public function getSave(): string
     {
         if ($this->vname != '') {
@@ -51,7 +50,6 @@ class BankList extends Component
     #endregion
 
     #region[list]
-
     public function getList()
     {
         return Bank::search($this->searches)
@@ -62,7 +60,6 @@ class BankList extends Component
     #endregion
 
     #region[render]
-
     public function reRender(): void
     {
         $this->render()->render();

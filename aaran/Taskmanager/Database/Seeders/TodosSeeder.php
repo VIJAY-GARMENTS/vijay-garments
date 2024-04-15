@@ -2,7 +2,6 @@
 
 namespace Aaran\Taskmanager\Database\Seeders;
 
-use Aaran\Orders\Models\Style;
 use Aaran\Taskmanager\Models\Todos;
 use Illuminate\Database\Seeder;
 

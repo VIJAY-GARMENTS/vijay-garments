@@ -9,7 +9,7 @@ use Aaran\Erp\Models\Production\PeInwardItem;
 use Aaran\Erp\Models\Production\PeOutwardItem;
 use Aaran\Erp\Models\Production\SectionInwardItem;
 use Aaran\Erp\Models\Production\SectionOutwardItem;
-use Aaran\Orders\Models\Order;
+use Aaran\Master\Models\Order;
 use Livewire\Component;
 
 class JobDetails extends Component

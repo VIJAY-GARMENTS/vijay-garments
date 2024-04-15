@@ -8,7 +8,7 @@ use Aaran\Erp\Models\Production\PeInward;
 use Aaran\Erp\Models\Production\PeInwardItem;
 use Aaran\Erp\Models\Production\PeOutwardItem;
 use Aaran\Master\Models\Contact;
-use Aaran\Orders\Models\Order;
+use Aaran\Master\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;

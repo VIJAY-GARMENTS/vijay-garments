@@ -28,7 +28,7 @@ class ProductModel extends Component
     {
         if ($this->vname != '') {
             $obj = Product::create([
-                'vname' => Str::upper($this->vname),
+                'vname' => Str::ucfirst($this->vname),
                 'product_type' => $this->product_type,
                 'hsncode_id' => $this->hsncode_id,
                 'units' => $this->units,
@@ -37,7 +37,7 @@ class ProductModel extends Component
                 'company_id'=>session()->get('company_id'),
                 'active_id' => '1'
             ]);
-            $this->dispatch('refresh-product', ['name' => $this->vname, 'id' => $obj->id]);
+            $this->dispatch('refresh-product', ['name' => $this->vname, 'id' => $obj->id,'gst_percent'=>$this->gst_percent]);
             $this->clearAll();
         }
     }

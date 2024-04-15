@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CityFactory extends Factory
 {
     protected $model = City::class;
+
     public function definition(): array
     {
         return [
-            'vname' => 'City',
+            'vname' => $this->faker->name,
             'active_id' => 1
         ];
     }

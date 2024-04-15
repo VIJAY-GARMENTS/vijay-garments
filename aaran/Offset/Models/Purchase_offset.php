@@ -7,7 +7,7 @@ use Aaran\Common\Models\Transport;
 use Aaran\Entries\Database\Factories\PurchaseFactory;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
-use Aaran\Orders\Models\Order;
+use Aaran\Master\Models\Order;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

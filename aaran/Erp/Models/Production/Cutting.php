@@ -3,8 +3,7 @@
 namespace Aaran\Erp\Models\Production;
 
 use Aaran\Erp\Database\Factories\Erp\Production\CuttingFactory;
-use Aaran\Erp\Models\Production\Jobcard;
-use Aaran\Orders\Models\Order;
+use Aaran\Master\Models\Order;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

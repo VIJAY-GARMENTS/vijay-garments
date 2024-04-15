@@ -4,7 +4,7 @@ namespace App\Livewire\Entries\Purchase;
 
 use Aaran\Entries\Models\Purchase;
 use Aaran\Master\Models\Contact;
-use Aaran\Orders\Models\Order;
+use Aaran\Master\Models\Order;
 use App\Livewire\Trait\CommonTrait;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;

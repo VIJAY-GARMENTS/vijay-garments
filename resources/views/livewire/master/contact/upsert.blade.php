@@ -1,41 +1,46 @@
 <div>
     <x-slot name="header">Contact Entry</x-slot>
+
     <x-forms.m-panel>
         <div class="lg:flex">
 
+            <!-- Left area -------------------------------------------------------------------------------------------->
             <div class="lg:w-1/2 ml-2 px-8">
+
                 <x-input.model-text wire:model="vname" :label="'Name'"/>
+
                 <x-input.model-text wire:model="mobile" :label="'Mobile'"/>
+
                 <x-input.model-text wire:model="whatsapp" :label="'Whatsapp'"/>
+
                 <x-input.model-text wire:model="contact_person" :label="'Contact Person'"/>
+
                 <x-input.model-select wire:model="contact_type" :label="'Contact Type'">
                     <option class="text-gray-400"> choose ..</option>
                     @foreach(\App\Enums\ContactType::cases() as $contact_type)
                         <option value="{{$contact_type->value}}">{{$contact_type->getName()}}</option>
                     @endforeach
                 </x-input.model-select>
+
                 <x-input.model-text wire:model="msme_no" :label="'MSME No'"/>
                 <x-input.model-text wire:model="msme_type" :label="'MSME Type'"/>
                 <x-input.model-text wire:model="opening_balance" :label="'Opening Balance'"/>
                 <x-input.model-date wire:model="effective_from" :label="'Opening Date'"/>
             </div>
-            <div class="lg:w-1/2 px-8">
-                {{--            <div class="w-full">--}}
-                {{--                <label for="address_1">Address</label>--}}
-                {{--                <input id="address_1" wire:model.live="address_1" class="block w-full purple-textbox-no-rounded" autocomplete="false"--}}
-                {{--                       placeholder="Address">--}}
-                {{--            </div>--}}
 
+            <!-- Right area ------------------------------------------------------------------------------------------->
+            <div class="lg:w-1/2 px-8">
 
                 <x-input.model-select wire:model="address_type" :label="'Address Type'">
                     <option class="text-gray-400"> choose ..</option>
-                        <option value="Primary">Primary</option>
-                        <option value="Secondary">Second</option>
-                        <option value="Third">Third</option>
+                    <option value="Primary">Primary</option>
+                    <option value="Secondary">Second</option>
+                    <option value="Third">Third</option>
                 </x-input.model-select>
 
                 <x-input.model-text wire:model="address_1" :label="'Address'"/>
                 <x-input.model-text wire:model="address_2" :label="'Area-Road'"/>
+
                 <div class="flex flex-row  gap-3">
                     <div class="xl:flex w-full gap-2">
                         <label for="city_name" class="w-[10rem] text-zinc-500 tracking-wide py-2 ">City</label>
@@ -90,6 +95,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="flex flex-col mt-3 gap-2">
                     <div class="xl:flex w-full gap-2">
                         <label for="state_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">State</label>
@@ -145,6 +151,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="flex flex-col gap-2 mt-3">
                     <div class="xl:flex w-full gap-2">
                         <label for="pincode_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Pincode</label>
@@ -198,6 +205,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="flex flex-col gap-2 mt-3">
                     <div class="xl:flex w-full gap-2">
                         <label for="pincode_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Country</label>
@@ -251,64 +259,105 @@
                         </div>
                     </div>
                 </div>
+
                 <x-input.model-text wire:model="gstin" :label="'GST'"/>
+
                 <x-input.model-text wire:model="email" :label="'Email'"/>
-                <button wire:click="addItems" class="px-3 bg-green-500 text-white font-semibold tracking-wider rounded-lg p-2">Add
+
+                <button wire:click="addItems"
+                        class="px-3 bg-green-500 text-white font-semibold tracking-wider rounded-lg p-2">Add
                     Address
                 </button>
             </div>
-        </div>
-        <div class="w-1/2 ">
 
+        </div>
+
+        <!-- Address Display ------------------------------------------------------------------------------------------>
+        <section>
             @if ($itemList)
+                <x-forms.table>
+                    <x-slot name="table_header">
+                        <x-table.header-text center>id</x-table.header-text>
+                        <x-table.header-text center>Address Type</x-table.header-text>
+                        <x-table.header-text left>Address</x-table.header-text>
+                        <x-table.header-text left>Area-Road</x-table.header-text>
+                        <x-table.header-text center>City</x-table.header-text>
+                        <x-table.header-text center>State</x-table.header-text>
+                        <x-table.header-text center>Pincode</x-table.header-text>
+                        <x-table.header-text center>Country</x-table.header-text>
+                        <x-table.header-text center>Gst</x-table.header-text>
+                        <x-table.header-text left>Email</x-table.header-text>
+                        <x-table.header-text class="w-[6rem]">Action</x-table.header-text>
+                    </x-slot>
 
-                    <div class="md:flex">
-                @foreach($itemList as $index => $row)
-                        <div class="pl-5">
+                    <x-slot name="table_body">
+                        @forelse ($itemList as $index =>  $row)
+                            <x-table.row>
 
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">Address Type</label>
-                                <label class="px-3 pb-2  text-gray-800 text-lg font-bold">{{  $row['address_type'] }}</label>
-                            </div>
+                                <x-table.cell-text center>
+                                    @if(isset($row['contact_detail_id']))
+                                        {{  $row['contact_detail_id'] }}
+                                    @endif
 
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">Address</label>
-                                <label class="px-3 pb-2  text-gray-800 text-md">{{  $row['address_1'] }}</label>
-                            </div>
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">Area-Road</label>
-                                <label class="px-3 pb-2  text-gray-800 text-md">{{$row['address_2']}}</label>
-                            </div>
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">City</label>
-                                <label class="px-3 pb-2  text-gray-800 text-md">{{$row['city_name']}}</label>
-                            </div>
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">State</label>
-                                <label class="px-3 pb-2  text-gray-800 text-md">{{$row['state_name']}}</label>
-                            </div>
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">Pin Code</label>
-                                <label class="px-3 pb-2  text-gray-800 text-md">{{$row['pincode_name']}}</label>
-                            </div>
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">Country</label>
-                                <label class="px-3 pb-2  text-gray-800 text-md">{{$row['country_name']}}</label>
-                            </div>
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">GSt</label>
-                                <label class="px-3 pb-2  text-gray-800 text-md">{{$row['gstin']}}</label>
-                            </div>
-                            <div class="grid w-full grid-cols-2 pt-6" wire:click.prevent="changeItems({{$index}})">
-                                <label class="px-3 pb-2 text-left text-gray-600 text-md">Email</label>
-                                <label class="px-3 pb-2  text-gray-800 text-md">{{$row['email']}}</label>
-                            </div>
-                        </div>
-                @endforeach
-                    </div>
+                                </x-table.cell-text>
+
+
+                                <x-table.cell-text wire:click.prevent="changeItems({{$index}})" center>
+                                    {{  $row['address_type'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell-text>
+                                    {{  $row['address_1'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell-text>
+                                    {{  $row['address_2'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell-text center>
+                                    {{  $row['city_name'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell-text center>
+                                    {{  $row['state_name'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell-text center>
+                                    {{  $row['pincode_name'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell-text center>
+                                    {{  $row['country_name'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell-text center>
+                                    {{  $row['gstin'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell-text>
+                                    {{  $row['email'] }}
+                                </x-table.cell-text>
+
+                                <x-table.cell>
+                                    <div class="flex justify-center gap-3">
+                                        <x-button.table-edit wire:click.prevent="changeItems({{$index}})"/>
+                                        <x-button.table-delete wire:click.prevent="removeItems({{$index}})"/>
+                                    </div>
+                                </x-table.cell>
+
+                            </x-table.row>
+
+                        @empty
+                            <x-table.empty/>
+                        @endforelse
+                    </x-slot>
+                </x-forms.table>
             @endif
-        </div>
+        </section>
+
     </x-forms.m-panel>
+
+    <!-- Save Button area --------------------------------------------------------------------------------------------->
     <section>
         <div class="px-8 py-6 gap-4 bg-gray-100 rounded-b-md border border-gray-300 border-t-0 shadow-lg w-full ">
             <div class="flex flex-col md:flex-row justify-between gap-3 mt-5 mb-0">

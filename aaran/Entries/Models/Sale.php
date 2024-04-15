@@ -9,8 +9,8 @@ use Aaran\Entries\Database\Factories\SaleFactory;
 use Aaran\Master\Models\Company;
 use Aaran\Master\Models\Contact;
 use Aaran\Master\Models\Contact_detail;
-use Aaran\Orders\Models\Order;
-use Aaran\Orders\Models\Style;
+use Aaran\Master\Models\Order;
+use Aaran\Master\Models\Style;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,11 +20,10 @@ class Sale extends Model
 {
     use HasFactory;
 
-//    public $timestamps = false;
 
     protected $guarded = [];
 
-    public static function search(string $searches): Builder
+    public static function search(string $searches)
     {
         return empty($searches) ? static::query()
             : static::where('invoice_no', 'like', '%' . $searches . '%');

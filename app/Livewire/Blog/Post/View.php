@@ -2,10 +2,11 @@
 
 namespace App\Livewire\Blog\Post;
 
+use Aaran\Blog\Models\Comment;
+use Aaran\Blog\Models\Like;
+use Aaran\Blog\Models\Post;
+use Aaran\Master\Models\Contact;
 use App\Livewire\Trait\CommonTrait;
-use App\Models\Blog\Comment;
-use App\Models\Blog\Like;
-use App\Models\Blog\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -21,6 +22,7 @@ class View extends Component
     public Post $post;
     public $id;
     public $like = 0;
+    public $user_id;
 
     public function incrementLike()
     {
@@ -36,6 +38,13 @@ class View extends Component
         }
     }
 
+    public function set_delete($id): void
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+//        $this->redirect(route('posts'));
+    }
+
 
     public function mount($id)
     {
@@ -43,26 +52,46 @@ class View extends Component
             $this->post = Post::find($id);
             $this->post_id= $id;
             $this->likes = Like::find($this->post_id);
+            $this->user_id = Auth::id();
+
         }
     }
 
     public function save(){
+        $this->validate([
+            'user_id'=>'required',
+                'body'=>'required|min:3',
+            ]
+        );
         if ($this->post_id !='') {
             if ($this->vid == '') {
                 Comment::create([
                     'body' => $this->body,
+                    'user_id' => \Auth::id(),
                     'post_id' => $this->post_id,
                 ]);
             } else {
                 $comment = Comment::find($this->vid);
                 $comment->body = $this->body;
+
             }
+
+            $this->clearFields();
         }
     }
+
 
     public function clearFields()
     {
         $this->body='';
+
+    }
+
+
+    public function getContact()
+    {
+        $this->contacts=Contact::where('company_id','=',session()->get('company_id'))->get();
+
     }
 
 

@@ -23,17 +23,6 @@ class Contact extends Model
             : static::where('vname', 'like', '%' . $searches . '%');
     }
 
-    public static function printDetails($ids): Collection
-    {
-        $obj = self::find($ids);
-
-        return collect([
-            'contact_name' => $obj->vname,
-            'msme_no'=>$obj->msme_no,
-            'msme_type'=>$obj->msme_type,
-        ]);
-    }
-
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);

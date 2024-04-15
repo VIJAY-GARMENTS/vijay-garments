@@ -3,7 +3,7 @@
 namespace App\Livewire\Erp\Order;
 
 use Aaran\Erp\Models\Production\Jobcard;
-use Aaran\Orders\Models\Order;
+use Aaran\Master\Models\Order;
 use App\Livewire\Trait\EntriesIndexAbstract;
 
 class Style extends EntriesIndexAbstract

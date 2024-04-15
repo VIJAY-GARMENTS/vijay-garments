@@ -4,7 +4,7 @@ namespace App\Livewire\Accounts\Cashbook;
 
 use Aaran\Accounts\Models\Cashbook;
 use Aaran\Common\Models\Ledger;
-use Aaran\Orders\Models\Order;
+use Aaran\Master\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\On;

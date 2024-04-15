@@ -2,20 +2,18 @@
 
 namespace App\Livewire\Blog\Post;
 
-use App\Models\Blog\Post;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
+use Aaran\Blog\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
 {
-    public $user_id;
+    public $company_id;
 
     public function mount()
     {
         if (Auth::user() != '') {
-            $this->user_id = Auth::user()->id;
+            $this->company_id = session()->get('company_id');
         }
     }
 
@@ -28,8 +26,8 @@ class Index extends Component
     {
         return view('livewire.blog.post.index')->layout('layouts.web')->with([
             'list' => Post::all()
-                ->when($this->user_id, function ($query, $user_id) {
-                    return $query->where('user_id', '=', $user_id);
+                ->when($this->company_id, function ($query, $company_id) {
+                    return $query->where('company_id', '=', $company_id);
                 })
         ]);
 

@@ -6,7 +6,7 @@ use Aaran\Erp\Models\Production\Cutting;
 use Aaran\Erp\Models\Production\CuttingItem;
 use Aaran\Erp\Models\Production\Jobcard;
 use Aaran\Erp\Models\Production\JobcardItem;
-use Aaran\Orders\Models\Order;
+use Aaran\Master\Models\Order;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Collection;

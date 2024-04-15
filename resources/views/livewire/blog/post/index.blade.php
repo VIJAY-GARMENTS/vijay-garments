@@ -5,12 +5,13 @@
             </div>
 
             <div class="text-right ">
-                @editor
+
+                @if(session()->get('company_id')!='')
                 <x-button.new>
                     <div class="'bg-blue-500 hover:bg-amber-950'">
                     </div>
-                </x-button.new>
-                @endeditor
+                </x-button.new>@endif
+
             </div>
 
             <div class="lg:grid lg:grid-cols-2">

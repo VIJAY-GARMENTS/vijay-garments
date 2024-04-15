@@ -22,8 +22,9 @@
             The perfect key for unlocking business growth is Infusing Intelligence to your business.
             Start getting complete business solution package with end-to-end management.</p>
 
-        <a href="{{ route('demo-requests.upsert') }}"
-           class="animate-pulse focus:animate-none hover:animate-none inline-flex text-2xl bg-green-600 px-4 py-2 mt-3 rounded-lg
+        <a
+            href="{{ route('demo-requests.upsert') }}"
+            class="animate-pulse focus:animate-none hover:animate-none inline-flex text-2xl bg-green-600 px-4 py-2 mt-3 rounded-lg cursor-pointer
                     tracking-wide text-white font-mono font-bold">
             <span class="px-5"> Book for demo</span>
             <x-icons.elements :icon="'notebook'" class="w-10 h-auto block"/>

@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class HsncodeFactory extends Factory
 {
     protected $model = Hsncode::class;
+
     public function definition(): array
     {
         return [
-            'vname' => 'Hsncode',
+            'vname' => $this->faker->name,
             'active_id' => 1
         ];
     }

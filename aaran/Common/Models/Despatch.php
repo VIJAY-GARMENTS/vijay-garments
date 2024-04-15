@@ -16,13 +16,4 @@ class Despatch extends Model
         return empty($searches) ? static::query()
             : static::where('vname', 'like', '%' . $searches . '%');
     }
-
-    public static function printDetails($ids): Collection
-    {
-        $obj = self::find($ids);
-
-        return collect([
-            'date' => $obj->date,]);
-
-    }
 }

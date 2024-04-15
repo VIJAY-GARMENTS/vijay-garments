@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Controls\Model\Order;
 
-use Aaran\Orders\Models\Style;
+use Aaran\Master\Models\Style;
 use Livewire\Component;
 
 class StyleModel extends Component

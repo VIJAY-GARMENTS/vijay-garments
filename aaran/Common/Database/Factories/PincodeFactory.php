@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class PincodeFactory extends Factory
 {
     protected $model = Pincode::class;
+
     public function definition(): array
     {
         return [
-            'vname' => 'Pincode',
+            'vname' => $this->faker->name,
             'active_id' => 1
         ];
     }

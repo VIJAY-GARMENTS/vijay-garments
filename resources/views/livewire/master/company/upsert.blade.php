@@ -1,5 +1,5 @@
 <div>
-    <x-slot name="header">Company Entery</x-slot>
+    <x-slot name="header">Company Entry</x-slot>
     <x-forms.m-panel>
         <x-input.model-text wire:model="vname" :label="'Name'"/>
         <x-input.model-text wire:model="display_name" :label="'Display-name'"/>
@@ -199,7 +199,7 @@
             <div class="flex-shrink-0 h-20 w-20 mr-4">
                 @if($logo)
                     <div class="flex-shrink-0 h-20 w-20 mr-4">
-                        <img src="{{$logo}}" alt="{{$logo}}">
+                        <img src="{{$isUploaded? $logo->temporaryUrl() : url(\Illuminate\Support\Facades\Storage::url($logo)) }}">
                     </div>
                 @else
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

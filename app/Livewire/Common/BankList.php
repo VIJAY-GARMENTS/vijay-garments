@@ -11,6 +11,7 @@ class BankList extends Component
 {
     use CommonTrait;
 
+    #region[save]
     public function getSave(): string
     {
         if ($this->vname != '') {
@@ -32,7 +33,9 @@ class BankList extends Component
         }
         return '';
     }
+    #endregion
 
+    #region[obj]
     public function getObj($id)
     {
         if ($id) {
@@ -44,7 +47,9 @@ class BankList extends Component
         }
         return null;
     }
+    #endregion
 
+    #region[list]
     public function getList()
     {
         return Bank::search($this->searches)
@@ -52,7 +57,9 @@ class BankList extends Component
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
     }
+    #endregion
 
+    #region[render]
     public function reRender(): void
     {
         $this->render()->render();
@@ -64,4 +71,5 @@ class BankList extends Component
             'list' => $this->getList()
         ]);
     }
+    #endregion
 }

@@ -373,7 +373,7 @@ class Upsert extends Component
             } else {
                 $detail = Contact_detail::find($sub['contact_detail_id']);
                 $detail->address_type = $sub['address_type'];
-                $detail->address_1 = $sub['address_type'];
+                $detail->address_1 = $sub['address_1'];
                 $detail->address_2 = $sub['address_2'];
                 $detail->city_id = $sub['city_id'];
                 $detail->state_id = $sub['state_id'];

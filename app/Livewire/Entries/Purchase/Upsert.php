@@ -22,9 +22,10 @@ use Livewire\Component;
 class Upsert extends Component
 {
     use CommonTrait;
+
     public string $uniqueno = '';
     public string $acyear = '';
-    public string $purchase_no= '';
+    public string $purchase_no = '';
     public string $purchase_date = '';
     public string $Entry_no = '';
     public string $sales_type = '';
@@ -58,7 +59,7 @@ class Upsert extends Component
     public Collection $contactCollection;
     public $highlightContact = 0;
     public $contactTyped = false;
-    public  $grandtotalBeforeRound;
+    public $grandtotalBeforeRound;
 
     public function decrementContact(): void
     {
@@ -112,7 +113,7 @@ class Upsert extends Component
 
         $this->contactCollection = $this->contact_name ? Contact::search(trim($this->contact_name))
             ->where('company_id', '=', session()->get('company_id'))->get()
-            : Contact::all()->where('company_id','=',session()->get('company_id'));
+            : Contact::all()->where('company_id', '=', session()->get('company_id'));
 
     }
 
@@ -174,7 +175,7 @@ class Upsert extends Component
     {
         $this->orderCollection = $this->order_name ? Order::search(trim($this->order_name))
             ->where('company_id', '=', session()->get('company_id'))
-            ->get() : Order::all()->where('company_id','=',session()->get('company_id'));
+            ->get() : Order::all()->where('company_id', '=', session()->get('company_id'));
     }
 
     #[Rule('required')]
@@ -320,11 +321,11 @@ class Upsert extends Component
         $this->highlightProduct++;
     }
 
-    public function setProduct($name, $id,$percent): void
+    public function setProduct($name, $id, $percent): void
     {
         $this->product_name = $name;
         $this->product_id = $id;
-        $this->gst_percent1=$percent;
+        $this->gst_percent1 = $percent;
         $this->getProductList();
     }
 
@@ -477,21 +478,21 @@ class Upsert extends Component
         if ($this->uniqueno != '') {
             if ($this->vid == "") {
                 $obj = Purchase::create([
-                    'uniqueno' =>session()->get('company_id') . '~' . $this->purchase_no . '~' . $this->purchase_date,
+                    'uniqueno' => session()->get('company_id') . '~' . $this->purchase_no . '~' . $this->purchase_date,
                     'acyear' => '1',
                     'company_id' => session()->get('company_id'),
                     'contact_id' => $this->contact_id,
                     'purchase_no' => $this->purchase_no,
                     'purchase_date' => $this->purchase_date,
                     'Entry_no' => $this->Entry_no,
-                    'order_id' => $this->order_id,
+                    'order_id' => $this->order_id ?: '1',
                     'sales_type' => $this->sales_type,
-                    'transport_id' => $this->transport_id,
+                    'transport_id' => $this->transport_id ?: '1',
                     'bundle' => $this->bundle,
                     'total_qty' => $this->total_qty,
                     'total_taxable' => $this->total_taxable,
                     'total_gst' => $this->total_gst,
-                    'ledger_id' => $this->ledger_id,
+                    'ledger_id' => $this->ledger_id ?: '1',
                     'additional' => $this->additional,
                     'round_off' => $this->round_off,
                     'grand_total' => $this->grand_total,
@@ -556,8 +557,6 @@ class Upsert extends Component
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
-            $this->company_id = $obj->company_id;
-            $this->company_name = $obj->company->vname;
             $this->contact_id = $obj->contact_id;
             $this->contact_name = $obj->contact->vname;
             $this->purchase_no = $obj->purchase_no;
@@ -596,16 +595,16 @@ class Upsert extends Component
                         'price' => $data->price,
                         'gst_percent' => $data->gst_percent,
                         'taxable' => $data->qty * $data->price,
-                        'gst_amount' => ($data->qty * $data->price) * ($data->gst_percent)/ 100,
+                        'gst_amount' => ($data->qty * $data->price) * ($data->gst_percent) / 100,
                         'subtotal' => $data->qty * $data->price + (($data->qty * $data->price) * $data->gst_percent / 100),
                     ];
                 });
             $this->itemList = $data;
         } else {
-            $this->uniqueno=session()->get('company_id') . '~' . $this->purchase_no . '~' . $this->purchase_date;
+            $this->uniqueno = session()->get('company_id') . '~' . $this->purchase_no . '~' . $this->purchase_date;
             $this->active_id = true;
-            $this->sales_type=0;
-            $this->gst_percent=18;
+            $this->sales_type = 0;
+            $this->gst_percent = 18;
             $this->additional = 0;
             $this->grand_total = 0;
             $this->total_taxable = 0;
@@ -742,8 +741,6 @@ class Upsert extends Component
             $this->vid = $obj->id;
             $this->uniqueno = $obj->uniqueno;
             $this->acyear = $obj->acyear;
-            $this->company_id = $obj->company_id;
-            $this->company_name = $obj->company->vname;
             $this->contact_id = $obj->contact_id;
             $this->contact_name = $obj->contact->vname;
             $this->purchase_no = $obj->purchase_no;
@@ -756,8 +753,8 @@ class Upsert extends Component
             $this->transport_name = $obj->transport->vname;
             $this->bundle = $obj->bundle;
             $this->total_qty = $obj->total_qty;
-            $this->total_taxable= $obj->total_taxable;
-            $this->total_gst=$obj->total_gst;
+            $this->total_taxable = $obj->total_taxable;
+            $this->total_gst = $obj->total_gst;
             $this->ledger_id = $obj->ledger_id;
             $this->ledger_name = $obj->ledger->vname;
             $this->additional = $obj->additional;

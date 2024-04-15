@@ -2,9 +2,11 @@
     <x-slot name="header">Bank List</x-slot>
 
     <x-forms.m-panel>
-        <!-- Header --------------------------------------------------------------------------------------------------->
+
+        <!-- Top Controls --------------------------------------------------------------------------------------------------->
         <x-forms.top-controls :show-filters="$showFilters"/>
 
+        <!-- Header --------------------------------------------------------------------------------------------------->
         <x-forms.table :list="$list">
             <x-slot name="table_header">
                 <x-table.header-serial/>
@@ -17,18 +19,17 @@
                 @forelse ($list as $index =>  $row)
 
                     <x-table.row>
-
                         <x-table.cell-text center>
-                                {{ $index + 1 }}
+                            {{ $index + 1 }}
                         </x-table.cell-text>
 
                         <x-table.cell-text>
-                                {{ $row->vname}}
+                            {{ $row->vname}}
                         </x-table.cell-text>
 
-                        <x-table.action :id="$row->id"/>
-                    </x-table.row>
+                        <x-table.cell-action id="{{$row->id}}"/>
 
+                    </x-table.row>
                 @empty
                     <x-table.empty/>
                 @endforelse
@@ -40,7 +41,7 @@
         </x-forms.table>
         <x-modal.delete/>
 
-        <!-- Popup View ----------------------------------------------------------------------------------------------->
+        <!-- Create/ Edit Popup --------------------------------------------------------------------------------------->
         <x-forms.create :id="$vid">
             <x-input.model-text wire:model="vname" :label="'Bank'"/>
         </x-forms.create>

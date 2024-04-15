@@ -10,19 +10,19 @@
                     <div x-data="{isTyped: @entangle('contactTyped')}" @click.away="isTyped = false" class="w-full">
                         <div class="relative ">
                             <input
-                                    id="contact_name"
-                                    type="search"
-                                    wire:model.live="contact_name"
-                                    autocomplete="off"
-                                    placeholder="Party Name.."
-                                    @focus="isTyped = true"
-                                    @keydown.escape.window="isTyped = false"
-                                    @keydown.tab.window="isTyped = false"
-                                    @keydown.enter.prevent="isTyped = false"
-                                    wire:keydown.arrow-up="decrementContact"
-                                    wire:keydown.arrow-down="incrementContact"
-                                    wire:keydown.enter="enterContact"
-                                    class="block w-full purple-textbox "
+                                id="contact_name"
+                                type="search"
+                                wire:model.live="contact_name"
+                                autocomplete="off"
+                                placeholder="Party Name.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementContact"
+                                wire:keydown.arrow-down="incrementContact"
+                                wire:keydown.enter="enterContact"
+                                class="block w-full purple-textbox "
                             />
                             @error('contact_id')
                             <span class="text-red-500">{{'The Party Name is Required.'}}</span>
@@ -72,19 +72,19 @@
                                  class="w-full">
                                 <div class="relative">
                                     <input
-                                            id="order_name"
-                                            type="search"
-                                            wire:model.live="order_name"
-                                            autocomplete="off"
-                                            placeholder="Order.."
-                                            @focus="isTyped = true"
-                                            @keydown.escape.window="isTyped = false"
-                                            @keydown.tab.window="isTyped = false"
-                                            @keydown.enter.prevent="isTyped = false"
-                                            wire:keydown.arrow-up="decrementOrder"
-                                            wire:keydown.arrow-down="incrementOrder"
-                                            wire:keydown.enter="enterOrder"
-                                            class="block w-full purple-textbox"
+                                        id="order_name"
+                                        type="search"
+                                        wire:model.live="order_name"
+                                        autocomplete="off"
+                                        placeholder="Order.."
+                                        @focus="isTyped = true"
+                                        @keydown.escape.window="isTyped = false"
+                                        @keydown.tab.window="isTyped = false"
+                                        @keydown.enter.prevent="isTyped = false"
+                                        wire:keydown.arrow-up="decrementOrder"
+                                        wire:keydown.arrow-down="incrementOrder"
+                                        wire:keydown.enter="enterOrder"
+                                        class="block w-full purple-textbox"
                                     />
                                     @error('order_id')
                                     <span class="text-red-500">{{'The Order is Required.'}}</span>
@@ -125,25 +125,25 @@
 
                 @if(\Aaran\Aaconfig\Src\SaleEntry::hasBillingAddress())
                     <div class="xl:flex gap-2 w-full pt-6">
-                        <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Billing
+                        <label for="billing_address" class="w-[10rem] text-zinc-500 tracking-wide py-2">Billing
                             Address</label>
-                        <div x-data="{isTyped: @entangle('contact_detailTyped')}" @click.away="isTyped = false"
+                        <div x-data="{isTyped: @entangle('billing_addressTyped')}" @click.away="isTyped = false"
                              class="w-full">
                             <div class="relative ">
                                 <input
-                                        id="contact_name"
-                                        type="search"
-                                        wire:model.live="contact_detail_address"
-                                        autocomplete="off"
-                                        placeholder="Party Address.."
-                                        @focus="isTyped = true"
-                                        @keydown.escape.window="isTyped = false"
-                                        @keydown.tab.window="isTyped = false"
-                                        @keydown.enter.prevent="isTyped = false"
-                                        wire:keydown.arrow-up="decrementContact_detail"
-                                        wire:keydown.arrow-down="incrementContact_detail"
-                                        wire:keydown.enter="enterContact_detail"
-                                        class="block w-full purple-textbox "
+                                    id="billing_address"
+                                    type="search"
+                                    wire:model.live="billing_address"
+                                    autocomplete="off"
+                                    placeholder="Billing Address.."
+                                    @focus="isTyped = true"
+                                    @keydown.escape.window="isTyped = false"
+                                    @keydown.tab.window="isTyped = false"
+                                    @keydown.enter.prevent="isTyped = false"
+                                    wire:keydown.arrow-up="decrementBilling_address"
+                                    wire:keydown.arrow-down="incrementBilling_address"
+                                    wire:keydown.enter="enterBilling_address"
+                                    class="block w-full purple-textbox "
                                 />
                                 <div x-show="isTyped"
                                      x-transition:leave="transition ease-in duration-100"
@@ -156,17 +156,17 @@
                 rounded-lg border-transparent flex-1 appearance-none border
                                  bg-white text-gray-800 ring-1 ring-purple-600">
                                             <ul class="overflow-y-scroll h-96">
-                                                @if($contact_detailCollection)
-                                                    @forelse ($contact_detailCollection as $i => $contact_detail)
+                                                @if($billing_addressCollection)
+                                                    @forelse ($billing_addressCollection as $i => $billing_address)
                                                         <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
-                                                        {{ $highlightContact_detail === $i ? 'bg-yellow-100' : '' }}"
-                                                            wire:click.prevent="setContact_detail('{{$contact_detail->address_1}}','{{$contact_detail->id}}')"
+                                                        {{ $highlightBilling_address === $i ? 'bg-yellow-100' : '' }}"
+                                                            wire:click.prevent="setBilling_address('{{$billing_address->address_type.'-'.$billing_address->address_1}}','{{$billing_address->id}}')"
                                                             x-on:click="isTyped = false">
 
-                                                            {{ $contact_detail->address_type }}&nbsp;-&nbsp;
-                                                            {{ $contact_detail->address_1 }}&nbsp;-&nbsp;
-                                                            {{ $contact_detail->address_2 }}&nbsp;-&nbsp;
-                                                            {{ $contact_detail->gstin }}
+                                                            {{ $billing_address->address_type }}&nbsp;-&nbsp;
+                                                            {{ $billing_address->address_1 }}&nbsp;-&nbsp;
+                                                            {{ $billing_address->address_2 }}&nbsp;-&nbsp;
+                                                            {{ $billing_address->gstin }}
                                                         </li>
 
                                                     @empty
@@ -186,27 +186,27 @@
                     </div>
                 @endif
 
-                @if(\Aaran\Aaconfig\Src\SaleEntry::hasDeliveryAddress())
+                @if(\Aaran\Aaconfig\Src\SaleEntry::hasShippingAddress())
                     <div class="xl:flex gap-2 w-full pt-6">
-                        <label for="contact_name" class="w-[10rem] text-zinc-500 tracking-wide py-2">Delivery
+                        <label for="shipping_address" class="w-[10rem] text-zinc-500 tracking-wide py-2">Shipping
                             Address</label>
-                        <div x-data="{isTyped: @entangle('contact_detailTyped_1')}" @click.away="isTyped = false"
+                        <div x-data="{isTyped: @entangle('shipping_addressTyped')}" @click.away="isTyped = false"
                              class="w-full">
                             <div class="relative ">
                                 <input
-                                        id="contact_name"
-                                        type="search"
-                                        wire:model.live="contact_detail_address_1"
-                                        autocomplete="off"
-                                        placeholder="Delivery Address.."
-                                        @focus="isTyped = true"
-                                        @keydown.escape.window="isTyped = false"
-                                        @keydown.tab.window="isTyped = false"
-                                        @keydown.enter.prevent="isTyped = false"
-                                        wire:keydown.arrow-up="decrementContact_detail_1"
-                                        wire:keydown.arrow-down="incrementContact_detail_1"
-                                        wire:keydown.enter="enterContact_detail_1"
-                                        class="block w-full purple-textbox "
+                                    id="shipping_address"
+                                    type="search"
+                                    wire:model.live="shipping_address"
+                                    autocomplete="off"
+                                    placeholder="Shipping Address.."
+                                    @focus="isTyped = true"
+                                    @keydown.escape.window="isTyped = false"
+                                    @keydown.tab.window="isTyped = false"
+                                    @keydown.enter.prevent="isTyped = false"
+                                    wire:keydown.arrow-up="decrementShipping_address"
+                                    wire:keydown.arrow-down="incrementShipping_address"
+                                    wire:keydown.enter="enterShipping_address"
+                                    class="block w-full purple-textbox "
                                 />
                                 <div x-show="isTyped"
                                      x-transition:leave="transition ease-in duration-100"
@@ -219,17 +219,17 @@
                                 rounded-lg border-transparent flex-1 appearance-none border
                                                  bg-white text-gray-800 ring-1 ring-purple-600">
                                             <ul class="overflow-y-scroll h-96">
-                                                @if($contact_detailCollection_1)
-                                                    @forelse ($contact_detailCollection_1 as $i => $contact_detail_1)
+                                                @if($shipping_addressCollection)
+                                                    @forelse ($shipping_addressCollection as $i => $shipping_address)
 
                                                         <li class="cursor-pointer px-3 py-1 hover:font-bold hover:bg-yellow-100 border-b border-gray-300 h-8
-                                                                        {{ $highlightContact_detail_1 === $i ? 'bg-yellow-100' : '' }}"
-                                                            wire:click.prevent="setContact_detail_1('{{$contact_detail_1->address_1}}','{{$contact_detail_1->id}}')"
+                                                                        {{ $highlightShipping_address === $i ? 'bg-yellow-100' : '' }}"
+                                                            wire:click.prevent="setShipping_address('{{ $shipping_address->address_type.'-'. $shipping_address->address_1}}','{{$shipping_address->id}}')"
                                                             x-on:click="isTyped = false">
-                                                            {{ $contact_detail->address_type }}&nbsp;-&nbsp;
-                                                            {{ $contact_detail->address_1 }}&nbsp;-&nbsp;
-                                                            {{ $contact_detail->address_2 }}&nbsp;-&nbsp;
-                                                            {{ $contact_detail->gstin }}
+                                                            {{ $shipping_address->address_type }}&nbsp;-&nbsp;
+                                                            {{ $shipping_address->address_1 }}&nbsp;-&nbsp;
+                                                            {{ $shipping_address->address_2 }}&nbsp;-&nbsp;
+                                                            {{ $shipping_address->gstin }}
                                                         </li>
 
                                                     @empty
@@ -271,19 +271,19 @@
                              class="w-full">
                             <div class="relative ">
                                 <input
-                                        id="style_name"
-                                        type="search"
-                                        wire:model.live="style_name"
-                                        autocomplete="off"
-                                        placeholder="Style Name.."
-                                        @focus="isTyped = true"
-                                        @keydown.escape.window="isTyped = false"
-                                        @keydown.tab.window="isTyped = false"
-                                        @keydown.enter.prevent="isTyped = false"
-                                        wire:keydown.arrow-up="decrementStyle"
-                                        wire:keydown.arrow-down="incrementStyle"
-                                        wire:keydown.enter="enterStyle"
-                                        class="block w-full purple-textbox"
+                                    id="style_name"
+                                    type="search"
+                                    wire:model.live="style_name"
+                                    autocomplete="off"
+                                    placeholder="Style Name.."
+                                    @focus="isTyped = true"
+                                    @keydown.escape.window="isTyped = false"
+                                    @keydown.tab.window="isTyped = false"
+                                    @keydown.enter.prevent="isTyped = false"
+                                    wire:keydown.arrow-up="decrementStyle"
+                                    wire:keydown.arrow-down="incrementStyle"
+                                    wire:keydown.enter="enterStyle"
+                                    class="block w-full purple-textbox"
                                 />
 
                                 <div x-show="isTyped"
@@ -325,19 +325,19 @@
                              class="w-full">
                             <div class="relative ">
                                 <input
-                                        id="style_name"
-                                        type="search"
-                                        wire:model.live="despatch_name"
-                                        autocomplete="off"
-                                        placeholder="Despatch No.."
-                                        @focus="isTyped = true"
-                                        @keydown.escape.window="isTyped = false"
-                                        @keydown.tab.window="isTyped = false"
-                                        @keydown.enter.prevent="isTyped = false"
-                                        wire:keydown.arrow-up="decrementDespatch"
-                                        wire:keydown.arrow-down="incrementDespatch"
-                                        wire:keydown.enter="enterDespatch"
-                                        class="block w-full purple-textbox"
+                                    id="style_name"
+                                    type="search"
+                                    wire:model.live="despatch_name"
+                                    autocomplete="off"
+                                    placeholder="Despatch No.."
+                                    @focus="isTyped = true"
+                                    @keydown.escape.window="isTyped = false"
+                                    @keydown.tab.window="isTyped = false"
+                                    @keydown.enter.prevent="isTyped = false"
+                                    wire:keydown.arrow-up="decrementDespatch"
+                                    wire:keydown.arrow-down="incrementDespatch"
+                                    wire:keydown.enter="enterDespatch"
+                                    class="block w-full purple-textbox"
                                 />
 
                                 <div x-show="isTyped"
@@ -405,19 +405,19 @@
                 <div x-data="{isTyped: @entangle('productTyped')}" @click.away="isTyped = false">
                     <div class="relative">
                         <input
-                                id="product_name"
-                                type="search"
-                                wire:model.live="product_name"
-                                autocomplete="off"
-                                placeholder="Product Name.."
-                                @focus="isTyped = true"
-                                @keydown.escape.window="isTyped = false"
-                                @keydown.tab.window="isTyped = false"
-                                @keydown.enter.prevent="isTyped = false"
-                                wire:keydown.arrow-up="decrementProduct"
-                                wire:keydown.arrow-down="incrementProduct"
-                                wire:keydown.enter="enterProduct"
-                                class="block w-full purple-textbox-no-rounded"
+                            id="product_name"
+                            type="search"
+                            wire:model.live="product_name"
+                            autocomplete="off"
+                            placeholder="Product Name.."
+                            @focus="isTyped = true"
+                            @keydown.escape.window="isTyped = false"
+                            @keydown.tab.window="isTyped = false"
+                            @keydown.enter.prevent="isTyped = false"
+                            wire:keydown.arrow-up="decrementProduct"
+                            wire:keydown.arrow-down="incrementProduct"
+                            wire:keydown.enter="enterProduct"
+                            class="block w-full purple-textbox-no-rounded"
                         />
 
                         <div x-show="isTyped"
@@ -470,19 +470,19 @@
                     <div x-data="{isTyped: @entangle('colourTyped')}" @click.away="isTyped = false">
                         <div class="relative">
                             <input
-                                    id="colour_name"
-                                    type="search"
-                                    wire:model.live="colour_name"
-                                    autocomplete="off"
-                                    placeholder="Colour Name.."
-                                    @focus="isTyped = true"
-                                    @keydown.escape.window="isTyped = false"
-                                    @keydown.tab.window="isTyped = false"
-                                    @keydown.enter.prevent="isTyped = false"
-                                    wire:keydown.arrow-up="decrementColour"
-                                    wire:keydown.arrow-down="incrementColour"
-                                    wire:keydown.enter="enterColour"
-                                    class="block w-full purple-textbox-no-rounded"
+                                id="colour_name"
+                                type="search"
+                                wire:model.live="colour_name"
+                                autocomplete="off"
+                                placeholder="Colour Name.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementColour"
+                                wire:keydown.arrow-down="incrementColour"
+                                wire:keydown.enter="enterColour"
+                                class="block w-full purple-textbox-no-rounded"
                             />
 
                             <div x-show="isTyped"
@@ -525,19 +525,19 @@
                     <div x-data="{isTyped: @entangle('sizeTyped')}" @click.away="isTyped = false">
                         <div class="relative">
                             <input
-                                    id="size_name"
-                                    type="search"
-                                    wire:model.live="size_name"
-                                    autocomplete="off"
-                                    placeholder="Size.."
-                                    @focus="isTyped = true"
-                                    @keydown.escape.window="isTyped = false"
-                                    @keydown.tab.window="isTyped = false"
-                                    @keydown.enter.prevent="isTyped = false"
-                                    wire:keydown.arrow-up="decrementSize"
-                                    wire:keydown.arrow-down="incrementSize"
-                                    wire:keydown.enter="enterSize"
-                                    class="block w-full purple-textbox-no-rounded"
+                                id="size_name"
+                                type="search"
+                                wire:model.live="size_name"
+                                autocomplete="off"
+                                placeholder="Size.."
+                                @focus="isTyped = true"
+                                @keydown.escape.window="isTyped = false"
+                                @keydown.tab.window="isTyped = false"
+                                @keydown.enter.prevent="isTyped = false"
+                                wire:keydown.arrow-up="decrementSize"
+                                wire:keydown.arrow-down="incrementSize"
+                                wire:keydown.enter="enterSize"
+                                class="block w-full purple-textbox-no-rounded"
                             />
 
                             <div x-show="isTyped"
@@ -709,19 +709,19 @@
                                  class='w-full'>
                                 <div class="relative">
                                     <input
-                                            id="ledger_name"
-                                            type="search"
-                                            wire:model.live="ledger_name"
-                                            autocomplete="off"
-                                            placeholder="Ledger.."
-                                            @focus="isTyped = true"
-                                            @keydown.escape.window="isTyped = false"
-                                            @keydown.tab.window="isTyped = false"
-                                            @keydown.enter.prevent="isTyped = false"
-                                            wire:keydown.arrow-up="decrementLedger"
-                                            wire:keydown.arrow-down="incrementLedger"
-                                            wire:keydown.enter="enterLedger"
-                                            class="block w-full purple-textbox"
+                                        id="ledger_name"
+                                        type="search"
+                                        wire:model.live="ledger_name"
+                                        autocomplete="off"
+                                        placeholder="Ledger.."
+                                        @focus="isTyped = true"
+                                        @keydown.escape.window="isTyped = false"
+                                        @keydown.tab.window="isTyped = false"
+                                        @keydown.enter.prevent="isTyped = false"
+                                        wire:keydown.arrow-up="decrementLedger"
+                                        wire:keydown.arrow-down="incrementLedger"
+                                        wire:keydown.enter="enterLedger"
+                                        class="block w-full purple-textbox"
                                     />
                                     @error('ledger_id')
                                     <span class="text-red-500">{{'The Ledger is Required.'}}</span>
@@ -769,19 +769,19 @@
                                      class="w-full">
                                     <div class="relative">
                                         <input
-                                                id="transport_name"
-                                                type="search"
-                                                wire:model.live="transport_name"
-                                                autocomplete="off"
-                                                placeholder="Transport.."
-                                                @focus="isTyped = true"
-                                                @keydown.escape.window="isTyped = false"
-                                                @keydown.tab.window="isTyped = false"
-                                                @keydown.enter.prevent="isTyped = false"
-                                                wire:keydown.arrow-up="decrementTransport"
-                                                wire:keydown.arrow-down="incrementTransport"
-                                                wire:keydown.enter="enterTransport"
-                                                class="block w-full purple-textbox"
+                                            id="transport_name"
+                                            type="search"
+                                            wire:model.live="transport_name"
+                                            autocomplete="off"
+                                            placeholder="Transport.."
+                                            @focus="isTyped = true"
+                                            @keydown.escape.window="isTyped = false"
+                                            @keydown.tab.window="isTyped = false"
+                                            @keydown.enter.prevent="isTyped = false"
+                                            wire:keydown.arrow-up="decrementTransport"
+                                            wire:keydown.arrow-down="incrementTransport"
+                                            wire:keydown.enter="enterTransport"
+                                            class="block w-full purple-textbox"
                                         />
                                         @error('transport_id')
                                         <span class="text-red-500">{{'The Transport is Required.'}}</span>
@@ -839,30 +839,30 @@
 
                     <div class="grid w-full grid-cols-2 pt-6">
                         <label
-                                class="px-3 pb-2 text-left text-gray-600 text-md">Taxable&nbsp;Amount&nbsp;:&nbsp;&nbsp;</label>
+                            class="px-3 pb-2 text-left text-gray-600 text-md">Taxable&nbsp;Amount&nbsp;:&nbsp;&nbsp;</label>
                         <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_taxable }}</label>
                     </div>
 
 
                     <div class="grid w-full grid-cols-2 pt-6">
                         <label
-                                class="px-3 pb-2 text-left text-gray-600 text-md">Gst&nbsp;:&nbsp;&nbsp;</label>
+                            class="px-3 pb-2 text-left text-gray-600 text-md">Gst&nbsp;:&nbsp;&nbsp;</label>
                         <label class="px-3 pb-2 text-right text-gray-800 text-md">{{  $total_gst }}</label>
                     </div>
 
 
                     <div class="grid w-full grid-cols-2 pt-6">
                         <label
-                                class="px-3 pb-2 text-left text-gray-600 text-md">Round off&nbsp;:&nbsp;&nbsp;</label>
+                            class="px-3 pb-2 text-left text-gray-600 text-md">Round off&nbsp;:&nbsp;&nbsp;</label>
                         <label class="px-3 pb-2 text-right text-gray-800 text-md">{{$round_off}}</label>
                     </div>
 
 
                     <div class="grid w-full grid-cols-2 pt-6">
                         <label
-                                class="px-3 pb-2 text-xl text-left text-gray-600">Grand&nbsp;Total&nbsp;:&nbsp;&nbsp;</label>
+                            class="px-3 pb-2 text-xl text-left text-gray-600">Grand&nbsp;Total&nbsp;:&nbsp;&nbsp;</label>
                         <label
-                                class="px-3 pb-2 text-xl font-extrabold text-right text-gray-800">{{$grand_total}}</label>
+                            class="px-3 pb-2 text-xl font-extrabold text-right text-gray-800">{{$grand_total}}</label>
                     </div>
                 </div>
             </section>

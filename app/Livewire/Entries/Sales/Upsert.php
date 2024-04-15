@@ -46,8 +46,6 @@ class Upsert extends Component
     public string $gst_percent = '';
     public string $itemIndex = "";
     public $itemList = [];
-    public $billing_id;
-    public $shipping_id;
     public $description;
 
     public string $company;
@@ -132,63 +130,63 @@ class Upsert extends Component
     #endregion
 
     #region[Billing Address]
-    public $contact_detail_id = '';
+    public $billing_id = '';
 
     public $billing_address = '';
-    public Collection $contact_detailCollection;
-    public $highlightContact_detail = 0;
-    public $contact_detailTyped = false;
+    public Collection $billing_addressCollection;
+    public $highlightBilling_address = 0;
+    public $billing_addressTyped = false;
 
-    public function decrementContact_detail(): void
+    public function decrementBilling_address(): void
     {
-        if ($this->highlightContact_detail === 0) {
-            $this->highlightContact_detail = count($this->contact_detailCollection) - 1;
+        if ($this->highlightBilling_address === 0) {
+            $this->highlightBilling_address = count($this->billing_addressCollection) - 1;
             return;
         }
-        $this->highlightContact_detail--;
+        $this->highlightBilling_address--;
     }
 
-    public function incrementContact_detail(): void
+    public function incrementBilling_address(): void
     {
-        if ($this->highlightContact_detail === count($this->contact_detailCollection) - 1) {
-            $this->highlightContact_detail = 0;
+        if ($this->highlightBilling_address === count($this->billing_addressCollection) - 1) {
+            $this->highlightBilling_address = 0;
             return;
         }
-        $this->highlightContact_detail++;
+        $this->highlightBilling_address++;
     }
 
-    public function setContact_detail($name, $id): void
+    public function setBilling_address($name, $id): void
     {
         $this->billing_address = $name;
-        $this->contact_detail_id = $id;
-        $this->getcontact_detailList();
+        $this->billing_id = $id;
+        $this->getBilling_address();
     }
 
-    public function enterContact_detail(): void
+    public function enterBilling_address(): void
     {
-        $obj = $this->contact_detailCollection[$this->highlightContact_detail] ?? null;
+        $obj = $this->billing_addressCollection[$this->highlightBilling_address] ?? null;
 
         $this->billing_address = '';
-        $this->contact_detailCollection = Collection::empty();
-        $this->highlightContact_detail = 0;
+        $this->billing_addressCollection = Collection::empty();
+        $this->highlightBilling_address = 0;
 
         $this->billing_address = $obj['address_1'] ?? '';
-        $this->contact_detail_id = $obj['id'] ?? '';
+        $this->billing_id = $obj['id'] ?? '';
     }
 
-    #[On('refresh-contact_detail')]
-    public function refreshContact_detail($v): void
+    #[On('refresh-billing_address')]
+    public function refreshBilling_address($v): void
     {
-        $this->contact_detail_id = $v['id'];
+        $this->billing_id = $v['id'];
         $this->billing_address = $v['name'];
-        $this->contact_detailTyped = false;
+        $this->billing_addressTyped = false;
 
     }
 
-    public function getContact_detailList(): void
+    public function getBilling_address(): void
     {
 
-        $this->contact_detailCollection = $this->billing_address ? Contact_detail::search(trim($this->billing_address))
+        $this->billing_addressCollection = $this->billing_address ? Contact_detail::search(trim($this->billing_address))
             ->where('contact_id', '=', $this->contact_id)
             ->get() : contact_detail::all()->where('contact_id', '=', $this->contact_id);
 
@@ -198,63 +196,63 @@ class Upsert extends Component
 
     #region[Shipping Address]
 
-    public $contact_detail_id_1 = '';
+    public $shipping_id = '';
 
     public $shipping_address = '';
-    public Collection $contact_detailCollection_1;
-    public $highlightContact_detail_1 = 0;
-    public $contact_detailTyped_1 = false;
+    public Collection $shipping_addressCollection;
+    public $highlightShipping_address = 0;
+    public $shipping_addressTyped = false;
 
-    public function decrementContact_detail_1(): void
+    public function decrementShipping_address(): void
     {
-        if ($this->highlightContact_detail_1 === 0) {
-            $this->highlightContact_detail_1 = count($this->contact_detailCollection_1) - 1;
+        if ($this->highlightShipping_address === 0) {
+            $this->highlightShipping_address = count($this->shipping_addressCollection) - 1;
             return;
         }
-        $this->highlightContact_detail_1--;
+        $this->highlightShipping_address--;
     }
 
-    public function incrementContact_detail_1(): void
+    public function incrementShipping_address(): void
     {
-        if ($this->highlightContact_detail_1 === count($this->contact_detailCollection_1) - 1) {
-            $this->highlightContact_detail_1 = 0;
+        if ($this->highlightShipping_address === count($this->shipping_addressCollection) - 1) {
+            $this->highlightShipping_address = 0;
             return;
         }
-        $this->highlightContact_detail_1++;
+        $this->highlightShipping_address++;
     }
 
-    public function setContact_detail_1($name, $id): void
+    public function setShipping_address($name, $id): void
     {
         $this->shipping_address = $name;
-        $this->contact_detail_id_1 = $id;
-        $this->getcontact_detailList_1();
+        $this->shipping_id = $id;
+        $this->getShipping_address();
     }
 
-    public function enterContact_detail_1(): void
+    public function enterShipping_address(): void
     {
-        $obj = $this->contact_detailCollection_1[$this->highlightContact_detail_1] ?? null;
+        $obj = $this->shipping_addressCollection[$this->highlightShipping_address] ?? null;
 
         $this->shipping_address = '';
-        $this->contact_detailCollection_1 = Collection::empty();
-        $this->highlightContact_detail_1 = 0;
+        $this->shipping_addressCollection = Collection::empty();
+        $this->highlightShipping_address = 0;
 
         $this->shipping_address = $obj['address_1'] ?? '';
-        $this->contact_detail_id_1 = $obj['id'] ?? '';
+        $this->shipping_id = $obj['id'] ?? '';
     }
 
-    #[On('refresh-contact_detail')]
+    #[On('refresh-shipping_address')]
     public function refreshContact_detail_1($v): void
     {
-        $this->contact_detail_id_1 = $v['id'];
+        $this->shipping_id = $v['id'];
         $this->shipping_address = $v['name'];
-        $this->contact_detailTyped_1 = false;
+        $this->shipping_addressTyped = false;
 
     }
 
-    public function getContact_detailList_1(): void
+    public function getShipping_address(): void
     {
 
-        $this->contact_detailCollection_1 = $this->shipping_address ? Contact_detail::search(trim($this->shipping_address))
+        $this->shipping_addressCollection = $this->shipping_address ? Contact_detail::search(trim($this->shipping_address))
             ->where('contact_id', '=', $this->contact_id)
             ->get() : contact_detail::all()->where('contact_id', '=', $this->contact_id);
 
@@ -805,8 +803,8 @@ class Upsert extends Component
                 $obj->invoice_no = $this->invoice_no;
                 $obj->invoice_date = $this->invoice_date;
                 $obj->order_id = $this->order_id;
-                $obj->contact_detail_id_buyer_address = $this->contact_detail_id;
-                $obj->contact_detail_id_delivery_address = $this->contact_detail_id_1;
+                $obj->billing_id = $this->billing_id;
+                $obj->shipping_id = $this->shipping_id;
                 $obj->style_id = $this->style_id;
                 $obj->despatch_id = $this->despatch_id;
                 $obj->sales_type = $this->sales_type;
@@ -837,6 +835,8 @@ class Upsert extends Component
         foreach ($this->itemList as $sub) {
             Saleitem::create([
                 'sale_id' => $id,
+                'po_no' => $sub['po_no'],
+                'dc_no' => $sub['dc_no'],
                 'product_id' => $sub['product_id'],
                 'colour_id' => $sub['colour_id'],
                 'size_id' => $sub['size_id'],
@@ -888,6 +888,7 @@ class Upsert extends Component
             $this->round_off = $obj->round_off;
             $this->grand_total = $obj->grand_total;
             $this->active_id = $obj->active_id;
+
             $data = DB::table('saleitems')->select('saleitems.*',
                 'products.vname as product_name',
                 'colours.vname as colour_name',
@@ -896,6 +897,8 @@ class Upsert extends Component
                 ->join('sizes', 'sizes.id', '=', 'saleitems.size_id')->where('sale_id', '=', $id)->get()->transform(function ($data) {
                     return [
                         'saleitem_id' => $data->id,
+                        'po_no' => $data->po_no,
+                        'dc_no' => $data->dc_no,
                         'product_name' => $data->product_name,
                         'product_id' => $data->product_id,
                         'colour_name' => $data->colour_name,
@@ -940,14 +943,14 @@ class Upsert extends Component
                 !(empty($this->qty))
             ) {
                 $this->itemList[] = [
+                    'po_no' => $this->po_no,
+                    'dc_no' => $this->dc_no,
                     'product_name' => $this->product_name,
                     'product_id' => $this->product_id,
                     'colour_id' => $this->colour_id,
                     'colour_name' => $this->colour_name,
                     'size_id' => $this->size_id,
                     'size_name' => $this->size_name,
-                    'po_no' => $this->po_no,
-                    'dc_no' => $this->dc_no,
                     'qty' => $this->qty,
                     'price' => $this->price,
                     'gst_percent' => $this->gst_percent1,
@@ -959,14 +962,14 @@ class Upsert extends Component
             }
         } else {
             $this->itemList[$this->itemIndex] = [
+                'po_no' => $this->po_no,
+                'dc_no' => $this->dc_no,
                 'product_name' => $this->product_name,
                 'product_id' => $this->product_id,
                 'colour_id' => $this->colour_id,
                 'colour_name' => $this->colour_name,
                 'size_id' => $this->size_id,
                 'size_name' => $this->size_name,
-                'po_no' => $this->po_no,
-                'dc_no' => $this->dc_no,
                 'qty' => $this->qty,
                 'price' => $this->price,
                 'gst_percent' => $this->gst_percent1,
@@ -975,7 +978,6 @@ class Upsert extends Component
                 'gst_amount' => ($this->qty * $this->price) * $this->gst_percent1 / 100,
                 'subtotal' => $this->qty * $this->price + (($this->qty * $this->price) * $this->gst_percent1 / 100),
             ];
-
         }
 
         $this->calculateTotal();
@@ -986,14 +988,14 @@ class Upsert extends Component
     public function resetsItems(): void
     {
         $this->itemIndex = '';
+        $this->po_no = '';
+        $this->dc_no = '';
         $this->product_name = '';
         $this->product_id = '';
         $this->colour_name = '';
         $this->colour_id = '';
         $this->size_name = '';
         $this->size_id = '';
-        $this->dc_no = '';
-        $this->po_no = '';
         $this->qty = '';
         $this->price = '';
         $this->description = '';
@@ -1006,14 +1008,14 @@ class Upsert extends Component
         $this->itemIndex = $index;
 
         $items = $this->itemList[$index];
+        $this->po_no = $items['po_no'];
+        $this->dc_no = $items['dc_no'];
         $this->product_name = $items['product_name'];
         $this->product_id = $items['product_id'];
         $this->colour_name = $items['colour_name'];
         $this->colour_id = $items['colour_id'];
         $this->size_name = $items['size_name'];
         $this->size_id = $items['size_id'];
-        $this->po_no = $items['po_no'];
-        $this->dc_no = $items['dc_no'];
         $this->qty = $items['qty'] + 0;
         $this->price = $items['price'] + 0;
         $this->gst_percent1 = $items['gst_percent'];
@@ -1079,9 +1081,9 @@ class Upsert extends Component
             $this->invoice_date = $obj->invoice_date;
             $this->order_id = $obj->order_id;
             $this->order_name = $obj->order->vname;
-            $this->billing_id = $obj->contact_detail_id;
+            $this->billing_id = $obj->billing_id;
             $this->billing_address = $obj->contact_detail->address;
-            $this->shipping_id = $obj->contact_detail_id_1;
+            $this->shipping_id = $obj->shipping_id;
             $this->shipping_address = $obj->contact_detail->address;
             $this->style_id = $obj->style_id;
             $this->style_name = $obj->style->vname;
@@ -1131,8 +1133,8 @@ class Upsert extends Component
         $this->getColourList();
         $this->getProductList();
         $this->getSizeList();
-        $this->getContact_detailList();
-        $this->getContact_detailList_1();
+        $this->getBilling_address();
+        $this->getShipping_address();
         $this->getStyleList();
         $this->getDespatchList();
         return view('livewire.entries.sales.upsert');

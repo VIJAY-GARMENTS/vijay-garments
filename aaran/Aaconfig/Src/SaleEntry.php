@@ -41,14 +41,14 @@ class SaleEntry
      * deliveryAddress
      * @return bool
      */
-    public static function hasDeliveryAddress(): bool
+    public static function hasShippingAddress(): bool
     {
-        return static::enabled(static::deliveryAddress());
+        return static::enabled(static::shippingAddress());
     }
 
-    public static function deliveryAddress(): string
+    public static function shippingAddress(): string
     {
-        return 'deliveryAddress';
+        return 'shippingAddress';
     }
 
     /**

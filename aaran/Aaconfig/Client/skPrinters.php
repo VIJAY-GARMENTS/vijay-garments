@@ -14,7 +14,7 @@ return [
     'customise' => [
         SaleEntry::order(),
 
-        SaleEntry::deliveryAddress(),
+        SaleEntry::shippingAddress(),
 
     ],
 ];

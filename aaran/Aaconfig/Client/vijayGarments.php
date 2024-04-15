@@ -14,7 +14,7 @@ return [
     'customise' => [
         SaleEntry::order(),
         SaleEntry::billingAddress(),
-        SaleEntry::deliveryAddress(),
+        SaleEntry::shippingAddress(),
         SaleEntry::style(),
         SaleEntry::despatch(),
         SaleEntry::transport(),

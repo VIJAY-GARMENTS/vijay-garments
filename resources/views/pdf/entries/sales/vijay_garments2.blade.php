@@ -40,22 +40,19 @@
 <body>
 <table width="100%" class="print:*">
     <tr>
-        <td colspan="7"
-            style="text-align: center; margin-top: 2px; font-weight: bold; border-right: none; height: 16px">
+        <td colspan="7" style="text-align: center; margin-top: 2px; font-weight: bold; border-right: none; height: 16px">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Tax&nbsp;Invoice&nbsp;
-        </td>
+            Tax&nbsp;Invoice&nbsp;</td>
         <td colspan="1" style="text-align: right; margin-top: 2px; border-left: none">Original&nbsp;Copy&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
 
-    {{--    company details--}}
+{{--    company details--}}
 
     <tr>
 
         <td colspan="1" rowspan="4" style="border-right: none;width: fit-content; border-right: none;">
             <div>
-                <img style="margin-left: 3px;height: 120px; width: auto;"
-                     src="{{ public_path('images/vijay_garments_logo.jpeg') }}" alt="Vijay Garments"/>
+                <img style="margin-left: 3px;height: 120px; width: auto;" src="{{ public_path('images/vijay_garments_logo.jpeg') }}" alt="Vijay Garments"/>
             </div>
         </td>
         <td colspan="3" style="border: none;">
@@ -105,7 +102,7 @@
         </td>
     </tr>
 
-    {{--    buyer details--}}
+{{--    buyer details--}}
 
     <tr>
 
@@ -193,34 +190,32 @@
     </tr>
     </thead>
     <tbody>
+    <tr>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+        <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
+    </tr>
     @foreach($list as $index => $row)
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">{{$index+1}} </td>
             <td align="left" style="border-bottom: none;border-top: none;">&nbsp;<div>{{$row['product_name']}}</div>
-                <div>{{$row['description']}}&nbsp;-&nbsp;{{$row['colour_name']}}&nbsp;-&nbsp;{{$row['size_name']}}</div>
+            <div>{{$row['description']}}&nbsp;-&nbsp;{{$row['colour_name']}}&nbsp;-&nbsp;{{$row['size_name']}}</div>
             </td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['hsncode']}}</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['qty']+0}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">
-                &nbsp;{{number_format($row['price'],2,'.','')}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{number_format($row['price'],2,'.','')}}</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;{{$row['product_unit']}}</td>
-            <td align="right" style="border-bottom: none;border-top: none;">
-                &nbsp;{{ number_format($row['qty']*$row['price'],2,'.','')}}</td>
+            <td align="right" style="border-bottom: none;border-top: none;">&nbsp;{{ number_format($row['qty']*$row['price'],2,'.','')}}</td>
         </tr>
 
     @endforeach
 
-    @for($i = 0; $i < 6 - ($list->count()); $i++)
+    @for($i = 0; $i < 15-$list->count(); $i++)
 
-        <tr>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-            <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
-        </tr>
         <tr>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
             <td align="center" style="border-bottom: none;border-top: none;">&nbsp;</td>
@@ -280,26 +275,15 @@
                     <tr>
                         <td style="border: none;">
                             <div>
-                                <img style="margin-left: 2px;height: 60px;width: auto;position: relative;"
-                                     src="{{ public_path('images/bank.png') }}"/>
+                                <img style="margin-left: 2px;height: 60px;width: auto;position: relative;" src="{{ public_path('images/bank.png') }}"/>
                             </div>
                         </td>
-                        <td style="border: none; padding-left: 20px">
-                            <div style="text-align: left; font-family:Times,serif;">
-                                <div style="font-family:Times,serif;">Acc.Name<span
-                                        style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('company_name')}}</span>
-                                </div>
-                                <div style="font-family:Times,serif;">ACCOUNT NO<span
-                                        style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('acc_no')}}</span>
-                                </div>
-                                <div style="font-family:Times,serif;">BANK NAME<span
-                                        style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('bank')}}</span>
-                                </div>
-                                <div style="font-family:Times,serif;">BRANCH <span
-                                        style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('branch')}}</span>&nbsp;/&nbsp;IFSC
-                                    CODE<span
-                                        style="font-family:Times,serif; font-weight: bolder">:{{$cmp->get('ifsc_code')}}</span>
-                                </div>
+                        <td style="border: none; padding-left: 20px"><div style="text-align: left; font-family:Times,serif;">
+                                <div style="font-family:Times,serif;">Acc.Name<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('company_name')}}</span></div>
+                                <div style="font-family:Times,serif;">ACCOUNT NO<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('acc_no')}}</span></div>
+                                <div style="font-family:Times,serif;">BANK NAME<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('bank')}}</span></div>
+                                <div style="font-family:Times,serif;">BRANCH <span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('branch')}}</span>&nbsp;/&nbsp;IFSC
+                                    CODE<span style="font-family:Times,serif; font-weight: bolder">:{{$cmp->get('ifsc_code')}}</span></div>
                             </div>
                         </td>
                     </tr>
@@ -307,8 +291,7 @@
             </td>
             <td rowspan="3" style="border-left: none;">
                 <div>
-                    <img style="margin-left: 2px;height: 60px;width: auto;position: relative;"
-                         src="{{ public_path('images/vijaygarments_location.png') }}"/>
+                    <img style="margin-left: 2px;height: 60px;width: auto;position: relative;" src="{{ public_path('images/vijaygarments_location.png') }}"/>
                 </div>
             </td>
             <td colspan="2" style="text-align: center;">
@@ -353,8 +336,7 @@
 
             </td>
             <td colspan="2" style="text-align: center;">
-                <div>Sale Tax</div>
-            </td>
+                <div>Sale Tax</div></td>
         </tr>
         <tr>
             <td colspan="1" style="text-align: center">
@@ -446,26 +428,15 @@
                     <tr>
                         <td style="border: none;">
                             <div>
-                                <img style="margin-left: 2px;height: 60px;width: auto;position: relative;"
-                                     src="{{ public_path('images/bank.png') }}"/>
+                                <img style="margin-left: 2px;height: 60px;width: auto;position: relative;" src="{{ public_path('images/bank.png') }}"/>
                             </div>
                         </td>
-                        <td style="border: none; padding-left: 20px">
-                            <div style="text-align: left; font-family:Times,serif;">
-                                <div style="font-family:Times,serif;">Acc.Name<span
-                                        style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('company_name')}}</span>
-                                </div>
-                                <div style="font-family:Times,serif;">ACCOUNT NO<span
-                                        style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('acc_no')}}</span>
-                                </div>
-                                <div style="font-family:Times,serif;">BANK NAME<span
-                                        style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('bank')}}</span>
-                                </div>
-                                <div style="font-family:Times,serif;">BRANCH <span
-                                        style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('branch')}}</span>&nbsp;/&nbsp;IFSC
-                                    CODE<span
-                                        style="font-family:Times,serif; font-weight: bolder">:{{$cmp->get('ifsc_code')}}</span>
-                                </div>
+                        <td style="border: none; padding-left: 20px"><div style="text-align: left; font-family:Times,serif;">
+                                <div style="font-family:Times,serif;">Acc.Name<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('company_name')}}</span></div>
+                                <div style="font-family:Times,serif;">ACCOUNT NO<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('acc_no')}}</span></div>
+                                <div style="font-family:Times,serif;">BANK NAME<span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('bank')}}</span></div>
+                                <div style="font-family:Times,serif;">BRANCH <span style="font-family:Times,serif; font-weight: bolder">&nbsp;:&nbsp;{{$cmp->get('branch')}}</span>&nbsp;/&nbsp;IFSC
+                                    CODE<span style="font-family:Times,serif; font-weight: bolder">:{{$cmp->get('ifsc_code')}}</span></div>
                             </div>
                         </td>
                     </tr>
@@ -473,8 +444,7 @@
             </td>
             <td rowspan="3" style="border-left: none;">
                 <div>
-                    <img style="margin-left: 2px;height: 60px;width: auto;position: relative;"
-                         src="{{ public_path('images/vijaygarments_location.png') }}"/>
+                    <img style="margin-left: 2px;height: 60px;width: auto;position: relative;" src="{{ public_path('images/vijaygarments_location.png') }}"/>
                 </div>
             </td>
             <td colspan="2" style="text-align: center;">
@@ -507,63 +477,66 @@
             </td>
         </tr>
 
-        <tr>
-            <td colspan="2" rowspan="2">
-                <div style="text-align: center;">HSN&nbsp;/&nbsp;SAC</div>
-            </td>
-            <td colspan="1" rowspan="2" style="text-align: center;">
-                <div>Taxable Value</div>
+            <tr>
+                <td colspan="2" rowspan="2">
+                    <div style="text-align: center;">HSN&nbsp;/&nbsp;SAC</div>
+                </td>
+                <td colspan="1" rowspan="2" style="text-align: center;">
+                    <div>Taxable Value</div>
 
-            </td>
-            <td colspan="4" style="text-align: center;">
-                <div>IGST(Integrate Goods and Services Tax)</div>
+                </td>
+                <td colspan="4" style="text-align: center;">
+                    <div>IGST(Integrate Goods and Services Tax)</div>
 
-            </td>
+                </td>
 
-        </tr>
-
-
-
-        <tr>
-            <td colspan="1" style="text-align: center">
-                <div>Rate</div>
-            </td>
-            <td colspan="3" style="text-align: center">
-                <div>Amount</div>
-            </td>
-
-        </tr>
+            </tr>
 
 
 
-        <tr>
-            <td colspan="2" style="text-align: center;">{{$row['hsncode']}}</td>
-            <td colspan="1" style="text-align: right">
-                <div>{{number_format($obj->total_taxable,2,'.','')}}</div>
-            </td>
-            <td colspan="1" style="text-align: center">
-                <div>{{ $row['gst_percent'] }}%</div>
-            </td>
-            <td colspan="3" style="text-align: right">
-                <div>{{ number_format($obj->total_gst,2,'.','') }}</div>
-            </td>
-        </tr>
+            <tr>
+                <td colspan="1" style="text-align: center">
+                    <div>Rate</div>
+                </td>
+                <td colspan="3" style="text-align: center">
+                    <div>Amount</div>
+                </td>
 
-        <tr>
-            <td colspan="2">&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td colspan="3">&nbsp;</td>
+            </tr>
 
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align: center">Total</td>
-            <td style="text-align: right;">{{number_format($obj->total_taxable,2,'.','')}}</td>
-            <td>&nbsp;</td>
-            <td colspan="3" style="text-align: right;">{{ number_format($obj->total_gst,2,'.','')}}</td>
 
-        </tr>
+
+            <tr>
+                <td colspan="2" style="text-align: center;">{{$row['hsncode']}}</td>
+                <td colspan="1" style="text-align: right">
+                    <div>{{number_format($obj->total_taxable,2,'.','')}}</div>
+                </td>
+                <td colspan="1" style="text-align: center">
+                    <div>{{ $row['gst_percent'] }}%</div>
+                </td>
+                <td colspan="3" style="text-align: right">
+                    <div>{{ number_format($obj->total_gst,2,'.','') }}</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td colspan="3">&nbsp;</td>
+
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">Total</td>
+                <td style="text-align: right;">{{number_format($obj->total_taxable,2,'.','')}}</td>
+                <td>&nbsp;</td>
+                <td colspan="3" style="text-align: right;">{{ number_format($obj->total_gst,2,'.','')}}</td>
+
+            </tr>
     @endif
+
+
+
 
 
     <tr>
@@ -571,8 +544,7 @@
             <div style="font-family:Times,serif; font-weight: bolder">&nbsp;&nbsp;Terms&nbsp;:</div>
             <div style="font-family:Times,serif">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Subject to Barath Jurisdiction</div>
             <div style="font-family:Times,serif">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Payment 100% against the bill</div>
-            <div style="font-family:Times,serif">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Goods once sold will not be taken back
-            </div>
+            <div style="font-family:Times,serif">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Goods once sold will not be taken back</div>
             <div>&nbsp;</div>
 
         </td>
@@ -586,19 +558,14 @@
     </tr>
     <tr>
         <td colspan="5" style="border-right: none;">
-            <div
-                style="font-family:Times,serif; text-align: left;font-size:12px; padding-top: 5px; padding-left: 10px;">
-                Thank you for your Business and have a great day!
-            </div>
+            <div style="font-family:Times,serif; text-align: left;font-size:12px; padding-top: 5px; padding-left: 10px;">Thank you for your Business and have a great day!</div>
         </td>
         <td colspan="2" style="border-left: none;">
-            <div
-                style="font-family:Times,serif; text-align: right;font-size:12px; padding-top: 5px; padding-right: 10px;">
-                www.vijaygarments.in
-            </div>
+            <div style="font-family:Times,serif; text-align: right;font-size:12px; padding-top: 5px; padding-right: 10px;">www.vijaygarments.in</div>
         </td>
     </tr>
 </table>
+
 
 
 {{--Duplicate Copy--}}

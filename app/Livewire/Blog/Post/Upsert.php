@@ -3,6 +3,7 @@
 namespace App\Livewire\Blog\Post;
 
 use Aaran\Blog\Models\Post;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -37,6 +38,8 @@ class Upsert extends Component
     public function set_delete($id): void
     {
         $post = Post::find($id);
+        DB::table('comments')->where('post_id', '=', $this->vid)->delete();
+        DB::table('likes')->where('post_id', '=', $this->vid)->delete();
         $post->delete();
         $this->redirect(route('posts'));
     }

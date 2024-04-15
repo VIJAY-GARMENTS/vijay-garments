@@ -65,13 +65,15 @@
 
 
             @foreach($list as $row)
-                <div class="mt-4 rounded-lg my-2 w-full text-lg text-ellipsis space-y-4">
-                    <div class="flex w-full">
-                        <span class="w-full">{!!($row->body)!!}</span>&nbsp;
-                        <span class="opacity-65 text-right capitalize w-full">&nbsp;{{$row->user_id}}</span>
+                <div class="mt-4 rounded-lg my-2 w-full text-lg text-ellipsis space-y-2">
+                    <div>
+                        <span class="opacity-65 text-right capitalize w-full">&nbsp;{!!($row->user->name)!!}</span>
                     </div>
-                     {{ $list->links() }}
+                    <div class="flex w-full pl-8">
+                        <span class="w-full">{!!($row->body)!!}</span>&nbsp;</div>
+                </div>
                 @endforeach
+                     {{ $list->links() }}
 
 
                 <div class="border-t-2 border-gray-300 my-2"/>

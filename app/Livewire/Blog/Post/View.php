@@ -6,9 +6,7 @@ use Aaran\Blog\Models\Comment;
 use Aaran\Blog\Models\Like;
 use Aaran\Blog\Models\Post;
 use Aaran\Master\Models\Contact;
-use Aaran\Taskmanager\Models\Reply;
 use App\Livewire\Trait\CommonTrait;
-use http\Env\Response;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -25,9 +23,6 @@ class View extends Component
     public $id;
     public $like = 0;
     public $user_id;
-    public $comment_id;
-    public $reply;
-    public $showEditModel = false;
 
     public function incrementLike()
     {
@@ -43,6 +38,13 @@ class View extends Component
         }
     }
 
+    public function set_delete($id): void
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+//        $this->redirect(route('posts'));
+    }
+
 
     public function mount($id)
     {
@@ -50,7 +52,8 @@ class View extends Component
             $this->post = Post::find($id);
             $this->post_id= $id;
             $this->likes = Like::find($this->post_id);
-            $this->user_id= Auth::id();
+            $this->user_id = Auth::id();
+
         }
     }
 
@@ -67,11 +70,12 @@ class View extends Component
                     'user_id' => \Auth::id(),
                     'post_id' => $this->post_id,
                 ]);
-//            } else {
-//                $comment = Comment::find($this->vid);
-//                $comment->body = $this->body;
+            } else {
+                $comment = Comment::find($this->vid);
+                $comment->body = $this->body;
 
             }
+
             $this->clearFields();
         }
     }
@@ -81,13 +85,6 @@ class View extends Component
     {
         $this->body='';
 
-    }
-
-
-    public function show($comments_id)
-    {
-        $this -> showEditModel =! $this->showEditModel;
-        $this -> comments_id = $comments_id;
     }
 
 

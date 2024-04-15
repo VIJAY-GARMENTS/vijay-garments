@@ -7,9 +7,9 @@ class SaleEntry
     public static function enabled(string $feature): bool
     {
         return match (config('aaconfig.app_type')) {
-            '300' => in_array($feature, config('vijayGarments.customise', []) ),
-            '100' => in_array($feature, config('neethuIndustries.customise', [])),
-            '2' => in_array($feature, config('skPrinters.customise', [])),
+            config('clients.VIJAY_GARMENTS') => in_array($feature, config('vijayGarments.customise', [])),
+            config('clients.NEETHU_INDUSTRIES') => in_array($feature, config('neethuIndustries.customise', [])),
+            config('clients.SK_PRINTERS') => in_array($feature, config('skPrinters.customise', [])),
         };
     }
 

@@ -5,8 +5,6 @@ use Aaran\Aaconfig\Src\SaleEntry;
 
 return [
 
-    'company_code'=>'300',
-
     'features' => [
         Customise::todoList()
     ],

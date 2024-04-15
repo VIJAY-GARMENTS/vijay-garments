@@ -542,7 +542,7 @@
                 <div>{{number_format($obj->total_taxable,2,'.','')}}</div>
             </td>
             <td colspan="1" style="text-align: center">
-                <div>{{ $row['gst_percent'] }}%</div>
+                <div>{{ $row['gst_percent']*2 }}%</div>
             </td>
             <td colspan="3" style="text-align: right">
                 <div>{{ number_format($obj->total_gst,2,'.','') }}</div>

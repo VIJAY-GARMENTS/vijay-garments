@@ -9,7 +9,7 @@
                 <x-table.ths-slno wire:click.prevent="sortBy('vname')">Sl.no</x-table.ths-slno>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Order No</x-table.ths-center>
                 <x-table.ths-center wire:click.prevent="sortBy('vname')">Order Name</x-table.ths-center>
-                <x-table.heading class="w-[12rem]">Progress</x-table.heading>
+{{--                <x-table.heading class="w-[12rem]">Progress</x-table.heading>--}}
                 <x-table.heading class="w-[12rem]">Action</x-table.heading>
             </x-slot>
 
@@ -34,14 +34,14 @@
                             </p>
                         </x-table.cell>
 
-                        <x-table.cell>
-                            <a href="{{route('orders.job-details',[$row->id])}}"
-                               class="flex px-3 text-gray-600 truncate text-xl  justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                                    <path fill-rule="evenodd" d="M15.28 9.47a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L13.69 10 9.97 6.28a.75.75 0 0 1 1.06-1.06l4.25 4.25ZM6.03 5.22l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L8.69 10 4.97 6.28a.75.75 0 0 1 1.06-1.06Z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </x-table.cell>
+{{--                        <x-table.cell>--}}
+{{--                            <a href="{{route('orders.job-details',[$row->id])}}"--}}
+{{--                               class="flex px-3 text-gray-600 truncate text-xl  justify-center">--}}
+{{--                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">--}}
+{{--                                    <path fill-rule="evenodd" d="M15.28 9.47a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L13.69 10 9.97 6.28a.75.75 0 0 1 1.06-1.06l4.25 4.25ZM6.03 5.22l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L8.69 10 4.97 6.28a.75.75 0 0 1 1.06-1.06Z" clip-rule="evenodd" />--}}
+{{--                                </svg>--}}
+{{--                            </a>--}}
+{{--                        </x-table.cell>--}}
 
 
                         <x-table.action :id="$row->id"/>

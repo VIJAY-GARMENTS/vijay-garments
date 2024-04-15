@@ -10,6 +10,7 @@ class AaconfigServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
         $this->mergeConfigFrom(__DIR__ . '/../config.php', 'aaconfig');
+        $this->mergeConfigFrom(__DIR__ . '/../clients.php', 'clients');
 
         $this->mergeConfigFrom(__DIR__ . '/../Client/vijayGarments.php', 'vijayGarments');
         $this->mergeConfigFrom(__DIR__ . '/../Client/neethuIndustries.php', 'neethuIndustries');
